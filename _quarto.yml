@@ -1,0 +1,32 @@
+project:
+  type: book
+
+book:
+  title: "`Tidyplots`: publication-ready plots for scientific papers (1e)"
+  subtitle: "A cookbook"
+  cover-image: tidyplots_cover_v1.0.png
+  favicon: tidyplots_cover_v1.0.png
+
+  chapters:
+    - index.qmd
+    - getting-started.qmd
+    - plots.qmd
+    - plots-and-skills.qmd
+    - more-plots.qmd
+    - more-custom-plots.qmd
+    - appendix.qmd
+
+  page-footer:
+    left: Online HTML edition licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+    right: This book (1e) was built with Quarto.
+  repo-url: https://github.com/iamhealthy/tidyplots-book/
+  repo-actions: [issue]
+    
+format:
+  html:
+    theme:
+      light: Sandstone
+      dark: Solar
+    code-copy: true
+
+bibliography: references.bib
