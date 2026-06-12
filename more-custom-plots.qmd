@@ -1,6 +1,7 @@
 # More custom plots
 
 ```{r}
+#| eval: false
 #| echo: false
 tidyplots |> library()
 
@@ -55,6 +56,7 @@ df |>
 ## Schematic of experiment design
 
 ```{r}
+#| message: false
 library(tidyplots)
 
 df <- "data/experimental-design.csv" |> 

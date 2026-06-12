@@ -1,6 +1,7 @@
 # Appendix
 
 ```{r}
+#| eval: false
 #| echo: false
 tidyplots |> library()
 
@@ -61,6 +62,7 @@ Type `?tidyplots::add_data_points` in R console, you can view the `help` informa
 Let's see: **which point shapes in `tidyplots` allow simultaneous use of `color` and `fill` aesthetics?**
 
 ```{r}
+#| message: false
 #| warning: false
 library(tidyplots)
 
@@ -306,7 +308,7 @@ multipanel_2 |>
 
 ![Add panel tags via the `patchwork` package.](images/patchwork_multipanel_2.png)
 
-## Packages used across this cookbook
+## Packages used throughout this cookbook
 
 ```{r}
 os_version <- paste(Sys.info()[c("sysname", "release")], collapse = " ")
@@ -316,10 +318,10 @@ r_version <- R.version.string
 
 r_packages_versions <- tibble::tibble(
   r_package = c(
-    "tidyplots", "grid", "scales", "ggplot2", "patchwork",
-    "ggtext", "ggridges", "see", "legendry", "gggenes",
-    "purrr", "readr", "readxl", "tibble", "dplyr",
-    "rphylopic", "fs", "magick")) |> 
+    "tidyplots", "scales", "ggplot2", "patchwork", "ggtext", 
+    "ggridges", "see", "legendry", "gggenes", "purrr", 
+    "readr", "readxl", "tibble", "dplyr", "rphylopic", 
+    "fs", "magick")) |> 
   dplyr::mutate(
     version = purrr::map_chr(r_package, \(x) as.character(packageVersion(x))))
 
@@ -328,5 +330,4 @@ paste0("quarto: ", quarto_version)
 paste0("positron: ", positron_version[1])
 r_version
 r_packages_versions
-
 ```

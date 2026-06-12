@@ -1,6 +1,7 @@
 # Plots and skills
 
 ```{r}
+#| eval: false
 #| echo: false
 tidyplots |> library()
 
@@ -211,15 +212,9 @@ p3 <- p1 |>
   adjust_title(title = "p3: decreased intensity via `alpha`") |> 
   add_sum_bar(alpha = 0.5)
 
-p4 <- p2 |> 
+p4 <- p1 |> 
   adjust_title(title = "p4: decreased intensity via `saturation`") |>
-  adjust_colors(
-    new_colors = c(
-      "#ddaa33", 
-      "#bb5566", 
-      "#004488", 
-      "#000000"), 
-    saturation = 0.5)
+  add_sum_bar(saturation = 0.5)
 ```
 
 ```{r}
@@ -1001,9 +996,7 @@ patchwork::wrap_plots(p1, p2, p3, p4, ncol = 2) |>
 library(tidyplots)
 
 # View top 10 rows of the columns used
-spendings |> 
-  dplyr::select(amount, category) |> 
-  dplyr::slice_head(n = 10)
+spendings |> dplyr::select(amount, category) |> dplyr::slice_head(n = 10)
 ```
 
 ```{r}
@@ -1017,8 +1010,7 @@ p1 <- spendings |>
   add_title(title = "p1") |> 
   sort_x_axis_levels() |> 
   adjust_x_axis(rotate_labels = TRUE) |> 
-  adjust_colors(new_colors = c(
-    "#eecc66", "#ee99aa", "#6699cc", 
+  adjust_colors(new_colors = c("#eecc66", "#ee99aa", "#6699cc", 
     "#997700", "#994455", "#004488", "#000000")) |> 
   remove_legend() |> 
   adjust_padding(right = 0.2)
@@ -1030,8 +1022,7 @@ p2 <- spendings |>
   add_sum_value(accuracy = 1, color = "black") |> 
   adjust_title(title = "p2: horizontal") |> 
   sort_y_axis_levels() |> 
-  adjust_colors(new_colors = c(
-    "#eecc66", "#ee99aa", "#6699cc", 
+  adjust_colors(new_colors = c("#eecc66", "#ee99aa", "#6699cc", 
     "#997700", "#994455", "#004488", "#000000")) |> 
   remove_legend()
 
@@ -1042,26 +1033,28 @@ p3 <- p2 |>
 p4 <- p2 |> 
   adjust_title(title = "p4: adjust x axis limit") |> 
   adjust_x_axis(limits = c(0, 1500))
+
+p5 <- p2 |> 
+  adjust_title(title = "p5: via 'add()'") |> 
+  add(ggplot2::coord_cartesian(clip = "off"))
+
+p6 <- p2 |> 
+  adjust_title(title = "p6: via 'remove_clipping()'") |> 
+  remove_clipping()
 ```
 
 ```{r}
 #| eval: false
 #| echo: false
-patchwork::wrap_plots(p1, p2, p3, p4, ncol = 2) |> 
+patchwork::wrap_plots(p1, p2, p3, p4, p5, p6, ncol = 2) |> 
   save_plot("images/horizontal-bars.png",
-    view_plot = FALSE, width = 160, height = 150)
+    view_plot = FALSE, width = 155, height = 215)
 ```
 
-![Horizontal bars.](images/horizontal-bars.png){width=100% fig-align="center"}
+![Horizontal bars.](images/horizontal-bars.png){width=95% fig-align="center"}
 
-:::{.callout-tip icon="true"}
-The sum value of `Housing` in `p2` is clipped (the actual value should be 1,200).
-
-One way to solve this is via `p3` (i.e. piping with `adjust_padding(right = 0.2)`).
-
-The second way is via `p4` (i.e. piping with `adjust_x_axis(limits = c(0, 1500)`).
-
-The third way is to pipe with `remove_clipping()` if you install a specific commit (on 2026-04-01), i.e. `pak("jbengler/tidyplots@4a08bfe")` via the `pak` package, or use a later version.
+:::{.callout-note icon="true"}
+`remove_clipping()` is only available if you install a specific commit (on 2026-04-01), i.e. `pak("jbengler/tidyplots@4a08bfe")` via the `pak` package, or use a later version.
 :::
 
 ## Preview a subset of dataset (e.g. violin plot)
@@ -1259,8 +1252,7 @@ energy_week |>
 my_style <- function(x) {
   x |> 
     adjust_font(family = "mono", face = "bold") |> 
-    remove_x_axis_ticks() |> 
-    remove_y_axis_ticks() |> 
+    adjust_title(fontsize = 10) |> 
     reverse_color_levels() |> 
     adjust_x_axis(labels = scales::label_date( # display dates as "Sep 05" etc.
       format = "%b %d", locale = "en"))}
@@ -1276,7 +1268,8 @@ p1 <- energy_week |>
 
 p2 <- p1 |> 
   adjust_title(
-    title = paste("p3: areastack relative", "defined custom style", sep = "\n")) |> 
+    title = paste("p2: areastack relative", "defined custom style", sep = "\n")) |> 
+  adjust_legend_title(title = "ENERGY_SOURCE", color = "#bb5566") |>   
   adjust_legend_position(position = "left") |> 
   my_style()
 
@@ -1285,9 +1278,9 @@ p3 <- energy_week |>
     x = date, 
     y = power, 
     color = energy_source) |> 
-  add_areastack_absolute() |> 
-  add_title(
+  adjust_title(
     title = paste("p3: areastack absolute", "defined custom style", sep = "\n")) |> 
+  add_areastack_absolute() |> 
   my_style()
 ```
 
@@ -1785,7 +1778,9 @@ p2 <- p1 |>
   adjust_x_axis_title(
     title = "$italic(Mycobacterium~tuberculosis)$") |> 
   adjust_y_axis_title(
-    title = "$A==pi*italic(r)^{2}$")
+    title = "$A==pi*italic(r)^{2}$") |> 
+  adjust_legend_title(
+    title = "$italic(M.tb)$")
 ```
 
 ```{r}
@@ -1877,10 +1872,7 @@ study |>
 #| eval: false
 # Plot
 p1 <- study |> 
-  tidyplot(
-    x = treatment, 
-    y = score, 
-    color = treatment) |> 
+  tidyplot(x = treatment, y = score, color = treatment) |> 
   add_mean_dash() |> 
   add_sem_errorbar() |> 
   add_data_points() |> 
@@ -1895,20 +1887,25 @@ p3 <- p1 |>
   adjust_title(
     title = paste(
       "p3: selected comparisons", 
-      "padding_top", 
+      "padding_top",
+      "adjusted p", 
       sep = "\n")) |> 
   add_test_pvalue(
     comparisons = list(c(1, 3), c(2, 4)), 
-    padding_top = 0.5)
+    padding_top = 0.5,
+    p.adjust.method = "bonferroni")
 
 p4 <- p1 |> 
   adjust_title(
     title = paste(
       "p4: selected comparisons", 
+      "wilcox_test", 
       "hide statistical info", 
       sep = "\n")) |> 
-  add_test_asterisks(
+  add_test_pvalue(
     comparisons = list(c(1, 3), c(2, 4)), 
+    method = "wilcox_test", 
+    label = "wilcox test: italic(p) = {p}",
     hide_info = TRUE)
 ```
 
@@ -1921,6 +1918,68 @@ patchwork::wrap_plots(p1, p2, p3, p4, ncol = 2) |>
 ```
 
 ![Test selected comparisons.](images/test-selected-comparisons.png){width=100% fig-align="center"}
+
+## Add pre-computed group comparisons (e.g. dot plot)
+
+```{r}
+library(tidyplots)
+
+# View top 5 rows of the columns used
+study |> dplyr::select(treatment, score) |> dplyr::slice_head(n = 5)
+
+# Pre-computed statistical test results.
+stat_df <- tibble::tibble(
+  group1 = c("A"), group2 = c("B", "C", "D"),
+  p = c(0.005, 0.003, 0.0001), p.adj = c(0.01, 0.006, 0.001),
+  p.signif = c("**", "**", "***"), y.position = c(25, 55, 55))
+stat_df
+```
+
+```{r}
+#| eval: false
+# Plot
+p1 <- study |> 
+  tidyplot(x = treatment, y = score, color = treatment) |> 
+  add_mean_dash() |> 
+  add_sem_errorbar() |> 
+  add_data_points() |> 
+  add_title(title = "p1")
+
+p2 <- p1 |> 
+  adjust_title(title = "p2: all pre-computed p values") |> 
+  add_test_pvalue_manual(data = stat_df, label = "p")
+
+p3 <- p1 |> 
+  adjust_title(title = "p3: all pre-computed p.adj values") |> 
+  add_test_pvalue_manual(data = stat_df, label = "p.adj")
+
+p4 <- p1 |> 
+  adjust_title(title = "p4: specify 'p.adj'") |> 
+  add_test_pvalue_manual(data = stat_df, label = "p.adj = {p.adj}")
+
+stat_df_sub <- stat_df |> dplyr::slice_head(n = 1)
+p5 <- p1 |> 
+  adjust_title(title = "p5: 1st pre-computed p values") |> 
+  add_test_pvalue_manual(data = stat_df_sub)
+
+p6 <- p1 |> 
+  adjust_title(title = "p6: all pre-computed asterisks") |> 
+  add_test_asterisks_manual(data = stat_df)
+```
+
+```{r}
+#| eval: false
+#| echo: false
+patchwork::wrap_plots(p1, p2, p3, p4, p5, p6, ncol = 2) |> 
+  save_plot("images/add_test_mannually.png",
+    view_plot = FALSE, width = 160, height = 205)
+```
+
+![Add pre-computed group comparisons.](images/add_test_mannually.png){width="100%" fig-align="center"}
+
+:::{.callout-note icon="true"}
+`add_test_pvalue_manual()` and `add_test_asterisks_manual()` expect a discrete variable on the x-axis and a continuous variable on the y-axis. To produce horizontal plots, use `flip_plot()`.
+:::
 
 ## Compare groups (e.g. boxplot)
 

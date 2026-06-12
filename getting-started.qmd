@@ -66,12 +66,21 @@ Therefore, I will donate 55% of any paid proceeds (if there are any) to Jan's pr
 
 ```{r}
 #| eval: false
+# Install the released version from CRAN:
 install.packages("tidyplots")
+
+# Install the development version from GitHub:
+# Install.packages("pak") # install pak if not already installed
+pak::pak("jbengler/tidyplots")
+# Install a specific version
+pak::pak("jbengler/tidyplots@v0.0.1")
+# Install a specific commit
+pak::pak("jbengler/tidyplots@4a08bfe")
 ```
 
 ```{r}
 #| eval: false
-# for example
+# For example
 install.packages("tidyverse")
 ```
 
@@ -115,6 +124,10 @@ study_csv <- "data/study.csv" |>
 # The dimension (rows by columns) of study_csv
 study_csv |> dim()
 ```
+
+:::{.callout-note icon="true"}
+`study.csv`, as well as several other example datasets used throughout this book, can be downloaded from `https://github.com/iamhealthy/tidyplots-book/tree/main/data`.
+:::
 
 ```{r}
 #| echo: false
@@ -277,6 +290,7 @@ You should adjust your data to be tidy data
 > ***Vector images***. *These are composed of lines, curves, shapes, or text. The instructions needed to draw the image (i.e. coordinates, equations, fonts) are stored rather than pixels, and then the image is recreated from these instructions when necessary.* (e.g. in pdf, svg, and eps formats)
 
 ```{r}
+#| eval: false
 #| echo: false
 
 library(tidyplots)
@@ -326,10 +340,12 @@ p2 <- p0 |>
 
 p3 <- p0 |> 
   add_title(title = "p3: points in vector format (enlarged)") |> 
+  add(ggplot2::coord_cartesian(clip = "off")) |> 
   add_data_points(size = 20, alpha = 0.5, white_border = TRUE)
 
 p4 <- p0 |> 
   add_title(title = "p4: points in bitmap format (enlarged)") |> 
+  add(ggplot2::coord_cartesian(clip = "off")) |> 
   add_data_points(size = 20, alpha = 0.5, white_border = TRUE, 
     rasterize = TRUE, rasterize_dpi = 100)
 ```
@@ -610,7 +626,7 @@ c(medium_c, medium_c_gray) |>
 ![Medium-contrast qualitative color scheme (left panel), and the cognate gray one (right panel). The color sequence of the scheme is from left to right ("#eecc66", "#ee99aa", "#6699cc", "#997700", "#994455", "#004488", "#000000").](images/medium-contrast_qualitative_color-gray.png){width="100%" fig-align="center"}
 
 :::{.callout-note icon="true"}
-The figures across this book use the high-contrast qualitative color scheme by default, unless a different scheme is explicitly specified in the code.
+The figures throughout this book use the high-contrast qualitative color scheme by default, unless a different scheme is explicitly specified in the code.
 
 This choice ensures not only strong visual contrast and color-blind safe, but also that distinctions **remain clear when the book are printed in grayscale**.
 :::

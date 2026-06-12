@@ -1,6 +1,7 @@
 # More plots
 
 ```{r}
+#| eval: false
 #| echo: false
 tidyplots |> library()
 
@@ -55,6 +56,7 @@ df |>
 ## Violin plot
 
 ```{r}
+#| message: false
 library(tidyplots)
 
 # View top 10 rows of the columns used

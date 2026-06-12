@@ -35,7 +35,8 @@ tibble::tibble(
     ymax = 100)) |> 
   adjust_size(
     width = plot_width, 
-    height = plot_height) |> 
+    height = plot_height) |>   
+  adjust_padding(all = 0.1) |> 
   remove_x_axis() |> 
   remove_y_axis() |> 
   save_plot(

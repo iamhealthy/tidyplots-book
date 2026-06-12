@@ -41,7 +41,7 @@ tibble::tibble(
     y = y,
     width = plot_width,
     height = plot_height,
-    paper = "#bbccee") |> 
+    paper = "#D4E9ED") |> 
   add_annotation_text(
     text = "Tidyplots",
     x = 50,

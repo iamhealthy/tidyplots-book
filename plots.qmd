@@ -1,6 +1,7 @@
 # Plots
 
 ```{r}
+#| eval: false
 #| echo: false
 
 library(tidyplots)
