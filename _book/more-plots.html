@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4&nbsp; More plots – `Tidyplots`: publication-ready plots for scientific papers (1e)</title>
+<title>5&nbsp; More plots – `Tidyplots`: publication-ready plots for scientific papers (1e)</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -69,7 +69,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./more-custom-plots.html" rel="next">
-<link href="./plots-and-skills.html" rel="prev">
+<link href="./plots-and-skills_part2.html" rel="prev">
 <link href="./tidyplots_cover_v1.0.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -287,7 +287,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./more-plots.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">More plots</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./more-plots.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">More plots</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -336,26 +336,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./plots-and-skills.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Plots and skills</span></span></a>
+  <a href="./plots-and-skills_part1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Plots and skills (part 1)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./plots-and-skills_part2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Plots and skills (part 2)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./more-plots.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">More plots</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">More plots</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./more-custom-plots.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">More custom plots</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">More custom plots</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./appendix.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Appendix</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Appendix</span></span></a>
   </div>
 </li>
     </ul>
@@ -368,15 +374,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#violin-plot" id="toc-violin-plot" class="nav-link active" data-scroll-target="#violin-plot"><span class="header-section-number">4.1</span> Violin plot</a></li>
-  <li><a href="#rasterize-correlation-heatmap" id="toc-rasterize-correlation-heatmap" class="nav-link" data-scroll-target="#rasterize-correlation-heatmap"><span class="header-section-number">4.2</span> (Rasterize) correlation heatmap</a></li>
-  <li><a href="#heatmap-z-score" id="toc-heatmap-z-score" class="nav-link" data-scroll-target="#heatmap-z-score"><span class="header-section-number">4.3</span> Heatmap (z-score)</a></li>
-  <li><a href="#rasterize-volcano-plot" id="toc-rasterize-volcano-plot" class="nav-link" data-scroll-target="#rasterize-volcano-plot"><span class="header-section-number">4.4</span> (Rasterize) volcano plot</a></li>
-  <li><a href="#lollipop-plot" id="toc-lollipop-plot" class="nav-link" data-scroll-target="#lollipop-plot"><span class="header-section-number">4.5</span> Lollipop plot</a></li>
-  <li><a href="#dumbbell-plot" id="toc-dumbbell-plot" class="nav-link" data-scroll-target="#dumbbell-plot"><span class="header-section-number">4.6</span> Dumbbell plot</a></li>
-  <li><a href="#pie-and-donut-plots" id="toc-pie-and-donut-plots" class="nav-link" data-scroll-target="#pie-and-donut-plots"><span class="header-section-number">4.7</span> Pie and donut plots</a></li>
-  <li><a href="#stacked-bar-plot" id="toc-stacked-bar-plot" class="nav-link" data-scroll-target="#stacked-bar-plot"><span class="header-section-number">4.8</span> Stacked bar plot</a></li>
-  <li><a href="#histogram" id="toc-histogram" class="nav-link" data-scroll-target="#histogram"><span class="header-section-number">4.9</span> Histogram</a></li>
+  <li><a href="#violin-plot" id="toc-violin-plot" class="nav-link active" data-scroll-target="#violin-plot"><span class="header-section-number">5.1</span> Violin plot</a></li>
+  <li><a href="#rasterize-correlation-heatmap" id="toc-rasterize-correlation-heatmap" class="nav-link" data-scroll-target="#rasterize-correlation-heatmap"><span class="header-section-number">5.2</span> (Rasterize) correlation heatmap</a></li>
+  <li><a href="#heatmap-z-score" id="toc-heatmap-z-score" class="nav-link" data-scroll-target="#heatmap-z-score"><span class="header-section-number">5.3</span> Heatmap (z-score)</a></li>
+  <li><a href="#rasterize-volcano-plot" id="toc-rasterize-volcano-plot" class="nav-link" data-scroll-target="#rasterize-volcano-plot"><span class="header-section-number">5.4</span> (Rasterize) volcano plot</a></li>
+  <li><a href="#lollipop-plot" id="toc-lollipop-plot" class="nav-link" data-scroll-target="#lollipop-plot"><span class="header-section-number">5.5</span> Lollipop plot</a></li>
+  <li><a href="#dumbbell-plot" id="toc-dumbbell-plot" class="nav-link" data-scroll-target="#dumbbell-plot"><span class="header-section-number">5.6</span> Dumbbell plot</a></li>
+  <li><a href="#pie-and-donut-plots" id="toc-pie-and-donut-plots" class="nav-link" data-scroll-target="#pie-and-donut-plots"><span class="header-section-number">5.7</span> Pie and donut plots</a></li>
+  <li><a href="#stacked-bar-plot" id="toc-stacked-bar-plot" class="nav-link" data-scroll-target="#stacked-bar-plot"><span class="header-section-number">5.8</span> Stacked bar plot</a></li>
+  <li><a href="#histogram" id="toc-histogram" class="nav-link" data-scroll-target="#histogram"><span class="header-section-number">5.9</span> Histogram</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/iamhealthy/tidyplots-book/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -386,7 +392,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">More plots</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">More plots</span></h1>
 </div>
 
 
@@ -405,11 +411,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/tidyplots-shorthand.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+<p><img src="images/tidyplots-tension.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
 </figure>
 </div>
-<section id="violin-plot" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="violin-plot"><span class="header-section-number">4.1</span> Violin plot</h2>
+<section id="violin-plot" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="violin-plot"><span class="header-section-number">5.1</span> Violin plot</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyplots)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -470,8 +476,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </section>
-<section id="rasterize-correlation-heatmap" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="rasterize-correlation-heatmap"><span class="header-section-number">4.2</span> (Rasterize) correlation heatmap</h2>
+<section id="rasterize-correlation-heatmap" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="rasterize-correlation-heatmap"><span class="header-section-number">5.2</span> (Rasterize) correlation heatmap</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyplots)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -547,8 +553,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </section>
-<section id="heatmap-z-score" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="heatmap-z-score"><span class="header-section-number">4.3</span> Heatmap (z-score)</h2>
+<section id="heatmap-z-score" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="heatmap-z-score"><span class="header-section-number">5.3</span> Heatmap (z-score)</h2>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -624,8 +630,8 @@ Tip
 </figure>
 </div>
 </section>
-<section id="rasterize-volcano-plot" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="rasterize-volcano-plot"><span class="header-section-number">4.4</span> (Rasterize) volcano plot</h2>
+<section id="rasterize-volcano-plot" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="rasterize-volcano-plot"><span class="header-section-number">5.4</span> (Rasterize) volcano plot</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyplots)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -721,8 +727,8 @@ Tip
 </figure>
 </div>
 </section>
-<section id="lollipop-plot" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="lollipop-plot"><span class="header-section-number">4.5</span> Lollipop plot</h2>
+<section id="lollipop-plot" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="lollipop-plot"><span class="header-section-number">5.5</span> Lollipop plot</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyplots)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -792,8 +798,8 @@ Tip
 </div>
 </div>
 </section>
-<section id="dumbbell-plot" class="level2" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="dumbbell-plot"><span class="header-section-number">4.6</span> Dumbbell plot</h2>
+<section id="dumbbell-plot" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="dumbbell-plot"><span class="header-section-number">5.6</span> Dumbbell plot</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyplots)</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -859,8 +865,8 @@ Tip
 </figure>
 </div>
 </section>
-<section id="pie-and-donut-plots" class="level2" data-number="4.7">
-<h2 data-number="4.7" class="anchored" data-anchor-id="pie-and-donut-plots"><span class="header-section-number">4.7</span> Pie and donut plots</h2>
+<section id="pie-and-donut-plots" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="pie-and-donut-plots"><span class="header-section-number">5.7</span> Pie and donut plots</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyplots)</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -922,8 +928,8 @@ Tip
 </figure>
 </div>
 </section>
-<section id="stacked-bar-plot" class="level2" data-number="4.8">
-<h2 data-number="4.8" class="anchored" data-anchor-id="stacked-bar-plot"><span class="header-section-number">4.8</span> Stacked bar plot</h2>
+<section id="stacked-bar-plot" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="stacked-bar-plot"><span class="header-section-number">5.8</span> Stacked bar plot</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyplots)</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -985,8 +991,8 @@ Tip
 </figure>
 </div>
 </section>
-<section id="histogram" class="level2" data-number="4.9">
-<h2 data-number="4.9" class="anchored" data-anchor-id="histogram"><span class="header-section-number">4.9</span> Histogram</h2>
+<section id="histogram" class="level2" data-number="5.9">
+<h2 data-number="5.9" class="anchored" data-anchor-id="histogram"><span class="header-section-number">5.9</span> Histogram</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyplots)</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1472,13 +1478,13 @@ Tip
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./plots-and-skills.html" class="pagination-link" aria-label="Plots and skills">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Plots and skills</span></span>
+      <a href="./plots-and-skills_part2.html" class="pagination-link" aria-label="Plots and skills (part 2)">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Plots and skills (part 2)</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./more-custom-plots.html" class="pagination-link" aria-label="More custom plots">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">More custom plots</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">More custom plots</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1492,7 +1498,7 @@ Tip
       &nbsp;
     <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/iamhealthy/tidyplots-book/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
-<p>This book (1e) was built with Quarto.</p>
+<p>This book was built with Quarto and Positron.</p>
 </div>
   </div>
 </footer>

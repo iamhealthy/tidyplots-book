@@ -38,20 +38,6 @@ url |> download.file(
 citation("tidyplots")
 ```
 
-## Acknowledgements
-
-The preparation of this cookbook has no direct relation to Jan Broder Engler (the developer of `tidyplots`), so I feel a little "guilty" about "stealing" his ideas and code.
-
-When this cookbook was roughly ready, I wrote to Jan, and he replied:
-
-> *Hi Kang,*
-
-> *Thank you for your email!*
-
-> *Feel free to offer additional resources for tidyplots. Let me know when they are available. I was also thinking about writing a book about tidyplots, but I currently do not have the time.*
-
-Therefore, I will donate 55% of any paid proceeds (if there are any) to Jan's project: https://github.com/jbengler/tidyplots.
-
 ## Prerequisites
 
 ### Install R and its integrated development environment (IDE) {.unlisted}
@@ -255,11 +241,6 @@ df |>
     height = 100 * (500/1240) # width * (y_axis_height / x_axis_width
   ) |> 
   save_plot("images/tidyplots-study_marked.png", view_plot = FALSE, padding = 0)
-```
-
-```{r}
-#| echo: false
-study |> rm()
 ```
 
 ![The structural dissection of the `study` dataset in `tidyplots`, with particular attention to `data types`, which can sometimes determine whether plotting succeeds.](images/tidyplots-study_marked.png){width=80% fig-align="center"}
@@ -630,3 +611,17 @@ The figures throughout this book use the high-contrast qualitative color scheme 
 
 This choice ensures not only strong visual contrast and color-blind safe, but also that distinctions **remain clear when the book are printed in grayscale**.
 :::
+
+## Acknowledgements
+
+The preparation of this cookbook has no direct relation to Jan Broder Engler (the developer of `tidyplots`), so I feel a little "guilty" about "stealing" his ideas and code.
+
+When this cookbook was roughly ready, I wrote to Jan, and he replied:
+
+> *Hi Kang,*
+
+> *Thank you for your email!*
+
+> *Feel free to offer additional resources for tidyplots. Let me know when they are available. I was also thinking about writing a book about tidyplots, but I currently do not have the time.*
+
+Therefore, I will donate 55% of any paid proceeds (if there are any) to Jan's project: https://github.com/jbengler/tidyplots.

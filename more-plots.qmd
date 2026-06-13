@@ -28,10 +28,10 @@ df <- tibble::tibble(
 df |> 
   tidyplot(x = x, y = y, paper = "#cceeff") |> 
   add_annotation_text(
-    text = "One might think of tidyplots more as an\n\nopinionated shorthand dialect for ggplot2.",
+    text = "There is tension between simple and powerful.\n\nTidyplots will never be as powerful as ggplot2.",
     x = 1,
     y = 1,
-    fontsize = 13,
+    fontsize = 12,
     fontface = "bold.italic") |> 
   add_annotation_text(
     text = "--- Jan Broder Engler",
@@ -47,11 +47,11 @@ df |>
   remove_x_axis() |> 
   remove_y_axis() |> 
   save_plot(
-    "images/tidyplots-shorthand.png",
+    "images/tidyplots-tension.png",
     view_plot = FALSE)
 ```
 
-![](images/tidyplots-shorthand.png){width="100%" fig-align="center"}
+![](images/tidyplots-tension.png){width="100%" fig-align="center"}
 
 ## Violin plot
 

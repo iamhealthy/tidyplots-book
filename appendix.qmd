@@ -28,10 +28,10 @@ df <- tibble::tibble(
 df |> 
   tidyplot(x = x, y = y, paper = "#cceeff") |> 
   add_annotation_text(
-    text = "Personally, I introduce tidyplots first,\nshowcase its power but also its limitations.\n\nThis naturally builds motivation to explore ggplot2\n(in some, not all people).",
+    text = "For more complex plots, \n\nyou can either augment tidyplots \nwith custom ggplot2 code using the add() function \nor switch to ggplot2 for full flexibility.",
     x = 1,
     y = 1,
-    fontsize = 11,
+    fontsize = 12,
     fontface = "bold.italic") |> 
   add_annotation_text(
     text = "--- Jan Broder Engler",
@@ -46,12 +46,13 @@ df |>
     width = 100) |> 
   remove_x_axis() |> 
   remove_y_axis() |> 
+  remove_clipping() |> 
   save_plot(
-    "images/tidyplots-motivation.png",
+    "images/tidyplots-complex_add_ggplot2.png",
     view_plot = FALSE)
 ```
 
-![](images/tidyplots-motivation.png){width="100%" fig-align="center"}
+![](images/tidyplots-complex_add_ggplot2.png){width="100%" fig-align="center"}
 
 ## Point shapes {#sec-point-shapes}
 

@@ -52,7 +52,88 @@ df |>
 
 ![](images/tidyplots-is-easier.png){width="100%" fig-align="center"}
 
-## Overview of plots
+## Workflow
+
+```{r}
+#| eval: false
+#| echo: false
+#| message: false
+
+library(tidyplots)
+
+# For plotting
+df <- tibble::tibble(
+  x = seq(0:100),
+  y = seq(0:100))
+
+# For the texts (from top to bottom, from left to right)
+df_text <- tibble::tibble(
+  x = c(16, 40, 60, 80, 22, 40, 80, 60),
+  y = c(80, 80, 80, 80, 40, 40, 40, 15),
+  text = c(
+    "dataset", "tidyplot", "add", "remove", "adjust",
+    "theme", "save_plot", "split_plot"),
+  fill = c("#ffffff", rep("#dddddd", times = 7)),
+  color = c(rep("#000000", times = 8)),
+  label_color = c("#bbbbbb", rep("#ffffff", times = 7)),
+  label_size = 0.5)
+
+df |> 
+  tidyplot(x = x, y = y) |> 
+  add(ggtext::geom_richtext(
+    ggplot2::aes(x = x, y = y, label = text),
+    data = df_text,
+    fill = df_text$fill,
+    color = df_text$color,
+    label.color = df_text$label_color,
+    label.size = df_text$label_size,
+    size = 15/ggplot2::.pt,
+    family = "sans")) |> 
+  add_annotation_line( # for the arrows of 1st line
+    x = c(24, 46.5, 64.5),
+    xend = c(32, 54.5, 72.5),
+    y = 80, yend = 80,
+    arrow = grid::arrow(
+      length = grid::unit(4, "mm"),
+      type = "closed"),
+    color = "#bbbbbb",
+    linewidth = 1) |> 
+  add_annotation_line( # for the lines (w/o arrowhead) from line 1 to line 2
+    x = c(87, 93, 93, 11.5),
+    xend = c(93, 93, 11.5, 11.5),
+    y = c(80, 80, 60, 60), 
+    yend = c(80, 60, 60, 40),
+    color = "#bbbbbb",
+    linewidth = 1) |> 
+  add_annotation_line( # for the arrows of 2nd line and 3rd line, or between 2nd line and 3rd line
+    x = c(11.5, 28, 46, 40, 80),
+    xend = c(16, 34, 71, 52, 80),
+    y = c(40, 40, 40, 15, 15),
+    yend = c(40, 40, 40, 15, 30),
+    arrow = grid::arrow(
+      length = grid::unit(4, "mm"),
+      type = "closed"),
+    linewidth = 1,
+    color = "#bbbbbb") |> 
+  add_annotation_line( # for the lines (w/o) arrohead from line 2 to line 3, and line 3
+    x = c(40, 68),
+    xend = c(40, 80),
+    y = c(30, 15),
+    yend = c(15, 15),
+    linewidth = 1,
+    color = "#bbbbbb") |> 
+  adjust_size(width = 150, height = 40) |> 
+  adjust_x_axis(limits = c(10, 95)) |> 
+  adjust_y_axis(limits = c(5, 90)) |> 
+  remove_x_axis() |> remove_y_axis() |> 
+  save_plot(
+    "images/tidyplots_workflow.png",
+    padding = 0)
+```
+
+![](images/tidyplots_workflow.png){width="80%" fig-align="center"}
+
+## Overview
 
 ```{r}
 #| eval: false
@@ -131,8 +212,9 @@ p6 <- energy_week |>
 #| eval: false
 #| echo: true
 patchwork::wrap_plots(p1, p2, p3, p4, p5, p6, ncol = 2) |> 
-  save_plot("images/p1_p6.png",
-    view_plot = FALSE, width = 190, height = 200) # width and height should be tailored
+  save_plot(
+    "images/p1_p6.png",
+    view_plot = FALSE, width = 190, height = 200) # tailored width/height
 ```
 
 ![](images/p1_p6.png){width="100%" fig-align="center"}
@@ -176,8 +258,10 @@ p9 <- spendings |>
   add_sum_bar(width = 0.05, alpha = 1) |> 
   add_sum_dot() |> 
   add_sum_value(accuracy = 1) |> 
+  theme_ggplot2() |> 
   remove_legend() |> 
-  adjust_x_axis(rotate_labels = 45)
+  adjust_x_axis(rotate_labels = 45) |> 
+  adjust_title(fontsize = 10, color = "#bb5566")
 
 p10 <- study |> 
   tidyplot(x = participant, y = score, color = group, dodge_width = 0) |> 
@@ -201,8 +285,9 @@ p12 <- time_course |>
 #| eval: false
 #| echo: true
 patchwork::wrap_plots(p7, p8, p9, p10, p11, p12, ncol = 2) |> 
-  save_plot("images/p7_p12.png",
-    view_plot = FALSE, width = 200, height = 200) # width and height should be tailored
+  save_plot(
+    "images/p7_p12.png",
+    view_plot = FALSE, width = 200, height = 200) # tailored width/height
 ```
 
 ![](images/p7_p12.png){width="100%" fig-align="center"}
@@ -263,13 +348,14 @@ design <- "AB
            EE"
 
 (p13 + p14 + p15 + p16 + p17 + patchwork::plot_layout(design = design)) |> 
-  save_plot("images/p13_p17.png",
-    view_plot = FALSE, width = 165, height = 200) # width and height should be tailored
+  save_plot(
+    "images/p13_p17.png",
+    view_plot = FALSE, width = 165, height = 200) # tailored width/height
 ```
 
 ![](images/p13_p17.png){width="100%" fig-align="center"}
 
-## Anatomy of plot
+## Anatomy
 
 ```{r}
 #| eval: false

@@ -10,7 +10,7 @@ The official resources used for this compilation include:
 
 - 🔗<https://bsky.app/profile/jbengler.de>
 
-- 🔗The paper: iMeta 2025 (<https://onlinelibrary.wiley.com/doi/10.1002/imt2.70018>)
+- 🔗The paper: iMeta 2025 (<https://doi.org/10.1002/imt2.70018>)
 
 You may read it online here for free, or purchase a physical copy from ?? (independently published ??).
 

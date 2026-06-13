@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>5&nbsp; More custom plots – `Tidyplots`: publication-ready plots for scientific papers (1e)</title>
+<title>6&nbsp; More custom plots – `Tidyplots`: publication-ready plots for scientific papers (1e)</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -306,7 +306,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./more-custom-plots.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">More custom plots</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./more-custom-plots.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">More custom plots</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -355,26 +355,32 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./plots-and-skills.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Plots and skills</span></span></a>
+  <a href="./plots-and-skills_part1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Plots and skills (part 1)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./plots-and-skills_part2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Plots and skills (part 2)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./more-plots.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">More plots</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">More plots</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./more-custom-plots.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">More custom plots</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">More custom plots</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./appendix.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Appendix</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Appendix</span></span></a>
   </div>
 </li>
     </ul>
@@ -387,21 +393,21 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#schematic-of-experiment-design" id="toc-schematic-of-experiment-design" class="nav-link active" data-scroll-target="#schematic-of-experiment-design"><span class="header-section-number">5.1</span> Schematic of experiment design</a></li>
-  <li><a href="#inset-image-to-a-figure" id="toc-inset-image-to-a-figure" class="nav-link" data-scroll-target="#inset-image-to-a-figure"><span class="header-section-number">5.2</span> Inset image to a figure</a></li>
-  <li><a href="#annotate-gel-image" id="toc-annotate-gel-image" class="nav-link" data-scroll-target="#annotate-gel-image"><span class="header-section-number">5.3</span> Annotate gel image</a></li>
-  <li><a href="#combining-multiple-images-together" id="toc-combining-multiple-images-together" class="nav-link" data-scroll-target="#combining-multiple-images-together"><span class="header-section-number">5.4</span> Combining multiple images together</a></li>
-  <li><a href="#display-condition-combinations-in-axis-labels" id="toc-display-condition-combinations-in-axis-labels" class="nav-link" data-scroll-target="#display-condition-combinations-in-axis-labels"><span class="header-section-number">5.5</span> Display condition combinations in axis labels</a></li>
-  <li><a href="#display-condition-combinations-in-axis-labels-using-add" id="toc-display-condition-combinations-in-axis-labels-using-add" class="nav-link" data-scroll-target="#display-condition-combinations-in-axis-labels-using-add"><span class="header-section-number">5.6</span> Display condition combinations in axis labels (using <code>add()</code>)</a></li>
-  <li><a href="#change-point-shapecolor-and-annotate-axis" id="toc-change-point-shapecolor-and-annotate-axis" class="nav-link" data-scroll-target="#change-point-shapecolor-and-annotate-axis"><span class="header-section-number">5.7</span> Change point shape/color and annotate axis</a></li>
-  <li><a href="#point-annotation" id="toc-point-annotation" class="nav-link" data-scroll-target="#point-annotation"><span class="header-section-number">5.8</span> Point annotation</a></li>
-  <li><a href="#add-sum-values-for-negative-bars" id="toc-add-sum-values-for-negative-bars" class="nav-link" data-scroll-target="#add-sum-values-for-negative-bars"><span class="header-section-number">5.9</span> Add sum values for negative bars</a></li>
-  <li><a href="#sequencial-issues" id="toc-sequencial-issues" class="nav-link" data-scroll-target="#sequencial-issues"><span class="header-section-number">5.10</span> Sequencial issues</a></li>
-  <li><a href="#sequencial-issues-using-add" id="toc-sequencial-issues-using-add" class="nav-link" data-scroll-target="#sequencial-issues-using-add"><span class="header-section-number">5.11</span> Sequencial issues (using <code>add()</code>)</a></li>
-  <li><a href="#change-chinese-date-axis-labels-into-english-ones" id="toc-change-chinese-date-axis-labels-into-english-ones" class="nav-link" data-scroll-target="#change-chinese-date-axis-labels-into-english-ones"><span class="header-section-number">5.12</span> Change Chinese date axis labels into English ones</a></li>
-  <li><a href="#plot-with-a-broken-axis" id="toc-plot-with-a-broken-axis" class="nav-link" data-scroll-target="#plot-with-a-broken-axis"><span class="header-section-number">5.13</span> Plot with a broken axis</a></li>
-  <li><a href="#color-each-points-within-each-group" id="toc-color-each-points-within-each-group" class="nav-link" data-scroll-target="#color-each-points-within-each-group"><span class="header-section-number">5.14</span> Color each points within each group</a></li>
-  <li><a href="#forest-plot" id="toc-forest-plot" class="nav-link" data-scroll-target="#forest-plot"><span class="header-section-number">5.15</span> Forest plot</a></li>
+  <li><a href="#schematic-of-experiment-design" id="toc-schematic-of-experiment-design" class="nav-link active" data-scroll-target="#schematic-of-experiment-design"><span class="header-section-number">6.1</span> Schematic of experiment design</a></li>
+  <li><a href="#inset-image-to-a-figure" id="toc-inset-image-to-a-figure" class="nav-link" data-scroll-target="#inset-image-to-a-figure"><span class="header-section-number">6.2</span> Inset image to a figure</a></li>
+  <li><a href="#annotate-gel-image" id="toc-annotate-gel-image" class="nav-link" data-scroll-target="#annotate-gel-image"><span class="header-section-number">6.3</span> Annotate gel image</a></li>
+  <li><a href="#combining-multiple-images-together" id="toc-combining-multiple-images-together" class="nav-link" data-scroll-target="#combining-multiple-images-together"><span class="header-section-number">6.4</span> Combining multiple images together</a></li>
+  <li><a href="#display-condition-combinations-in-axis-labels" id="toc-display-condition-combinations-in-axis-labels" class="nav-link" data-scroll-target="#display-condition-combinations-in-axis-labels"><span class="header-section-number">6.5</span> Display condition combinations in axis labels</a></li>
+  <li><a href="#display-condition-combinations-in-axis-labels-using-add" id="toc-display-condition-combinations-in-axis-labels-using-add" class="nav-link" data-scroll-target="#display-condition-combinations-in-axis-labels-using-add"><span class="header-section-number">6.6</span> Display condition combinations in axis labels (using <code>add()</code>)</a></li>
+  <li><a href="#change-point-shapecolor-and-annotate-axis" id="toc-change-point-shapecolor-and-annotate-axis" class="nav-link" data-scroll-target="#change-point-shapecolor-and-annotate-axis"><span class="header-section-number">6.7</span> Change point shape/color and annotate axis</a></li>
+  <li><a href="#point-annotation" id="toc-point-annotation" class="nav-link" data-scroll-target="#point-annotation"><span class="header-section-number">6.8</span> Point annotation</a></li>
+  <li><a href="#add-sum-values-for-negative-bars" id="toc-add-sum-values-for-negative-bars" class="nav-link" data-scroll-target="#add-sum-values-for-negative-bars"><span class="header-section-number">6.9</span> Add sum values for negative bars</a></li>
+  <li><a href="#sequencial-issues" id="toc-sequencial-issues" class="nav-link" data-scroll-target="#sequencial-issues"><span class="header-section-number">6.10</span> Sequencial issues</a></li>
+  <li><a href="#sequencial-issues-using-add" id="toc-sequencial-issues-using-add" class="nav-link" data-scroll-target="#sequencial-issues-using-add"><span class="header-section-number">6.11</span> Sequencial issues (using <code>add()</code>)</a></li>
+  <li><a href="#change-chinese-date-axis-labels-into-english-ones" id="toc-change-chinese-date-axis-labels-into-english-ones" class="nav-link" data-scroll-target="#change-chinese-date-axis-labels-into-english-ones"><span class="header-section-number">6.12</span> Change Chinese date axis labels into English ones</a></li>
+  <li><a href="#plot-with-a-broken-axis" id="toc-plot-with-a-broken-axis" class="nav-link" data-scroll-target="#plot-with-a-broken-axis"><span class="header-section-number">6.13</span> Plot with a broken axis</a></li>
+  <li><a href="#color-each-points-within-each-group" id="toc-color-each-points-within-each-group" class="nav-link" data-scroll-target="#color-each-points-within-each-group"><span class="header-section-number">6.14</span> Color each points within each group</a></li>
+  <li><a href="#forest-plot" id="toc-forest-plot" class="nav-link" data-scroll-target="#forest-plot"><span class="header-section-number">6.15</span> Forest plot</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/iamhealthy/tidyplots-book/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -411,7 +417,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">More custom plots</span></h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">More custom plots</span></h1>
 </div>
 
 
@@ -430,11 +436,11 @@ div.csl-indent {
 
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/tidyplots-tension.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+<p><img src="images/tidyplots-motivation.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
 </figure>
 </div>
-<section id="schematic-of-experiment-design" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="schematic-of-experiment-design"><span class="header-section-number">5.1</span> Schematic of experiment design</h2>
+<section id="schematic-of-experiment-design" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="schematic-of-experiment-design"><span class="header-section-number">6.1</span> Schematic of experiment design</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyplots)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -511,8 +517,8 @@ div.csl-indent {
 </figure>
 </div>
 </section>
-<section id="inset-image-to-a-figure" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="inset-image-to-a-figure"><span class="header-section-number">5.2</span> Inset image to a figure</h2>
+<section id="inset-image-to-a-figure" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="inset-image-to-a-figure"><span class="header-section-number">6.2</span> Inset image to a figure</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyplots)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -605,8 +611,8 @@ Tip
 </div>
 </div>
 </section>
-<section id="annotate-gel-image" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="annotate-gel-image"><span class="header-section-number">5.3</span> Annotate gel image</h2>
+<section id="annotate-gel-image" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="annotate-gel-image"><span class="header-section-number">6.3</span> Annotate gel image</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyplots)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>img <span class="ot">&lt;-</span> <span class="st">"images/20230515-10_cropped.tif"</span> <span class="sc">|&gt;</span> magick<span class="sc">::</span><span class="fu">image_read</span>()</span>
@@ -689,12 +695,12 @@ Tip
 </div>
 <div class="callout-body-container callout-body">
 <p>Open the image in ImageJ/Fiji and hover over it; the pixel coordinates will be displayed in real time under the toolbar.</p>
-<p>Note that the origin differs between systems: in ImageJ/Fiji, the top-left corner is (0, 0); whereas in <code>tidyplots</code>, the bottom-left corner is (0, 0) (also see <a href="appendix.html#sec-xy-coordinates-imagej" class="quarto-xref"><span>Section 6.3</span></a>).</p>
+<p>Note that the origin differs between systems: in ImageJ/Fiji, the top-left corner is (0, 0); whereas in <code>tidyplots</code>, the bottom-left corner is (0, 0) (also see <a href="appendix.html#sec-xy-coordinates-imagej" class="quarto-xref"><span>Section 7.3</span></a>).</p>
 </div>
 </div>
 </section>
-<section id="combining-multiple-images-together" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="combining-multiple-images-together"><span class="header-section-number">5.4</span> Combining multiple images together</h2>
+<section id="combining-multiple-images-together" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="combining-multiple-images-together"><span class="header-section-number">6.4</span> Combining multiple images together</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyplots)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -780,8 +786,8 @@ Tip
 </figure>
 </div>
 </section>
-<section id="display-condition-combinations-in-axis-labels" class="level2" data-number="5.5">
-<h2 data-number="5.5" class="anchored" data-anchor-id="display-condition-combinations-in-axis-labels"><span class="header-section-number">5.5</span> Display condition combinations in axis labels</h2>
+<section id="display-condition-combinations-in-axis-labels" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="display-condition-combinations-in-axis-labels"><span class="header-section-number">6.5</span> Display condition combinations in axis labels</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyplots)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -861,8 +867,8 @@ Note
 </div>
 </div>
 </section>
-<section id="display-condition-combinations-in-axis-labels-using-add" class="level2" data-number="5.6">
-<h2 data-number="5.6" class="anchored" data-anchor-id="display-condition-combinations-in-axis-labels-using-add"><span class="header-section-number">5.6</span> Display condition combinations in axis labels (using <code>add()</code>)</h2>
+<section id="display-condition-combinations-in-axis-labels-using-add" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="display-condition-combinations-in-axis-labels-using-add"><span class="header-section-number">6.6</span> Display condition combinations in axis labels (using <code>add()</code>)</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyplots)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -927,8 +933,8 @@ Note
 </figure>
 </div>
 </section>
-<section id="change-point-shapecolor-and-annotate-axis" class="level2" data-number="5.7">
-<h2 data-number="5.7" class="anchored" data-anchor-id="change-point-shapecolor-and-annotate-axis"><span class="header-section-number">5.7</span> Change point shape/color and annotate axis</h2>
+<section id="change-point-shapecolor-and-annotate-axis" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="change-point-shapecolor-and-annotate-axis"><span class="header-section-number">6.7</span> Change point shape/color and annotate axis</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyplots)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -997,8 +1003,8 @@ Note
 </figure>
 </div>
 </section>
-<section id="point-annotation" class="level2" data-number="5.8">
-<h2 data-number="5.8" class="anchored" data-anchor-id="point-annotation"><span class="header-section-number">5.8</span> Point annotation</h2>
+<section id="point-annotation" class="level2" data-number="6.8">
+<h2 data-number="6.8" class="anchored" data-anchor-id="point-annotation"><span class="header-section-number">6.8</span> Point annotation</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyplots)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1076,8 +1082,8 @@ Note
 </div>
 </div>
 </section>
-<section id="add-sum-values-for-negative-bars" class="level2" data-number="5.9">
-<h2 data-number="5.9" class="anchored" data-anchor-id="add-sum-values-for-negative-bars"><span class="header-section-number">5.9</span> Add sum values for negative bars</h2>
+<section id="add-sum-values-for-negative-bars" class="level2" data-number="6.9">
+<h2 data-number="6.9" class="anchored" data-anchor-id="add-sum-values-for-negative-bars"><span class="header-section-number">6.9</span> Add sum values for negative bars</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyplots)</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1141,8 +1147,8 @@ Note
 </figure>
 </div>
 </section>
-<section id="sequencial-issues" class="level2" data-number="5.10">
-<h2 data-number="5.10" class="anchored" data-anchor-id="sequencial-issues"><span class="header-section-number">5.10</span> Sequencial issues</h2>
+<section id="sequencial-issues" class="level2" data-number="6.10">
+<h2 data-number="6.10" class="anchored" data-anchor-id="sequencial-issues"><span class="header-section-number">6.10</span> Sequencial issues</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyplots)</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1218,8 +1224,8 @@ Note
 </figure>
 </div>
 </section>
-<section id="sequencial-issues-using-add" class="level2" data-number="5.11">
-<h2 data-number="5.11" class="anchored" data-anchor-id="sequencial-issues-using-add"><span class="header-section-number">5.11</span> Sequencial issues (using <code>add()</code>)</h2>
+<section id="sequencial-issues-using-add" class="level2" data-number="6.11">
+<h2 data-number="6.11" class="anchored" data-anchor-id="sequencial-issues-using-add"><span class="header-section-number">6.11</span> Sequencial issues (using <code>add()</code>)</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyplots)</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1313,8 +1319,8 @@ Note
 </figure>
 </div>
 </section>
-<section id="change-chinese-date-axis-labels-into-english-ones" class="level2" data-number="5.12">
-<h2 data-number="5.12" class="anchored" data-anchor-id="change-chinese-date-axis-labels-into-english-ones"><span class="header-section-number">5.12</span> Change Chinese date axis labels into English ones</h2>
+<section id="change-chinese-date-axis-labels-into-english-ones" class="level2" data-number="6.12">
+<h2 data-number="6.12" class="anchored" data-anchor-id="change-chinese-date-axis-labels-into-english-ones"><span class="header-section-number">6.12</span> Change Chinese date axis labels into English ones</h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1325,7 +1331,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This is a (tedious) alternative way to <a href="plots-and-skills.html#sec-custom-reuse" class="quarto-xref"><span>Section 3.20</span></a>.</p>
+<p>This is a (tedious) alternative way to <a href="plots-and-skills_part1.html#sec-custom-reuse" class="quarto-xref"><span>Section 3.20</span></a>.</p>
 </div>
 </div>
 <div class="cell">
@@ -1401,8 +1407,8 @@ Note
 </div>
 </div>
 </section>
-<section id="plot-with-a-broken-axis" class="level2" data-number="5.13">
-<h2 data-number="5.13" class="anchored" data-anchor-id="plot-with-a-broken-axis"><span class="header-section-number">5.13</span> Plot with a broken axis</h2>
+<section id="plot-with-a-broken-axis" class="level2" data-number="6.13">
+<h2 data-number="6.13" class="anchored" data-anchor-id="plot-with-a-broken-axis"><span class="header-section-number">6.13</span> Plot with a broken axis</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyplots)</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
@@ -1492,8 +1498,8 @@ Note
 </div>
 </div>
 </section>
-<section id="color-each-points-within-each-group" class="level2" data-number="5.14">
-<h2 data-number="5.14" class="anchored" data-anchor-id="color-each-points-within-each-group"><span class="header-section-number">5.14</span> Color each points within each group</h2>
+<section id="color-each-points-within-each-group" class="level2" data-number="6.14">
+<h2 data-number="6.14" class="anchored" data-anchor-id="color-each-points-within-each-group"><span class="header-section-number">6.14</span> Color each points within each group</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyplots)</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1566,8 +1572,8 @@ Note
 </figure>
 </div>
 </section>
-<section id="forest-plot" class="level2" data-number="5.15">
-<h2 data-number="5.15" class="anchored" data-anchor-id="forest-plot"><span class="header-section-number">5.15</span> Forest plot</h2>
+<section id="forest-plot" class="level2" data-number="6.15">
+<h2 data-number="6.15" class="anchored" data-anchor-id="forest-plot"><span class="header-section-number">6.15</span> Forest plot</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyplots)</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -2070,12 +2076,12 @@ Turner, Stephen D. 2026. <span>“Free and Open-Source Images, Icons, and Tools 
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./more-plots.html" class="pagination-link" aria-label="More plots">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">More plots</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">More plots</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./appendix.html" class="pagination-link" aria-label="Appendix">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Appendix</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Appendix</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -2089,7 +2095,7 @@ Turner, Stephen D. 2026. <span>“Free and Open-Source Images, Icons, and Tools 
       &nbsp;
     <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/iamhealthy/tidyplots-book/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
-<p>This book (1e) was built with Quarto.</p>
+<p>This book was built with Quarto and Positron.</p>
 </div>
   </div>
 </footer>

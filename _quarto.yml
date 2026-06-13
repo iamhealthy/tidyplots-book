@@ -11,14 +11,15 @@ book:
     - index.qmd
     - getting-started.qmd
     - plots.qmd
-    - plots-and-skills.qmd
+    - plots-and-skills_part1.qmd
+    - plots-and-skills_part2.qmd
     - more-plots.qmd
     - more-custom-plots.qmd
     - appendix.qmd
 
   page-footer:
     left: Online HTML edition licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
-    right: This book (1e) was built with Quarto.
+    right: This book was built with Quarto and Positron.
   repo-url: https://github.com/iamhealthy/tidyplots-book/
   repo-actions: [issue]
     

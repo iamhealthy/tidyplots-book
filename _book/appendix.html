@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>6&nbsp; Appendix – `Tidyplots`: publication-ready plots for scientific papers (1e)</title>
+<title>7&nbsp; Appendix – `Tidyplots`: publication-ready plots for scientific papers (1e)</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -286,7 +286,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./appendix.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Appendix</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./appendix.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Appendix</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -335,26 +335,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./plots-and-skills.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Plots and skills</span></span></a>
+  <a href="./plots-and-skills_part1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Plots and skills (part 1)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./plots-and-skills_part2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Plots and skills (part 2)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./more-plots.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">More plots</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">More plots</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./more-custom-plots.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">More custom plots</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">More custom plots</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./appendix.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Appendix</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Appendix</span></span></a>
   </div>
 </li>
     </ul>
@@ -367,11 +373,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sec-point-shapes" id="toc-sec-point-shapes" class="nav-link active" data-scroll-target="#sec-point-shapes"><span class="header-section-number">6.1</span> Point shapes</a></li>
-  <li><a href="#sec-point-white-borders-and-width" id="toc-sec-point-white-borders-and-width" class="nav-link" data-scroll-target="#sec-point-white-borders-and-width"><span class="header-section-number">6.2</span> Point white borders and width</a></li>
-  <li><a href="#sec-xy-coordinates-imagej" id="toc-sec-xy-coordinates-imagej" class="nav-link" data-scroll-target="#sec-xy-coordinates-imagej"><span class="header-section-number">6.3</span> xy coordinates in ImageJ/Fiji</a></li>
-  <li><a href="#patchwork-package-for-combining-multiple-plots" id="toc-patchwork-package-for-combining-multiple-plots" class="nav-link" data-scroll-target="#patchwork-package-for-combining-multiple-plots"><span class="header-section-number">6.4</span> <code>Patchwork</code> package for combining multiple plots</a></li>
-  <li><a href="#packages-used-throughout-this-cookbook" id="toc-packages-used-throughout-this-cookbook" class="nav-link" data-scroll-target="#packages-used-throughout-this-cookbook"><span class="header-section-number">6.5</span> Packages used throughout this cookbook</a></li>
+  <li><a href="#sec-point-shapes" id="toc-sec-point-shapes" class="nav-link active" data-scroll-target="#sec-point-shapes"><span class="header-section-number">7.1</span> Point shapes</a></li>
+  <li><a href="#sec-point-white-borders-and-width" id="toc-sec-point-white-borders-and-width" class="nav-link" data-scroll-target="#sec-point-white-borders-and-width"><span class="header-section-number">7.2</span> Point white borders and width</a></li>
+  <li><a href="#sec-xy-coordinates-imagej" id="toc-sec-xy-coordinates-imagej" class="nav-link" data-scroll-target="#sec-xy-coordinates-imagej"><span class="header-section-number">7.3</span> xy coordinates in ImageJ/Fiji</a></li>
+  <li><a href="#patchwork-package-for-combining-multiple-plots" id="toc-patchwork-package-for-combining-multiple-plots" class="nav-link" data-scroll-target="#patchwork-package-for-combining-multiple-plots"><span class="header-section-number">7.4</span> <code>Patchwork</code> package for combining multiple plots</a></li>
+  <li><a href="#packages-used-throughout-this-cookbook" id="toc-packages-used-throughout-this-cookbook" class="nav-link" data-scroll-target="#packages-used-throughout-this-cookbook"><span class="header-section-number">7.5</span> Packages used throughout this cookbook</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/iamhealthy/tidyplots-book/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -381,7 +387,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Appendix</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Appendix</span></h1>
 </div>
 
 
@@ -400,11 +406,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/tidyplots-motivation.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+<p><img src="images/tidyplots-complex_add_ggplot2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
 </figure>
 </div>
-<section id="sec-point-shapes" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="sec-point-shapes"><span class="header-section-number">6.1</span> Point shapes</h2>
+<section id="sec-point-shapes" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="sec-point-shapes"><span class="header-section-number">7.1</span> Point shapes</h2>
 <p>Type <code>?tidyplots::add_data_points</code> in R console, you can view the <code>help</code> information of the function.</p>
 <blockquote class="blockquote">
 <p><em>shape An integer between 0 and 24, representing the shape of the plot symbol.</em></p>
@@ -476,8 +482,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </section>
-<section id="sec-point-white-borders-and-width" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="sec-point-white-borders-and-width"><span class="header-section-number">6.2</span> Point white borders and width</h2>
+<section id="sec-point-white-borders-and-width" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="sec-point-white-borders-and-width"><span class="header-section-number">7.2</span> Point white borders and width</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyplots)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -564,8 +570,8 @@ Note
 </div>
 </div>
 </section>
-<section id="sec-xy-coordinates-imagej" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="sec-xy-coordinates-imagej"><span class="header-section-number">6.3</span> xy coordinates in ImageJ/Fiji</h2>
+<section id="sec-xy-coordinates-imagej" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="sec-xy-coordinates-imagej"><span class="header-section-number">7.3</span> xy coordinates in ImageJ/Fiji</h2>
 <p>Here it uses <code>Fiji</code>.</p>
 <blockquote class="blockquote">
 <p><em><code>Fiji</code> is a distribution of ImageJ which includes many useful plugins contributed by the community.</em> <a href="https://imagej.net/software/fiji/downloads" class="uri">https://imagej.net/software/fiji/downloads</a></p>
@@ -635,8 +641,8 @@ Note
 </figure>
 </div>
 </section>
-<section id="patchwork-package-for-combining-multiple-plots" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="patchwork-package-for-combining-multiple-plots"><span class="header-section-number">6.4</span> <code>Patchwork</code> package for combining multiple plots</h2>
+<section id="patchwork-package-for-combining-multiple-plots" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="patchwork-package-for-combining-multiple-plots"><span class="header-section-number">7.4</span> <code>Patchwork</code> package for combining multiple plots</h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -650,7 +656,7 @@ Note
 <p>Patchwork <a href="https://patchwork.data-imaginist.com/" class="uri">https://patchwork.data-imaginist.com/</a> was not initially designed to handle plots with <strong>absolute dimensions</strong>.</p>
 </div>
 </div>
-<p>All multi-panel figures throughout this book (except the figure in <a href="plots-and-skills.html#sec-plot-size" class="quarto-xref"><span>Section 3.4</span></a> and <a href="plots-and-skills.html#sec-plot-panel-padding" class="quarto-xref"><span>Section 3.40</span></a>), due to differences in <strong>absolute dimensions</strong>, are combined using the <code>patchwork</code> package.</p>
+<p>All multi-panel figures throughout this book (except the figure in <a href="plots-and-skills_part1.html#sec-plot-size" class="quarto-xref"><span>Section 3.4</span></a> and <a href="plots-and-skills_part2.html#sec-plot-panel-padding" class="quarto-xref"><span>Section 4.15</span></a>), due to differences in <strong>absolute dimensions</strong>, are combined using the <code>patchwork</code> package.</p>
 <p>In general, <code>patchwork</code> can be used to <strong>combine seperate plots into a multi-panel figure and tag each panel, which is a common practice in scientific papers</strong>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyplots)</span>
@@ -711,8 +717,8 @@ Note
 </figure>
 </div>
 </section>
-<section id="packages-used-throughout-this-cookbook" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="packages-used-throughout-this-cookbook"><span class="header-section-number">6.5</span> Packages used throughout this cookbook</h2>
+<section id="packages-used-throughout-this-cookbook" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="packages-used-throughout-this-cookbook"><span class="header-section-number">7.5</span> Packages used throughout this cookbook</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>os_version <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="fu">Sys.info</span>()[<span class="fu">c</span>(<span class="st">"sysname"</span>, <span class="st">"release"</span>)], <span class="at">collapse =</span> <span class="st">" "</span>)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>quarto_version <span class="ot">&lt;-</span> <span class="fu">system2</span>(<span class="st">"quarto"</span>, <span class="st">"--version"</span>, <span class="at">stdout =</span> <span class="cn">TRUE</span>)</span>
@@ -1189,7 +1195,7 @@ Note
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./more-custom-plots.html" class="pagination-link" aria-label="More custom plots">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">More custom plots</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">More custom plots</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
@@ -1205,7 +1211,7 @@ Note
       &nbsp;
     <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/iamhealthy/tidyplots-book/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
-<p>This book (1e) was built with Quarto.</p>
+<p>This book was built with Quarto and Positron.</p>
 </div>
   </div>
 </footer>

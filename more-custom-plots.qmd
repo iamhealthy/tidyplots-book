@@ -28,10 +28,10 @@ df <- tibble::tibble(
 df |> 
   tidyplot(x = x, y = y, paper = "#cceeff") |> 
   add_annotation_text(
-    text = "There is tension between simple and powerful.\n\nTidyplots will never be as powerful as ggplot2.",
+    text = "Personally, I introduce tidyplots first,\nshowcase its power but also its limitations.\n\nThis naturally builds motivation to explore ggplot2\n(in some, not all people).",
     x = 1,
     y = 1,
-    fontsize = 12,
+    fontsize = 11,
     fontface = "bold.italic") |> 
   add_annotation_text(
     text = "--- Jan Broder Engler",
@@ -47,11 +47,11 @@ df |>
   remove_x_axis() |> 
   remove_y_axis() |> 
   save_plot(
-    "images/tidyplots-tension.png",
+    "images/tidyplots-motivation.png",
     view_plot = FALSE)
 ```
 
-![](images/tidyplots-tension.png){width="100%" fig-align="center"}
+![](images/tidyplots-motivation.png){width="100%" fig-align="center"}
 
 ## Schematic of experiment design
 
