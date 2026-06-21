@@ -6,6 +6,7 @@ book:
   subtitle: "A cookbook"
   cover-image: tidyplots_cover_v1.0.png
   favicon: tidyplots_cover_v1.0.png
+  google-analytics: G-73R3962S0Z
 
   chapters:
     - index.qmd
