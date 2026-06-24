@@ -1,4 +1,4 @@
-# More custom plots
+# Custom plotting
 
 ```{r}
 #| eval: false

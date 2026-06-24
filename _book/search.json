@@ -24,7 +24,7 @@
     "href": "getting-started.html#what-is-tidyplots",
     "title": "1  Getting started",
     "section": "",
-    "text": "Jan Broder Engler (https://jbengler.de/).\n\n\n\n👉Tidyplots📦 is an R package to generate publication-ready plots for scientific papers, created by Jan Broder Engler (Engler 2025).\n👉Tidyplots is based on ggplot2.\n👉Instead of extending the ggplot2 syntax, tidyplots introduces a novel interface based on a consistent and intuitive grammar that minimizes the need of programming experience.\n\n\n1.1.1 Highlights\n\n👉Easy code-based data visualization for science.\n👉Intuitive syntax to add, remove, and adjust plot components.\n👉Reduced code complexity in comparison to ggplot2 (making plotting easier for beginners).\n\n\n\n1.1.2 Citation\n\ncitation(\"tidyplots\")\n\nTo cite package 'tidyplots' in publications use:\n\n  Engler JB (2025). \"Tidyplots empowers life scientists with easy\n  code-based data visualization.\" _iMeta_, e70018.\n  doi:10.1002/imt2.70018 &lt;https://doi.org/10.1002/imt2.70018&gt;.\n\nA BibTeX entry for LaTeX users is\n\n  @Article{,\n    title = {Tidyplots empowers life scientists with easy code-based data visualization},\n    author = {Jan Broder Engler},\n    journal = {iMeta},\n    pages = {e70018},\n    year = {2025},\n    doi = {10.1002/imt2.70018},\n  }",
+    "text": "👉Tidyplots📦 is an R package to generate publication-ready plots for scientific papers, developed by Jan Broder Engler (Engler 2025).\n👉Tidyplots is based on ggplot2.\n👉Instead of extending the ggplot2 syntax, tidyplots introduces a novel interface based on a consistent and intuitive grammar that minimizes the need of programming experience.\n\n\n1.1.1 Highlights\n\n👉Easy code-based data visualization for science.\n👉Intuitive syntax to add, remove, and adjust plot components.\n👉Reduced code complexity in comparison to ggplot2 (making plotting easier for beginners).\n\n\n\n1.1.2 Citation\n\ncitation(\"tidyplots\")\n\nTo cite package 'tidyplots' in publications use:\n\n  Engler JB (2025). \"Tidyplots empowers life scientists with easy\n  code-based data visualization.\" _iMeta_, e70018.\n  doi:10.1002/imt2.70018 &lt;https://doi.org/10.1002/imt2.70018&gt;.\n\nA BibTeX entry for LaTeX users is\n\n  @Article{,\n    title = {Tidyplots empowers life scientists with easy code-based data visualization},\n    author = {Jan Broder Engler},\n    journal = {iMeta},\n    pages = {e70018},\n    year = {2025},\n    doi = {10.1002/imt2.70018},\n  }",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Getting started</span>"
     ]
@@ -64,7 +64,7 @@
     "href": "getting-started.html#acknowledgements",
     "title": "1  Getting started",
     "section": "1.5 Acknowledgements",
-    "text": "1.5 Acknowledgements\nThe preparation of this cookbook has no direct relation to Jan Broder Engler (the developer of tidyplots), so I feel a little “guilty” about “stealing” his ideas and code.\nWhen this cookbook was roughly ready, I wrote to Jan, and he replied:\n\nHi Kang,\n\n\nThank you for your email!\n\n\nFeel free to offer additional resources for tidyplots. Let me know when they are available. I was also thinking about writing a book about tidyplots, but I currently do not have the time.\n\nTherefore, I will donate 55% of any paid proceeds (if there are any) to Jan’s project: https://github.com/jbengler/tidyplots.\n\n\n\n\nBankhead, Peter. 2022. “Introduction to Bioimage Analysis.” https://bioimagebook.github.io/index.html.\n\n\nEngler, Jan Broder. 2025. “Tidyplots Empowers Life Scientists with Easy Code-Based Data Visualization.” iMeta, e70018. https://doi.org/10.1002/imt2.70018.\n\n\nTol, Paul. 2021. “Introduction to Colour Schemes.” August 18. https://sronpersonalpages.nl/~pault/.",
+    "text": "1.5 Acknowledgements\nThis cookbook is based on tidyplots, an R package developed by Jan Broder Engler.\nFor more information about the package, please see:\n\n🔗https://tidyplots.org/\n🔗https://github.com/jbengler/tidyplots\n🔗The paper: iMeta 2025 (https://doi.org/10.1002/imt2.70018)\n\n\n\n\n\nBankhead, Peter. 2022. “Introduction to Bioimage Analysis.” https://bioimagebook.github.io/index.html.\n\n\nEngler, Jan Broder. 2025. “Tidyplots Empowers Life Scientists with Easy Code-Based Data Visualization.” iMeta, e70018. https://doi.org/10.1002/imt2.70018.\n\n\nTol, Paul. 2021. “Introduction to Colour Schemes.” August 18. https://sronpersonalpages.nl/~pault/.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Getting started</span>"
     ]
@@ -72,741 +72,741 @@
   {
     "objectID": "plots.html",
     "href": "plots.html",
-    "title": "2  Plots",
+    "title": "2  Plot fundamentals",
     "section": "",
-    "text": "2.1 Workflow",
+    "text": "2.1 General workflow",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Plots</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Plot fundamentals</span>"
     ]
   },
   {
     "objectID": "plots.html#overview",
     "href": "plots.html#overview",
-    "title": "2  Plots",
+    "title": "2  Plot fundamentals",
     "section": "2.2 Overview",
     "text": "2.2 Overview\n\nlibrary(tidyplots)\n\np1 &lt;- study |&gt; \n  tidyplot(x = treatment, y = score, color = treatment) |&gt; \n  add_title(title = \"p1\") |&gt; \n  add_violin(trim = FALSE) |&gt; \n  add_sem_errorbar() |&gt; \n  add_data_points_beeswarm()\n\n\np2 &lt;- energy_week |&gt; \n  tidyplot(x = date, y = power, color = energy_source) |&gt; \n  add_title(title = \"p2\") |&gt; \n  add_areastack_relative()\n\n\np3 &lt;- study |&gt; \n  tidyplot(x = treatment, y = score, color = treatment) |&gt; \n  add_title(title = \"p3\") |&gt; \n  add_mean_bar(alpha = 0.4) |&gt; \n  add_sem_errorbar() |&gt; \n  add_data_points_beeswarm()\n\np4 &lt;- study |&gt; \n  tidyplot(x = group, y = score, color = dose) |&gt; \n  add_title(title = \"p4\") |&gt; \n  add_violin() |&gt; \n  add_data_points_beeswarm() |&gt; \n  add_test_asterisks(hide_info = TRUE)\n\np5 &lt;- study |&gt; \n  tidyplot(x = group, y = score, color = dose) |&gt; \n  add_title(title = \"p5\") |&gt; \n  add_boxplot() |&gt; \n  add_data_points_beeswarm() |&gt; \n  add_test_pvalue(hide_info = TRUE)\n\n\np6 &lt;- energy_week |&gt; \n  tidyplot(x = date, y = power, color = energy_source) |&gt; \n  add_title(title = \"p6\") |&gt; \n  add_areastack_absolute()\n\n\npatchwork::wrap_plots(p1, p2, p3, p4, p5, p6, ncol = 2) |&gt; \n  save_plot(\n    \"images/p1_p6.png\",\n    view_plot = FALSE, width = 190, height = 200) # tailored width/height\n\n\n\n\n\n\n\nlibrary(tidyplots)\n\np7 &lt;- energy |&gt; \n  tidyplot(y = energy, color = energy_source) |&gt; \n  add_donut() |&gt; \n  add_title(title = \"p7\")\n\n\ndf &lt;- \"https://tidyplots.org/data/correlation-matrix.csv\" |&gt;\n  readr::read_csv(show_col_types =FALSE)\n\n\np8 &lt;- df |&gt; \n  tidyplot(x = x, y = y, color = correlation) |&gt; \n  add_title(title = \"p8\") |&gt; \n  add_heatmap() |&gt; \n  sort_x_axis_levels(order_x) |&gt; \n  sort_y_axis_levels(order_y) |&gt; \n  remove_x_axis() |&gt; remove_y_axis() |&gt; remove_legend_title()\n\np9 &lt;- spendings |&gt; \n  tidyplot(x = category, y = amount, color = category) |&gt; \n  add_title(title = \"p9\") |&gt; \n  add_sum_bar(width = 0.05, alpha = 1) |&gt; \n  add_sum_dot() |&gt; \n  add_sum_value(accuracy = 1) |&gt; \n  theme_ggplot2() |&gt; \n  remove_legend() |&gt; \n  adjust_x_axis(rotate_labels = 45) |&gt; \n  adjust_title(fontsize = 10, color = \"#bb5566\")\n\np10 &lt;- study |&gt; \n  tidyplot(x = participant, y = score, color = group, dodge_width = 0) |&gt; \n  add_title(title = \"p10\") |&gt; \n  add_line(group = participant, color = \"#bbbbbb\") |&gt; \n  add_data_points(size = 2.5)\n\np11 &lt;- energy |&gt; \n  tidyplot(y = energy, color = energy_source) |&gt; \n  add_pie() |&gt; \n  add_title(title = \"p11\")\n\np12 &lt;- time_course |&gt; \n  tidyplot(x = day, y = score, color = treatment) |&gt; \n  add_title(title = \"p12\") |&gt; \n  add_mean_line() |&gt; \n  add_sem_ribbon()\n\n\npatchwork::wrap_plots(p7, p8, p9, p10, p11, p12, ncol = 2) |&gt; \n  save_plot(\n    \"images/p7_p12.png\",\n    view_plot = FALSE, width = 200, height = 200) # tailored width/height\n\n\n\n\n\n\n\nlibrary(tidyplots)\n\np13 &lt;- energy |&gt; \n  tidyplot(x = year, y = energy, color = energy_type) |&gt; \n  add_title(title = \"p13\") |&gt; \n  add_barstack_absolute()\n\np14 &lt;- climate |&gt; \n  tidyplot(x = max_temperature) |&gt; \n  add_title(title = \"p14\") |&gt; \n  add_histogram()\n\np15 &lt;- energy |&gt; \n  tidyplot(x = year, y = energy, color = energy_type) |&gt; \n  add_title(title = \"p15\") |&gt; \n  add_barstack_relative()\n\np16 &lt;- animals |&gt; \n  tidyplot(x = weight, y = size) |&gt; \n  add_title(title = \"p16\") |&gt; \n  add_data_points(white_border = TRUE) |&gt; \n  add_data_labels_repel(\n    label = animal, \n    data = max_rows(weight, n = 3),\n    color = \"#000000\",\n    min.segment.length = 0)\n\ndf &lt;- tibble::tibble(\n  x = 1,\n  y = 1,\n  text = c(\"&lt;span style='font-size:20pt;'&gt;More (custom) plot types&lt;/span&gt;\n    &lt;br&gt;&lt;br&gt;&lt;i&gt;extented with ggplot2 (extentions) using &lt;b&gt;add()&lt;/b&gt;&lt;/i&gt;.\"))\n\np17 &lt;- df |&gt; \n  tidyplot(x = x, y = y) |&gt; \n  add_title(title = \"p17\") |&gt; \n  add(ggtext::geom_richtext(\n    ggplot2::aes(x = x, y = y, label = text), \n    data = df, \n    color = \"#000000\", \n    fill = \"#ffcccc\")) |&gt; \n  add(ggplot2::theme_bw()) |&gt; \n  adjust_size(width = 100)\n\n\ndesign &lt;- \"AB\n           CD\n           EE\"\n\n(p13 + p14 + p15 + p16 + p17 + patchwork::plot_layout(design = design)) |&gt; \n  save_plot(\n    \"images/p13_p17.png\",\n    view_plot = FALSE, width = 165, height = 200) # tailored width/height",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Plots</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Plot fundamentals</span>"
     ]
   },
   {
     "objectID": "plots.html#anatomy",
     "href": "plots.html#anatomy",
-    "title": "2  Plots",
+    "title": "2  Plot fundamentals",
     "section": "2.3 Anatomy",
     "text": "2.3 Anatomy\n\nstudy |&gt; \n  tidyplot(x = group, y = score, color = dose) |&gt; \n  add_mean_bar(alpha = 0.4) |&gt; \n  add_sem_errorbar() |&gt; \n  add_data_points_beeswarm(white_border = TRUE, size = 1.5) |&gt; \n  add_title(title = \"My study\") |&gt; \n  add_caption(caption = \"Petterson et al.\")\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nAll plots in tidyplots have absolute dimensions. By default this is 50 mm in width and 50 mm in height.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Plots</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Plot fundamentals</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part1.html",
     "href": "plots-and-skills_part1.html",
-    "title": "3  Plots and skills (part 1)",
+    "title": "3  Plot types and techniques (part 1)",
     "section": "",
     "text": "3.1 Three main verbs (e.g. bar plot)\nlibrary(tidyplots)\n\n# View top 10 rows of the columns used\nstudy |&gt; \n  dplyr::select(treatment, score) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 2\n   treatment score\n   &lt;chr&gt;     &lt;dbl&gt;\n 1 A             2\n 2 A             4\n 3 A             5\n 4 A             4\n 5 A             6\n 6 B             9\n 7 B             8\n 8 B            12\n 9 B            15\n10 B            16\n# Plot\np1 &lt;- study |&gt; \n  tidyplot(\n    x = treatment, \n    y = score, \n    color = treatment)\n\np2 &lt;- p1 |&gt; \n  add_mean_bar() |&gt;\n  add_title(title = \"p2: add bars and title\")\n\np3 &lt;- p2 |&gt; \n  adjust_title(title = \"p3: adjust y axis title (red)\") |&gt; \n  adjust_y_axis_title(color = \"#bb5566\")\n\np4 &lt;- p3 |&gt; \n  adjust_title(title = \"p4: remove y axis title\") |&gt; \n  remove_y_axis_title()",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plots and skills (part 1)</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plot types and techniques (part 1)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part1.html#three-main-verbs-e.g.-bar-plot",
     "href": "plots-and-skills_part1.html#three-main-verbs-e.g.-bar-plot",
-    "title": "3  Plots and skills (part 1)",
+    "title": "3  Plot types and techniques (part 1)",
     "section": "",
     "text": "Tip\n\n\n\nThere are three main verbs in tidyplots:\n\nadd 👉 to add element to the plots.\nadjust 👉 to modify elements in the plot.\nremove 👉 to remove elements form the plot.\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nExplore the package index (https://jbengler.github.io/tidyplots/reference/index.html) for a full list of functions.\n\n\n\n\n\nThe three main verbs of tidyplots.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plots and skills (part 1)</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plot types and techniques (part 1)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part1.html#the-scheme-of-add-functions-e.g.-bar-plot",
     "href": "plots-and-skills_part1.html#the-scheme-of-add-functions-e.g.-bar-plot",
-    "title": "3  Plots and skills (part 1)",
+    "title": "3  Plot types and techniques (part 1)",
     "section": "3.2 The scheme of add functions (e.g. bar plot)",
     "text": "3.2 The scheme of add functions (e.g. bar plot)\n\n\n\n\n\n\nTip\n\n\n\nMost add funtions in tidyplots follow the same scheme\nadd_&lt;statistical-entity&gt;_&lt;graphical-representation&gt;\n\nadd_mean_dot(), add_mean_dash(), add_mean_bar(), add_median_bar(), add_sum_bar() etc.\nadd_sem_errorbar(), add_sd_errorbar() etc.\n\n\n\n\nlibrary(tidyplots)\n\n# View top 10 rows of the columns used\nstudy |&gt; \n  dplyr::select(treatment, score) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 2\n   treatment score\n   &lt;chr&gt;     &lt;dbl&gt;\n 1 A             2\n 2 A             4\n 3 A             5\n 4 A             4\n 5 A             6\n 6 B             9\n 7 B             8\n 8 B            12\n 9 B            15\n10 B            16\n\n\n\n# Plot\np1 &lt;- study |&gt; \n  tidyplot(x = treatment, y = score, color = treatment) |&gt; \n  add_sum_bar() |&gt; add_title(title = \"p1: sum bar\")\n\np2 &lt;- study |&gt; \n  tidyplot(x = treatment, y = score, color = treatment) |&gt; \n  add_median_bar() |&gt; add_title(title = \"p2: median bar\")\n\np3 &lt;- study |&gt; \n  tidyplot(x = treatment, y = score) |&gt; \n  add_mean_bar() |&gt; add_title(title = \"p3: mean bar\")\n\np4 &lt;- p3 |&gt; \n  adjust_title(title = paste(\"p4: mean bar\", \"points\", sep = \"\\n\")) |&gt; \n  add_data_points_beeswarm(white_border = TRUE, size = 2)\n\np5 &lt;- p4 |&gt; \n  adjust_title(title = paste(\"p5: mean bar\", \"points\", \"line\", sep = \"\\n\")) |&gt; \n  add_mean_line()\n\np6 &lt;- p5 |&gt; \n  adjust_title(title = paste(\n    \"p6: mean bar\", \"points\", \"line\", \"area\", sep = \"\\n\")) |&gt; \n  add_mean_area(alpha = 0.6)\n\n\n\n\nThe scheme of add functions.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plots and skills (part 1)</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plot types and techniques (part 1)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part1.html#color-alpha-vs.-saturation-e.g.-bar-plot",
     "href": "plots-and-skills_part1.html#color-alpha-vs.-saturation-e.g.-bar-plot",
-    "title": "3  Plots and skills (part 1)",
+    "title": "3  Plot types and techniques (part 1)",
     "section": "3.3 Color alpha vs. saturation (e.g. bar plot)",
     "text": "3.3 Color alpha vs. saturation (e.g. bar plot)\n\nlibrary(tidyplots)\n\n# View top 10 rows of the columns used\nstudy |&gt; \n  dplyr::select(treatment, score) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 2\n   treatment score\n   &lt;chr&gt;     &lt;dbl&gt;\n 1 A             2\n 2 A             4\n 3 A             5\n 4 A             4\n 5 A             6\n 6 B             9\n 7 B             8\n 8 B            12\n 9 B            15\n10 B            16\n\n\n\n# Plot\np1 &lt;- study |&gt; \n  tidyplot(\n    x = treatment, \n    y = score, \n    color = treatment) |&gt;\n  add_annotation_text(\n    text = c(\"see me?\", \"see me?\"), \n    x = c(2, 3), \n    y = 100, \n    angle = 90, \n    color = \"#bb5566\", \n    fontface = \"bold\") |&gt; \n  add_title(title = \"p1\") |&gt; \n  adjust_y_axis(limit = c(0, 200)) |&gt; \n  adjust_x_axis(limit = c(1, 4))\n\np2 &lt;- p1 |&gt; \n  adjust_title(title = \"p2\") |&gt; \n  add_sum_bar()\n\np3 &lt;- p1 |&gt; \n  adjust_title(title = \"p3: decreased intensity via `alpha`\") |&gt; \n  add_sum_bar(alpha = 0.5)\n\np4 &lt;- p1 |&gt; \n  adjust_title(title = \"p4: decreased intensity via `saturation`\") |&gt;\n  add_sum_bar(saturation = 0.5)\n\n\n\n\nColor alpha vs. saturation.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plots and skills (part 1)</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plot types and techniques (part 1)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part1.html#sec-plot-size",
     "href": "plots-and-skills_part1.html#sec-plot-size",
-    "title": "3  Plots and skills (part 1)",
+    "title": "3  Plot types and techniques (part 1)",
     "section": "3.4 Plot size (e.g. bar plot)",
     "text": "3.4 Plot size (e.g. bar plot)\n\nlibrary(tidyplots)\n\n# View top 10 rows of the columns used\nstudy |&gt; \n  dplyr::select(group, score) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 2\n   group   score\n   &lt;chr&gt;   &lt;dbl&gt;\n 1 placebo     2\n 2 placebo     4\n 3 placebo     5\n 4 placebo     4\n 5 placebo     6\n 6 placebo     9\n 7 placebo     8\n 8 placebo    12\n 9 placebo    15\n10 placebo    16\n\n\n\n# Plot\np1 &lt;- study |&gt; \n  tidyplot(\n    x = group, \n    y = score, \n    color = group) |&gt; \n  add_median_bar() |&gt; \n  add_title(title = \"p1\")\n\np2 &lt;- p1 |&gt; \n  adjust_title(title = \"p2: width reduced\") |&gt; \n  adjust_size(width = 20)\n\np3 &lt;- p1 |&gt; \n  adjust_title(title = \"p3: height reduced\") |&gt; \n  adjust_size(height = 20)\n\np4 &lt;- p1 |&gt; \n  adjust_title(title = \"p4: width and height enlarged\") |&gt; \n  adjust_size(\n    width = 8, \n    height = 8, \n    unit = \"cm\")\n\n\n\n\n\n\n\nNote\n\n\n\nAll plots in tidyplots have absolute dimensions.\nBy default this is 50 mm in width and 50 mm in height.\nIf you want the plot to fill all available space (ggplot2 default), do adjust_size(width = NA, height = NA).\nAbsolute dimention is to be the only reliable way to maintain consistent proportions of plot area size, font size, line width, etc.\n\n\n\n\n\nAdjust plot size.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plots and skills (part 1)</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plot types and techniques (part 1)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part1.html#remove-plot-elements-e.g.-bar-plot",
     "href": "plots-and-skills_part1.html#remove-plot-elements-e.g.-bar-plot",
-    "title": "3  Plots and skills (part 1)",
+    "title": "3  Plot types and techniques (part 1)",
     "section": "3.5 Remove plot elements (e.g. bar plot)",
     "text": "3.5 Remove plot elements (e.g. bar plot)\n\nlibrary(tidyplots)\n\n# View top 10 rows of the columns used\nstudy |&gt; \n  dplyr::select(treatment, score) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 2\n   treatment score\n   &lt;chr&gt;     &lt;dbl&gt;\n 1 A             2\n 2 A             4\n 3 A             5\n 4 A             4\n 5 A             6\n 6 B             9\n 7 B             8\n 8 B            12\n 9 B            15\n10 B            16\n\n\n\n# Plot\np1 &lt;- study |&gt; \n  tidyplot(\n    x = treatment, \n    y = score, \n    color = treatment) |&gt; \n  add_mean_bar(alpha = 0.4) |&gt; \n  add_sem_errorbar() |&gt; \n  add_data_points_beeswarm() |&gt; \n  add_title(title = \"p1\")\n\np2 &lt;- p1 |&gt; \n  adjust_title(title = \"p2: remove legend\") |&gt; \n  remove_legend()\n\np3 &lt;- p2 |&gt; \n  adjust_title(title = \"p3: remove x axis title\") |&gt; \n  remove_x_axis_title()\n\np4 &lt;- p3 |&gt; \n  adjust_title(title = \"p4: remove x axis labels\") |&gt; \n  remove_x_axis_labels()\n\np5 &lt;- p4 |&gt; \n  adjust_title(title = \"p5: remove y axis title\") |&gt; \n  remove_y_axis_title()\n\np6 &lt;- p5 |&gt; \n  adjust_title(title = \"p6: remove y axis labels\") |&gt; \n  remove_y_axis_labels()\n\n\n\n\nRemove plot elements.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plots and skills (part 1)</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plot types and techniques (part 1)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part1.html#highlight-a-subset-of-dataset-i.e.-dot-plot",
     "href": "plots-and-skills_part1.html#highlight-a-subset-of-dataset-i.e.-dot-plot",
-    "title": "3  Plots and skills (part 1)",
+    "title": "3  Plot types and techniques (part 1)",
     "section": "3.6 Highlight a subset of dataset (i.e. dot plot)",
     "text": "3.6 Highlight a subset of dataset (i.e. dot plot)\n\nlibrary(tidyplots)\n\n# View top 10 rows of the columns used\nanimals |&gt; \n  dplyr::select(weight, size, animal) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 3\n      weight  size animal           \n       &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;            \n 1 0.00012     1.5 Honeybee         \n 2 0.00045    10   Monarch Butterfly\n 3 0.0002     10   Dragonfly        \n 4 0.00002     2.5 Firefly          \n 5 0.003      17   Praying Mantis   \n 6 0.0000025   1   Mosquito         \n 7 0.000005    4   Ant              \n 8 0.00001     0.8 Ladybug          \n 9 0.0002      7.5 Grasshopper      \n10 0.0004      9   Butterfly        \n\n\n\n# Plot\np1 &lt;- animals |&gt; \n  tidyplot(x = weight, y = size) |&gt; \n  add_data_points(color = \"#ddaa33\") |&gt; \n  add_title(title = \"p1\")\n\np2 &lt;- p1 |&gt; \n  add_data_points(\n    data = max_rows(weight, n = 3),\n    color = \"#bb5566\") |&gt; \n  adjust_title(title = \"p2: point highlight\")\n\np3 &lt;- p2 |&gt; \n  add_data_labels_repel(data = max_rows(weight, n = 3), \n    label = animal, color = \"black\") |&gt; \n  adjust_title(title = paste(\n    \"p3: point highlight\", \n    \"point labels\", \n    sep = \"\\n\"))\n\np4 &lt;- p2 |&gt; \n  add_data_labels_repel(data = max_rows(weight, n = 3), \n    background = TRUE, background_color = \"#ffcccc\", \n    min.segment.length = 0, \n    label = animal, \n    color = \"black\") |&gt; \n  add_title(title = paste(\n    \"p4: point highlight\", \n    \"point labels\", \n    \"label background\", \n    sep = \"\\n\"))\n\n\n\n\nHighlight a subset of dataset.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plots and skills (part 1)</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plot types and techniques (part 1)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part1.html#point-shape-and-size-e.g.-dot-plot",
     "href": "plots-and-skills_part1.html#point-shape-and-size-e.g.-dot-plot",
-    "title": "3  Plots and skills (part 1)",
+    "title": "3  Plot types and techniques (part 1)",
     "section": "3.7 Point shape and size (e.g. dot plot)",
     "text": "3.7 Point shape and size (e.g. dot plot)\n\nlibrary(tidyplots)\n\n# View top 10 rows of the columns used\nanimals |&gt; \n  dplyr::select(weight, size, animal) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 3\n      weight  size animal           \n       &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;            \n 1 0.00012     1.5 Honeybee         \n 2 0.00045    10   Monarch Butterfly\n 3 0.0002     10   Dragonfly        \n 4 0.00002     2.5 Firefly          \n 5 0.003      17   Praying Mantis   \n 6 0.0000025   1   Mosquito         \n 7 0.000005    4   Ant              \n 8 0.00001     0.8 Ladybug          \n 9 0.0002      7.5 Grasshopper      \n10 0.0004      9   Butterfly        \n\n\n\n# Plot\np0 &lt;- animals |&gt; \n  tidyplot(x = weight, y = size)\n\np1 &lt;- p0 |&gt; \n  add_title(title = \"p1: filled circle (default)\") |&gt; \n  add_data_points(color = \"#ddaa33\", shape = 19)\n\np2 &lt;- p0 |&gt; \n  add_title(title = \"p2: empty circle\") |&gt; \n  add_data_points(color = \"#ddaa33\", shape = 1)\n\np3 &lt;- p0 |&gt; \n  add_title(title = \"p3: filled triangle\") |&gt; \n  add_data_points(color = \"#ddaa33\", shape = 17)\n\np4 &lt;- p0 |&gt; \n  add_title(title = \"p4: empty triangle\") |&gt; \n  add_data_points(color = \"#ddaa33\", shape = 2)\n\np5 &lt;- p0 |&gt; \n  add_title(title = \"p5: enlarged and filled triangle\") |&gt; \n  add_data_points(\n    color = \"#ddaa33\", fill = \"#004488\", shape = 24, size = 2)\n\np6 &lt;- p0 |&gt; \n  add_title(title = paste(\n    \"p6: enlarged and filled triangle\", \"wider border\", sep = \"\\n\")) |&gt; \n  add_data_points(\n    color = \"#ddaa33\", fill = \"#004488\", shape = 24, size = 2, \n    stroke = 2)\n\n\n\n\n\n\n\nNote\n\n\n\nSee Section 7.1 and Section 7.2 for details about shape.\n\n\n\n\n\nChange point shape and size.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plots and skills (part 1)</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plot types and techniques (part 1)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part1.html#reference-linesrectangle-e.g.-dot-plot",
     "href": "plots-and-skills_part1.html#reference-linesrectangle-e.g.-dot-plot",
-    "title": "3  Plots and skills (part 1)",
+    "title": "3  Plot types and techniques (part 1)",
     "section": "3.8 Reference lines/rectangle (e.g. dot plot)",
     "text": "3.8 Reference lines/rectangle (e.g. dot plot)\n\nlibrary(tidyplots)\n\n# View top 10 rows of the columns used\nanimals |&gt; \n  dplyr::select(weight, speed) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 2\n      weight   speed\n       &lt;dbl&gt;   &lt;dbl&gt;\n 1 0.00012   0.72   \n 2 0.00045   0.432  \n 3 0.0002    2.09   \n 4 0.00002   0.0432 \n 5 0.003     0.144  \n 6 0.0000025 0.054  \n 7 0.000005  0.00216\n 8 0.00001   0.054  \n 9 0.0002    0.576  \n10 0.0004    0.432  \n\n\n\np1 &lt;- animals |&gt; \n  tidyplot(x = weight, y = speed) |&gt; \n  add_data_points(white_border = TRUE) |&gt;\n  add_title(title = \"p1\") \n\np2 &lt;- p1 |&gt; \n  adjust_title(title = \"p2: reference line (dotdash)\") |&gt; \n  add_reference_lines(\n    x = 4000, y = c(100, 200), linetype = \"dotdash\")\n\np3 &lt;- p1 |&gt; \n  adjust_title(title = \"p3: annotation line (dashed)\") |&gt; \n  add_annotation_line(\n    x = 2000, xend = 2000, y = 20, yend = 150, linetype = \"dashed\") |&gt; \n  add_annotation_text(text = \"line\", x = 2000, y = 160)\n\np4 &lt;- p1 |&gt; \n  adjust_title(title = \"p4: annotation line with arrowhead\") |&gt; \n  add_annotation_line(\n    x = 2000, xend = 2000, y = 20, yend = 150,\n    arrow = grid::arrow(length = grid::unit(2, \"mm\"))) |&gt; \n  add_annotation_text(text = \"line with arrowhead\", x = 2000, y = 160)\n\np5 &lt;- p1 |&gt; \n  adjust_title(title = \"p5: annotation rectangle (dotted)\") |&gt; \n  add_annotation_rectangle(\n    xmin = 2000, xmax = 6200, ymin = 20, ymax = 150, \n    linetype = \"dotted\", color = \"#000000\", fill = NA)\n\np6 &lt;- p1 |&gt; \n  adjust_title(title = \"p6: filled annotation rectangle (dotted)\") |&gt; \n  add_annotation_rectangle(\n    xmin = 2000, xmax = 6200, ymin = 20, ymax = 150, \n    linetype = \"dotted\", color = \"#000000\", fill = \"#eecc66\")\n\n\n\n\nAdd reference lines or rectangle.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plots and skills (part 1)</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plot types and techniques (part 1)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part1.html#rename-axis-levels-e.g.-violin-plot",
     "href": "plots-and-skills_part1.html#rename-axis-levels-e.g.-violin-plot",
-    "title": "3  Plots and skills (part 1)",
+    "title": "3  Plot types and techniques (part 1)",
     "section": "3.9 Rename axis levels (e.g. violin plot)",
     "text": "3.9 Rename axis levels (e.g. violin plot)\n\nlibrary(tidyplots)\n\n# View the top 10 rows of the columns used\nstudy |&gt; \n  dplyr::select(group, score, dose) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 3\n   group   score dose \n   &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;\n 1 placebo     2 high \n 2 placebo     4 high \n 3 placebo     5 high \n 4 placebo     4 high \n 5 placebo     6 high \n 6 placebo     9 low  \n 7 placebo     8 low  \n 8 placebo    12 low  \n 9 placebo    15 low  \n10 placebo    16 low  \n\n\n\n# Plot\np1 &lt;- study |&gt; \n  tidyplot(\n    x = group, \n    y = score, \n    color = dose) |&gt; \n  add_violin(trim = FALSE) |&gt; \n  add_data_points_beeswarm(white_border = TRUE) |&gt; \n  add_title(title = \"p1\")\n\np2 &lt;- p1 |&gt; \n  adjust_title(\n    title = \"p2: rename x axis levels\") |&gt; \n  rename_x_axis_levels(\n    new_names = c(\n      \"placebo\" = \"A\", \n      \"treatment\" = \"B\"))\n\np3 &lt;- p2 |&gt; \n  adjust_title(\n    title = \"p3: rename color levels\") |&gt; \n  rename_color_levels(\n    new_names = c(\n      \"high\" = \"up\", \n      \"low\" = \"down\"))\n\n\n\n\nRename axis levels.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plots and skills (part 1)</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plot types and techniques (part 1)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part1.html#assign-colors-e.g.-violin-plot",
     "href": "plots-and-skills_part1.html#assign-colors-e.g.-violin-plot",
-    "title": "3  Plots and skills (part 1)",
+    "title": "3  Plot types and techniques (part 1)",
     "section": "3.10 Assign colors (e.g. violin plot)",
     "text": "3.10 Assign colors (e.g. violin plot)\n\nlibrary(tidyplots)\n\n# View top 10 rows of the columns used\nstudy |&gt; \n  dplyr::select(group, score, dose) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 3\n   group   score dose \n   &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;\n 1 placebo     2 high \n 2 placebo     4 high \n 3 placebo     5 high \n 4 placebo     4 high \n 5 placebo     6 high \n 6 placebo     9 low  \n 7 placebo     8 low  \n 8 placebo    12 low  \n 9 placebo    15 low  \n10 placebo    16 low  \n\n\n\np1 &lt;- study |&gt; \n  tidyplot(\n    x = group, \n    y = score, \n    color = dose) |&gt; \n  add_violin(trim = FALSE) |&gt; \n  add_data_points_beeswarm() |&gt; \n  add_title(title = \"p1\")  \n\np2 &lt;- p1 |&gt; \n  adjust_title(title = \"p2: assign colors\") |&gt; \n  adjust_colors(\n    new_colors = c(\n      \"high\" = \"#bb5566\", \n      \"low\" = \"#ddaa33\"))\n\np3 &lt;- study |&gt; \n  tidyplot(\n    x = treatment, \n    y = score, \n    color = treatment) |&gt; \n  add_violin(trim = FALSE) |&gt; \n  add_data_points_beeswarm() |&gt; \n  add_title(title = \"p3\")\n\np4 &lt;- p3 |&gt; \n  adjust_title(title = \"p4: assign colors\") |&gt; \n  adjust_colors(\n    new_colors = c(\n      \"A\" = \"#000000\", \n      \"B\" = \"#004488\",\n      \"C\" = \"#bb5566\", \n      \"D\" = \"#ddaa33\"))\n\n\n\n\nAssign colors.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plots and skills (part 1)</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plot types and techniques (part 1)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part1.html#define-a-custom-color-scheme-e.g.-violin-plot",
     "href": "plots-and-skills_part1.html#define-a-custom-color-scheme-e.g.-violin-plot",
-    "title": "3  Plots and skills (part 1)",
+    "title": "3  Plot types and techniques (part 1)",
     "section": "3.11 Define a custom color scheme (e.g. violin plot)",
     "text": "3.11 Define a custom color scheme (e.g. violin plot)\n\nlibrary(tidyplots)\n\n# Define a custom color scheme\nhigh_contrast_qualitative_colour &lt;- new_color_scheme(\n  c(\"#000000\", \n    \"#004488\", \n    \"#bb5566\", \n    \"#ddaa33\"), \n  name = \"high_contrast_qualitative_colour\")\n\n# View top 10 rows of the columns used\nstudy |&gt; \n  dplyr::select(treatment, score) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 2\n   treatment score\n   &lt;chr&gt;     &lt;dbl&gt;\n 1 A             2\n 2 A             4\n 3 A             5\n 4 A             4\n 5 A             6\n 6 B             9\n 7 B             8\n 8 B            12\n 9 B            15\n10 B            16\n\n\n\n# Plot\np1 &lt;- study |&gt; \n  tidyplot(\n    x = treatment, \n    y = score, \n    color = treatment) |&gt; \n  add_violin(trim = FALSE) |&gt; \n  add_data_points_beeswarm(white_border = TRUE) |&gt; \n  adjust_legend_position(position = \"bottom\") |&gt; \n  add_title(title = \"p1\")\n\np2 &lt;- p1 |&gt; \n  adjust_title(title = \"p2: a custom color scheme\") |&gt; \n  adjust_colors(new_colors = high_contrast_qualitative_colour)\n\n\n\n\nDefine a custom color scheme.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plots and skills (part 1)</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plot types and techniques (part 1)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part1.html#add-sum-values-e.g.-bar-plot",
     "href": "plots-and-skills_part1.html#add-sum-values-e.g.-bar-plot",
-    "title": "3  Plots and skills (part 1)",
+    "title": "3  Plot types and techniques (part 1)",
     "section": "3.12 Add sum values (e.g. bar plot)",
     "text": "3.12 Add sum values (e.g. bar plot)\n\nlibrary(tidyplots)\n\n# View top 10 rows of the columns used\nspendings |&gt; \n  dplyr::select(category, amount) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 2\n   category       amount\n   &lt;chr&gt;           &lt;dbl&gt;\n 1 Food              100\n 2 Transportation     40\n 3 Housing          1200\n 4 Utilities          80\n 5 Education          75\n 6 Insurance         200\n 7 Food               60\n 8 Utilities          50\n 9 Food               90\n10 Transportation     40\n\n\n\n# Plot\np1 &lt;- spendings |&gt; \n  tidyplot(\n    x = category, \n    y = amount, \n    color = category) |&gt; \n  add_sum_bar(alpha = 0.2) |&gt; \n  add_sum_dash() |&gt; \n  add_title(title = \"p1\") |&gt; \n  adjust_x_axis(rotate_labels = TRUE) |&gt; \n  remove_legend()\n\np2 &lt;- p1 |&gt; \n  adjust_title(title = \"p2: add sum values\") |&gt; \n  add_sum_value(accuracy = 1)\n\np3 &lt;- p1 |&gt; \n  adjust_title(title = paste(\n    \"p3: add sum values in black\",\n    \"one decimal place\",\n    sep = \"\\n\")) |&gt; \n  add_sum_value(accuracy = 0.1, color = \"black\")\n\np4 &lt;- p1 |&gt; \n  adjust_title(title = paste(\n    \"p4: add sum values in black\",\n    \"rotate 45\",\n    sep = \"\\n\")) |&gt; \n  add_sum_value(\n    accuracy = 1, \n    color = \"black\",\n    angle = 45, \n    hjust = -0.1) |&gt; \n  adjust_padding(top = 0.2)\n\n\n\n\nAdd sum values.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plots and skills (part 1)</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plot types and techniques (part 1)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part1.html#sort-axis-levels-e.g.-bar-plot",
     "href": "plots-and-skills_part1.html#sort-axis-levels-e.g.-bar-plot",
-    "title": "3  Plots and skills (part 1)",
+    "title": "3  Plot types and techniques (part 1)",
     "section": "3.13 Sort axis levels (e.g. bar plot)",
     "text": "3.13 Sort axis levels (e.g. bar plot)\n\nlibrary(tidyplots)\n\n# View the top 10 rows of the columns used\nspendings |&gt; \n  dplyr::select(category, amount) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 2\n   category       amount\n   &lt;chr&gt;           &lt;dbl&gt;\n 1 Food              100\n 2 Transportation     40\n 3 Housing          1200\n 4 Utilities          80\n 5 Education          75\n 6 Insurance         200\n 7 Food               60\n 8 Utilities          50\n 9 Food               90\n10 Transportation     40\n\n\n\n# Plot\np1 &lt;- spendings |&gt; \n  tidyplot(\n    x = category, \n    y = amount, \n    color = category) |&gt; \n  add_sum_bar(alpha = 0.2) |&gt; \n  add_sum_dash() |&gt; \n  add_sum_value(\n    accuracy = 1, \n    color = \"black\") |&gt; \n  adjust_x_axis(rotate_labels = TRUE) |&gt; \n  add_title(title = \"p1\") |&gt; \n  remove_legend()\n\np2 &lt;- p1 |&gt; \n  adjust_title(title = \"p2: sort x axis levels by score\") |&gt; \n  sort_x_axis_levels()\n\np3 &lt;- p1 |&gt; \n  adjust_title(title = \"p3: sort x axis levels by score in reverse\") |&gt; \n  sort_x_axis_levels(.reverse = TRUE)\n\np4 &lt;- p1 |&gt; \n  adjust_title(title = \"p4: sort color levels by score\") |&gt; \n  sort_color_levels()\n\n\n\n\nSort axis levels.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plots and skills (part 1)</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plot types and techniques (part 1)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part1.html#reorder-axis-levels-e.g.-violin-plot",
     "href": "plots-and-skills_part1.html#reorder-axis-levels-e.g.-violin-plot",
-    "title": "3  Plots and skills (part 1)",
+    "title": "3  Plot types and techniques (part 1)",
     "section": "3.14 Reorder axis levels (e.g. violin plot)",
     "text": "3.14 Reorder axis levels (e.g. violin plot)\n\nlibrary(tidyplots)\n\n# View top 10 rows of the columns used\nstudy |&gt; \n  dplyr::select(treatment, score) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 2\n   treatment score\n   &lt;chr&gt;     &lt;dbl&gt;\n 1 A             2\n 2 A             4\n 3 A             5\n 4 A             4\n 5 A             6\n 6 B             9\n 7 B             8\n 8 B            12\n 9 B            15\n10 B            16\n\n\n\n# Plot\np1 &lt;- study |&gt; \n  tidyplot(\n    x = treatment, \n    y = score, \n    color = treatment) |&gt; \n  add_violin(trim = FALSE) |&gt; \n  add_data_points_beeswarm(white_border = TRUE) |&gt; \n  add_title(title = \"p1\")\n\np2 &lt;- p1 |&gt; \n  adjust_title(title = \"p2: custom x axis level order\") |&gt; \n  reorder_x_axis_levels(\"C\", \"D\", \"A\", \"B\")\n\np3 &lt;- p1 |&gt; \n  adjust_title(title = \"p3: reverse x axis levels\") |&gt; \n  reverse_x_axis_levels()\n\np4 &lt;- p1 |&gt;\n  adjust_title(title = \"p4: sort x axis levels by score\") |&gt; \n  sort_x_axis_levels()\n\np5 &lt;- p1 |&gt;\n  adjust_title(title = \"p5: custom color level order\") |&gt; \n  reorder_color_levels(\"C\", \"D\")\n\np6 &lt;- p1 |&gt; \n  adjust_title(title = \"p6: sort color levels by score\") |&gt; \n  sort_color_levels()\n\n\n\n\nReorder axis levels.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plots and skills (part 1)</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plot types and techniques (part 1)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part1.html#guide-attention-e.g.-bar-plot",
     "href": "plots-and-skills_part1.html#guide-attention-e.g.-bar-plot",
-    "title": "3  Plots and skills (part 1)",
+    "title": "3  Plot types and techniques (part 1)",
     "section": "3.15 Guide attention (e.g. bar plot)",
     "text": "3.15 Guide attention (e.g. bar plot)\n\nlibrary(tidyplots)\n\n# View top 10 rows of the columns used\nspendings |&gt; \n  dplyr::select(category, amount) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 2\n   category       amount\n   &lt;chr&gt;           &lt;dbl&gt;\n 1 Food              100\n 2 Transportation     40\n 3 Housing          1200\n 4 Utilities          80\n 5 Education          75\n 6 Insurance         200\n 7 Food               60\n 8 Utilities          50\n 9 Food               90\n10 Transportation     40\n\n\n\n# Plot\np1 &lt;- spendings |&gt; \n  tidyplot(\n    x = category, \n    y = amount, \n    color = category) |&gt; \n  add_sum_bar() |&gt; \n  add_title(title = \"p1\") |&gt; \n  adjust_x_axis(rotate_labels = TRUE)  \n  \np2 &lt;- p1 |&gt; \n  adjust_title(title = \"p2: other bars in gray\") |&gt; \n  adjust_colors(\n    new_colors = c(\n      \"Health\" = \"#994455\", \n      na.value = \"#dddddd\"))\n\np3 &lt;- p1 |&gt; \n  adjust_title(title = paste(\n    \"p3: other bars in gray\",\n    \"sum value\",\n    sep = \"\\n\")) |&gt; \n  add_sum_value(accuracy = 1) |&gt; \n  adjust_colors(\n    new_colors = c(\n      \"Health\" = \"#994455\", \n      na.value = \"#dddddd\"))\n\np4 &lt;- p3 |&gt; \n  adjust_title(title = paste(\n    \"p4: other bars in gray\",\n    \"sum value\",\n    \"sort x axis\",\n    sep = \"\\n\")) |&gt; \n  sort_x_axis_levels()\n\n\n\n\nGuide attention.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plots and skills (part 1)</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plot types and techniques (part 1)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part1.html#horizontal-bars-e.g.-bar-plot",
     "href": "plots-and-skills_part1.html#horizontal-bars-e.g.-bar-plot",
-    "title": "3  Plots and skills (part 1)",
+    "title": "3  Plot types and techniques (part 1)",
     "section": "3.16 Horizontal bars (e.g. bar plot)",
     "text": "3.16 Horizontal bars (e.g. bar plot)\n\nlibrary(tidyplots)\n\n# View top 10 rows of the columns used\nspendings |&gt; dplyr::select(amount, category) |&gt; dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 2\n   amount category      \n    &lt;dbl&gt; &lt;chr&gt;         \n 1    100 Food          \n 2     40 Transportation\n 3   1200 Housing       \n 4     80 Utilities     \n 5     75 Education     \n 6    200 Insurance     \n 7     60 Food          \n 8     50 Utilities     \n 9     90 Food          \n10     40 Transportation\n\n\n\n# Plot\np1 &lt;- spendings |&gt; \n  tidyplot(x = category, y = amount, color = category) |&gt; \n  add_sum_bar(alpha = 0.2) |&gt; \n  add_sum_dash() |&gt; \n  add_sum_value(accuracy = 1, color = \"black\") |&gt;\n  add_title(title = \"p1\") |&gt; \n  sort_x_axis_levels() |&gt; \n  adjust_x_axis(rotate_labels = TRUE) |&gt; \n  adjust_colors(new_colors = c(\"#eecc66\", \"#ee99aa\", \"#6699cc\", \n    \"#997700\", \"#994455\", \"#004488\", \"#000000\")) |&gt; \n  remove_legend() |&gt; \n  adjust_padding(right = 0.2)\n\np2 &lt;- spendings |&gt; \n  tidyplot(x = amount, y = category, color = category) |&gt; \n  add_sum_bar(alpha = 0.2) |&gt; \n  add_sum_dash() |&gt; \n  add_sum_value(accuracy = 1, color = \"black\") |&gt; \n  adjust_title(title = \"p2: horizontal\") |&gt; \n  sort_y_axis_levels() |&gt; \n  adjust_colors(new_colors = c(\"#eecc66\", \"#ee99aa\", \"#6699cc\", \n    \"#997700\", \"#994455\", \"#004488\", \"#000000\")) |&gt; \n  remove_legend()\n\np3 &lt;- p2 |&gt; \n  adjust_title(title = \"p3: adjust right padding\") |&gt; \n  adjust_padding(right = 0.2)\n\np4 &lt;- p2 |&gt; \n  adjust_title(title = \"p4: adjust x axis limit\") |&gt; \n  adjust_x_axis(limits = c(0, 1500))\n\np5 &lt;- p2 |&gt; \n  adjust_title(title = \"p5: via 'add()'\") |&gt; \n  add(ggplot2::coord_cartesian(clip = \"off\"))\n\np6 &lt;- p2 |&gt; \n  adjust_title(title = \"p6: via 'remove_clipping()'\") |&gt; \n  remove_clipping()\n\n\n\n\nHorizontal bars.\n\n\n\n\n\n\n\n\nNote\n\n\n\nremove_clipping() is only available if you install a specific commit (on 2026-04-01), i.e. pak(\"jbengler/tidyplots@4a08bfe\") via the pak package, or use a later version.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plots and skills (part 1)</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plot types and techniques (part 1)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part1.html#preview-a-subset-of-dataset-e.g.-violin-plot",
     "href": "plots-and-skills_part1.html#preview-a-subset-of-dataset-e.g.-violin-plot",
-    "title": "3  Plots and skills (part 1)",
+    "title": "3  Plot types and techniques (part 1)",
     "section": "3.17 Preview a subset of dataset (e.g. violin plot)",
     "text": "3.17 Preview a subset of dataset (e.g. violin plot)\n\nlibrary(tidyplots)\n\n# View top 10 rows of the columns used\ngene_expression |&gt; \n  dplyr::select(group, expression, external_gene_name) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 3\n   group expression external_gene_name\n   &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;             \n 1 Hin         2.20 Apol6             \n 2 Hin         2.20 Apol6             \n 3 Hin         2.66 Apol6             \n 4 Hin         2.65 Apol6             \n 5 Hin         3.44 Apol6             \n 6 Ein         5.03 Apol6             \n 7 Ein         5.31 Apol6             \n 8 Ein         5.37 Apol6             \n 9 Ein         5.54 Apol6             \n10 Ein         5.65 Apol6             \n\n\n\n# Plot\ngene_expression |&gt; \n  tidyplot(\n    x = group, \n    y = expression, \n    color = group) |&gt; \n  add_violin(trim = FALSE) |&gt; \n  add_data_points_beeswarm(\n    white_border = TRUE) |&gt;\n  view_plot(\n    title = \"All\") |&gt; \n  view_plot(\n    data = filter_rows(\n      external_gene_name %in% c(\n        \"Apol6\", \n        \"Col5a3\")),\n    title = \"Apol6 & Col5a3\")\n\n\n\n\nPreview a subset of dataset.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plots and skills (part 1)</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plot types and techniques (part 1)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part1.html#set-a-global-default-style-e.g.-bar-plot",
     "href": "plots-and-skills_part1.html#set-a-global-default-style-e.g.-bar-plot",
-    "title": "3  Plots and skills (part 1)",
+    "title": "3  Plot types and techniques (part 1)",
     "section": "3.18 Set a global default style (e.g. bar plot)",
     "text": "3.18 Set a global default style (e.g. bar plot)\n\nlibrary(tidyplots)\n\n# View top 10 rows of the columns used\nstudy |&gt; \n  dplyr::select(group, score, dose) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 3\n   group   score dose \n   &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;\n 1 placebo     2 high \n 2 placebo     4 high \n 3 placebo     5 high \n 4 placebo     4 high \n 5 placebo     6 high \n 6 placebo     9 low  \n 7 placebo     8 low  \n 8 placebo    12 low  \n 9 placebo    15 low  \n10 placebo    16 low  \n\n\n\n# eval: false\n\n# Define a global style\nmy_style &lt;- function(x) {\n  x |&gt; \n  adjust_colors(new_colors = c(\"#bb5566\", \"#ddaa33\")) |&gt; \n  adjust_size(width = 50, height = 30, unit = \"mm\") |&gt; \n  adjust_title(fontsize = 10, color = \"#004488\")}\n\n# Plot\np1 &lt;- study |&gt; \n  tidyplot(\n    x = group, \n    y = score, \n    color = dose) |&gt; \n  add_mean_bar() |&gt; \n  adjust_size() |&gt; \n  add_title(\"p1: default style\")\n\n# Set global options\ntidyplots_options(my_style = my_style)\n\n# Plot\np2 &lt;- study |&gt; \n  tidyplot(\n    x = group, \n    y = score, \n    color = dose) |&gt; \n  add_mean_bar() |&gt; \n  add_title(\"p2: defined global style\")\n\n\n\n\nSet a global default style.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plots and skills (part 1)</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plot types and techniques (part 1)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part1.html#set-a-custom-style-to-reuse-e.g.-bar-plot",
     "href": "plots-and-skills_part1.html#set-a-custom-style-to-reuse-e.g.-bar-plot",
-    "title": "3  Plots and skills (part 1)",
+    "title": "3  Plot types and techniques (part 1)",
     "section": "3.19 Set a custom style to reuse (e.g. bar plot)",
     "text": "3.19 Set a custom style to reuse (e.g. bar plot)\n\nlibrary(tidyplots)\n\n# View top 10 rows of the columns used\nstudy |&gt; \n  dplyr::select(group, score, dose) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 3\n   group   score dose \n   &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;\n 1 placebo     2 high \n 2 placebo     4 high \n 3 placebo     5 high \n 4 placebo     4 high \n 5 placebo     6 high \n 6 placebo     9 low  \n 7 placebo     8 low  \n 8 placebo    12 low  \n 9 placebo    15 low  \n10 placebo    16 low  \n\n\n\n# Define a style\nmy_style &lt;- function(x) {\n  x |&gt; \n  adjust_colors(new_colors = c(\"#bb5566\", \"#ddaa33\")) |&gt; \n  adjust_size(width = 50, height = 30, unit = \"mm\") |&gt; \n  adjust_title(fontsize = 10, color = \"#ddaa33\")}\n\np1 &lt;- study |&gt; \n  tidyplot(\n    x = group, \n    y = score, \n    color = dose) |&gt; \n  add_mean_bar() |&gt; \n  adjust_size() |&gt; \n  add_title(\"p1: default style\")\n\np2 &lt;- study |&gt; \n  tidyplot(\n    x = group, \n    y = score, \n    color = dose) |&gt; \n  add_mean_bar() |&gt; \n  add_title(\"p2: defined custom style\") |&gt; \n  my_style()\n\n\n\n\nSet a custom style to reuse.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plots and skills (part 1)</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plot types and techniques (part 1)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part1.html#sec-custom-reuse",
     "href": "plots-and-skills_part1.html#sec-custom-reuse",
-    "title": "3  Plots and skills (part 1)",
+    "title": "3  Plot types and techniques (part 1)",
     "section": "3.20 Set a custom style to reuse (e.g. areastack plot)",
     "text": "3.20 Set a custom style to reuse (e.g. areastack plot)\n\nlibrary(tidyplots)\n\n# View top 10 rows of the columns used\nenergy_week |&gt; \n  dplyr::select(date, power, energy_source) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 3\n   date                 power energy_source              \n   &lt;dttm&gt;               &lt;dbl&gt; &lt;fct&gt;                      \n 1 2023-09-03 22:00:00    0   Nuclear                    \n 2 2023-09-03 22:00:00 2634.  Hydro Run-of-River         \n 3 2023-09-03 22:00:00 4711.  Biomass                    \n 4 2023-09-03 22:00:00 8399.  Fossil brown coal / lignite\n 5 2023-09-03 22:00:00 1726.  Fossil hard coal           \n 6 2023-09-03 22:00:00  401.  Fossil oil                 \n 7 2023-09-03 22:00:00 4900.  Fossil gas                 \n 8 2023-09-03 22:00:00   17.9 Geothermal                 \n 9 2023-09-03 22:00:00  232.  Hydro water reservoir      \n10 2023-09-03 22:00:00  586   Hydro pumped storage       \n\n\n\n# Define a style\nmy_style &lt;- function(x) {\n  x |&gt; \n    adjust_font(family = \"mono\", face = \"bold\") |&gt; \n    adjust_title(fontsize = 10) |&gt; \n    reverse_color_levels() |&gt; \n    adjust_x_axis(labels = scales::label_date( # display dates as \"Sep 05\" etc.\n      format = \"%b %d\", locale = \"en\"))}\n\n# Plot\np1 &lt;- energy_week |&gt; \n  tidyplot(\n    x = date, \n    y = power, \n    color = energy_source) |&gt; \n  add_areastack_relative() |&gt; \n  add_title(title = \"p1: areastack relative\")\n\np2 &lt;- p1 |&gt; \n  adjust_title(\n    title = paste(\"p2: areastack relative\", \"defined custom style\", sep = \"\\n\")) |&gt; \n  adjust_legend_title(title = \"ENERGY_SOURCE\", color = \"#bb5566\") |&gt;   \n  adjust_legend_position(position = \"left\") |&gt; \n  my_style()\n\np3 &lt;- energy_week |&gt; \n  tidyplot(\n    x = date, \n    y = power, \n    color = energy_source) |&gt; \n  adjust_title(\n    title = paste(\"p3: areastack absolute\", \"defined custom style\", sep = \"\\n\")) |&gt; \n  add_areastack_absolute() |&gt; \n  my_style()\n\n\n\n\nSet a custom style to reuse.\n\n\n\n\n\n\n\n\nNote\n\n\n\nPlease note the Chinese character “月” on the x-axis of p1, as the code was run on an x86_64-w64-mingw32/x64 platform with the locale set to Chinese (Simplified)_China.utf8.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plots and skills (part 1)</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plot types and techniques (part 1)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part1.html#plot-paper-and-ink-colors-e.g.-bar-plot",
     "href": "plots-and-skills_part1.html#plot-paper-and-ink-colors-e.g.-bar-plot",
-    "title": "3  Plots and skills (part 1)",
+    "title": "3  Plot types and techniques (part 1)",
     "section": "3.21 Plot paper and ink colors (e.g. bar plot)",
     "text": "3.21 Plot paper and ink colors (e.g. bar plot)\n\nlibrary(tidyplots)\n\n# View top 10 rows of the columns used\nstudy |&gt; \n  dplyr::select(treatment, score) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 2\n   treatment score\n   &lt;chr&gt;     &lt;dbl&gt;\n 1 A             2\n 2 A             4\n 3 A             5\n 4 A             4\n 5 A             6\n 6 B             9\n 7 B             8\n 8 B            12\n 9 B            15\n10 B            16\n\n\n\n# Define a style to reuse\nmy_style &lt;- function(x) {\n  x |&gt; \n  add_mean_bar(alpha = 0.4) |&gt; \n  add_sem_errorbar() |&gt; \n  add_data_points_beeswarm()}\n\np1 &lt;- study |&gt; \n  tidyplot(x = treatment, y = score, color = treatment) |&gt; \n  my_style() |&gt; \n  add_title(title = \"p1\")\n\np2 &lt;- study |&gt; \n  tidyplot(x = treatment, y = score, color = treatment, paper = \"#dddddd\") |&gt; \n  my_style() |&gt; \n  add_title(title = \"p2: paper/background color changed\")\n\np3 &lt;- study |&gt; \n  tidyplot(x = treatment, y = score, color = treatment, paper = \"#dddddd\", ink = \"#004488\") |&gt; \n  my_style() |&gt; \n  add_title(title = \"p3: paper/background and ink/foreground\\n color changed\")\n\n\n# Set global options\ntidyplots_options(paper = \"#dddddd\", ink = \"#004488\")\n\np4 &lt;- study |&gt; \n  tidyplot(x = treatment, y = score, color = treatment) |&gt; \n  my_style() |&gt; \n  add_title(\n    title = \"p4: paper/background and ink/foreground\\n color changed via 'tidyplots_options()'\")\n\n# Reset tidyplots options\ntidyplots_options()\n\n\n\n\nChange plot paper and ink colors.\n\n\n\n\n\n\n\n\nNote\n\n\n\nThe title color of p3 and p4 should be in the ink color (i.e. blue #004488). However, it has been changed to red (i.e. #bb5566) to follow the global setting applied throughout this book.\nBy the way, it seems unreasonable to change the default paper and ink colors for scientific figures.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plots and skills (part 1)</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plot types and techniques (part 1)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part1.html#change-color-scheme-e.g.-bar-plot",
     "href": "plots-and-skills_part1.html#change-color-scheme-e.g.-bar-plot",
-    "title": "3  Plots and skills (part 1)",
+    "title": "3  Plot types and techniques (part 1)",
     "section": "3.22 Change color scheme (e.g. bar plot)",
     "text": "3.22 Change color scheme (e.g. bar plot)\n\nlibrary(tidyplots)\n\n# View top 10 rows of the columns used\nspendings |&gt; \n  dplyr::select(category, amount) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 2\n   category       amount\n   &lt;chr&gt;           &lt;dbl&gt;\n 1 Food              100\n 2 Transportation     40\n 3 Housing          1200\n 4 Utilities          80\n 5 Education          75\n 6 Insurance         200\n 7 Food               60\n 8 Utilities          50\n 9 Food               90\n10 Transportation     40\n\n\n\n# Plot\np1 &lt;- spendings |&gt; \n  tidyplot(\n    x = category, \n    y = amount, \n    color = category) |&gt; \n  add_sum_bar() |&gt; \n  add_title(title = \"p1\") |&gt; \n  adjust_x_axis(rotate_labels = TRUE) |&gt; \n  adjust_size(width = 40) |&gt; \n  sort_x_axis_levels() \n\np2 &lt;- p1 |&gt; \n  adjust_title(title = \"p2: colors_discrete_friendly (3rd & 4th colors)\") |&gt; \n  adjust_colors(new_colors = colors_discrete_friendly[3:4])\n\np3 &lt;- p1 |&gt; \n  adjust_title(title = \"p3: custom color scheme (2 colors)\") |&gt; \n  adjust_colors(new_colors = c(\"#eecc66\", \"#997700\"))\n\np4 &lt;- p1 |&gt; \n  adjust_title(title = \"p4: colors_continuous_cividis (265 colors)\") |&gt; \n  adjust_colors(new_colors = colors_continuous_cividis)\n\n\n\n\n\n\n\nNote\n\n\n\nTidyplots comes with a number of default color schemes.\nA color scheme (default or custom) might contain limited number of colors (e.g. p3), tidyplots will automatically fill up the gaps between colors to deliver exactly the number that is required for the plot.\nSimilarly, when a color scheme contains more colors than needed (e.g. p4), tidyplots will select the required number of colors by attempting to evenly sample from the supplied color vector.\n\n\n\n\n\nChange the color scheme.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plots and skills (part 1)</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plot types and techniques (part 1)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part1.html#add-data-ellipses-e.g.-dot-plot",
     "href": "plots-and-skills_part1.html#add-data-ellipses-e.g.-dot-plot",
-    "title": "3  Plots and skills (part 1)",
+    "title": "3  Plot types and techniques (part 1)",
     "section": "3.23 Add data ellipses (e.g. dot plot)",
     "text": "3.23 Add data ellipses (e.g. dot plot)\n\nlibrary(tidyplots)\n\n# View top 10 rows of the columns used\npca |&gt; \n  dplyr::select(pc1, pc2, group) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 3\n      pc1    pc2 group\n    &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;\n 1 -10.8  -9.17  Hin  \n 2 -11.5  -7.84  Hin  \n 3 -10.2  -9.11  Hin  \n 4  -8.18 -7.30  Hin  \n 5 -10.7  -8.15  Hin  \n 6 -17.6   3.75  Ein  \n 7 -20.8   7.37  Ein  \n 8 -15.8  -0.644 Ein  \n 9 -17.6   4.16  Ein  \n10 -16.0   4.13  Ein  \n\n\n\n# Plot\np1 &lt;- pca |&gt; \n  tidyplot(\n    x = pc1, \n    y = pc2, \n    color = group) |&gt; \n  add_data_points(white_border = TRUE) |&gt; \n  add_title(title = \"p1\")\n\np2 &lt;- p1 |&gt; \n  adjust_title(title = \"p2: ellipses\") |&gt; \n  add_ellipse()\n\np3 &lt;- p1 |&gt; \n  adjust_title(title = \"p3: dotted ellipses\") |&gt; \n  add_ellipse(linetype = \"dotted\")\n\np4 &lt;- p1 |&gt; \n  adjust_title(title = \"p4: filled ellipses\") |&gt; \n  add_ellipse(geom = \"polygon\", alpha = 0.2)\n\np5 &lt;- p1 |&gt; \n  adjust_title(title = paste(\"p5: filled ellipses\", \n  \"reduced level\", sep = \"\\n\")) |&gt; \n  add_ellipse(geom = \"polygon\", alpha = 0.2, level = 0.8)\n\np6 &lt;- p1 |&gt; \n  adjust_title(title = paste(\"p6: filled ellipses\", \n  \"reduced level\", \"'norm' type\", sep = \"\\n\")) |&gt; \n  add_ellipse(geom = \"polygon\", alpha = 0.2, level = 0.8, type = \"norm\")\n\n\n\n\nAdd data ellipses.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plots and skills (part 1)</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plot types and techniques (part 1)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part1.html#add-mean-and-summary-statistics-to-raw-data-points-e.g.-dot-plot",
     "href": "plots-and-skills_part1.html#add-mean-and-summary-statistics-to-raw-data-points-e.g.-dot-plot",
-    "title": "3  Plots and skills (part 1)",
+    "title": "3  Plot types and techniques (part 1)",
     "section": "3.24 Add mean and summary statistics to raw data points (e.g. dot plot)",
     "text": "3.24 Add mean and summary statistics to raw data points (e.g. dot plot)\n\nlibrary(tidyplots)\n\n# View top 10 rows of the column used\nclimate |&gt; \n  dplyr::select(month, max_temperature) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 2\n   month max_temperature\n   &lt;chr&gt;           &lt;dbl&gt;\n 1 01              -1.49\n 2 02               3.37\n 3 03               5.05\n 4 04               8.34\n 5 05              16.2 \n 6 06              18.2 \n 7 07              20.5 \n 8 08              18.2 \n 9 09              18.3 \n10 10              14.2 \n\n\n\n# Plot\np1 &lt;- climate |&gt; \n  tidyplot(x = month, y = max_temperature) |&gt; \n  add_data_points_beeswarm(alpha = 0.3, color = \"#bbbbbb\", white_border = TRUE) |&gt; \n  add_mean_line() |&gt; \n  add_title(title = \"p1\")\n\np2 &lt;- p1 |&gt; \n  adjust_title(title = \"p2: sem ribbon and errorbar\") |&gt; \n  add_sem_ribbon() |&gt; \n  add_sem_errorbar()\n\np3 &lt;- p1 |&gt; \n  adjust_title(title = \"p3: sd ribbon and errorbar\") |&gt; \n  add_sd_ribbon() |&gt; \n  add_sd_errorbar()\n\np4 &lt;- p1 |&gt; \n  adjust_title(title = \"p4: ci95 ribbon and errorbar\") |&gt; \n  add_ci95_ribbon() |&gt; \n  add_ci95_errorbar()\n\np5 &lt;- p1 |&gt; \n  adjust_title(title = \"p5: range ribbon and bar\") |&gt; \n  add_range_ribbon() |&gt; \n  add_range_errorbar()\n\np6 &lt;- p1 |&gt; \n  adjust_title(title = paste(\n    \"p6: range ribbon (defined color)\", \n    \"range bar\", \n    sep = \"\\n\")) |&gt; \n  add_range_ribbon(color = \"#bb5566\", fill = \"#bb5566\") |&gt; \n  add_range_errorbar()\n\n\n\n\nAdd mean and summary statistics.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plots and skills (part 1)</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plot types and techniques (part 1)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part1.html#add-mean-and-summary-statistics-to-grouped-raw-data-points-e.g.-dot-plot",
     "href": "plots-and-skills_part1.html#add-mean-and-summary-statistics-to-grouped-raw-data-points-e.g.-dot-plot",
-    "title": "3  Plots and skills (part 1)",
+    "title": "3  Plot types and techniques (part 1)",
     "section": "3.25 Add mean and summary statistics to grouped raw data points (e.g. dot plot)",
     "text": "3.25 Add mean and summary statistics to grouped raw data points (e.g. dot plot)\n\nlibrary(tidyplots)\n\n# View top 10 rows of the columns used\ntime_course |&gt; \n  dplyr::select(day, score, treatment) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 3\n     day score treatment\n   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    \n 1     0     0 untreated\n 2     0     0 untreated\n 3     0     0 untreated\n 4     0     0 untreated\n 5     0     0 untreated\n 6     0     0 untreated\n 7     0     0 untreated\n 8     0     0 untreated\n 9     0     0 untreated\n10     0     0 untreated\n\n\n\n# Plot\np1 &lt;- time_course |&gt; \n  tidyplot(\n    x = day, \n    y = score, \n    color = treatment) |&gt; \n  add_mean_line() |&gt; \n  add_mean_dot(size = 1.5) |&gt; \n  add_title(title = \"p1: mean line/dot\")\n\np2 &lt;- p1 |&gt; \n  adjust_title(title = \"p2: sem ribbon\") |&gt; \n  add_data_points(alpha = 0.3) |&gt; \n  add_sem_ribbon()  \n\np3 &lt;- p1 |&gt; \n  adjust_title(title = \"p3: sem errorbar\") |&gt; \n  add_sem_errorbar(width = 1.5)\n\np4 &lt;- p1 |&gt; \n  adjust_title(title = paste(\"p4: sem ribbon\", \"sem errorbar\", sep = \"\\n\")) |&gt; \n  add_sem_ribbon() |&gt; \n  add_sem_errorbar(width = 1.5)\n\np5 &lt;- p1 |&gt; \n  adjust_title(title = \"p5: sd errorbar\") |&gt; \n  add_sd_errorbar(width = 1.5)\n\np6 &lt;- p1 |&gt; \n  adjust_title(title = paste(\"p6: sd ribbon\", \"sd errorbar\", sep = \"\\n\")) |&gt; \n  add_sd_ribbon() |&gt; \n  add_sd_errorbar(width = 1.5)\n\n\n\n\nAdd mean and summary statistics (grouped data points).",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plots and skills (part 1)</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plot types and techniques (part 1)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part2.html",
     "href": "plots-and-skills_part2.html",
-    "title": "4  Plots and skills (part 2)",
+    "title": "4  Plot types and techniques (part 2)",
     "section": "",
     "text": "4.1 Add fit curve to raw data points (i.e. dot plot)\nlibrary(tidyplots)\n\n# View top 10 rows of the columns used\ntime_course |&gt; \n  dplyr::select(score, day) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 2\n   score   day\n   &lt;dbl&gt; &lt;dbl&gt;\n 1     0     0\n 2     0     0\n 3     0     0\n 4     0     0\n 5     0     0\n 6     0     0\n 7     0     0\n 8     0     0\n 9     0     0\n10     0     0\n# Plot\np1 &lt;- time_course |&gt; \n  tidyplot(\n    x = score, \n    y = day) |&gt; \n  add_title(title = \"p1\") |&gt; \n  add_data_points(alpha = 0.2, color = \"#dddddd\")\n\np2 &lt;- p1 |&gt; \n  adjust_title(title = \"p2: orientation = y\") |&gt; \n  add_curve_fit(\n    orientation = \"y\", color = \"#bb5566\", fill = \"#bb5566\")\n\np3 &lt;- p1 |&gt; \n  adjust_title(title = \"p3: orientation = x\") |&gt; \n  add_curve_fit(\n    orientation = \"x\", color = \"#bb5566\", fill = \"#bb5566\")\n\np4 &lt;- p1 |&gt; \n  adjust_title(title = paste(\"p4: orientation = x\", \"sem ribbon\", sep = \"\\n\")) |&gt; \n  add_curve_fit(\n    orientation = \"x\", color = \"#bb5566\", fill = \"#bb5566\") |&gt; \n  add_sem_ribbon(fill = \"#000000\")\n\np5 &lt;- p1 |&gt; \n  adjust_title(title = paste(\"p5: orientation = x\", \"method: 'lm'\", sep = \"\\n\")) |&gt; \n  add_curve_fit(\n    method = \"lm\", orientation = \"x\", color = \"#bb5566\", fill = \"#bb5566\")\n\np6 &lt;- p1 |&gt; \n  adjust_title(title = paste(\"p6: orientation = x\", \"method: 'gam'\", sep = \"\\n\")) |&gt; \n  add_curve_fit(\n    method = \"gam\", orientation = \"x\", color = \"#bb5566\", fill = \"#bb5566\")",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plots and skills (part 2)</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plot types and techniques (part 2)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part2.html#add-fit-curve-to-raw-data-points-i.e.-dot-plot",
     "href": "plots-and-skills_part2.html#add-fit-curve-to-raw-data-points-i.e.-dot-plot",
-    "title": "4  Plots and skills (part 2)",
+    "title": "4  Plot types and techniques (part 2)",
     "section": "",
     "text": "Add fit curve.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plots and skills (part 2)</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plot types and techniques (part 2)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part2.html#plotmath-expressions-in-title-e.g.-bar-plot",
     "href": "plots-and-skills_part2.html#plotmath-expressions-in-title-e.g.-bar-plot",
-    "title": "4  Plots and skills (part 2)",
+    "title": "4  Plot types and techniques (part 2)",
     "section": "4.2 Plotmath expressions in title (e.g. bar plot)",
     "text": "4.2 Plotmath expressions in title (e.g. bar plot)\n\n\n# A tibble: 10 × 2\n   treatment score\n   &lt;chr&gt;     &lt;dbl&gt;\n 1 A             2\n 2 A             4\n 3 A             5\n 4 A             4\n 5 A             6\n 6 B             9\n 7 B             8\n 8 B            12\n 9 B            15\n10 B            16\n\n\n\n# eval: false\n# Plot\np1 &lt;- study |&gt; \n  tidyplot(\n    x = treatment, \n    y = score, \n    color = treatment) |&gt; \n  add_data_points() |&gt; \n  add_mean_bar(alpha = 0.4) |&gt; \n  adjust_title(title = \"p1\") |&gt; \n  add_sem_errorbar()\n\np2 &lt;- p1 |&gt;  \n  adjust_title(\n    title = \n      \"$p2:~italic(M)==frac(1,italic(c)(italic(c)-1))*sum(AUC[italic(list(k,l))])$\",  \n    family = \"sans\") |&gt; \n  add_caption(caption = \"family = 'sans'\")\n\np3 &lt;- p1 |&gt; \n  adjust_title(\n    title = \n      \"$p3:~italic(M)==frac(1,italic(c)(italic(c)-1))*sum(AUC[italic(list(k,l))])$\",  \n    family = \"serif\") |&gt; \n  add_caption(caption = \"family = 'serif'\")\n\np4 &lt;- p1 |&gt; \n  adjust_title(\n    title = \n      \"$p4:~italic(M)==frac(1,italic(c)(italic(c)-1))*sum(AUC[italic(list(k,l))])$\",  \n    family = \"mono\") |&gt; \n  add_caption(caption = \"family = 'mono'\")\n\n\n\n\n\n\n\nTip\n\n\n\nJust surrond your string by “$” characters.\nPlotmath expressions work with plot titles, legend titles, axis titles, axis labels, caption, and more.\n\n\n\n\n\nPlotmath expression in title.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plots and skills (part 2)</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plot types and techniques (part 2)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part2.html#plotmath-expressions-in-more-positions-e.g.-bar-plot",
     "href": "plots-and-skills_part2.html#plotmath-expressions-in-more-positions-e.g.-bar-plot",
-    "title": "4  Plots and skills (part 2)",
+    "title": "4  Plot types and techniques (part 2)",
     "section": "4.3 Plotmath expressions in more positions (e.g. bar plot)",
     "text": "4.3 Plotmath expressions in more positions (e.g. bar plot)\n\nlibrary(tidyplots)\n\n# View top 10 rows of the columns used\nstudy |&gt; \n  dplyr::select(x = treatment, y = score) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 2\n   x         y\n   &lt;chr&gt; &lt;dbl&gt;\n 1 A         2\n 2 A         4\n 3 A         5\n 4 A         4\n 5 A         6\n 6 B         9\n 7 B         8\n 8 B        12\n 9 B        15\n10 B        16\n\n\n\n# Plot\np1 &lt;- study |&gt; \n  tidyplot(\n    x = treatment, \n    y = score, \n    color = treatment) |&gt; \n  add_data_points() |&gt; \n  add_mean_bar(alpha = 0.4) |&gt; \n  add_sem_errorbar() |&gt; \n  add_title(title = \"p1\")\n\np2 &lt;- p1 |&gt; \n  rename_x_axis_levels(\n    new_names = c(\n      \"A\" = \"$IFN*gamma$\",\n      \"B\" = \"$TNF*alpha$\",\n      \"C\" = \"$H[2]*O$\",\n      \"D\" = \"$C[8]*H[10]*N[4]*0[2]$\")) |&gt; \n  adjust_title(\n    title = \"$p2:~italic(E)==italic(m)*italic(c^{2})$\") |&gt; \n  add_caption(\n    caption = \"$Caption:~H[2]*O~level$\") |&gt; \n  add_annotation_text(\n    text = \"$H[2]*O$\", x = 2, y = 45) |&gt; \n  adjust_x_axis_title(\n    title = \"$italic(Mycobacterium~tuberculosis)$\") |&gt; \n  adjust_y_axis_title(\n    title = \"$A==pi*italic(r)^{2}$\") |&gt; \n  adjust_legend_title(\n    title = \"$italic(M.tb)$\")\n\n\n\n\n\n\n\nTip\n\n\n\nJust surrond your string by “$” characters.\nPlotmath expressions work with plot titles, legend titles, axis titles, axis labels, caption, and more.\n\n\n\n\n\nPlotmath expression in more poistions.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plots and skills (part 2)</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plot types and techniques (part 2)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part2.html#group-comparisons-e.g.-bar-plot",
     "href": "plots-and-skills_part2.html#group-comparisons-e.g.-bar-plot",
-    "title": "4  Plots and skills (part 2)",
+    "title": "4  Plot types and techniques (part 2)",
     "section": "4.4 Group comparisons (e.g. bar plot)",
     "text": "4.4 Group comparisons (e.g. bar plot)\n\nlibrary(tidyplots)\n\n# View top 10 rows of the columns used\nstudy |&gt; dplyr::select(treatment, score) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 2\n   treatment score\n   &lt;chr&gt;     &lt;dbl&gt;\n 1 A             2\n 2 A             4\n 3 A             5\n 4 A             4\n 5 A             6\n 6 B             9\n 7 B             8\n 8 B            12\n 9 B            15\n10 B            16\n\n\n\n# Plot\np1 &lt;- study |&gt; \n  tidyplot(\n    x = treatment, \n    y = score, \n    color = treatment) |&gt; \n  add_mean_bar(alpha = 0.3) |&gt; \n  add_sem_errorbar() |&gt; \n  add_data_points() |&gt; \n  add_title(title = \"p1\") |&gt; \n  sort_x_axis_levels()\n\np2 &lt;- p1 |&gt; \n  adjust_title(title = \"p2: among groups\") |&gt; \n  add_test_pvalue()\n\np3 &lt;- p1 |&gt; \n  adjust_title(title = \"p3: hide statistical info\") |&gt; \n  add_test_pvalue(hide_info = TRUE)\n\np4 &lt;- p1 |&gt; \n  adjust_title(title = \"p4: test_pvalue at fixed y position\") |&gt; \n  add_test_pvalue(hide_info = TRUE, y = 90)\n\np5 &lt;- p1 |&gt; \n  adjust_title(\n    title = paste(\n      \"p5: test_pvalue at fixed y position\",\n      \"minimize overlap\", sep = \"\\n\")) |&gt; \n  add_test_pvalue(hide_info = TRUE, y = 90, step.increase = 0.3)\n\np6 &lt;- p1 |&gt; \n  adjust_title(title = \"p6: to group A\") |&gt; \n  add_test_pvalue(ref.group = \"A\", hide_info = TRUE)\n\n\n\n\nGroup comparisons.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plots and skills (part 2)</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plot types and techniques (part 2)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part2.html#test-selected-comparisons-e.g.-dot-plot",
     "href": "plots-and-skills_part2.html#test-selected-comparisons-e.g.-dot-plot",
-    "title": "4  Plots and skills (part 2)",
+    "title": "4  Plot types and techniques (part 2)",
     "section": "4.5 Test selected comparisons (e.g. dot plot)",
     "text": "4.5 Test selected comparisons (e.g. dot plot)\n\nlibrary(tidyplots)\n\n# View top 10 rows of the columns used\nstudy |&gt; \n  dplyr::select(treatment, score) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 2\n   treatment score\n   &lt;chr&gt;     &lt;dbl&gt;\n 1 A             2\n 2 A             4\n 3 A             5\n 4 A             4\n 5 A             6\n 6 B             9\n 7 B             8\n 8 B            12\n 9 B            15\n10 B            16\n\n\n\n# Plot\np1 &lt;- study |&gt; \n  tidyplot(x = treatment, y = score, color = treatment) |&gt; \n  add_mean_dash() |&gt; \n  add_sem_errorbar() |&gt; \n  add_data_points() |&gt; \n  add_title(title = \"p1\")\n\np2 &lt;- p1 |&gt; \n  adjust_title(title = \"p2: selected comparisons\") |&gt; \n  add_test_pvalue(\n    comparisons = list(c(1, 3), c(2, 4)))\n\np3 &lt;- p1 |&gt; \n  adjust_title(\n    title = paste(\n      \"p3: selected comparisons\", \n      \"padding_top\",\n      \"adjusted p\", \n      sep = \"\\n\")) |&gt; \n  add_test_pvalue(\n    comparisons = list(c(1, 3), c(2, 4)), \n    padding_top = 0.5,\n    p.adjust.method = \"bonferroni\")\n\np4 &lt;- p1 |&gt; \n  adjust_title(\n    title = paste(\n      \"p4: selected comparisons\", \n      \"wilcox_test\", \n      \"hide statistical info\", \n      sep = \"\\n\")) |&gt; \n  add_test_pvalue(\n    comparisons = list(c(1, 3), c(2, 4)), \n    method = \"wilcox_test\", \n    label = \"wilcox test: italic(p) = {p}\",\n    hide_info = TRUE)\n\n\n\n\nTest selected comparisons.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plots and skills (part 2)</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plot types and techniques (part 2)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part2.html#add-pre-computed-group-comparisons-e.g.-dot-plot",
     "href": "plots-and-skills_part2.html#add-pre-computed-group-comparisons-e.g.-dot-plot",
-    "title": "4  Plots and skills (part 2)",
+    "title": "4  Plot types and techniques (part 2)",
     "section": "4.6 Add pre-computed group comparisons (e.g. dot plot)",
     "text": "4.6 Add pre-computed group comparisons (e.g. dot plot)\n\nlibrary(tidyplots)\n\n# View top 5 rows of the columns used\nstudy |&gt; dplyr::select(treatment, score) |&gt; dplyr::slice_head(n = 5)\n\n# A tibble: 5 × 2\n  treatment score\n  &lt;chr&gt;     &lt;dbl&gt;\n1 A             2\n2 A             4\n3 A             5\n4 A             4\n5 A             6\n\n# Pre-computed statistical test results.\nstat_df &lt;- tibble::tibble(\n  group1 = c(\"A\"), group2 = c(\"B\", \"C\", \"D\"),\n  p = c(0.005, 0.003, 0.0001), p.adj = c(0.01, 0.006, 0.001),\n  p.signif = c(\"**\", \"**\", \"***\"), y.position = c(25, 55, 55))\nstat_df\n\n# A tibble: 3 × 6\n  group1 group2      p p.adj p.signif y.position\n  &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt;\n1 A      B      0.005  0.01  **               25\n2 A      C      0.003  0.006 **               55\n3 A      D      0.0001 0.001 ***              55\n\n\n\n# Plot\np1 &lt;- study |&gt; \n  tidyplot(x = treatment, y = score, color = treatment) |&gt; \n  add_mean_dash() |&gt; \n  add_sem_errorbar() |&gt; \n  add_data_points() |&gt; \n  add_title(title = \"p1\")\n\np2 &lt;- p1 |&gt; \n  adjust_title(title = \"p2: all pre-computed p values\") |&gt; \n  add_test_pvalue_manual(data = stat_df, label = \"p\")\n\np3 &lt;- p1 |&gt; \n  adjust_title(title = \"p3: all pre-computed p.adj values\") |&gt; \n  add_test_pvalue_manual(data = stat_df, label = \"p.adj\")\n\np4 &lt;- p1 |&gt; \n  adjust_title(title = \"p4: specify 'p.adj'\") |&gt; \n  add_test_pvalue_manual(data = stat_df, label = \"p.adj = {p.adj}\")\n\nstat_df_sub &lt;- stat_df |&gt; dplyr::slice_head(n = 1)\np5 &lt;- p1 |&gt; \n  adjust_title(title = \"p5: 1st pre-computed p values\") |&gt; \n  add_test_pvalue_manual(data = stat_df_sub)\n\np6 &lt;- p1 |&gt; \n  adjust_title(title = \"p6: all pre-computed asterisks\") |&gt; \n  add_test_asterisks_manual(data = stat_df)\n\n\n\n\nAdd pre-computed group comparisons.\n\n\n\n\n\n\n\n\nNote\n\n\n\nadd_test_pvalue_manual() and add_test_asterisks_manual() expect a discrete variable on the x-axis and a continuous variable on the y-axis. To produce horizontal plots, use flip_plot().",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plots and skills (part 2)</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plot types and techniques (part 2)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part2.html#compare-groups-e.g.-boxplot",
     "href": "plots-and-skills_part2.html#compare-groups-e.g.-boxplot",
-    "title": "4  Plots and skills (part 2)",
+    "title": "4  Plot types and techniques (part 2)",
     "section": "4.7 Compare groups (e.g. boxplot)",
     "text": "4.7 Compare groups (e.g. boxplot)\n\nlibrary(tidyplots)\n\n# View top 10 rows of the columns used\nstudy |&gt; \n  dplyr::select(group, score, dose, treatment) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 4\n   group   score dose  treatment\n   &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;    \n 1 placebo     2 high  A        \n 2 placebo     4 high  A        \n 3 placebo     5 high  A        \n 4 placebo     4 high  A        \n 5 placebo     6 high  A        \n 6 placebo     9 low   B        \n 7 placebo     8 low   B        \n 8 placebo    12 low   B        \n 9 placebo    15 low   B        \n10 placebo    16 low   B        \n\n\n\np1 &lt;- study |&gt; \n  tidyplot(\n    x = group, \n    y = score, \n    color = dose) |&gt; \n  add_boxplot() |&gt; \n  add_data_points() |&gt; \n  add_title(title = \"p1\")\n\np2 &lt;- p1 |&gt; \n  adjust_title(title = \"p2: test asterisks\") |&gt; \n  add_test_asterisks()\n\np3 &lt;- p1 |&gt; \n  adjust_title(title = \"p3: test p value\") |&gt; \n  add_test_pvalue(hide_info = TRUE)\n\np4 &lt;- study |&gt; \n  tidyplot(\n    x = treatment, \n    y = score, \n    color = treatment) |&gt; \n  add_boxplot() |&gt; \n  add_data_points() |&gt; \n  add_test_asterisks(hide_info = TRUE) |&gt; \n  add_title(title = \"p4: test asterisks\")\n\n\n\n\nCompare groups.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plots and skills (part 2)</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plot types and techniques (part 2)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part2.html#paired-testing-e.g.-boxplot",
     "href": "plots-and-skills_part2.html#paired-testing-e.g.-boxplot",
-    "title": "4  Plots and skills (part 2)",
+    "title": "4  Plot types and techniques (part 2)",
     "section": "4.8 Paired testing (e.g. boxplot)",
     "text": "4.8 Paired testing (e.g. boxplot)\n\nlibrary(tidyplots)\n\ny &lt;- c(2.3, 4.5, 6.3, 3.4, 7.8, 6.7)\ndf &lt;- data.frame(\n  y = c(y, y + c(0.8, 0.75)),\n  group = paste0(\"g\", rep(c(1, 2), each = 6)),\n  batch = paste0(\"b\", c(1:6, 1:6)))\n\n# View df\ndf |&gt; tibble::tibble()\n\n# A tibble: 12 × 3\n       y group batch\n   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;\n 1  2.3  g1    b1   \n 2  4.5  g1    b2   \n 3  6.3  g1    b3   \n 4  3.4  g1    b4   \n 5  7.8  g1    b5   \n 6  6.7  g1    b6   \n 7  3.1  g2    b1   \n 8  5.25 g2    b2   \n 9  7.1  g2    b3   \n10  4.15 g2    b4   \n11  8.6  g2    b5   \n12  7.45 g2    b6   \n\n\n\n# Plot\np1 &lt;- df |&gt; \n  tidyplot(\n    x = group, \n    y = y, \n    color = group) |&gt; \n  add_boxplot() |&gt; \n  add_data_points() |&gt; \n  add_title(title = \"p1\")\n\np2 &lt;- p1 |&gt; \n  remove_legend() |&gt; \n  adjust_title(title = \"p2: p value\") |&gt; \n  add_test_pvalue() |&gt; \n  add_test_asterisks(bracket.nudge.y = 0.25, hide.ns = FALSE, \n    hide_info = TRUE, vjust = -0.3)\n\np3 &lt;- p1 |&gt; \n  remove_legend() |&gt; \n  adjust_title(title = \"p3: paired p value\") |&gt; \n  add_test_pvalue(paired_by = batch, hide_info = TRUE) |&gt; \n  add_test_asterisks(paired_by = batch, bracket.nudge.y = 0.25, hide_info = TRUE)\n\np4 &lt;- p1 |&gt; \n  remove_legend() |&gt; \n  adjust_title(title = paste(\"p4: paired p value\", \"paired lines\", sep = \"\\n\")) |&gt; \n  add_test_asterisks(paired_by = batch, hide_info = TRUE) |&gt; \n  add_line(group = batch, color = \"#000000\", linetype = \"dotted\")\n\n\n\n\nPaired testing.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plots and skills (part 2)</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plot types and techniques (part 2)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part2.html#add-ggplot2-extension-code-e.g.-dot-plot",
     "href": "plots-and-skills_part2.html#add-ggplot2-extension-code-e.g.-dot-plot",
-    "title": "4  Plots and skills (part 2)",
+    "title": "4  Plot types and techniques (part 2)",
     "section": "4.9 Add ggplot2 (extension) code (e.g. dot plot)",
     "text": "4.9 Add ggplot2 (extension) code (e.g. dot plot)\n\n\n\n\n\n\nTip\n\n\n\nBecause tidyplots is based on ggplot2 … thereby, tidyplots provides access to a wide range of features that are implemented within ggplot2 or ggplot2 extension packages … add() helper function.\n\n\n\nlibrary(tidyplots)\n\n# View top 10 rows of the columns used\nstudy |&gt; \n  dplyr::select(treatment, score) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 2\n   treatment score\n   &lt;chr&gt;     &lt;dbl&gt;\n 1 A             2\n 2 A             4\n 3 A             5\n 4 A             4\n 5 A             6\n 6 B             9\n 7 B             8\n 8 B            12\n 9 B            15\n10 B            16\n\n\n\n# Plot\np1 &lt;- study |&gt; \n  tidyplot(x = treatment, y = score, color = treatment) |&gt; \n  add_title(title = \"p1\")\n\np2 &lt;- p1 |&gt; \n  adjust_title(title = paste(\n    \"p2: add points\", \n    \"via ggplot2::geom_point()\", \n    sep = \"\\n\")) |&gt; \n  add(ggplot2::geom_point()) |&gt; \n  add_data_points(shape = 1, white_border = TRUE)\n\np3 &lt;- p2 |&gt; \n  adjust_title(title = \"p3: *M. tuberculosis*-infected cells\")\n\np4 &lt;- p2 |&gt; \n  adjust_title(title = \n    \"p4: *M. tuberculosis*  \n    via ggtext::element_markdown()\") |&gt; \n  add(ggplot2::theme(plot.title = ggtext::element_markdown()))\n\n\n\n\n\n\n\nNote\n\n\n\nFor the title of p4: “p4: M. tuberculosis” is followed by clicking Space bar twice and Enter button once, then followed with “via ggtext::element-markdown()”.\n\n\n\n\n\nAdd ggplot2 (extensions) code.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plots and skills (part 2)</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plot types and techniques (part 2)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part2.html#add-ggplot2-extention-code-three-more-plots",
     "href": "plots-and-skills_part2.html#add-ggplot2-extention-code-three-more-plots",
-    "title": "4  Plots and skills (part 2)",
+    "title": "4  Plot types and techniques (part 2)",
     "section": "4.10 Add ggplot2 (extention) code (three more plots)",
     "text": "4.10 Add ggplot2 (extention) code (three more plots)\n\nlibrary(tidyplots)\n\n# View top 10 rows of the columns used\nclimate |&gt; dplyr::select(max_temperature, month) |&gt; dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 2\n   max_temperature month\n             &lt;dbl&gt; &lt;chr&gt;\n 1           -1.49 01   \n 2            3.37 02   \n 3            5.05 03   \n 4            8.34 04   \n 5           16.2  05   \n 6           18.2  06   \n 7           20.5  07   \n 8           18.2  08   \n 9           18.3  09   \n10           14.2  10   \n\n\n\np1 &lt;- climate |&gt; \n  tidyplot(x = max_temperature, y = month, color = month) |&gt; \n  add_title(title = \"p1\") |&gt; remove_legend() |&gt; \n  add_data_points_beeswarm(white_border = TRUE)\n\np2 &lt;- p1 |&gt; \n  add(ggplot2::coord_polar(theta = \"y\")) |&gt; \n  theme_ggplot2() |&gt; \n  adjust_title(\n    title = \"p2: polar coordinates\", fontsize = 10, color = \"#bb5566\") |&gt; \n  remove_legend()\n\np3 &lt;- climate |&gt; \n  tidyplot(x = max_temperature, y = month, color = month) |&gt; \n  add_title(title = \"p3: ridge plot\") |&gt; remove_legend() |&gt; \n  add(\n    ggridges::geom_density_ridges(alpha = 0.3, point_alpha = 0.2, \n      jittered_points = TRUE, point_size = 1))\n\np4 &lt;- climate |&gt; \n  tidyplot(x = month, y = max_temperature, color = month) |&gt; \n  add_title(title = \"p4: violin plot\") |&gt; \n  remove_legend() |&gt; add_violin(trim = FALSE) |&gt; \n  add_data_points_beeswarm(alpha = 0.5, size = 0.5, white_border = TRUE)\n\np5 &lt;- climate |&gt; \n  tidyplot(x = month, y = max_temperature, color = month) |&gt; \n  add_title(title = \"p5: violin/dot plot\") |&gt; remove_legend() |&gt; \n  add(\n    see::geom_violindot(dots_size = 12, trim = FALSE, \n      alpha = 0.5, color_dots = \"#00000033\"))\n\n\n\n\n\n\n\nNote\n\n\n\nTidyplots is easier for many common plotting tasks.\nFor more complex plots, you can either augment tidyplots with custom ggplot2 code using the add() function or switch to ggplot2 for full flexibility.\n\n\n\n\n\nAdd ggplot2 (extensions) code.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plots and skills (part 2)</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plot types and techniques (part 2)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part2.html#save-multiple-formats-by-piping-through-e.g.-dot-plot",
     "href": "plots-and-skills_part2.html#save-multiple-formats-by-piping-through-e.g.-dot-plot",
-    "title": "4  Plots and skills (part 2)",
+    "title": "4  Plot types and techniques (part 2)",
     "section": "4.11 Save multiple formats by piping through (e.g. dot plot)",
     "text": "4.11 Save multiple formats by piping through (e.g. dot plot)\n\nlibrary(tidyplots)\n\n# View\nstudy\n\n# A tibble: 20 × 7\n   treatment group     dose  participant   age sex    score\n   &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;\n 1 A         placebo   high  p01            23 female     2\n 2 A         placebo   high  p02            45 male       4\n 3 A         placebo   high  p03            32 female     5\n 4 A         placebo   high  p04            37 male       4\n 5 A         placebo   high  p05            24 female     6\n 6 B         placebo   low   p06            23 female     9\n 7 B         placebo   low   p07            45 male       8\n 8 B         placebo   low   p08            32 female    12\n 9 B         placebo   low   p09            37 male      15\n10 B         placebo   low   p10            24 female    16\n11 C         treatment high  p01            23 female    32\n12 C         treatment high  p02            45 male      35\n13 C         treatment high  p03            32 female    24\n14 C         treatment high  p04            37 male      45\n15 C         treatment high  p05            24 female    56\n16 D         treatment low   p06            23 female    23\n17 D         treatment low   p07            45 male      25\n18 D         treatment low   p08            32 female    21\n19 D         treatment low   p09            37 male      22\n20 D         treatment low   p10            24 female    23\n\n\n\n# Plot and save\nstudy |&gt; \n  tidyplot(\n    x = group, \n    y = score, \n    color = dose) |&gt; \n  add_data_points_beeswarm() |&gt; \n  add_sem_errorbar() |&gt; \n  save_plot(\n    \"images/multiple-formats-via-pipe.pdf\", \n    view_plot = FALSE) |&gt; \n  save_plot(\n    \"images/multiple-formats-via-pipe.png\", \n    view_plot = FALSE) |&gt; \n  save_plot(\n    \"images/multiple-formats-via-pipe.svg\", \n    view_plot = FALSE)\n\nList the figures saved:\n\n\nimages/\n├── multiple-formats-via-pipe.pdf\n├── multiple-formats-via-pipe.png\n└── multiple-formats-via-pipe.svg\n\n\n\n\n\nSave a plot in multiple formats by piping through.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plots and skills (part 2)</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plot types and techniques (part 2)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part2.html#save-multiple-pdfs-by-piping-through-e.g.-violin-plot",
     "href": "plots-and-skills_part2.html#save-multiple-pdfs-by-piping-through-e.g.-violin-plot",
-    "title": "4  Plots and skills (part 2)",
+    "title": "4  Plot types and techniques (part 2)",
     "section": "4.12 Save multiple PDFs by piping through (e.g. violin plot)",
     "text": "4.12 Save multiple PDFs by piping through (e.g. violin plot)\n\nlibrary(tidyplots)\n\n# View top 10 rows of the columns used\ngene_expression |&gt; \n  dplyr::select(\n    group, expression, condition, \n    sample_type, is_immune_gene) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 5\n   group expression condition sample_type is_immune_gene\n   &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt;         \n 1 Hin         2.20 healthy   input       no            \n 2 Hin         2.20 healthy   input       no            \n 3 Hin         2.66 healthy   input       no            \n 4 Hin         2.65 healthy   input       no            \n 5 Hin         3.44 healthy   input       no            \n 6 Ein         5.03 disease   input       no            \n 7 Ein         5.31 disease   input       no            \n 8 Ein         5.37 disease   input       no            \n 9 Ein         5.54 disease   input       no            \n10 Ein         5.65 disease   input       no            \n\n\n\n# Plot and save\ngene_expression |&gt; \n  tidyplot(\n    x = group, \n    y = expression, \n    color = group) |&gt; \n  add_violin(trim = FALSE) |&gt; \n  add_data_points_beeswarm(white_border = TRUE) |&gt; \n  save_plot(\n    \"images/multiple-pdf-by-piping-1.pdf\", \n    view_plot = FALSE) |&gt; \n  split_plot(\n    by = condition, \n    axis.titles = \"margins\") |&gt; \n  save_plot(\n    \"images/multiple-pdf-by-piping-2.pdf\", \n    view_plot = FALSE) |&gt; \n  split_plot(\n    by = sample_type) |&gt; \n  save_plot(\n    \"images/multiple-pdf-by-piping-3.pdf\", \n    view_plot = FALSE) |&gt; \n  split_plot(\n    rows = condition, \n    cols = is_immune_gene,\n    axis.titles = \"margins\") |&gt; \n  save_plot(\n    \"images/multiple-pdf-by-piping-4.pdf\", \n    view_plot = FALSE)\n\nList the figures saved:\n\n\nimages\n├── multiple-pdf-by-piping-1.pdf\n├── multiple-pdf-by-piping-2.pdf\n├── multiple-pdf-by-piping-3.pdf\n└── multiple-pdf-by-piping-4.pdf\n\n\n\n\n\nThe 4th PDF figure.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plots and skills (part 2)</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plot types and techniques (part 2)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part2.html#save-multiple-pdfs-at-once-e.g.-violin-plot",
     "href": "plots-and-skills_part2.html#save-multiple-pdfs-at-once-e.g.-violin-plot",
-    "title": "4  Plots and skills (part 2)",
+    "title": "4  Plot types and techniques (part 2)",
     "section": "4.13 Save multiple PDFs at once (e.g. violin plot)",
     "text": "4.13 Save multiple PDFs at once (e.g. violin plot)\n\nlibrary(tidyplots)\n\n# View 10 rows of the columns used\ngene_expression |&gt; \n  dplyr::select(\n    group, \n    expression, \n    external_gene_name) |&gt; \n  dplyr::slice(c(1:2, 101:102, 201:202, 301:302, 401:402))\n\n# A tibble: 10 × 3\n   group expression external_gene_name\n   &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;             \n 1 Hin         2.20 Apol6             \n 2 Hin         2.20 Apol6             \n 3 Hin         7.39 Vgf               \n 4 Hin         6.86 Vgf               \n 5 Hin         8.21 Dpf2              \n 6 Hin         8.29 Dpf2              \n 7 Hin         5.87 Ankrd54           \n 8 Hin         5.62 Ankrd54           \n 9 Hin         7.84 Fam96b            \n10 Hin         7.52 Fam96b            \n\n\n\n# Plot and save\ngene_expression |&gt; \n  tidyplot(\n    x = group, \n    y = expression, \n    color = group) |&gt; \n  add_violin(trim = FALSE) |&gt; \n  add_data_points_beeswarm(white_border = TRUE) |&gt;   \n  adjust_size(overall_width = 100) |&gt; # see the note of next page\n  adjust_theme_details(\n    strip.text.x.top = ggplot2::element_text(face = \"italic\")) |&gt; # gene names in italic\n  split_plot(\n    by = external_gene_name, \n    ncol = 2, \n    nrow = 2) |&gt; \n  save_plot(\n    \"images/multiple-pdf-at-once.pdf\", \n    multiple_files = TRUE, \n    view_plot = FALSE)\n\nList the figure names saved:\n\n\nimages/\n├── multiple-pdf-at-once_01.pdf\n├── multiple-pdf-at-once_02.pdf\n├── multiple-pdf-at-once_03.pdf\n├── multiple-pdf-at-once_04.pdf\n├── multiple-pdf-at-once_05.pdf\n├── multiple-pdf-at-once_06.pdf\n├── multiple-pdf-at-once_07.pdf\n├── multiple-pdf-at-once_08.pdf\n├── multiple-pdf-at-once_09.pdf\n└── multiple-pdf-at-once_10.pdf\n\n\n\n\n\nThe 10th PDF figure.\n\n\n\n\n\n\n\n\nNote\n\n\n\nThe overall_width and overall_height parameters of the adjust_size() function control the overall dimensions of a multiplot layout generated with split_plot().\nThe function adjust_theme_details() is a wrapper around ggplot2::theme().",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plots and skills (part 2)</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plot types and techniques (part 2)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part2.html#save-intermediate-stages-e.g.-bar-plot",
     "href": "plots-and-skills_part2.html#save-intermediate-stages-e.g.-bar-plot",
-    "title": "4  Plots and skills (part 2)",
+    "title": "4  Plot types and techniques (part 2)",
     "section": "4.14 Save intermediate stages (e.g. bar plot)",
     "text": "4.14 Save intermediate stages (e.g. bar plot)\n\nlibrary(tidyplots)\n\n# View top 10 rows of the columns used\nstudy |&gt; dplyr::select(treatment, score) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 2\n   treatment score\n   &lt;chr&gt;     &lt;dbl&gt;\n 1 A             2\n 2 A             4\n 3 A             5\n 4 A             4\n 5 A             6\n 6 B             9\n 7 B             8\n 8 B            12\n 9 B            15\n10 B            16\n\n\n\n# Plot and save\nstudy |&gt; \n  tidyplot(\n    x = treatment, \n    y = score, \n    color = treatment) |&gt; \n  add_mean_bar(alpha = 0.5) |&gt; \n  adjust_legend_position(position = \"none\") |&gt; \n  add_title(\"stage_1\") |&gt; \n  save_plot(\n    \"images/stage_1.png\", \n    view_plot = FALSE) |&gt; \n  adjust_title(\"stage_2\") |&gt; \n  add_sem_errorbar() |&gt; \n  save_plot(\n    \"images/stage_2.png\", \n    view_plot = FALSE) |&gt; \n  adjust_title(\"stage_3\") |&gt; \n  add_data_points_beeswarm(white_border = TRUE) |&gt; \n  save_plot(\n    \"images/stage_3.png\", \n    view_plot = FALSE) |&gt; \n  adjust_title(\"stage_4\") |&gt; \n  add_test_asterisks(hide_info = TRUE) |&gt; \n  save_plot(\n    \"images/stage_4.png\", \n    view_plot = FALSE)\n\nList the figures saved:\n\n\nimages/\n├── stage_1.png\n├── stage_2.png\n├── stage_3.png\n└── stage_4.png\n\n\n\n\n\nSave intermediate stages.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plots and skills (part 2)</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plot types and techniques (part 2)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part2.html#sec-plot-panel-padding",
     "href": "plots-and-skills_part2.html#sec-plot-panel-padding",
-    "title": "4  Plots and skills (part 2)",
+    "title": "4  Plot types and techniques (part 2)",
     "section": "4.15 Panel and plot padding",
     "text": "4.15 Panel and plot padding\n\nlibrary(tidyplots)\n\n# View top 10 rows of the columns used\nanimals |&gt; dplyr::select(weight, size) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 2\n      weight  size\n       &lt;dbl&gt; &lt;dbl&gt;\n 1 0.00012     1.5\n 2 0.00045    10  \n 3 0.0002     10  \n 4 0.00002     2.5\n 5 0.003      17  \n 6 0.0000025   1  \n 7 0.000005    4  \n 8 0.00001     0.8\n 9 0.0002      7.5\n10 0.0004      9  \n\n\n\n# Plot\np1 &lt;- animals |&gt; \n  tidyplot(x = weight, y = size, color = size, paper = \"#dddddd\") |&gt; \n  add_data_points(white_border = TRUE, size = 3) |&gt; \n  add_title(title = \"p1\") |&gt; \n  remove_legend()\n\np2 &lt;- p1 |&gt; \n  adjust_title(title = \"p2: different padding in four panel sides\") |&gt; \n  adjust_padding(\n    top = 0.2, \n    right = 0.3, \n    bottom = 0.4, \n    left = 0.5)\n\np3 &lt;- p1 |&gt; \n  adjust_title(title = \"p3: same padding in four panel sides\") |&gt; \n  adjust_padding(\n    all = 0.2)\n\np4 &lt;- p1 |&gt; \n  adjust_title(title = \"p4: remove panel padding\") |&gt; \n  remove_padding()\n\np5 &lt;- p1 |&gt; \n  adjust_title(title = \"p5: different padding in four plot sides\") |&gt; \n  adjust_theme_details(\n    plot.margin = ggplot2::margin(t = 0.5, r = 0.5, b = 1, l = 1, unit = \"cm\"))\n\np6 &lt;- p1 |&gt; \n  adjust_title(title = \"p6: same plot padding via saving\") |&gt; \n  save_plot(\n    \"images/plot_panel_padding_p6.png\", \n    padding = 0.3) # defaults to 0.1 meaning 10%\n\n\n\n\nPanel and plot padding.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plots and skills (part 2)</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plot types and techniques (part 2)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part2.html#use-a-log10-axis-for-data-containing-zero-and-negative-values-e.g.-dot-plot",
     "href": "plots-and-skills_part2.html#use-a-log10-axis-for-data-containing-zero-and-negative-values-e.g.-dot-plot",
-    "title": "4  Plots and skills (part 2)",
+    "title": "4  Plot types and techniques (part 2)",
     "section": "4.16 Use a log10 axis for data containing zero and negative values (e.g. dot plot)",
     "text": "4.16 Use a log10 axis for data containing zero and negative values (e.g. dot plot)\n\nlibrary(tidyplots)\n\nset.seed(42)\n\ny &lt;- runif(n = 500, min = 0, max = 100)\n\n# change 30 values to zero\ny[sample(NROW(y), size = 30)] &lt;- 0\n\ndf &lt;- tibble::tibble(x = \"test\", y = c(y, y * -1))\n\n# View rows 496 - 505\ndf |&gt; \n  dplyr::slice(496:505)\n\n# A tibble: 10 × 2\n   x          y\n   &lt;chr&gt;  &lt;dbl&gt;\n 1 test   18.3 \n 2 test    0   \n 3 test   30.5 \n 4 test   16.6 \n 5 test    3.28\n 6 test  -91.5 \n 7 test  -93.7 \n 8 test  -28.6 \n 9 test  -83.0 \n10 test  -64.2 \n\n\n\n# Plot\np1 &lt;- df |&gt; \n  tidyplot(\n    x = x, \n    y = y) |&gt; \n  add_data_points_beeswarm(white_border = TRUE) |&gt;  \n  add_title(title = \"p1\")\n\np2 &lt;- p1 |&gt; \n  adjust_title(title = \"p2: zero points in red\") |&gt; \n  add_data_points_beeswarm(\n    data = filter_rows(y == 0), \n    white_border = TRUE, \n    color = \"#bb5566\")\n\np3 &lt;- p2 |&gt; \n  adjust_title(title = \"p3: log\") |&gt; \n  adjust_y_axis(\n    transform = \"pseudo_log\", \n    breaks = c(-100, -10, -1, 0, 1, 10, 100))\n\np4 &lt;- p3 |&gt; \n  adjust_title(title = \"p4: log + axis_logticks\") |&gt; \n  add(ggplot2::guides(y = \"axis_logticks\"))\n\n\n\n\nLog10 axis for data containing zero and negative values.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plots and skills (part 2)</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plot types and techniques (part 2)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part2.html#change-plot-themes-e.g.-dot-plot",
     "href": "plots-and-skills_part2.html#change-plot-themes-e.g.-dot-plot",
-    "title": "4  Plots and skills (part 2)",
+    "title": "4  Plot types and techniques (part 2)",
     "section": "4.17 Change plot themes (e.g. dot plot)",
     "text": "4.17 Change plot themes (e.g. dot plot)\n\nlibrary(tidyplots)\n\n# View top 10 rows of the columns used\nstudy |&gt; \n  dplyr::select(treatment, score) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 2\n   treatment score\n   &lt;chr&gt;     &lt;dbl&gt;\n 1 A             2\n 2 A             4\n 3 A             5\n 4 A             4\n 5 A             6\n 6 B             9\n 7 B             8\n 8 B            12\n 9 B            15\n10 B            16\n\n\n\n# Plot\np0 &lt;- study |&gt; \n  tidyplot(x = treatment, y = score, color = treatment) |&gt; \n  add_data_points() |&gt; \n  add_median_dash() |&gt; \n  add_sem_errorbar()\n\np1 &lt;- p0 |&gt;\n  add_title(title = \"p1: theme_tidyplot (default)\")\n\np2 &lt;- p0 |&gt;\n  add_title(title = \"p2: theme_ggplot2\") |&gt; \n  theme_ggplot2() |&gt; \n  adjust_title(fontsize = 10, color = \"#bb5566\")\n\np3 &lt;- p0 |&gt;\n  add_title(title = \"p3: theme_minimal_x\") |&gt; \n  theme_minimal_x() |&gt; \n  adjust_title(fontsize = 10, color = \"#bb5566\")\n\np4 &lt;- p0 |&gt;\n  add_title(title = \"p4: theme_minimal_y\") |&gt; \n  theme_minimal_y() |&gt; \n  adjust_title(fontsize = 10, color = \"#bb5566\")\n\np5 &lt;- p0 |&gt;\n  add_title(title = \"p5: theme_minimal_xy\") |&gt; \n  theme_minimal_xy() |&gt; \n  adjust_title(fontsize = 10, color = \"#bb5566\")\n\np6 &lt;- p0 |&gt;\n  add_title(title = \"p6: ggplot2::theme_void\") |&gt;\n  add(ggplot2::theme_void()) |&gt; \n  adjust_title(fontsize = 10, color = \"#bb5566\")\n\n\n\n\nChange plot themes.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plots and skills (part 2)</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plot types and techniques (part 2)</span>"
     ]
   },
   {
     "objectID": "plots-and-skills_part2.html#rasterize-data-points-e.g.-dot-plot-selectively",
     "href": "plots-and-skills_part2.html#rasterize-data-points-e.g.-dot-plot-selectively",
-    "title": "4  Plots and skills (part 2)",
+    "title": "4  Plot types and techniques (part 2)",
     "section": "4.18 Rasterize data points (e.g. dot plot) selectively",
     "text": "4.18 Rasterize data points (e.g. dot plot) selectively\n\n\n\n\n\n\nTip\n\n\n\nToo many vector shapes can or might slow down software performance. This is how you can selectively rasterize data points.\n\n\n\nlibrary(tidyplots)\nlibrary(svglite)\n\n# View top 10 rows of the columns used\nclimate |&gt; \n  dplyr::select(month, max_temperature) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 2\n   month max_temperature\n   &lt;chr&gt;           &lt;dbl&gt;\n 1 01              -1.49\n 2 02               3.37\n 3 03               5.05\n 4 04               8.34\n 5 05              16.2 \n 6 06              18.2 \n 7 07              20.5 \n 8 08              18.2 \n 9 09              18.3 \n10 10              14.2 \n\n\n\n# Save vector images without rasterization\nclimate |&gt; \n  tidyplot(x = month, y = max_temperature, color = month) |&gt; \n  add_data_points_beeswarm(white_border = TRUE) |&gt; \n  adjust_legend_position(position = \"none\") |&gt; \n  save_plot(\"images/rasterize_data-points_no.pdf\", view_plot = FALSE) |&gt; \n  save_plot(\"images/rasterize_data-points_no.svg\", view_plot = FALSE)\n\n# Save vector images with rasterization (dpi = 100)\nclimate |&gt; \n  tidyplot(x = month, y = max_temperature, color = month) |&gt; \n  add_data_points_beeswarm(\n    white_border = TRUE, \n    rasterize = TRUE, \n    rasterize_dpi = 100) |&gt; \n  adjust_legend_position(position = \"none\") |&gt; \n  save_plot(\"images/rasterize_data-points_yes_dpi100.pdf\", view_plot = FALSE) |&gt; \n  save_plot(\"images/rasterize_data-points_yes_dpi100.svg\", view_plot = FALSE)\n\n# Save vector images with rasterization (dpi = 300)\nclimate |&gt; \n  tidyplot(x = month, y = max_temperature, color = month) |&gt; \n  add_data_points_beeswarm(\n    white_border = TRUE, \n    rasterize = TRUE, \n    rasterize_dpi = 300) |&gt; \n  adjust_legend_position(position = \"none\") |&gt; \n  save_plot(\"images/rasterize_data-points_yes_dpi300.pdf\", view_plot = FALSE) |&gt; \n  save_plot(\"images/rasterize_data-points_yes_dpi300.svg\", view_plot = FALSE)\n\nList the figures saved:\n\n\nimages\n├── rasterize_data-points_no.pdf\n├── rasterize_data-points_no.svg\n├── rasterize_data-points_yes_dpi100.pdf\n├── rasterize_data-points_yes_dpi100.svg\n├── rasterize_data-points_yes_dpi300.pdf\n└── rasterize_data-points_yes_dpi300.svg\n\n\n\n\n\nRasterize data points selectively.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plots and skills (part 2)</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plot types and techniques (part 2)</span>"
     ]
   },
   {
     "objectID": "more-plots.html",
     "href": "more-plots.html",
-    "title": "5  More plots",
+    "title": "5  Additional plot types and techniques",
     "section": "",
     "text": "5.1 Violin plot\nlibrary(tidyplots)\n\n# View top 10 rows of the columns used\nstudy |&gt; \n  dplyr::select(treatment, score) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 2\n   treatment score\n   &lt;chr&gt;     &lt;dbl&gt;\n 1 A             2\n 2 A             4\n 3 A             5\n 4 A             4\n 5 A             6\n 6 B             9\n 7 B             8\n 8 B            12\n 9 B            15\n10 B            16\np1 &lt;- study |&gt; \n  tidyplot(x = treatment, y = score, color = treatment) |&gt; \n  add_data_points_beeswarm(white_border = TRUE) |&gt; \n  add_title(title = \"p1\")\n\np2 &lt;- p1 |&gt; \n  adjust_title(title = \"p2: violin without tail\") |&gt; \n  add_violin()\n\np3 &lt;- p1 |&gt; \n  adjust_title(title = \"p3: violin with tail\") |&gt; \n  add_violin(trim = FALSE)\n\np4 &lt;- p1 |&gt; \n  adjust_title(title = \"p4: violin with tail and quantiles\") |&gt; \n  add_violin(\n    trim = FALSE, \n    quantile.linetype = \"solid\", \n    linewidth = 1)\n\np5 &lt;- p2 |&gt; \n  adjust_title(title = \"p5: compare to 'A'\") |&gt; \n  add_test_asterisks(ref.group = \"A\", hide_info = TRUE)\n\np6 &lt;- p3 |&gt; \n  adjust_title(title = \"p6: compare to 'A'\") |&gt; \n  add_test_pvalue(ref.group = \"A\", padding_top = 0.2, \n    bracket.nudge.y = 0.3, step.increase = 0.2, hide_info = TRUE)",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>More plots</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Additional plot types and techniques</span>"
     ]
   },
   {
     "objectID": "more-plots.html#violin-plot",
     "href": "more-plots.html#violin-plot",
-    "title": "5  More plots",
+    "title": "5  Additional plot types and techniques",
     "section": "",
     "text": "Violin plot.",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>More plots</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Additional plot types and techniques</span>"
     ]
   },
   {
     "objectID": "more-plots.html#rasterize-correlation-heatmap",
     "href": "more-plots.html#rasterize-correlation-heatmap",
-    "title": "5  More plots",
+    "title": "5  Additional plot types and techniques",
     "section": "5.2 (Rasterize) correlation heatmap",
     "text": "5.2 (Rasterize) correlation heatmap\n\nlibrary(tidyplots)\n\ndf &lt;- \"https://tidyplots.org/data/correlation-matrix.csv\" |&gt; \n  readr::read_csv(show_col_types = FALSE)\n\n\ndf |&gt; dim()\n\n[1] 202500      5\n\n# View top 10 rows of the columns used\ndf |&gt; dplyr::select(x, y, correlation) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 3\n   x       y       correlation\n   &lt;chr&gt;   &lt;chr&gt;         &lt;dbl&gt;\n 1 YAL022C YAL022C      1     \n 2 YAL022C YAL040C      0.505 \n 3 YAL022C YAL053W      0.0730\n 4 YAL022C YAL067C     -0.244 \n 5 YAL022C YAR003W      0.0282\n 6 YAL022C YAR007C     -0.197 \n 7 YAL022C YAR008W     -0.0395\n 8 YAL022C YAR018C      0.692 \n 9 YAL022C YBL002W     -0.0289\n10 YAL022C YBL003C     -0.125 \n\n\n\n# Define a new color scheme\nnew_colors &lt;- c(\"#000000\", \"#994455\", \"#ee99aa\", \"#eecc66\")\n\np0 &lt;- df |&gt; \n  tidyplot(x = x, y = y, color = correlation) |&gt;    \n  remove_legend_title() |&gt; \n  adjust_colors(new_colors = new_colors) |&gt; \n  adjust_theme_details(legend.key.height = ggplot2::unit(1, \"null\"),\n    legend.margin = ggplot2::margin_part(t = 0, b = 0)) |&gt; \n  add_caption(\"Data source: Mol Biol Cell. 1998. PMID: 9843569\")\n\n# Save vector images without rasterization\np0 |&gt; \n  add_heatmap() |&gt; \n  sort_x_axis_levels(order_x) |&gt; sort_y_axis_levels(order_y) |&gt; \n  remove_x_axis() |&gt; remove_y_axis() |&gt; \n  save_plot(\"images/rasterize_correlation_no.pdf\", view_plot = FALSE) |&gt; \n  save_plot(\"images/rasterize_correlation_no.svg\", view_plot = FALSE)\n\n# Save vector images with rasterization (dpi = 100)\np0 |&gt; \n  add_heatmap(rasterize = TRUE, rasterize_dpi = 100) |&gt; \n  sort_x_axis_levels(order_x) |&gt; sort_y_axis_levels(order_y) |&gt; \n  remove_x_axis() |&gt; remove_y_axis() |&gt; \n  save_plot(\"images/rasterize_correlation_yes_dpi100.pdf\", view_plot = FALSE) |&gt; \n  save_plot(\"images/rasterize_correlation_yes_dpi100.svg\", view_plot = FALSE)\n\nList the figures saved:\n\n\nimages\n├── rasterize_correlation_no.pdf\n├── rasterize_correlation_no.svg\n├── rasterize_correlation_yes_dpi100.pdf\n└── rasterize_correlation_yes_dpi100.svg\n\n\n\n\n\nRasterize correlation heatmap selectively.",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>More plots</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Additional plot types and techniques</span>"
     ]
   },
   {
     "objectID": "more-plots.html#heatmap-z-score",
     "href": "more-plots.html#heatmap-z-score",
-    "title": "5  More plots",
+    "title": "5  Additional plot types and techniques",
     "section": "5.3 Heatmap (z-score)",
     "text": "5.3 Heatmap (z-score)\n\n\n\n\n\n\nTip\n\n\n\nThis is expecially useful when you want to focus on the dynamics within rows or columns.\n\n\n\nlibrary(tidyplots)\n\n# View top 10 rows of the columns used\nclimate |&gt; \n  dplyr::select(month, year, max_temperature) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 3\n   month  year max_temperature\n   &lt;chr&gt; &lt;dbl&gt;           &lt;dbl&gt;\n 1 01     1891           -1.49\n 2 02     1891            3.37\n 3 03     1891            5.05\n 4 04     1891            8.34\n 5 05     1891           16.2 \n 6 06     1891           18.2 \n 7 07     1891           20.5 \n 8 08     1891           18.2 \n 9 09     1891           18.3 \n10 10     1891           14.2 \n\n\n\n# Plot\np1 &lt;- climate |&gt; \n  tidyplot(\n    x = month, \n    y = year, \n    color = max_temperature) |&gt; \n  adjust_colors(new_colors = c(\n    \"#ddaa33\", \n    \"#ffffff\", \n    \"#bb5566\")) |&gt;\n  add_title(\"p1\")\n\np2 &lt;- p1 |&gt; \n  adjust_title(\"p2: max temperature\") |&gt; \n  add_heatmap() \n\np3 &lt;- p1 |&gt; \n  add_heatmap(scale = \"row\") |&gt; \n  adjust_colors(new_colors = c(\n    \"#ddaa33\", \n    \"#ffffff\", \n    \"#bb5566\")) |&gt; \n  adjust_title(\"p3: row z-score\")\n\np4 &lt;- p2 |&gt; \n  sort_x_axis_levels(max_temperature) |&gt;\n  adjust_title(paste(\n    \"p4: max_temperature\", \n    \"sort x axis levels\", \n    sep = \"\\n\"))\n\n\n\n\nHeatmap_z-scores.",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>More plots</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Additional plot types and techniques</span>"
     ]
   },
   {
     "objectID": "more-plots.html#rasterize-volcano-plot",
     "href": "more-plots.html#rasterize-volcano-plot",
-    "title": "5  More plots",
+    "title": "5  Additional plot types and techniques",
     "section": "5.4 (Rasterize) volcano plot",
     "text": "5.4 (Rasterize) volcano plot\n\nlibrary(tidyplots)\n\ndf &lt;- \n  \"https://tidyplots.org/data/differential-expression-analysis.csv\" |&gt; \n  readr::read_csv(show_col_types = FALSE) |&gt; \n  dplyr::mutate(\n    neg_log10_padj = -log10(padj),\n    direction = dplyr::if_else(log2FoldChange &gt; 0, \"up\", \"down\", \"NA\"),\n    candidate = abs(log2FoldChange) &gt;= 1 & padj &lt; 0.05)\n\n\ndf |&gt; dim()\n\n[1] 43629    17\n\n# View top 10 rows of the columns used\ndf |&gt; \n  dplyr::select(\n    log2FoldChange, neg_log10_padj, candidate, \n    direction, padj, external_gene_name) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 6\n   log2FoldChange neg_log10_padj candidate direction     padj external_gene_name\n            &lt;dbl&gt;          &lt;dbl&gt; &lt;lgl&gt;     &lt;chr&gt;        &lt;dbl&gt; &lt;chr&gt;             \n 1         -0.989         0.642  FALSE     down       2.28e-1 Gnai3             \n 2         NA            NA      NA        &lt;NA&gt;      NA       Pbsn              \n 3          0.342         0.0913 FALSE     up         8.10e-1 Cdc45             \n 4          0.865         0.322  FALSE     up         4.77e-1 H19               \n 5         -0.998         0.284  FALSE     down       5.20e-1 Scml2             \n 6         -1.47          0.458  FALSE     down       3.48e-1 Apoh              \n 7         -0.696         0.539  FALSE     down       2.89e-1 Narf              \n 8         -2.52          4.02   TRUE      down       9.52e-5 Cav2              \n 9         -1.26          2.04   TRUE      down       9.06e-3 Klf6              \n10         -0.648         0.317  FALSE     down       4.82e-1 Scmh1             \n\n\n\np0 &lt;- df |&gt; \n  tidyplot(x = log2FoldChange, y = neg_log10_padj) |&gt; \n  add_data_labels_repel(\n    data = min_rows(padj, 6, by = direction), \n    label = external_gene_name, \n    color = \"#000000\", \n    min.segment.length = 0, \n    background = TRUE, \n    fontface = \"italic\") |&gt; \n  adjust_x_axis_title(\"$Log[2]~fold~change$\") |&gt; \n  adjust_y_axis(\"$-Log[10]~italic(P)~adjusted$\")\n\n# Save vector images without rasterization\np0 |&gt; \n  add_data_points(data = filter_rows(!candidate), color = \"#dddddd\") |&gt; \n  add_data_points(\n    data = filter_rows(candidate, direction == \"up\"), \n    color = \"#bb5566\", alpha = 0.5) |&gt; \n  add_data_points(\n    data = filter_rows(candidate, direction == \"down\"), \n    color = \"#004488\", alpha = 0.5) |&gt;   \n  add_reference_lines(x = c(-1, 1), y = -log10(0.05)) |&gt; \n  save_plot(\"images/rasterize_volcano_no.pdf\", view_plot = FALSE) |&gt; \n  save_plot(\"images/rasterize_volcano_no.svg\", view_plot = FALSE)\n\n# Save vector images with rasterization (dpi = 100)\np0 |&gt;   \n  add_data_points(data = filter_rows(!candidate), color = \"#dddddd\", \n  rasterize = TRUE, rasterize_dpi = 100) |&gt; \n  add_data_points(\n    data = filter_rows(candidate, direction == \"up\"), color = \"#bb5566\", \n    alpha = 0.5, rasterize = TRUE, rasterize_dpi = 100) |&gt; \n  add_data_points(\n    data = filter_rows(candidate, direction == \"down\"), color = \"#004488\", \n    alpha = 0.5, rasterize = TRUE, rasterize_dpi = 100) |&gt;   \n  add_reference_lines(x = c(-1, 1), y = -log10(0.05)) |&gt; \n  save_plot(\"images/rasterize_volcano_yes_dpi100.pdf\", view_plot = FALSE) |&gt; \n  save_plot(\"images/rasterize_volcano_yes_dpi100.svg\", view_plot = FALSE)\n\nList the figures saved:\n\n\nimages\n├── rasterize_correlation_no.pdf\n├── rasterize_correlation_no.svg\n├── rasterize_correlation_yes_dpi100.pdf\n└── rasterize_correlation_yes_dpi100.svg\n\n\n\n\n\nRasterize volcano plot selectively.",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>More plots</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Additional plot types and techniques</span>"
     ]
   },
   {
     "objectID": "more-plots.html#lollipop-plot",
     "href": "more-plots.html#lollipop-plot",
-    "title": "5  More plots",
+    "title": "5  Additional plot types and techniques",
     "section": "5.5 Lollipop plot",
     "text": "5.5 Lollipop plot\n\nlibrary(tidyplots)\n\n# View top 10 rows of the columns used\nspendings |&gt; \n  dplyr::select(amount, category) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 2\n   amount category      \n    &lt;dbl&gt; &lt;chr&gt;         \n 1    100 Food          \n 2     40 Transportation\n 3   1200 Housing       \n 4     80 Utilities     \n 5     75 Education     \n 6    200 Insurance     \n 7     60 Food          \n 8     50 Utilities     \n 9     90 Food          \n10     40 Transportation\n\n\n\n# Plot\np1 &lt;- spendings |&gt; \n  tidyplot(\n    x = amount, \n    y = category, \n    color = category) |&gt; \n  add_sum_bar(\n    width = 0.8, \n    alpha = 0.2) |&gt; \n  add_sum_dot() |&gt; \n  add_title(\"p1: wide bars\") |&gt; \n  remove_legend()\n\np2 &lt;- spendings |&gt; \n  tidyplot(\n    x = amount, \n    y = category, \n    color = category) |&gt; \n  add_sum_bar(\n    width = 0.05, \n    alpha = 1) |&gt; \n  add_sum_dot() |&gt; \n  add_title(\"p2: lollipop plot\") |&gt; \n  remove_legend()\n\n\n\n\nLollipop plot.\n\n\n\n\n\n\n\n\nTip\n\n\n\nIn essence, lollipop plot is generated via narrowing down bar width.",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>More plots</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Additional plot types and techniques</span>"
     ]
   },
   {
     "objectID": "more-plots.html#dumbbell-plot",
     "href": "more-plots.html#dumbbell-plot",
-    "title": "5  More plots",
+    "title": "5  Additional plot types and techniques",
     "section": "5.6 Dumbbell plot",
     "text": "5.6 Dumbbell plot\n\nlibrary(tidyplots)\n\n# View top 10 rows of the columns used\nstudy |&gt; \n  dplyr::select(participant, score, group) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 3\n   participant score group  \n   &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;  \n 1 p01             2 placebo\n 2 p02             4 placebo\n 3 p03             5 placebo\n 4 p04             4 placebo\n 5 p05             6 placebo\n 6 p06             9 placebo\n 7 p07             8 placebo\n 8 p08            12 placebo\n 9 p09            15 placebo\n10 p10            16 placebo\n\n\n\n# Plot\np1 &lt;- study |&gt; \n  tidyplot(\n    x = participant, \n    y = score, \n    color = group) |&gt; \n  add_data_points(size = 2.5) |&gt; \n  add_title(title = \"p1\")\n\np2 &lt;- p1 |&gt; \n  adjust_title(title = \"p2: add 'group'-based lines\") |&gt;  \n  add_line(color = \"#bbbbbb\") |&gt; \n  remove_legend()\n\np3 &lt;- p1 |&gt; \n  adjust_title(title = \"p3: add 'participant'-based lines\") |&gt; \n  add_line(\n    group = participant, \n    color = \"#bbbbbb\") |&gt;   \n  remove_legend()\n\np4 &lt;- study |&gt; \n  tidyplot(\n    x = participant, \n    y = score, \n    color = group, \n    dodge_width = 0) |&gt; \n  add_title(title = \"p4: dumbbell plot\") |&gt; \n  add_line(\n    group = participant, \n    color = \"#bbbbbb\") |&gt; \n  add_data_points(size = 2.5) |&gt; \n  remove_legend()\n\n\n\n\nDumbbell plot.",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>More plots</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Additional plot types and techniques</span>"
     ]
   },
   {
     "objectID": "more-plots.html#pie-and-donut-plots",
     "href": "more-plots.html#pie-and-donut-plots",
-    "title": "5  More plots",
+    "title": "5  Additional plot types and techniques",
     "section": "5.7 Pie and donut plots",
     "text": "5.7 Pie and donut plots\n\nlibrary(tidyplots)\n\n# View top 10 rows of the columns used\nenergy |&gt; \n  dplyr::select(energy, energy_source) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 2\n    energy energy_source              \n     &lt;dbl&gt; &lt;fct&gt;                      \n 1   3.72  Biomass                    \n 2 141.    Fossil brown coal / lignite\n 3  40.0   Fossil gas                 \n 4 111.    Fossil hard coal           \n 5   1.76  Fossil oil                 \n 6   0     Geothermal                 \n 7  23.4   Hydro                      \n 8 156.    Nuclear                    \n 9   6.31  Others                     \n10   0.196 Solar                      \n\n\n\n# Plot\np0 &lt;- energy |&gt; \n  tidyplot(\n    y = energy, \n    color = energy_type)\n\np1 &lt;- p0 |&gt; \n  add_pie() |&gt; \n  add_title(title = \"p1: pie\")\n\np2 &lt;- p0 |&gt;  \n  add_donut() |&gt; \n  add_title(title = \"p2: donut\")\n\np3 &lt;- p0 |&gt; \n  add_donut(alpha = 0.5) |&gt; \n  add_title(title = paste(\"p3: donut\", \"alpha = 0.5\", sep = \"\\n\"))\n\np4 &lt;- p0 |&gt; \n  add_donut(reverse = TRUE) |&gt; \n  add_title(title = paste(\"p4: donut\", \"reverse = TRUE\", sep = \"\\n\"))\n\np5 &lt;- p0 |&gt; \n  add_donut(width = 2) |&gt; \n  add_title(title = paste(\"p5: donut\", \"width = 2\", sep = \"\\n\"))\n\np6 &lt;- p0 |&gt; \n  add_donut(width = 4) |&gt; \n  add_title(title = paste(\"p6: donut\", \"width = 4\", sep = \"\\n\"))\n\n\n\n\nDonut and pie plots.",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>More plots</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Additional plot types and techniques</span>"
     ]
   },
   {
     "objectID": "more-plots.html#stacked-bar-plot",
     "href": "more-plots.html#stacked-bar-plot",
-    "title": "5  More plots",
+    "title": "5  Additional plot types and techniques",
     "section": "5.8 Stacked bar plot",
     "text": "5.8 Stacked bar plot\n\nlibrary(tidyplots)\n\n# View top 10 rows of the columns used\nenergy |&gt; \n  dplyr::select(year, energy, energy_type) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 3\n    year  energy energy_type\n   &lt;dbl&gt;   &lt;dbl&gt; &lt;fct&gt;      \n 1  2002   3.72  Renewable  \n 2  2002 141.    Fossil     \n 3  2002  40.0   Fossil     \n 4  2002 111.    Fossil     \n 5  2002   1.76  Fossil     \n 6  2002   0     Renewable  \n 7  2002  23.4   Renewable  \n 8  2002 156.    Nuclear    \n 9  2002   6.31  Other      \n10  2002   0.196 Renewable  \n\n\n\n# Plot\np1 &lt;- energy |&gt; \n  tidyplot(y = energy, color = energy_type) |&gt; \n  add_title(title = \"p1: absolute\") |&gt; \n  add_barstack_absolute()\n\np2 &lt;- energy |&gt; \n  tidyplot(y = energy, color = energy_type) |&gt; \n  add_title(title = \"p2: relative\") |&gt; \n  add_barstack_relative() |&gt; \n  remove_legend()\n\np3 &lt;- energy |&gt; \n  tidyplot(x = year, y = energy, color = energy_type) |&gt; \n  add_title(title = \"p3: absolute (year-based)\") |&gt; \n  add_barstack_absolute() |&gt;\n  remove_legend()  \n\np4 &lt;- energy |&gt; \n  tidyplot(x = year, y = energy, color = energy_type) |&gt; \n  add_title(title = \"p4: relative (year-based)\") |&gt; \n  add_barstack_relative() |&gt;\n  remove_legend() \n\np5 &lt;- energy |&gt; \n  tidyplot(x = energy, y = year, color = energy_type) |&gt; \n  add_title(title = \"p5: p4 horizontal\") |&gt; \n  add_barstack_relative(orientation = \"y\") |&gt; \n  remove_legend()\n\n\n\n\nStacked bar plot.",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>More plots</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Additional plot types and techniques</span>"
     ]
   },
   {
     "objectID": "more-plots.html#histogram",
     "href": "more-plots.html#histogram",
-    "title": "5  More plots",
+    "title": "5  Additional plot types and techniques",
     "section": "5.9 Histogram",
     "text": "5.9 Histogram\n\nlibrary(tidyplots)\n\n# View top 10 rows of the columns used\nclimate |&gt; \n  dplyr::select(max_temperature, month) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 2\n   max_temperature month\n             &lt;dbl&gt; &lt;chr&gt;\n 1           -1.49 01   \n 2            3.37 02   \n 3            5.05 03   \n 4            8.34 04   \n 5           16.2  05   \n 6           18.2  06   \n 7           20.5  07   \n 8           18.2  08   \n 9           18.3  09   \n10           14.2  10   \n\n\n\n# Plot\np0 &lt;- climate |&gt; \n  tidyplot(x = max_temperature)\n\np1 &lt;- p0 |&gt; \n  add_title(title = \"p1: bins = 30 (default)\") |&gt; \n  add_histogram(color = \"#bb5566\")\n\np2 &lt;- p0 |&gt; \n  add_title(title = paste(\"p2: bins = 60\", \"density\", sep = \"\\n\")) |&gt; \n  add_histogram(bins = 60, mapping = ggplot2::aes(y = ggplot2::after_stat(density)))\n\np3 &lt;- p0 |&gt;\n  add_histogram(color = rep(c(\"#ddaa33\", \"#004488\"), length.out = 30)) |&gt; \n  adjust_title(title = \"p3: bars and lines\") |&gt; \n  add(ggplot2::geom_freqpoly(bins = 30, color = \"#000000\"))\n\np4 &lt;- climate |&gt; \n  tidyplot(y = max_temperature) |&gt;   \n  add_title(title = \"p4: bars in y axis\") |&gt; \n  add_histogram(color = rep(c(\"#ee99aa\", \"#994455\"), each  = 15))\n\np5 &lt;- climate |&gt; \n  dplyr::filter(month %in% c(\"01\", \"03\", \"06\")) |&gt; \n  tidyplot(x = max_temperature, color = month) |&gt; \n  add_title(title = \"p5: month-based\") |&gt; \n  add_histogram(alpha = 0.5)\n\np6 &lt;- climate |&gt; \n  dplyr::filter(month %in% c(\"01\", \"03\", \"06\")) |&gt; \n  tidyplot(x = max_temperature, color = month) |&gt; \n  add_title(title = \"p6: density_smooth\") |&gt; \n  add(ggplot2::geom_density(ggplot2::aes(color = month), \n    position = ggplot2::position_identity(), alpha = 0.2))\n\n\n\n\nHistogram.",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>More plots</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Additional plot types and techniques</span>"
     ]
   },
   {
     "objectID": "more-custom-plots.html",
     "href": "more-custom-plots.html",
-    "title": "6  More custom plots",
+    "title": "6  Custom plotting",
     "section": "",
     "text": "6.1 Schematic of experiment design\nlibrary(tidyplots)\n\ndf &lt;- \"data/experimental-design.csv\" |&gt; \n    readr::read_csv(show_col_types = FALSE)\n\n# View df (the \"63\" of \"days\" column is just a placeholder for arrow head)\n# type \"?tidyplots::add_data_points()\" in R consule for available shape values\ndf\n\n# A tibble: 12 × 6\n    days manipulation  groups shape manipulation_1 manipulation_2\n   &lt;dbl&gt; &lt;chr&gt;          &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;         \n 1     1 candidate 1st      2    19 candidate 1st  &lt;NA&gt;          \n 2     7 candidate 2nd      2    19 candidate 2nd  &lt;NA&gt;          \n 3    14 candidate 3rd      2    19 candidate 3rd  &lt;NA&gt;          \n 4    28 challenge          2    17 &lt;NA&gt;           challenge     \n 5    58 endpoint           2    13 &lt;NA&gt;           endpoint      \n 6    63 &lt;NA&gt;               2    NA &lt;NA&gt;           &lt;NA&gt;          \n 7     1 saline 1st         1    19 saline 1st     &lt;NA&gt;          \n 8     7 saline 2nd         1    19 saline 2nd     &lt;NA&gt;          \n 9    14 saline 3rd         1    19 saline 3rd     &lt;NA&gt;          \n10    28 challenge          1    17 &lt;NA&gt;           &lt;NA&gt;          \n11    58 endpoint           1    13 &lt;NA&gt;           &lt;NA&gt;          \n12    63 &lt;NA&gt;               1    NA &lt;NA&gt;           &lt;NA&gt;\np1 &lt;- df |&gt; \n  tidyplot(x = days, y = groups, color = groups) |&gt; \n  add_reference_lines(x = df$days[1:5], color = \"#dddddd\") |&gt;   \n  add_line(linewidth = 0.5, arrow = grid::arrow(length = grid::unit(0.15, \"cm\"))) |&gt; \n  add_data_points(shape = df$shape, color = \"#000000\", na.rm = TRUE) |&gt; \n  add_title(title = \"p1\") |&gt; \n  adjust_size(height = 35) |&gt; # adjust width and height as needed\n  adjust_colors(new_colors = c(\"#6699cc\", \"#994455\")) |&gt; \n  remove_legend()\n\np2 &lt;- p1 |&gt; \n  adjust_title(title = \"p2: padding and axis breaks\") |&gt;\n  adjust_padding(left = 0.3, bottom = 0.8, top = 0.5) |&gt; \n  adjust_x_axis(breaks = df$days[1:5]) |&gt; \n  adjust_y_axis(breaks = df$groups)\n\np3 &lt;- p2 |&gt; \n  adjust_title(title = \"p3: data labels\") |&gt; \n  add_data_labels(label = manipulation, label_position = \"left\", \n    angle = 45, color = \"#000000\", na.rm = TRUE, fontsize = 6)\n\np4 &lt;- p2 |&gt; \n  adjust_title(title = \"p4: move some labels\") |&gt; \n  add_data_labels(label = manipulation_1, label_position = \"left\",\n    angle = 45, color = \"#000000\", na.rm = TRUE, fontsize = 6) |&gt; \n  add_data_labels(label = manipulation_2, label_position = \"above\",\n    color = \"#000000\", na.rm = TRUE)\n\np5 &lt;- p2 |&gt; \n  adjust_title(title = \"p5: another way of adding labels\") |&gt; \n  add_annotation_text(text = df$manipulation_1, x = df$days, y = df$groups, \n    angle = 45, hjust = 1.1, vjust = 1.5, na.rm = TRUE, fontsize = 6) |&gt; \n  add_annotation_text(text = df$manipulation_2, x = df$days,\n    y = df$groups, hjust = 0.5, vjust = -1, na.rm = TRUE, fontsize = 6)\n\np6 &lt;- p5 |&gt; \n  adjust_title(title = \"p6\") |&gt; \n  remove_x_axis_line() |&gt; \n  remove_y_axis_line() |&gt; \n  remove_y_axis_ticks()",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>More custom plots</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Custom plotting</span>"
     ]
   },
   {
     "objectID": "more-custom-plots.html#schematic-of-experiment-design",
     "href": "more-custom-plots.html#schematic-of-experiment-design",
-    "title": "6  More custom plots",
+    "title": "6  Custom plotting",
     "section": "",
     "text": "Schematic of experiment design.",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>More custom plots</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Custom plotting</span>"
     ]
   },
   {
     "objectID": "more-custom-plots.html#inset-image-to-a-figure",
     "href": "more-custom-plots.html#inset-image-to-a-figure",
-    "title": "6  More custom plots",
+    "title": "6  Custom plotting",
     "section": "6.2 Inset image to a figure",
     "text": "6.2 Inset image to a figure\n\nlibrary(tidyplots)\n\ndf &lt;- \"data/experimental-design.csv\" |&gt; \n    readr::read_csv(show_col_types = FALSE)\n\n# View df (the \"63\" of \"days\" column is just a placeholder for arrow head)\n# type \"?tidyplots::add_data_points()\" in R consule for available shape values\ndf\n\n# A tibble: 12 × 6\n    days manipulation  groups shape manipulation_1 manipulation_2\n   &lt;dbl&gt; &lt;chr&gt;          &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;         \n 1     1 candidate 1st      2    19 candidate 1st  &lt;NA&gt;          \n 2     7 candidate 2nd      2    19 candidate 2nd  &lt;NA&gt;          \n 3    14 candidate 3rd      2    19 candidate 3rd  &lt;NA&gt;          \n 4    28 challenge          2    17 &lt;NA&gt;           challenge     \n 5    58 endpoint           2    13 &lt;NA&gt;           endpoint      \n 6    63 &lt;NA&gt;               2    NA &lt;NA&gt;           &lt;NA&gt;          \n 7     1 saline 1st         1    19 saline 1st     &lt;NA&gt;          \n 8     7 saline 2nd         1    19 saline 2nd     &lt;NA&gt;          \n 9    14 saline 3rd         1    19 saline 3rd     &lt;NA&gt;          \n10    28 challenge          1    17 &lt;NA&gt;           &lt;NA&gt;          \n11    58 endpoint           1    13 &lt;NA&gt;           &lt;NA&gt;          \n12    63 &lt;NA&gt;               1    NA &lt;NA&gt;           &lt;NA&gt;          \n\n\n\n# See the last section (i.e. Schemetic of experiment design) for the detail of p1\np1 &lt;- df |&gt; \n  tidyplot(x = days, y = groups, color = groups) |&gt; \n  add_reference_lines(x = df$days[1:5], color = \"#dddddd\") |&gt;   \n  add_line(linewidth = 0.5, arrow = grid::arrow(length = grid::unit(0.15, \"cm\"))) |&gt; \n  add_data_points(shape = df$shape, color = \"#000000\", na.rm = TRUE) |&gt; \n  add_title(title = \"p1: experiment design\") |&gt; \n  adjust_size(height = 35) |&gt; # adjust width and height as needed\n  adjust_colors(new_colors = c(\"#6699cc\", \"#994455\")) |&gt; \n  remove_legend() |&gt; \n  adjust_padding(left = 0.3, bottom = 0.8, top = 0.5) |&gt; \n  adjust_x_axis(breaks = df$days[1:5]) |&gt; \n  adjust_y_axis(breaks = df$groups) |&gt; \n  add_annotation_text(text = df$manipulation_1, x = df$days, y = df$groups, \n    angle = 45, hjust = 1.1, vjust = 1.5, na.rm = TRUE, fontsize = 6) |&gt; \n  add_annotation_text(text = df$manipulation_2, x = df$days,\n    y = df$groups, hjust = 0.5, vjust = -1, na.rm = TRUE, fontsize = 6)\n\n# Read mouse image (from https://bioart.niaid.nih.gov/bioart/20)\nmouse &lt;- \"images/ApodemusSilhouette0001-grey.svg\" |&gt; magick::image_read()\n\nmouse_pattern &lt;- mouse |&gt; grid::rasterGrob(x = 0.7, y = 0.5,\n  width = grid::unit(0.4, \"snpc\"), height = grid::unit(0.4, \"snpc\")) |&gt; \n  grid::pattern() # snpc: Square Normalised Parent Coordinates\n\np2 &lt;- p1 |&gt; \n  adjust_title(title = \"p2: via 'adjust_theme_details()'\") |&gt; \n  adjust_theme_details(panel.background = ggplot2::element_rect(fill = mouse_pattern))\n\nmouse_grob &lt;- mouse |&gt; grid::rasterGrob()\n\np3 &lt;- p1 |&gt; \n  adjust_title(title = \"p3: via 'add()'\") |&gt; \n  add(\n    ggplot2::annotation_custom(mouse_grob,\n    xmin = 30, xmax = 55, ymin = 1.1, ymax = 1.9)) # tailored\n\np4 &lt;- p1 |&gt; \n  adjust_title(title = \"p4: via 'rphylopic' package\") + \n  rphylopic::add_phylopic(\n    uuid = \"36dc0476-ae7d-49ed-85c4-220139930bfc\",\n    x = 44, y = 1.5, height = 0.4, alpha = 0.4)\n# See https://rphylopic.palaeoverse.org/index.html for detail\n\n\n\n\nInset an image. See reference (Gearty and Jones 2023) or the rphylopic documentation (https://rphylopic.palaeoverse.org/index.html) for details on p4.\n\n\n\n\n\n\n\n\nTip\n\n\n\nStephen D. Turner has compiled and reviewed a collection of resources under the title “Free and open-source images, icons, and tools for creating scientific illustrations” https://blog.stephenturner.us/p/free-open-source-images-tools-scientific-illustrations (Turner 2026)",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>More custom plots</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Custom plotting</span>"
     ]
   },
   {
     "objectID": "more-custom-plots.html#annotate-gel-image",
     "href": "more-custom-plots.html#annotate-gel-image",
-    "title": "6  More custom plots",
+    "title": "6  Custom plotting",
     "section": "6.3 Annotate gel image",
     "text": "6.3 Annotate gel image\n\nlibrary(tidyplots)\nimg &lt;- \"images/20230515-10_cropped.tif\" |&gt; magick::image_read()\n\n# View image information\nimg_info &lt;- img |&gt; magick::image_info()\nimg_width &lt;- img_info$width; img_height &lt;- img_info$height\nimg_info |&gt; print()\n\n# A tibble: 1 × 7\n  format width height colorspace matte filesize density\n  &lt;chr&gt;  &lt;int&gt;  &lt;int&gt; &lt;chr&gt;      &lt;lgl&gt;    &lt;int&gt; &lt;chr&gt;  \n1 TIFF     180    237 Gray       FALSE    42970 600x600\n\n# Change to graphical object\nimg_grob &lt;- img |&gt; grid::rasterGrob()\n# Create a data frame relevant to img_grob\ndf &lt;- tibble::tibble(x = seq(0, img_width, length.out = 100),\n  y = seq(0, img_height, length.out = 100))\n# View 1st row of df\ndf |&gt; dplyr::slice_head(n = 1)\n\n# A tibble: 1 × 2\n      x     y\n  &lt;dbl&gt; &lt;dbl&gt;\n1     0     0\n\n\n\n# The intended width of image in plot\nimg_intend_width = 50 # unit: mm\n# Tailor relative extra spaces of plot (0 (0%) - 1 (100%))\ntop_extra = 0.12; right_extra = 0; bottom_extra = 0; left_extra = 0.16\n# The width and height of plot\nplot_width = img_intend_width * (1 + left_extra + right_extra) # unit: mm\nplot_height = img_intend_width * (img_height/img_width) * (1 + top_extra + bottom_extra)\n\n# Plot\np1 &lt;- df |&gt; tidyplot(x = x, y = y) |&gt; \n  add_data_points(alpha = 0) |&gt; \n  add(ggplot2::annotation_custom(img_grob, xmin = 0, xmax = img_width, \n    ymin = 0, ymax = img_height)) |&gt; \n  add_title(title = \"p1: add image\") |&gt; \n  adjust_size(width = plot_width, height = plot_height) |&gt; \n  adjust_x_axis(limits = c(-img_width*left_extra, img_width*(1 + right_extra))) |&gt; \n  adjust_y_axis(limits = c(-img_height * bottom_extra, img_height * (1 + top_extra)))\np2 &lt;- p1 |&gt; \n  adjust_title(title = \"p2: annotate marker bands\") |&gt; \n  add_annotation_line(x = 0, xend = -5, \n    y = img_height - c(90, 113, 122, 134, 153, 170), # numbers are obtained via ImageJ\n    yend = img_height - c(90, 113, 122, 134, 153, 170)) |&gt; \n  add_annotation_text(text = c(\"2000\", \"1000\", \"750\", \"500\", \"250\", \"100\", \"bps\"),\n    x = -7, y = img_height - c(90, 113, 122, 134, 153, 170, 190), hjust = 1)    \np3 &lt;- p2 |&gt; \n  adjust_title(title = \"p3: annotate lanes\") |&gt; \n  add_annotation_line(x = c(33, 108), xend = c(100, 175),\n    y = img_height + 15, yend = img_height + 15) |&gt; \n  add_annotation_text(text = c(\"A\", \"B\"), x = c(65.3, 140.8), y = img_height + 25) |&gt; \n  add_annotation_text(text = c(\"M\", \"-\", \"+\", \"+\", \"-\", \"+\", \"+\"),\n    x = seq(15, 166, length.out = 7), y = img_height + 7)\np4 &lt;- p3 |&gt;\n  adjust_title(title = \"p4: remove axis and margins\") |&gt; \n  remove_x_axis() |&gt; remove_y_axis() |&gt; \n  adjust_theme_details(plot.margin = ggplot2::margin(0, 0, 0, 0))\n\n\n\n\nAnnotate gel image.\n\n\n\n\n\n\n\n\nTip\n\n\n\nOpen the image in ImageJ/Fiji and hover over it; the pixel coordinates will be displayed in real time under the toolbar.\nNote that the origin differs between systems: in ImageJ/Fiji, the top-left corner is (0, 0); whereas in tidyplots, the bottom-left corner is (0, 0) (also see Section 7.3).",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>More custom plots</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Custom plotting</span>"
     ]
   },
   {
     "objectID": "more-custom-plots.html#combining-multiple-images-together",
     "href": "more-custom-plots.html#combining-multiple-images-together",
-    "title": "6  More custom plots",
+    "title": "6  Custom plotting",
     "section": "6.4 Combining multiple images together",
     "text": "6.4 Combining multiple images together\n\nlibrary(tidyplots)\n\n# Get list of image names (four); All images are nearly identical in size here\nimg_names &lt;- fs::dir_ls(path = \"images\", regexp = \"^images/OS-2_.*\")\n\n# Read images\nimgs &lt;- purrr::set_names(\n  purrr::map(img_names, magick::image_read),\n  paste0(\"img\", 1:length(img_names)))\n\n# Get width and height of the 1st image\nimg_width &lt;- magick::image_info(imgs[[1]])$width\nimg_height &lt;- magick::image_info(imgs[[1]])$height\n\n# Change images to graphic objectives\nimgs_grob &lt;- purrr::set_names(\n  purrr::map(imgs, grid::rasterGrob),\n  paste0(\"img\", 1:length(imgs)))\n\n# The intended width of combined image\nimg_intend_width = 50 # unit: mm\n# Tailor relative extra spaces of plot (0 (0%) - 1 (100%))\ntop_extra = 0.1; right_extra = 0; bottom_extra = 0; left_extra = 0.1\n# The width and height of plot\nplot_width = img_intend_width * (1 + left_extra + right_extra) # unit: mm\nplot_height = img_intend_width * (img_height/img_width) * (1 + top_extra + bottom_extra)\n\n# Set a data frame for plotting\ndf &lt;- tibble::tibble(x = 1:100, y = 1:100)\n\n# Set the range of each img covered\nimage_cover_width &lt;- 45 # note that df is 1:100 in x, and 1:100 in y\nimage_cover_height &lt;- image_cover_width * (img_height/img_width) * (plot_width/plot_height)\n\n# Set an intuitive function to add image to plot this time\nadd_image &lt;- function(\n  x, grob, top_left_x, top_left_y, \n  img_cover_width, img_cover_height) {\n  x |&gt; add(ggplot2::annotation_custom(\n    grob = grob,\n    xmin = top_left_x, xmax = top_left_x + img_cover_width,\n    ymin = top_left_y - img_cover_height, ymax = top_left_y))}\n\n# Plot\np1 &lt;- df |&gt; \n  tidyplot(x = x, y = y) |&gt; \n  add_data_points(alpha = 0) |&gt; \n  add_title(title = \"p1: add 1st image\") |&gt; \n  adjust_size(width = plot_width, height = plot_height) |&gt; \n  adjust_x_axis(limits = c(-100 * left_extra, 100 * (1 + right_extra))) |&gt; \n  adjust_y_axis(limits = c(-100 * bottom_extra, 100 * (1 + top_extra))) |&gt; \n  add_image(\n    grob = imgs_grob$img1, top_left_x = 0, top_left_y = 100,\n    img_cover_width = image_cover_width, img_cover_height = image_cover_height)\n\np2 &lt;- p1 |&gt; \n  adjust_title(title = \"p2: add 2nd image\") |&gt; \n  add_image(\n    grob = imgs_grob$img2, top_left_x = 50, top_left_y = 100,\n    img_cover_width = image_cover_width, img_cover_height = image_cover_height)\n\np3 &lt;- p2 |&gt; \n  adjust_title(title = \"p3: add 3rd and 4th images\") |&gt; \n  add_image(\n    grob = imgs_grob$img3, top_left_x = 0, top_left_y = 50,\n    img_cover_width = image_cover_width, img_cover_height = image_cover_height) |&gt; \n  add_image(\n    grob = imgs_grob$img4, top_left_x = 50, top_left_y = 50,\n    img_cover_width = image_cover_width, img_cover_height = image_cover_height)\n\np4 &lt;- p3 |&gt; \n  adjust_title(title = \"p4: add texts and remove axis\") |&gt; \n  add_annotation_text(\n    text = paste(\"text\", 1:4),\n    x = c(22, 72, -5, -5), y = c(105, 105, 27, 77), angle = c(0, 0, 90, 90)) |&gt; \n  remove_x_axis() |&gt; remove_y_axis()\n\n\n\n\nCombining multiple images together. The images are cropped from https://openslide.cs.cmu.edu/download/openslide-testdata/Hamamatsu/OS-2.ndpi using the QuPath software (Bankhead et al. 2017).",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>More custom plots</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Custom plotting</span>"
     ]
   },
   {
     "objectID": "more-custom-plots.html#display-condition-combinations-in-axis-labels",
     "href": "more-custom-plots.html#display-condition-combinations-in-axis-labels",
-    "title": "6  More custom plots",
+    "title": "6  Custom plotting",
     "section": "6.5 Display condition combinations in axis labels",
     "text": "6.5 Display condition combinations in axis labels\n\nlibrary(tidyplots)\n\n# View top 10 rows of the columns used\nstudy |&gt; dplyr::select(treatment, score) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 2\n   treatment score\n   &lt;chr&gt;     &lt;dbl&gt;\n 1 A             2\n 2 A             4\n 3 A             5\n 4 A             4\n 5 A             6\n 6 B             9\n 7 B             8\n 8 B            12\n 9 B            15\n10 B            16\n\n\n\n# Plot\np1 &lt;- study |&gt; \n  tidyplot(x = treatment, y = score, color = treatment) |&gt; \n  add_violin(trim = FALSE) |&gt; \n  add_data_points_beeswarm(white_border = TRUE) |&gt; \n  add_title(title = \"p1\") |&gt; \n  remove_legend()\n\np2 &lt;- p1 |&gt; \n  adjust_title(title = \"p2: + or - combination\") |&gt; \n  rename_x_axis_levels(new_names = c(\n    \"A\" = \"+\\n+\\n+\", \"B\" = \"+\\n+\\n-\",\n    \"C\" = \"+\\n-\\n+\", \"D\" = \"-\\n+\\n+\"))\n\np3 &lt;- p2 |&gt; \n  adjust_title(title = \"p3: specifiy conditions\") |&gt; \n  add_annotation_text( # space could be used to offset the length differences\n    text = \"condition x\\ncondition y\\ncondition z\", \n    x = 1, y = 0, # location of panel lowerleft\n    vjust = 1.5, # should be tailored\n    hjust = 1.5, # should be tailored\n    fontsize = 5.8) |&gt; # should be tailored\n  add(ggplot2::coord_cartesian(clip = \"off\")) # ensure text could be visualized outside panel.\n\n# Another way to p3\naxis_labels &lt;- c(\"+\\n+\\n+\", \"+\\n+\\n-\", \"+\\n-\\n+\", \"-\\n+\\n+\")\n\np4 &lt;- p1 |&gt; \n  adjust_title(title = \"p4: another way to p3\") |&gt; \n  adjust_x_axis(labels = axis_labels) |&gt; \n  add_annotation_text(\n    text = \"condition x\\ncondition y\\ncondition z\",\n    x = 1, y = 0,\n    vjust = 1.5, hjust = 1.5, fontsize = 5.8) |&gt; \n  add(ggplot2::coord_cartesian(clip = \"off\")) \n\n\n\n\nDisplaying condition combinations in axis labels.\n\n\n\n\n\n\n\n\nNote\n\n\n\nSo far so good, then perhaps minor adjustment might be needed via inkscape, adobe illustrator, or some other softwares for vector images.",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>More custom plots</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Custom plotting</span>"
     ]
   },
   {
     "objectID": "more-custom-plots.html#display-condition-combinations-in-axis-labels-using-add",
     "href": "more-custom-plots.html#display-condition-combinations-in-axis-labels-using-add",
-    "title": "6  More custom plots",
+    "title": "6  Custom plotting",
     "section": "6.6 Display condition combinations in axis labels (using add())",
     "text": "6.6 Display condition combinations in axis labels (using add())\n\nlibrary(tidyplots)\n\n# Add a column indicating combinations\nstudy_comb &lt;- study |&gt; \n  dplyr::mutate(comb = c(\n    rep(\"a,b,c\", 5),\n    rep(\"a,b\", 5),\n    rep(\"a,c\", 5),\n    rep(\"b,c\", 5)))\n\n# View top 10 rows of the columns used\nstudy_comb |&gt; \n  dplyr::select(comb, score) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 2\n   comb  score\n   &lt;chr&gt; &lt;dbl&gt;\n 1 a,b,c     2\n 2 a,b,c     4\n 3 a,b,c     5\n 4 a,b,c     4\n 5 a,b,c     6\n 6 a,b       9\n 7 a,b       8\n 8 a,b      12\n 9 a,b      15\n10 a,b      16\n\n\n\np1 &lt;- study_comb |&gt; \n  tidyplot(x = comb, y = score, color = comb) |&gt; \n  add_violin(trim = FALSE) |&gt; \n  add_data_points_beeswarm(white_border = TRUE) |&gt; \n  add_title(title = \"p1\")\n\np2 &lt;- p1 |&gt; \n  adjust_title(title = \"p2: reorder x levels\") |&gt; \n  reorder_x_axis_levels(\"a,b,c\", \"a,b\", \"a,c\", \"b,c\")\n\np3 &lt;- p2 |&gt; \n  adjust_title(title = \"p3: via 'add()' 1\") |&gt; \n  add(ggplot2::guides(x = legendry::guide_axis_upset(\n    legendry::key_upset(sep = \",\"), \n    override.aes = list(size = 2),\n    connect = NULL)))\n\np4 &lt;- p2 |&gt; \n  adjust_title(title = \"p4: via 'add()' 2\") |&gt; \n  add(ggplot2::guides(x = legendry::guide_axis_upset(\n    legendry::key_upset(sep = \",\"),\n    override.aes = list(shape = c(\"+\", \"-\", NA), size = 4),\n    connect = NULL))) |&gt; \n  theme_minimal_xy()\n\n\n\n\nDisplaying condition combinations in axis labels using add().",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>More custom plots</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Custom plotting</span>"
     ]
   },
   {
     "objectID": "more-custom-plots.html#change-point-shapecolor-and-annotate-axis",
     "href": "more-custom-plots.html#change-point-shapecolor-and-annotate-axis",
-    "title": "6  More custom plots",
+    "title": "6  Custom plotting",
     "section": "6.7 Change point shape/color and annotate axis",
     "text": "6.7 Change point shape/color and annotate axis\n\nlibrary(tidyplots)\n\n# Add two columns to specify point shapes and colors\nstudy_shape &lt;- study |&gt; \n  dplyr::mutate(\n    shape = rep(c(21, 25, 22, 24, 23), 4),\n    color = rep(c(\"#eecc66\", \"#994455\"), each = 5, length.out = 20))\n\n# View top 10 rows of the columns used\nstudy_shape |&gt; dplyr::select(treatment, score, shape, color) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 4\n   treatment score shape color  \n   &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  \n 1 A             2    21 #eecc66\n 2 A             4    25 #eecc66\n 3 A             5    22 #eecc66\n 4 A             4    24 #eecc66\n 5 A             6    23 #eecc66\n 6 B             9    21 #994455\n 7 B             8    25 #994455\n 8 B            12    22 #994455\n 9 B            15    24 #994455\n10 B            16    23 #994455\n\n\n\n# Plot\np1 &lt;- study_shape |&gt; \n  tidyplot(x = treatment, y = score) |&gt; \n  add_data_points_beeswarm(shape = study_shape$shape, size = 2.5, \n    color = study_shape$color, fill = study_shape$color, alpha = 0.5) |&gt; \n  add_mean_dash(color = \"#000000\") |&gt; \n  add_test_pvalue(hide_info = TRUE, comparisons = list(c(1, 2), c(3, 4))) |&gt; \n  add_reference_lines(x = 2.5, linetype = \"solid\", color = \"#dddddd\") |&gt; \n  add_annotation_line(x = c(0.5, 2.5), xend = c(2.5, 4.5), \n    y = c(10, 30), yend = c(10, 30), linetype = \"dotted\", color = \"#bbbbbb\") |&gt; \n  add_title(title = \"p1: points, statistics, ref/cutoff lines\")\n\np2 &lt;- p1 |&gt; \n  adjust_title(title = \"p2: axis levels\") |&gt; \n  rename_x_axis_levels(new_names = c(\n    \"A\" = \"Cont IgG\", \"B\" = \"rmIFNγR1\\n-IgG\",\n    \"C\" = \"Cont IgG\\n\", \"D\" = \"rmIFNγR1\\n-IgG\\n\")) |&gt; \n  adjust_x_axis(rotate_labels = TRUE, title = \"\") |&gt; \n  adjust_y_axis(title = \"$Log[10]*CFU$\")\n\np3 &lt;- p2 |&gt; \n  adjust_title(title = \"p3: lines below x axis levels\") |&gt; \n  add_annotation_line(x = c(0.6, 2.6), xend = c(2.4, 4.4), y = c(-26, -26),\n    yend = c(-26, -26), linewidth = 0.3) |&gt; \n  add(ggplot2::coord_cartesian(clip = \"off\", ylim = c(0, NA)))\n\np4 &lt;- p3 |&gt; \n  adjust_title(title = \"p4: texts below x axis levels\") |&gt; \n  add_annotation_text(text = c(\"Granuloma\", \"Pulmonary LN\"), \n    x = c(1.5, 3.5), y = c(0, 0), vjust = 9, fontsize = 8, fontface = \"bold\") |&gt; \n  add_caption(\"mimic fig 1b of\\nNat Commun. 2026. PMID: 42034649\")\n\n\n\n\nChange point shape/color and annotate axis.",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>More custom plots</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Custom plotting</span>"
     ]
   },
   {
     "objectID": "more-custom-plots.html#point-annotation",
     "href": "more-custom-plots.html#point-annotation",
-    "title": "6  More custom plots",
+    "title": "6  Custom plotting",
     "section": "6.8 Point annotation",
     "text": "6.8 Point annotation\n\nlibrary(tidyplots)\n\n# Set a df for point annotation\ndf &lt;- tibble::tibble(\n  x = rep(1:5, length.out = 10),\n  y = rep(c(\"a\", \"b\"), each = 5),\n  label = c(\"RC7\", \"RCK\", \"RJH\", \"RCD\", \"RFL\", \"RB9\", \"RML\", \"RED\", \"RHG\", \"RD6\"),\n  shape = rep(c(21, 25, 22, 24, 23), 2),\n  color = rep(c(\"#eecc66\", \"#994455\"), each = 5))\n\n# View df\ndf\n\n# A tibble: 10 × 5\n       x y     label shape color  \n   &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;  \n 1     1 a     RC7      21 #eecc66\n 2     2 a     RCK      25 #eecc66\n 3     3 a     RJH      22 #eecc66\n 4     4 a     RCD      24 #eecc66\n 5     5 a     RFL      23 #eecc66\n 6     1 b     RB9      21 #994455\n 7     2 b     RML      25 #994455\n 8     3 b     RED      22 #994455\n 9     4 b     RHG      24 #994455\n10     5 b     RD6      23 #994455\n\n\n\n# Plot\np5 &lt;- df |&gt;   \n  tidyplot(x = x, y = y) |&gt; \n  add_data_points(shape = df$shape, color = df$color, \n    fill = df$color, size = 2.5, alpha = 0.5) |&gt; \n  remove_legend() |&gt; \n  add_title(title = \"p5: points\") |&gt; \n  adjust_size(width = 90, height = 10) |&gt; \n  adjust_x_axis(limits = c(-1.6, 5.7))\n\np6 &lt;- p5 |&gt; \n  adjust_title(title = \"p6: texts\") |&gt; \n  add_annotation_text(text = df$label, x = df$x, y = df$y, hjust = -0.5) |&gt; \n  add_annotation_text(text = c(\"Control IgG:\", \"rmIFNγR1-IgG:\"), x = c(0.85, 0.85),\n    y = c(1, 2), hjust = 1) |&gt; \n  add_annotation_text(text = \"Animal ID\", x = -0.6, y = 1.5, \n    hjust = 1, fontface = \"bold\")\n\np7 &lt;- p6 |&gt; \n  adjust_title(title = \"p7: rectangle and remove axis\") |&gt; \n  add_annotation_line(x = -1.55, xend = -0.6, y = 1.15, yend = 1.15) |&gt;\n  add_annotation_rectangle(xmin = -1.6, xmax = 5.7, \n    ymin = 0.3, ymax = 2.8, color = \"#000000\", alpha = 0) |&gt; \n  remove_x_axis() |&gt; remove_y_axis() |&gt; \n  adjust_theme_details(plot.margin = ggplot2::margin(0, 0, 0, 0)) |&gt; \n  add_caption(\"mimic fig 1b of\\nNat Commun. 2026. PMID: 42034649\")\n\n\n\n\nPoint annotation. p4 is from the last section.\n\n\n\n\n\n\n\n\nNote\n\n\n\nThen perhaps adjustment might be needed via inkscape, adobe illustrator, or some other softwares for vector images.",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>More custom plots</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Custom plotting</span>"
     ]
   },
   {
     "objectID": "more-custom-plots.html#add-sum-values-for-negative-bars",
     "href": "more-custom-plots.html#add-sum-values-for-negative-bars",
-    "title": "6  More custom plots",
+    "title": "6  Custom plotting",
     "section": "6.9 Add sum values for negative bars",
     "text": "6.9 Add sum values for negative bars\n\nlibrary(tidyplots)\n\ndf &lt;- tibble::tibble(\n  x = letters[1:10],\n  y = seq(-5, 5, length.out = 10))\n\ndf &lt;- df |&gt; \n  dplyr::mutate(\n    vjust_custom = c(ifelse(y &gt;= 0, -1, 2)))\n\n# View df\ndf\n\n# A tibble: 10 × 3\n   x          y vjust_custom\n   &lt;chr&gt;  &lt;dbl&gt;        &lt;dbl&gt;\n 1 a     -5                2\n 2 b     -3.89             2\n 3 c     -2.78             2\n 4 d     -1.67             2\n 5 e     -0.556            2\n 6 f      0.556           -1\n 7 g      1.67            -1\n 8 h      2.78            -1\n 9 i      3.89            -1\n10 j      5               -1\n\n\n\np1 &lt;- df |&gt; \n  tidyplot(\n    x = x, \n    y = y, \n    color = y) |&gt; \n  add_sum_bar(alpha = 0.5) |&gt; \n  add_title(title = \"p1\") |&gt; \n  remove_legend()\n\np2 &lt;- p1 |&gt; \n  adjust_title(title = \"p2: default value position\") |&gt; \n  add_sum_value(color = \"#000000\")\n\np3 &lt;- p1 |&gt; \n  adjust_title(title = \"p3: vertical adjust = 0\") |&gt; \n  add_sum_value(color = \"#000000\", vjust = 0)\n\np4 &lt;- p1 |&gt; \n  adjust_title(title = \"p4: custom vertical adjust\") |&gt; \n  adjust_y_axis(\n    limits = c(min(df$y) - 2, max(df$y) + 2)) |&gt; \n  add_sum_value(\n    color = \"#000000\", \n    vjust = vjust_custom, \n    extra_padding = 0) # no extra spacing above panel\n\n\n\n\nAdd sum values for negative bars.",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>More custom plots</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Custom plotting</span>"
     ]
   },
   {
     "objectID": "more-custom-plots.html#sequencial-issues",
     "href": "more-custom-plots.html#sequencial-issues",
-    "title": "6  More custom plots",
+    "title": "6  Custom plotting",
     "section": "6.10 Sequencial issues",
     "text": "6.10 Sequencial issues\n\nlibrary(tidyplots)\n\ndf &lt;- tibble::tibble(x = seq(1, 6), group = rep(1, 6))\n\n# View df\ndf\n\n# A tibble: 6 × 2\n      x group\n  &lt;int&gt; &lt;dbl&gt;\n1     1     1\n2     2     1\n3     3     1\n4     4     1\n5     5     1\n6     6     1\n\n\n\n# Plot\np1 &lt;- df |&gt; \n  tidyplot(x = x, y = group) |&gt; \n  add_line(\n    arrow = grid::arrow(length = grid::unit(0.15, \"cm\")),\n    color = \"#3d4f6a\", linewidth = 0.5) |&gt; \n  add_title(title = \"p1: line with arrowhead\") |&gt; remove_legend()\n\n# Set several fixed locations/constants for efficient adjustment\ntext_up_dn &lt;- 0.6 # vertical distance (tailored) to line\ntext_x &lt;- df$x[1:5] # x axis locations (center) of texts\ntext_y &lt;- df$group[1:5] + ifelse(seq_along(text_x) %% 2, text_up_dn, -text_up_dn)\nrectangle_half_width &lt;- 0.7 # half length (tailored) of rectangle behind text\nrectangle_half_height &lt;- 0.4\nline_yend &lt;- text_y + ifelse(seq_along(text_y) %% 2, -rectangle_half_height, rectangle_half_height) # yend locations of vertical lines\n\np2 &lt;- p1 |&gt; \n  adjust_title(title = \"p2: rectangle\") |&gt; \n  add_annotation_rectangle(\n    xmin = text_x - rectangle_half_width, xmax = text_x + rectangle_half_width,\n    ymin = text_y - rectangle_half_height, ymax = text_y + rectangle_half_height,\n    fill = \"#b9e6f1\", alpha = 1)\n\nlabels &lt;- c(\n  \"Embrace\\ndiversity as a\\nkey aspect of\\nscientific\\nrigour\",\n  \"Evolve ethical\\nframeworks\",\n  \"Democratise\\ndata access\\nand benefit\\nsharing\",\n  \"Invest in\\ncapacity\\nstrengthening\",\n  \"Eevelop\\ntrans-ethnic\\nanalytical\\nmethods\")\n\np3 &lt;- p2 |&gt; \n  adjust_title(title = \"p3: text\") |&gt; \n  add_annotation_text(text = labels, x = text_x, y = text_y)\n\np4 &lt;- p3 |&gt; \n  adjust_title(title = \"p4: vertical lines\") |&gt; \n  add_annotation_line(x = text_x, xend = text_x,\n    y = df$group[1:5], yend = line_yend, color = \"#3d4f6a\")\n\np5 &lt;- p4 |&gt; \n  adjust_title(title = \"p5: add points and polish\") |&gt; \n  add_data_points(\n    data = filter_rows(x &lt;= 5), color = \"#3d4f6a\", \n    white_border = TRUE, size = 2) |&gt; \n  adjust_size(width = 100) |&gt; \n  remove_x_axis() |&gt; remove_y_axis() |&gt; \n  add_caption(\"redraw part of fig 1b of \\nNat Rev Nephrol. 2026. PMID: 42014456\")\n\n\n\n\nSequencial issues.",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>More custom plots</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Custom plotting</span>"
     ]
   },
   {
     "objectID": "more-custom-plots.html#sequencial-issues-using-add",
     "href": "more-custom-plots.html#sequencial-issues-using-add",
-    "title": "6  More custom plots",
+    "title": "6  Custom plotting",
     "section": "6.11 Sequencial issues (using add())",
     "text": "6.11 Sequencial issues (using add())\n\nlibrary(tidyplots)\n\n# Set a data frame\ndf &lt;- tibble::tibble(\n  phase = c(\"Phase 1\", \"Phase 2\", \"Phase 3\", \n    \"Candidate\\na1\", \"Candidate\\nb1\", \"Candidate\\nc1\", # \\n means line feed\n    \"Candidate\\nc2\", \"Candidate\\nb2\", \"Candidate\\na2\"),\n  x_start = c(rep(1:3, times = 2), 3:1),\n  x_end = c(x_start[1:6] + 0.9, x_start[7:9] + 1.2),\n  y = rep(3:1, each = 3))\n\n# View\ndf\n\n# A tibble: 9 × 4\n  phase           x_start x_end     y\n  &lt;chr&gt;             &lt;int&gt; &lt;dbl&gt; &lt;int&gt;\n1 \"Phase 1\"             1   1.9     3\n2 \"Phase 2\"             2   2.9     3\n3 \"Phase 3\"             3   3.9     3\n4 \"Candidate\\na1\"       1   1.9     2\n5 \"Candidate\\nb1\"       2   2.9     2\n6 \"Candidate\\nc1\"       3   3.9     2\n7 \"Candidate\\nc2\"       3   4.2     1\n8 \"Candidate\\nb2\"       2   3.2     1\n9 \"Candidate\\na2\"       1   2.2     1\n\n\n\np1 &lt;- df |&gt; \n  tidyplot(y = y, color = x_start) |&gt; \n  add(gggenes::geom_gene_arrow(\n    mapping = ggplot2::aes(xmin = x_start, xmax = x_end),\n    data = filter_rows(y == 3), \n    arrowhead_height = grid::unit(6, \"mm\"),\n    color = \"#000000\", fill = \"#ffffff\")) |&gt; \n  add_title(title = \"p1\") |&gt; \n  adjust_size(width = 70, height = 30) |&gt; \n  adjust_y_axis(limits = c(0.5, 3.5)) |&gt; \n  remove_legend()\n\np2 &lt;- p1 |&gt; \n  adjust_title(title = \"p2\") |&gt; \n  add(gggenes::geom_gene_label(\n    mapping = ggplot2::aes(xmin = x_start, xmax = x_end, label = phase),\n    data = dplyr::filter(df, y == 3),\n    color = \"#000000\"))\n\np3 &lt;- p2 |&gt; \n  adjust_title(title = \"p3\") |&gt; \n  add(gggenes::geom_gene_arrow(\n    mapping = ggplot2::aes(xmin = x_start, xmax = x_end),\n    data = filter_rows(y == 2), \n    arrowhead_width = grid::unit(0, \"mm\"),\n    arrowhead_height = grid::unit(8, \"mm\"), \n    arrow_body_height = grid::unit(8, \"mm\"), \n    color = \"#000000\")) |&gt; \n  adjust_colors(new_colors = c(\"#eecc66\", \"#ee99aa\", \"#6699cc\"))\n\np4 &lt;- p3 |&gt; \n  adjust_title(title = \"p4\") |&gt; \n  add_annotation_text(\n    text = df$phase[4:6], \n    x = (df$x_start[4:6] + df$x_end[4:6])/2, \n    y = df$y[4:6]) |&gt; \n  adjust_y_axis(limits = c(0, 3.5))\n\np5 &lt;- p4 |&gt; \n  adjust_title(title = \"p5\") |&gt; \n  add(gggenes::geom_gene_arrow(\n    mapping = ggplot2::aes(xmin = x_start, xmax = x_end, y = y),\n    data = filter_rows(y == 1), \n    arrowhead_width = grid::unit(6, \"mm\"),\n    arrowhead_height = grid::unit(5, \"mm\"),\n    arrow_body_height = grid::unit(8, \"mm\"), \n    color = \"#000000\"))\n\np6 &lt;- p5 |&gt; \n  adjust_title(title = \"p6\") |&gt; \n  add_annotation_text(\n    text = df$phase[7:9], \n    x = (df$x_start[7:9] + df$x_end[7:9])/2, \n    y = df$y[7:9]) |&gt; \n  remove_x_axis() |&gt; remove_y_axis()\n\n\n\n\nSequencial issues (using add()).",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>More custom plots</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Custom plotting</span>"
     ]
   },
   {
     "objectID": "more-custom-plots.html#change-chinese-date-axis-labels-into-english-ones",
     "href": "more-custom-plots.html#change-chinese-date-axis-labels-into-english-ones",
-    "title": "6  More custom plots",
+    "title": "6  Custom plotting",
     "section": "6.12 Change Chinese date axis labels into English ones",
     "text": "6.12 Change Chinese date axis labels into English ones\n\n\n\n\n\n\nNote\n\n\n\nThis is a (tedious) alternative way to Section 3.20.\n\n\n\nlibrary(tidyplots)\n\n# Change date column with &lt;dttm&gt; type to a new column with &lt;chr&gt; type\nenergy_week_chr &lt;- energy_week |&gt; \n  dplyr::mutate(date_chr = as.character(date))\n\n# View top 10 rows of the columns used\nenergy_week_chr |&gt; \n  dplyr::select(date, date_chr, power, energy_source) |&gt; \n  dplyr::slice_head(n = 10)\n\n# A tibble: 10 × 4\n   date                date_chr             power energy_source              \n   &lt;dttm&gt;              &lt;chr&gt;                &lt;dbl&gt; &lt;fct&gt;                      \n 1 2023-09-03 22:00:00 2023-09-03 22:00:00    0   Nuclear                    \n 2 2023-09-03 22:00:00 2023-09-03 22:00:00 2634.  Hydro Run-of-River         \n 3 2023-09-03 22:00:00 2023-09-03 22:00:00 4711.  Biomass                    \n 4 2023-09-03 22:00:00 2023-09-03 22:00:00 8399.  Fossil brown coal / lignite\n 5 2023-09-03 22:00:00 2023-09-03 22:00:00 1726.  Fossil hard coal           \n 6 2023-09-03 22:00:00 2023-09-03 22:00:00  401.  Fossil oil                 \n 7 2023-09-03 22:00:00 2023-09-03 22:00:00 4900.  Fossil gas                 \n 8 2023-09-03 22:00:00 2023-09-03 22:00:00   17.9 Geothermal                 \n 9 2023-09-03 22:00:00 2023-09-03 22:00:00  232.  Hydro water reservoir      \n10 2023-09-03 22:00:00 2023-09-03 22:00:00  586   Hydro pumped storage       \n\n# Also viewsome info about my computer\nsessionInfo()$platform\n\n[1] \"x86_64-w64-mingw32/x64\"\n\nSys.getlocale(\"LC_TIME\")\n\n[1] \"Chinese (Simplified)_China.utf8\"\n\n\n\n# Plot\np1 &lt;- energy_week_chr |&gt; \n  tidyplot(x = date, y = power, color = energy_source) |&gt; \n  add_title(title = \"p1: x axis labels in Chinese\") |&gt;  \n  add_areastack_relative()\n# you can see the Chinese character \"月\" in the x axis labels.\n\np2 &lt;- energy_week_chr |&gt; \n  tidyplot(x = date_chr, y = power, color = energy_source) |&gt; \n  add_title(title = \"p2: x axis labels in English\") |&gt; \n  add_areastack_relative() |&gt; \n  adjust_legend_position(position = \"left\") |&gt; \n  adjust_x_axis(\n    breaks = c(\"2023-09-05\", \"2023-09-07\", \"2023-09-09\"),\n    labels = c(\"Sep 05\", \"Sep 07\", \"Sep 09\"))\n\n\n\n\nChange Chinese date axis labels into English ones.\n\n\n\n\n\n\n\n\nNote\n\n\n\nWhat about the same issue in non-English operating systems other than Chinese?",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>More custom plots</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Custom plotting</span>"
     ]
   },
   {
     "objectID": "more-custom-plots.html#plot-with-a-broken-axis",
     "href": "more-custom-plots.html#plot-with-a-broken-axis",
-    "title": "6  More custom plots",
+    "title": "6  Custom plotting",
     "section": "6.13 Plot with a broken axis",
     "text": "6.13 Plot with a broken axis\n\nlibrary(tidyplots)\nlibrary(patchwork)\n\n# Enlarge score values of treatments \"C\" and \"D\" by adding 900\nstudy_modi &lt;- study |&gt; \n  dplyr::mutate(score_modi = ifelse(treatment %in% c(\"C\", \"D\"), score + 900, score))\n\n# View rows 6 to 15 of the columns involved\nstudy_modi |&gt; dplyr::select(treatment, score, score_modi) |&gt; \n  dplyr::slice(6:15)\n\n# A tibble: 10 × 3\n   treatment score score_modi\n   &lt;chr&gt;     &lt;dbl&gt;      &lt;dbl&gt;\n 1 B             9          9\n 2 B             8          8\n 3 B            12         12\n 4 B            15         15\n 5 B            16         16\n 6 C            32        932\n 7 C            35        935\n 8 C            24        924\n 9 C            45        945\n10 C            56        956\n\n\n\np1 &lt;- study_modi |&gt; tidyplot(x = treatment, y = score_modi, color = treatment) |&gt; \n  add_mean_bar(alpha = 0.3) |&gt; \n  add_data_points_beeswarm(white_border = TRUE) |&gt; \n  add_sem_errorbar() |&gt; \n  add_test_asterisks(hide_info = TRUE) |&gt; \n  add_title(title = \"p1: treatments 'A' and 'B' are invisible\")\n\np2 &lt;- p1 |&gt; \n  adjust_title(title = \"p2: transform y axis via log10\") |&gt; \n  adjust_y_axis(transform = \"log10\")\n\nstudy_AB &lt;- study_modi |&gt; \n  dplyr::filter(treatment %in% c(\"A\", \"B\"))\n\np3_lower_segment &lt;- p1 |&gt; \n  adjust_y_axis(limits = c(0, max(study_AB$score_modi) + 5)) |&gt; \n  adjust_size(height = 15) |&gt; \n  remove_y_axis_title() |&gt; \n  remove_title()\n\nstudy_CD &lt;- study_modi |&gt; \n  dplyr::filter(treatment %in% c(\"C\", \"D\"))\n\np3_upper_segment &lt;- p1 |&gt; \n  adjust_title(title = \"p3: broken-axis plot\") |&gt; \n  adjust_y_axis(\n    limits = c(min(study_CD$score_modi) - 100, NA)) |&gt; \n  adjust_y_axis_title(hjust = -1) |&gt; \n  adjust_size(height = 30) |&gt; \n  adjust_padding(top = 0.1) |&gt; \n  remove_x_axis()\n\n# Combine plots into the same graphic\ndesign &lt;- \"AB\n           C#\n           D#\"\n\np1 + p2 + p3_upper_segment + p3_lower_segment + plot_layout(design = design)\n\n\n\n\nPlot with a broken y axis.\n\n\n\n\n\n\n\n\nNote\n\n\n\nInkscape or adobe illustrator can be used to adjust, modify, remove plot elements of p3 (e.g. axis labels and legends).\nP3 is actually composed of two plots: p3_upper_segment and p3_lower_segment.\nBy the way, it seems that the ggbreak package is incompatible with ggplot or tidyplot that use absolute dimentions (Mu et al. 2026).",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>More custom plots</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Custom plotting</span>"
     ]
   },
   {
     "objectID": "more-custom-plots.html#color-each-points-within-each-group",
     "href": "more-custom-plots.html#color-each-points-within-each-group",
-    "title": "6  More custom plots",
+    "title": "6  Custom plotting",
     "section": "6.14 Color each points within each group",
     "text": "6.14 Color each points within each group\n\nlibrary(tidyplots)\n\ny &lt;- c(2.3, 4.5, 6.3, 3.4, 7.8, 3.05, 5.30, 7.05, 4.20, 8.55)\ncolors &lt;- c(\"#eecc66\", \"#ee99aa\", \"#6699cc\", \"#997700\", \"#994455\")\ndf &lt;- tibble::tibble(\n  y = y, group = paste0(\"g\", rep(c(1, 2), each = 5)), batch = paste0(\"b\", c(1:5, 1:5)), \n  batch_color_1 = rep(colors, times = 2), batch_color_2 = rep(colors, each = 2))\n\n# View df\ndf\n\n# A tibble: 10 × 5\n       y group batch batch_color_1 batch_color_2\n   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;         &lt;chr&gt;        \n 1  2.3  g1    b1    #eecc66       #eecc66      \n 2  4.5  g1    b2    #ee99aa       #eecc66      \n 3  6.3  g1    b3    #6699cc       #ee99aa      \n 4  3.4  g1    b4    #997700       #ee99aa      \n 5  7.8  g1    b5    #994455       #6699cc      \n 6  3.05 g2    b1    #eecc66       #6699cc      \n 7  5.3  g2    b2    #ee99aa       #997700      \n 8  7.05 g2    b3    #6699cc       #997700      \n 9  4.2  g2    b4    #997700       #994455      \n10  8.55 g2    b5    #994455       #994455      \n\n\n\np1 &lt;- df |&gt; \n  tidyplot(x = group, y = y, color = group) |&gt; \n  add_boxplot() |&gt; add_data_points(white_border = TRUE, size = 1.5) |&gt; \n  add_title(title = \"p1\") |&gt; add_test_pvalue(paired_by = batch, hide_info = TRUE)\n\np2 &lt;- df |&gt; \n  tidyplot(x = group, y = y, color = group) |&gt; \n  add_boxplot(fill = \"#000000\", alpha = 0.2) |&gt; add_title(title = \"p2: no points\")\n\np3 &lt;- p2 |&gt; \n  adjust_title(title = \"p3: points with labels\") |&gt; \n  add_data_points(white_border = TRUE, size = 1.5) |&gt; \n  add_data_labels_repel(label = batch) |&gt; \n  add_line(group = batch, color = \"#000000\", linetype = \"dotted\") |&gt; \n  add_test_pvalue(paired_by = batch, hide_info = TRUE, bracket.nudge.y = 0.2)\n\np4 &lt;- p2 |&gt; \n  adjust_title(title = \"p4: different point colors (method 1)\") |&gt; \n  add_data_points(white_border = TRUE, size = 1.5, color = df$batch_color_2) |&gt; \n  add_line(group = batch, color = \"#000000\", linetype = \"dotted\") |&gt; \n  add_test_pvalue(paired_by = batch, hide_info = TRUE)\n\np5 &lt;- p2 |&gt; \n  adjust_title(title = \"p5: different point colors (method 2)\") |&gt; \n  add_data_points(data = filter_rows(group == \"g1\"), white_border = TRUE, size = 1.5, color = df$batch_color_1[1:5]) |&gt; \n  add_data_points(data = filter_rows(group == \"g2\"), white_border = TRUE, size = 1.5, color = df$batch_color_1[6:10]) |&gt; \n  add_line(group = batch, color = \"#000000\", linetype = \"dotted\") |&gt; \n  add_test_pvalue(paired_by = batch, hide_info = TRUE)\n\np6 &lt;- p2 |&gt; \n  adjust_title(title = \"p6: different point colors (method 3)\") |&gt; \n  add(ggplot2::geom_point(\n    ggplot2::aes(fill = I(batch_color_1)), shape = 21, \n    size = 2.25, color = \"#ffffff\", show.legend = FALSE)) |&gt; \n  add_line(group = batch, color = \"#000000\", linetype = \"dotted\") |&gt; \n  add_test_pvalue(paired_by = batch, hide_info = TRUE)\n\n\n\n\nColor each points within each group.",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>More custom plots</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Custom plotting</span>"
     ]
   },
   {
     "objectID": "more-custom-plots.html#forest-plot",
     "href": "more-custom-plots.html#forest-plot",
-    "title": "6  More custom plots",
+    "title": "6  Custom plotting",
     "section": "6.15 Forest plot",
     "text": "6.15 Forest plot\n\nlibrary(tidyplots)\n\n# Create a data frame (from Global Spine J. 2021. PMID: 33939533)\ndf &lt;- tibble::tibble(\n  studies = c(\n    \"Blumenthal et al, 2005\", \"Geisler et al, 2009\", \n    \"Gornet et al, 2011\", \"total\"),\n  weight = c(0.208, 0.279, 0.513, 1),\n  rr = c(1.38, 1.15, 1.14, 1.19),\n  ci95_lower = c(1.13, 0.97, 1.04, 1.07),\n  ci95_upper = c(1.68, 1.35, 1.25, 1.32))\n\n# View\ndf\n\n# A tibble: 4 × 5\n  studies                weight    rr ci95_lower ci95_upper\n  &lt;chr&gt;                   &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;\n1 Blumenthal et al, 2005  0.208  1.38       1.13       1.68\n2 Geisler et al, 2009     0.279  1.15       0.97       1.35\n3 Gornet et al, 2011      0.513  1.14       1.04       1.25\n4 total                   1      1.19       1.07       1.32\n\n\n\np1 &lt;- df |&gt; \n  tidyplot(\n    x = rr, \n    y = studies) |&gt; \n  add(ggplot2::geom_linerange(\n    ggplot2::aes(xmin = ci95_lower, xmax = ci95_upper), \n    color = \"#000000\")) |&gt; \n  add_data_points(\n    size = 8 * df$weight, \n    shape = c(15, 15, 15, 18), \n    color = \"#000000\") |&gt; \n  add_title(title = \"p1: involving `add()`\") |&gt; \n  reverse_y_axis_levels() |&gt; \n  add_reference_lines(x = 1) # line of no effect\n\np2 &lt;- df |&gt; \n  tidyplot(\n    x = rr, \n    y = studies) |&gt; \n  add_annotation_line(\n    x = df$ci95_lower, \n    xend = df$ci95_upper, \n    y = df$studies, \n    yend = df$studies) |&gt; \n  add_data_points(\n    size = 8 * df$weight, \n    shape = c(15, 15, 15, 18), \n    color = \"#000000\") |&gt; \n  add_title(title = \"p2: without involving `add()`\") |&gt; \n  reverse_y_axis_levels() |&gt; \n  add_reference_lines(x = 1) # line of no effect\n\n\n\n\nForest plot. The data involved are from (Dettori et al. 2021).\n\n\n\n\n\n\nBankhead, Peter, Maurice B. Loughrey, José A. Fernández, et al. 2017. “QuPath: Open Source Software for Digital Pathology Image Analysis.” Scientific Reports 7 (1). https://doi.org/10.1038/s41598-017-17204-5.\n\n\nDettori, Joseph R., Daniel C. Norvell, and Jens R. Chapman. 2021. “Seeing the Forest by Looking at the Trees: How to Interpret a Meta-Analysis Forest Plot.” Global Spine Journal 11 (4): 614–16. https://doi.org/10.1177/21925682211003889.\n\n\nGearty, William, and Lewis A. Jones. 2023. “Rphylopic: An r Package for Fetching, Transforming, and Visualising PhyloPic Silhouettes.” Methods in Ecology and Evolution 14 (11): 2700–2708. https://doi.org/10.1111/2041-210X.14221.\n\n\nMu, Zepeng, Pratik Rath, and Jan Broder Engler. 2026. “Use Ggbreak.” February. https://github.com/jbengler/tidyplots/discussions/158.\n\n\nTurner, Stephen D. 2026. “Free and Open-Source Images, Icons, and Tools for Creating Scientific Illustrations.” May 2. https://blog.stephenturner.us/p/free-open-source-images-tools-scientific-illustrations.",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>More custom plots</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Custom plotting</span>"
     ]
   },
   {

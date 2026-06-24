@@ -2,9 +2,7 @@
 
 ## What is `tidyplots`?
 
-![Jan Broder Engler (<https://jbengler.de/>).](images/broder_avatar.jpg){width="35%" fig-align="center"}
-
-- 👉`Tidyplots`📦 is an R package to generate **publication-ready plots for scientific papers**, created by Jan Broder Engler [@tidyplots].
+- 👉`Tidyplots`📦 is an R package to generate **publication-ready plots for scientific papers**, developed by Jan Broder Engler [@tidyplots].
 
 - 👉`Tidyplots` is **based on `ggplot2`**.
 
@@ -614,14 +612,12 @@ This choice ensures not only strong visual contrast and color-blind safe, but al
 
 ## Acknowledgements
 
-The preparation of this cookbook has no direct relation to Jan Broder Engler (the developer of `tidyplots`), so I feel a little "guilty" about "stealing" his ideas and code.
+This cookbook is based on `tidyplots`, an R package developed by Jan Broder Engler.
 
-When this cookbook was roughly ready, I wrote to Jan, and he replied:
+For more information about the package, please see:
 
-> *Hi Kang,*
+- 🔗<https://tidyplots.org/>
 
-> *Thank you for your email!*
+- 🔗<https://github.com/jbengler/tidyplots>
 
-> *Feel free to offer additional resources for tidyplots. Let me know when they are available. I was also thinking about writing a book about tidyplots, but I currently do not have the time.*
-
-Therefore, I will donate 55% of any paid proceeds (if there are any) to Jan's project: https://github.com/jbengler/tidyplots.
+- 🔗The paper: iMeta 2025 (<https://doi.org/10.1002/imt2.70018>)

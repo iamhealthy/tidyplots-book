@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; Plots – `Tidyplots`: publication-ready plots for scientific papers (1e)</title>
+<title>2&nbsp; Plot fundamentals – `Tidyplots`: publication-ready plots for scientific papers (1e)</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -296,7 +296,7 @@ gtag('config', 'G-73R3962S0Z', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./plots.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Plots</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./plots.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Plot fundamentals</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -340,31 +340,31 @@ gtag('config', 'G-73R3962S0Z', { 'anonymize_ip': true});
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./plots.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Plots</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Plot fundamentals</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./plots-and-skills_part1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Plots and skills (part 1)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Plot types and techniques (part 1)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./plots-and-skills_part2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Plots and skills (part 2)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Plot types and techniques (part 2)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./more-plots.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">More plots</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Additional plot types and techniques</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./more-custom-plots.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">More custom plots</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Custom plotting</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -383,7 +383,7 @@ gtag('config', 'G-73R3962S0Z', { 'anonymize_ip': true});
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#workflow" id="toc-workflow" class="nav-link active" data-scroll-target="#workflow"><span class="header-section-number">2.1</span> Workflow</a></li>
+  <li><a href="#general-workflow" id="toc-general-workflow" class="nav-link active" data-scroll-target="#general-workflow"><span class="header-section-number">2.1</span> General workflow</a></li>
   <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview"><span class="header-section-number">2.2</span> Overview</a></li>
   <li><a href="#anatomy" id="toc-anatomy" class="nav-link" data-scroll-target="#anatomy"><span class="header-section-number">2.3</span> Anatomy</a></li>
   </ul>
@@ -395,7 +395,7 @@ gtag('config', 'G-73R3962S0Z', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Plots</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Plot fundamentals</span></h1>
 </div>
 
 
@@ -417,8 +417,8 @@ gtag('config', 'G-73R3962S0Z', { 'anonymize_ip': true});
 <p><img src="images/tidyplots-is-easier.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
 </figure>
 </div>
-<section id="workflow" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="workflow"><span class="header-section-number">2.1</span> Workflow</h2>
+<section id="general-workflow" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="general-workflow"><span class="header-section-number">2.1</span> General workflow</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/tidyplots_workflow.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
@@ -1057,8 +1057,8 @@ Note
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./plots-and-skills_part1.html" class="pagination-link" aria-label="Plots and skills (part 1)">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Plots and skills (part 1)</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./plots-and-skills_part1.html" class="pagination-link" aria-label="Plot types and techniques (part 1)">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Plot types and techniques (part 1)</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

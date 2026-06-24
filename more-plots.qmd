@@ -1,4 +1,4 @@
-# More plots
+# Additional plot types and techniques
 
 ```{r}
 #| eval: false

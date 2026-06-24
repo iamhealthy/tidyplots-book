@@ -1,4 +1,4 @@
-# Plots and skills (part 1)
+# Plot types and techniques (part 1)
 
 ```{r}
 #| eval: false

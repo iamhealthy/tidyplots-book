@@ -1,4 +1,4 @@
-# Plots
+# Plot fundamentals
 
 ```{r}
 #| eval: false
@@ -52,7 +52,7 @@ df |>
 
 ![](images/tidyplots-is-easier.png){width="100%" fig-align="center"}
 
-## Workflow
+## General workflow
 
 ```{r}
 #| eval: false
