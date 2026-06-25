@@ -67,6 +67,7 @@ study |>
 
 ```{r}
 #| eval: false
+# Plot
 p1 <- study |> 
   tidyplot(x = treatment, y = score, color = treatment) |> 
   add_data_points_beeswarm(white_border = TRUE) |> 
@@ -147,6 +148,7 @@ df |> dplyr::select(x, y, correlation) |>
 # Define a new color scheme
 new_colors <- c("#000000", "#994455", "#ee99aa", "#eecc66")
 
+# Plot
 p0 <- df |> 
   tidyplot(x = x, y = y, color = correlation) |>    
   remove_legend_title() |> 
@@ -190,6 +192,7 @@ fs |> library()
 dplyr |> library()
 tidyplots |> library()
 
+# Plot
 p1 <- df |> 
   tidyplot(x = x, y = y, color = correlation) |> 
   add_heatmap(rasterize = TRUE, rasterize_dpi = 100) |> 

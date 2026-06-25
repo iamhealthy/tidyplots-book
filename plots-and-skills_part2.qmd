@@ -125,7 +125,7 @@ study |>
 ```
 
 ```{r}
-# eval: false
+#| eval: false
 # Plot
 p1 <- study |> 
   tidyplot(
@@ -431,6 +431,7 @@ study |>
 
 ```{r}
 #| eval: false
+# Plot
 p1 <- study |> 
   tidyplot(
     x = group, 
@@ -526,6 +527,62 @@ patchwork::wrap_plots(p1, p2, p3, p4, ncol = 2) |>
 
 ![Paired testing.](images/paired-testing.png){width=100% fig-align="center"}
 
+## Push comparisons above panel (e.g. boxplot)
+
+```{r}
+library(tidyplots)
+
+# View top 10 rows of the columns used
+study |> 
+  dplyr::select(group, score, dose) |> 
+  dplyr::slice_head(n = 10)
+```
+
+```{r}
+#| eval: false
+# Plot
+p1 <- study |> 
+  tidyplot(
+    x = group, 
+    y = score, 
+    color = dose) |> 
+  add_boxplot() |> 
+  add_data_points_beeswarm(white_border = TRUE, alpha = 0.5) |> 
+  add_title(title = "p1")
+
+p2 <- p1 |>
+  adjust_title(title = "p2: comparisons within panel") |> 
+  add_test_asterisks(hide_info = TRUE)
+
+y_limits_top <- max(study$score) * 1.02
+y_limits_bottom <- 0 - max(study$score) * 0.02
+
+p3 <- p2 |> 
+  adjust_title(title = "p3: comparisons clipped") |> 
+  adjust_y_axis(
+    limits = c(y_limits_bottom, y_limits_top),
+    breaks = seq(0, y_limits_top, by = 10))
+
+p4 <- p3 |> 
+  adjust_title(title = "p4: comparisons above panel") |> 
+  remove_clipping() |> 
+  adjust_theme_details(
+    plot.title = ggplot2::element_text(
+      margin = ggplot2::margin(
+        b = 10, 
+        unit = "mm")))
+```
+
+```{r}
+#| eval: false
+#| echo: false
+patchwork::wrap_plots(p1, p2, p3, p4, ncol = 2) |> 
+  save_plot(filename = "images/comparisons_above_panel.png",
+    view_plot = FALSE, width = 160, height = 140)
+```
+
+![Push comparisons above panel.](images/comparisons_above_panel.png){width="100%" fig-align="center"}
+
 ## Add `ggplot2` (extension) code (e.g. dot plot)
 
 :::{.callout-tip icon="true"}
@@ -591,6 +648,7 @@ climate |> dplyr::select(max_temperature, month) |> dplyr::slice_head(n = 10)
 
 ```{r}
 #| eval: false
+# Plot
 p1 <- climate |> 
   tidyplot(x = max_temperature, y = month, color = month) |> 
   add_title(title = "p1") |> remove_legend() |> 
@@ -606,9 +664,8 @@ p2 <- p1 |>
 p3 <- climate |> 
   tidyplot(x = max_temperature, y = month, color = month) |> 
   add_title(title = "p3: ridge plot") |> remove_legend() |> 
-  add(
-    ggridges::geom_density_ridges(alpha = 0.3, point_alpha = 0.2, 
-      jittered_points = TRUE, point_size = 1))
+  add(ggridges::geom_density_ridges(alpha = 0.3, point_alpha = 0.2, 
+    jittered_points = TRUE, point_size = 1))
 
 p4 <- climate |> 
   tidyplot(x = month, y = max_temperature, color = month) |> 
@@ -619,9 +676,8 @@ p4 <- climate |>
 p5 <- climate |> 
   tidyplot(x = month, y = max_temperature, color = month) |> 
   add_title(title = "p5: violin/dot plot") |> remove_legend() |> 
-  add(
-    see::geom_violindot(dots_size = 12, trim = FALSE, 
-      alpha = 0.5, color_dots = "#00000033"))
+  add(see::geom_violindot(dots_size = 12, trim = FALSE, 
+    alpha = 0.5, color_dots = "#00000033"))
 ```
 
 :::{.callout-note}

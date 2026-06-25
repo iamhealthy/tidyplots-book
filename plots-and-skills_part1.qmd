@@ -564,6 +564,7 @@ animals |>
 
 ```{r}
 #| eval: false
+# Plot
 p1 <- animals |> 
   tidyplot(x = weight, y = speed) |> 
   add_data_points(white_border = TRUE) |>
@@ -673,6 +674,7 @@ study |>
 
 ```{r}
 #| eval: false
+# Plot
 p1 <- study |> 
   tidyplot(
     x = group, 
@@ -1158,7 +1160,6 @@ p1 <- study |>
 # Set global options
 tidyplots_options(my_style = my_style)
 
-# Plot
 p2 <- study |> 
   tidyplot(
     x = group, 
@@ -1206,6 +1207,7 @@ my_style <- function(x) {
   adjust_size(width = 50, height = 30, unit = "mm") |> 
   adjust_title(fontsize = 10, color = "#ddaa33")}
 
+# Plot
 p1 <- study |> 
   tidyplot(
     x = group, 
@@ -1318,6 +1320,7 @@ my_style <- function(x) {
   add_sem_errorbar() |> 
   add_data_points_beeswarm()}
 
+# Plot
 p1 <- study |> 
   tidyplot(x = treatment, y = score, color = treatment) |> 
   my_style() |> 

@@ -69,6 +69,7 @@ df
 
 ```{r}
 #| eval: false
+# Plot
 p1 <- df |> 
   tidyplot(x = days, y = groups, color = groups) |> 
   add_reference_lines(x = df$days[1:5], color = "#dddddd") |>   
@@ -136,6 +137,7 @@ df
 ```{r}
 #| eval: false
 # See the last section (i.e. Schemetic of experiment design) for the detail of p1
+# Plot
 p1 <- df |> 
   tidyplot(x = days, y = groups, color = groups) |> 
   add_reference_lines(x = df$days[1:5], color = "#dddddd") |>   
@@ -462,6 +464,7 @@ study_comb |>
 
 ```{r}
 #| eval: false
+# Plot
 p1 <- study_comb |> 
   tidyplot(x = comb, y = score, color = comb) |> 
   add_violin(trim = FALSE) |> 
@@ -639,6 +642,7 @@ df
 
 ```{r}
 #| eval: false
+# Plot
 p1 <- df |> 
   tidyplot(
     x = x, 
@@ -771,6 +775,7 @@ df
 
 ```{r}
 #| eval: false
+# Plot
 p1 <- df |> 
   tidyplot(y = y, color = x_start) |> 
   add(gggenes::geom_gene_arrow(
@@ -914,7 +919,9 @@ study_modi |> dplyr::select(treatment, score, score_modi) |>
 
 ```{r}
 #| eval: false
-p1 <- study_modi |> tidyplot(x = treatment, y = score_modi, color = treatment) |> 
+# Plot
+p1 <- study_modi |> 
+  tidyplot(x = treatment, y = score_modi, color = treatment) |> 
   add_mean_bar(alpha = 0.3) |> 
   add_data_points_beeswarm(white_border = TRUE) |> 
   add_sem_errorbar() |> 
@@ -994,6 +1001,7 @@ df
 
 ```{r}
 #| eval: false
+# Plot
 p1 <- df |> 
   tidyplot(x = group, y = y, color = group) |> 
   add_boxplot() |> add_data_points(white_border = TRUE, size = 1.5) |> 
@@ -1040,7 +1048,7 @@ patchwork::wrap_plots(p1, p2, p3, p4, p5, p6, ncol = 2) |>
     view_plot = FALSE, width = 155, height = 210)
 ```
 
-![Color each points within each group.](images/different_point_colors.png){width="100%" fig-align="center"}
+![Color each points within each group.](images/different_point_colors.png){width="95%" fig-align="center"}
 
 ## Forest plot
 
@@ -1063,6 +1071,7 @@ df
 
 ```{r}
 #| eval: false
+# Plot
 p1 <- df |> 
   tidyplot(
     x = rr, 

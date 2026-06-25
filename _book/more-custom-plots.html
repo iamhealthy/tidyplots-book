@@ -478,46 +478,47 @@ gtag('config', 'G-73R3962S0Z', { 'anonymize_ip': true});
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidyplot</span>(<span class="at">x =</span> days, <span class="at">y =</span> groups, <span class="at">color =</span> groups) <span class="sc">|&gt;</span> </span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_reference_lines</span>(<span class="at">x =</span> df<span class="sc">$</span>days[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>], <span class="at">color =</span> <span class="st">"#dddddd"</span>) <span class="sc">|&gt;</span>   </span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_line</span>(<span class="at">linewidth =</span> <span class="fl">0.5</span>, <span class="at">arrow =</span> grid<span class="sc">::</span><span class="fu">arrow</span>(<span class="at">length =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="fl">0.15</span>, <span class="st">"cm"</span>))) <span class="sc">|&gt;</span> </span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_data_points</span>(<span class="at">shape =</span> df<span class="sc">$</span>shape, <span class="at">color =</span> <span class="st">"#000000"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_title</span>(<span class="at">title =</span> <span class="st">"p1"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_size</span>(<span class="at">height =</span> <span class="dv">35</span>) <span class="sc">|&gt;</span> <span class="co"># adjust width and height as needed</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_colors</span>(<span class="at">new_colors =</span> <span class="fu">c</span>(<span class="st">"#6699cc"</span>, <span class="st">"#994455"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">remove_legend</span>()</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> p1 <span class="sc">|&gt;</span> </span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p2: padding and axis breaks"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_padding</span>(<span class="at">left =</span> <span class="fl">0.3</span>, <span class="at">bottom =</span> <span class="fl">0.8</span>, <span class="at">top =</span> <span class="fl">0.5</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_x_axis</span>(<span class="at">breaks =</span> df<span class="sc">$</span>days[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]) <span class="sc">|&gt;</span> </span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_y_axis</span>(<span class="at">breaks =</span> df<span class="sc">$</span>groups)</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> p2 <span class="sc">|&gt;</span> </span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p3: data labels"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_data_labels</span>(<span class="at">label =</span> manipulation, <span class="at">label_position =</span> <span class="st">"left"</span>, </span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">angle =</span> <span class="dv">45</span>, <span class="at">color =</span> <span class="st">"#000000"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">fontsize =</span> <span class="dv">6</span>)</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> p2 <span class="sc">|&gt;</span> </span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p4: move some labels"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_data_labels</span>(<span class="at">label =</span> manipulation_1, <span class="at">label_position =</span> <span class="st">"left"</span>,</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">angle =</span> <span class="dv">45</span>, <span class="at">color =</span> <span class="st">"#000000"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">fontsize =</span> <span class="dv">6</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_data_labels</span>(<span class="at">label =</span> manipulation_2, <span class="at">label_position =</span> <span class="st">"above"</span>,</span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"#000000"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>p5 <span class="ot">&lt;-</span> p2 <span class="sc">|&gt;</span> </span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p5: another way of adding labels"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_annotation_text</span>(<span class="at">text =</span> df<span class="sc">$</span>manipulation_1, <span class="at">x =</span> df<span class="sc">$</span>days, <span class="at">y =</span> df<span class="sc">$</span>groups, </span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="fl">1.1</span>, <span class="at">vjust =</span> <span class="fl">1.5</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">fontsize =</span> <span class="dv">6</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_annotation_text</span>(<span class="at">text =</span> df<span class="sc">$</span>manipulation_2, <span class="at">x =</span> df<span class="sc">$</span>days,</span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> df<span class="sc">$</span>groups, <span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">vjust =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">fontsize =</span> <span class="dv">6</span>)</span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>p6 <span class="ot">&lt;-</span> p5 <span class="sc">|&gt;</span> </span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p6"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">remove_x_axis_line</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">remove_y_axis_line</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">remove_y_axis_ticks</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidyplot</span>(<span class="at">x =</span> days, <span class="at">y =</span> groups, <span class="at">color =</span> groups) <span class="sc">|&gt;</span> </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_reference_lines</span>(<span class="at">x =</span> df<span class="sc">$</span>days[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>], <span class="at">color =</span> <span class="st">"#dddddd"</span>) <span class="sc">|&gt;</span>   </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_line</span>(<span class="at">linewidth =</span> <span class="fl">0.5</span>, <span class="at">arrow =</span> grid<span class="sc">::</span><span class="fu">arrow</span>(<span class="at">length =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="fl">0.15</span>, <span class="st">"cm"</span>))) <span class="sc">|&gt;</span> </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_data_points</span>(<span class="at">shape =</span> df<span class="sc">$</span>shape, <span class="at">color =</span> <span class="st">"#000000"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_title</span>(<span class="at">title =</span> <span class="st">"p1"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_size</span>(<span class="at">height =</span> <span class="dv">35</span>) <span class="sc">|&gt;</span> <span class="co"># adjust width and height as needed</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_colors</span>(<span class="at">new_colors =</span> <span class="fu">c</span>(<span class="st">"#6699cc"</span>, <span class="st">"#994455"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">remove_legend</span>()</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> p1 <span class="sc">|&gt;</span> </span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p2: padding and axis breaks"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_padding</span>(<span class="at">left =</span> <span class="fl">0.3</span>, <span class="at">bottom =</span> <span class="fl">0.8</span>, <span class="at">top =</span> <span class="fl">0.5</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_x_axis</span>(<span class="at">breaks =</span> df<span class="sc">$</span>days[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]) <span class="sc">|&gt;</span> </span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_y_axis</span>(<span class="at">breaks =</span> df<span class="sc">$</span>groups)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> p2 <span class="sc">|&gt;</span> </span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p3: data labels"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_data_labels</span>(<span class="at">label =</span> manipulation, <span class="at">label_position =</span> <span class="st">"left"</span>, </span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">angle =</span> <span class="dv">45</span>, <span class="at">color =</span> <span class="st">"#000000"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">fontsize =</span> <span class="dv">6</span>)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> p2 <span class="sc">|&gt;</span> </span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p4: move some labels"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_data_labels</span>(<span class="at">label =</span> manipulation_1, <span class="at">label_position =</span> <span class="st">"left"</span>,</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">angle =</span> <span class="dv">45</span>, <span class="at">color =</span> <span class="st">"#000000"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">fontsize =</span> <span class="dv">6</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_data_labels</span>(<span class="at">label =</span> manipulation_2, <span class="at">label_position =</span> <span class="st">"above"</span>,</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"#000000"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>p5 <span class="ot">&lt;-</span> p2 <span class="sc">|&gt;</span> </span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p5: another way of adding labels"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_annotation_text</span>(<span class="at">text =</span> df<span class="sc">$</span>manipulation_1, <span class="at">x =</span> df<span class="sc">$</span>days, <span class="at">y =</span> df<span class="sc">$</span>groups, </span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="fl">1.1</span>, <span class="at">vjust =</span> <span class="fl">1.5</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">fontsize =</span> <span class="dv">6</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_annotation_text</span>(<span class="at">text =</span> df<span class="sc">$</span>manipulation_2, <span class="at">x =</span> df<span class="sc">$</span>days,</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> df<span class="sc">$</span>groups, <span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">vjust =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">fontsize =</span> <span class="dv">6</span>)</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>p6 <span class="ot">&lt;-</span> p5 <span class="sc">|&gt;</span> </span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p6"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">remove_x_axis_line</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">remove_y_axis_line</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">remove_y_axis_ticks</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -557,48 +558,49 @@ gtag('config', 'G-73R3962S0Z', { 'anonymize_ip': true});
 </div>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># See the last section (i.e. Schemetic of experiment design) for the detail of p1</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidyplot</span>(<span class="at">x =</span> days, <span class="at">y =</span> groups, <span class="at">color =</span> groups) <span class="sc">|&gt;</span> </span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_reference_lines</span>(<span class="at">x =</span> df<span class="sc">$</span>days[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>], <span class="at">color =</span> <span class="st">"#dddddd"</span>) <span class="sc">|&gt;</span>   </span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_line</span>(<span class="at">linewidth =</span> <span class="fl">0.5</span>, <span class="at">arrow =</span> grid<span class="sc">::</span><span class="fu">arrow</span>(<span class="at">length =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="fl">0.15</span>, <span class="st">"cm"</span>))) <span class="sc">|&gt;</span> </span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_data_points</span>(<span class="at">shape =</span> df<span class="sc">$</span>shape, <span class="at">color =</span> <span class="st">"#000000"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_title</span>(<span class="at">title =</span> <span class="st">"p1: experiment design"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_size</span>(<span class="at">height =</span> <span class="dv">35</span>) <span class="sc">|&gt;</span> <span class="co"># adjust width and height as needed</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_colors</span>(<span class="at">new_colors =</span> <span class="fu">c</span>(<span class="st">"#6699cc"</span>, <span class="st">"#994455"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">remove_legend</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_padding</span>(<span class="at">left =</span> <span class="fl">0.3</span>, <span class="at">bottom =</span> <span class="fl">0.8</span>, <span class="at">top =</span> <span class="fl">0.5</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_x_axis</span>(<span class="at">breaks =</span> df<span class="sc">$</span>days[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]) <span class="sc">|&gt;</span> </span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_y_axis</span>(<span class="at">breaks =</span> df<span class="sc">$</span>groups) <span class="sc">|&gt;</span> </span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_annotation_text</span>(<span class="at">text =</span> df<span class="sc">$</span>manipulation_1, <span class="at">x =</span> df<span class="sc">$</span>days, <span class="at">y =</span> df<span class="sc">$</span>groups, </span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="fl">1.1</span>, <span class="at">vjust =</span> <span class="fl">1.5</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">fontsize =</span> <span class="dv">6</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_annotation_text</span>(<span class="at">text =</span> df<span class="sc">$</span>manipulation_2, <span class="at">x =</span> df<span class="sc">$</span>days,</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> df<span class="sc">$</span>groups, <span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">vjust =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">fontsize =</span> <span class="dv">6</span>)</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Read mouse image (from https://bioart.niaid.nih.gov/bioart/20)</span></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>mouse <span class="ot">&lt;-</span> <span class="st">"images/ApodemusSilhouette0001-grey.svg"</span> <span class="sc">|&gt;</span> magick<span class="sc">::</span><span class="fu">image_read</span>()</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>mouse_pattern <span class="ot">&lt;-</span> mouse <span class="sc">|&gt;</span> grid<span class="sc">::</span><span class="fu">rasterGrob</span>(<span class="at">x =</span> <span class="fl">0.7</span>, <span class="at">y =</span> <span class="fl">0.5</span>,</span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">width =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="fl">0.4</span>, <span class="st">"snpc"</span>), <span class="at">height =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="fl">0.4</span>, <span class="st">"snpc"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>  grid<span class="sc">::</span><span class="fu">pattern</span>() <span class="co"># snpc: Square Normalised Parent Coordinates</span></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> p1 <span class="sc">|&gt;</span> </span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p2: via 'adjust_theme_details()'"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_theme_details</span>(<span class="at">panel.background =</span> ggplot2<span class="sc">::</span><span class="fu">element_rect</span>(<span class="at">fill =</span> mouse_pattern))</span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>mouse_grob <span class="ot">&lt;-</span> mouse <span class="sc">|&gt;</span> grid<span class="sc">::</span><span class="fu">rasterGrob</span>()</span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> p1 <span class="sc">|&gt;</span> </span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p3: via 'add()'"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add</span>(</span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">annotation_custom</span>(mouse_grob,</span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">xmin =</span> <span class="dv">30</span>, <span class="at">xmax =</span> <span class="dv">55</span>, <span class="at">ymin =</span> <span class="fl">1.1</span>, <span class="at">ymax =</span> <span class="fl">1.9</span>)) <span class="co"># tailored</span></span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> p1 <span class="sc">|&gt;</span> </span>
-<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p4: via 'rphylopic' package"</span>) <span class="sc">+</span> </span>
-<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>  rphylopic<span class="sc">::</span><span class="fu">add_phylopic</span>(</span>
-<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">uuid =</span> <span class="st">"36dc0476-ae7d-49ed-85c4-220139930bfc"</span>,</span>
-<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="dv">44</span>, <span class="at">y =</span> <span class="fl">1.5</span>, <span class="at">height =</span> <span class="fl">0.4</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>)</span>
-<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a><span class="co"># See https://rphylopic.palaeoverse.org/index.html for detail</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidyplot</span>(<span class="at">x =</span> days, <span class="at">y =</span> groups, <span class="at">color =</span> groups) <span class="sc">|&gt;</span> </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_reference_lines</span>(<span class="at">x =</span> df<span class="sc">$</span>days[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>], <span class="at">color =</span> <span class="st">"#dddddd"</span>) <span class="sc">|&gt;</span>   </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_line</span>(<span class="at">linewidth =</span> <span class="fl">0.5</span>, <span class="at">arrow =</span> grid<span class="sc">::</span><span class="fu">arrow</span>(<span class="at">length =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="fl">0.15</span>, <span class="st">"cm"</span>))) <span class="sc">|&gt;</span> </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_data_points</span>(<span class="at">shape =</span> df<span class="sc">$</span>shape, <span class="at">color =</span> <span class="st">"#000000"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_title</span>(<span class="at">title =</span> <span class="st">"p1: experiment design"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_size</span>(<span class="at">height =</span> <span class="dv">35</span>) <span class="sc">|&gt;</span> <span class="co"># adjust width and height as needed</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_colors</span>(<span class="at">new_colors =</span> <span class="fu">c</span>(<span class="st">"#6699cc"</span>, <span class="st">"#994455"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">remove_legend</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_padding</span>(<span class="at">left =</span> <span class="fl">0.3</span>, <span class="at">bottom =</span> <span class="fl">0.8</span>, <span class="at">top =</span> <span class="fl">0.5</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_x_axis</span>(<span class="at">breaks =</span> df<span class="sc">$</span>days[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]) <span class="sc">|&gt;</span> </span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_y_axis</span>(<span class="at">breaks =</span> df<span class="sc">$</span>groups) <span class="sc">|&gt;</span> </span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_annotation_text</span>(<span class="at">text =</span> df<span class="sc">$</span>manipulation_1, <span class="at">x =</span> df<span class="sc">$</span>days, <span class="at">y =</span> df<span class="sc">$</span>groups, </span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="fl">1.1</span>, <span class="at">vjust =</span> <span class="fl">1.5</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">fontsize =</span> <span class="dv">6</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_annotation_text</span>(<span class="at">text =</span> df<span class="sc">$</span>manipulation_2, <span class="at">x =</span> df<span class="sc">$</span>days,</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> df<span class="sc">$</span>groups, <span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">vjust =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">fontsize =</span> <span class="dv">6</span>)</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Read mouse image (from https://bioart.niaid.nih.gov/bioart/20)</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>mouse <span class="ot">&lt;-</span> <span class="st">"images/ApodemusSilhouette0001-grey.svg"</span> <span class="sc">|&gt;</span> magick<span class="sc">::</span><span class="fu">image_read</span>()</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>mouse_pattern <span class="ot">&lt;-</span> mouse <span class="sc">|&gt;</span> grid<span class="sc">::</span><span class="fu">rasterGrob</span>(<span class="at">x =</span> <span class="fl">0.7</span>, <span class="at">y =</span> <span class="fl">0.5</span>,</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">width =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="fl">0.4</span>, <span class="st">"snpc"</span>), <span class="at">height =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="fl">0.4</span>, <span class="st">"snpc"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>  grid<span class="sc">::</span><span class="fu">pattern</span>() <span class="co"># snpc: Square Normalised Parent Coordinates</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> p1 <span class="sc">|&gt;</span> </span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p2: via 'adjust_theme_details()'"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_theme_details</span>(<span class="at">panel.background =</span> ggplot2<span class="sc">::</span><span class="fu">element_rect</span>(<span class="at">fill =</span> mouse_pattern))</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>mouse_grob <span class="ot">&lt;-</span> mouse <span class="sc">|&gt;</span> grid<span class="sc">::</span><span class="fu">rasterGrob</span>()</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> p1 <span class="sc">|&gt;</span> </span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p3: via 'add()'"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add</span>(</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">annotation_custom</span>(mouse_grob,</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">xmin =</span> <span class="dv">30</span>, <span class="at">xmax =</span> <span class="dv">55</span>, <span class="at">ymin =</span> <span class="fl">1.1</span>, <span class="at">ymax =</span> <span class="fl">1.9</span>)) <span class="co"># tailored</span></span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> p1 <span class="sc">|&gt;</span> </span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p4: via 'rphylopic' package"</span>) <span class="sc">+</span> </span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>  rphylopic<span class="sc">::</span><span class="fu">add_phylopic</span>(</span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">uuid =</span> <span class="st">"36dc0476-ae7d-49ed-85c4-220139930bfc"</span>,</span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="dv">44</span>, <span class="at">y =</span> <span class="fl">1.5</span>, <span class="at">height =</span> <span class="fl">0.4</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>)</span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a><span class="co"># See https://rphylopic.palaeoverse.org/index.html for detail</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -910,30 +912,31 @@ Note
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> study_comb <span class="sc">|&gt;</span> </span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidyplot</span>(<span class="at">x =</span> comb, <span class="at">y =</span> score, <span class="at">color =</span> comb) <span class="sc">|&gt;</span> </span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_violin</span>(<span class="at">trim =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_data_points_beeswarm</span>(<span class="at">white_border =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_title</span>(<span class="at">title =</span> <span class="st">"p1"</span>)</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> p1 <span class="sc">|&gt;</span> </span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p2: reorder x levels"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">reorder_x_axis_levels</span>(<span class="st">"a,b,c"</span>, <span class="st">"a,b"</span>, <span class="st">"a,c"</span>, <span class="st">"b,c"</span>)</span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> p2 <span class="sc">|&gt;</span> </span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p3: via 'add()' 1"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add</span>(ggplot2<span class="sc">::</span><span class="fu">guides</span>(<span class="at">x =</span> legendry<span class="sc">::</span><span class="fu">guide_axis_upset</span>(</span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    legendry<span class="sc">::</span><span class="fu">key_upset</span>(<span class="at">sep =</span> <span class="st">","</span>), </span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">override.aes =</span> <span class="fu">list</span>(<span class="at">size =</span> <span class="dv">2</span>),</span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">connect =</span> <span class="cn">NULL</span>)))</span>
-<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> p2 <span class="sc">|&gt;</span> </span>
-<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p4: via 'add()' 2"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add</span>(ggplot2<span class="sc">::</span><span class="fu">guides</span>(<span class="at">x =</span> legendry<span class="sc">::</span><span class="fu">guide_axis_upset</span>(</span>
-<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>    legendry<span class="sc">::</span><span class="fu">key_upset</span>(<span class="at">sep =</span> <span class="st">","</span>),</span>
-<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">override.aes =</span> <span class="fu">list</span>(<span class="at">shape =</span> <span class="fu">c</span>(<span class="st">"+"</span>, <span class="st">"-"</span>, <span class="cn">NA</span>), <span class="at">size =</span> <span class="dv">4</span>),</span>
-<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">connect =</span> <span class="cn">NULL</span>))) <span class="sc">|&gt;</span> </span>
-<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal_xy</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> study_comb <span class="sc">|&gt;</span> </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidyplot</span>(<span class="at">x =</span> comb, <span class="at">y =</span> score, <span class="at">color =</span> comb) <span class="sc">|&gt;</span> </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_violin</span>(<span class="at">trim =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_data_points_beeswarm</span>(<span class="at">white_border =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_title</span>(<span class="at">title =</span> <span class="st">"p1"</span>)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> p1 <span class="sc">|&gt;</span> </span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p2: reorder x levels"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">reorder_x_axis_levels</span>(<span class="st">"a,b,c"</span>, <span class="st">"a,b"</span>, <span class="st">"a,c"</span>, <span class="st">"b,c"</span>)</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> p2 <span class="sc">|&gt;</span> </span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p3: via 'add()' 1"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add</span>(ggplot2<span class="sc">::</span><span class="fu">guides</span>(<span class="at">x =</span> legendry<span class="sc">::</span><span class="fu">guide_axis_upset</span>(</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    legendry<span class="sc">::</span><span class="fu">key_upset</span>(<span class="at">sep =</span> <span class="st">","</span>), </span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">override.aes =</span> <span class="fu">list</span>(<span class="at">size =</span> <span class="dv">2</span>),</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">connect =</span> <span class="cn">NULL</span>)))</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> p2 <span class="sc">|&gt;</span> </span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p4: via 'add()' 2"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add</span>(ggplot2<span class="sc">::</span><span class="fu">guides</span>(<span class="at">x =</span> legendry<span class="sc">::</span><span class="fu">guide_axis_upset</span>(</span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>    legendry<span class="sc">::</span><span class="fu">key_upset</span>(<span class="at">sep =</span> <span class="st">","</span>),</span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">override.aes =</span> <span class="fu">list</span>(<span class="at">shape =</span> <span class="fu">c</span>(<span class="st">"+"</span>, <span class="st">"-"</span>, <span class="cn">NA</span>), <span class="at">size =</span> <span class="dv">4</span>),</span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">connect =</span> <span class="cn">NULL</span>))) <span class="sc">|&gt;</span> </span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal_xy</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1123,31 +1126,32 @@ Note
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidyplot</span>(</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> x, </span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> y, </span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> y) <span class="sc">|&gt;</span> </span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_sum_bar</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_title</span>(<span class="at">title =</span> <span class="st">"p1"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">remove_legend</span>()</span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> p1 <span class="sc">|&gt;</span> </span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p2: default value position"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_sum_value</span>(<span class="at">color =</span> <span class="st">"#000000"</span>)</span>
-<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> p1 <span class="sc">|&gt;</span> </span>
-<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p3: vertical adjust = 0"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_sum_value</span>(<span class="at">color =</span> <span class="st">"#000000"</span>, <span class="at">vjust =</span> <span class="dv">0</span>)</span>
-<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> p1 <span class="sc">|&gt;</span> </span>
-<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p4: custom vertical adjust"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_y_axis</span>(</span>
-<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">limits =</span> <span class="fu">c</span>(<span class="fu">min</span>(df<span class="sc">$</span>y) <span class="sc">-</span> <span class="dv">2</span>, <span class="fu">max</span>(df<span class="sc">$</span>y) <span class="sc">+</span> <span class="dv">2</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_sum_value</span>(</span>
-<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"#000000"</span>, </span>
-<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">vjust =</span> vjust_custom, </span>
-<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">extra_padding =</span> <span class="dv">0</span>) <span class="co"># no extra spacing above panel</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidyplot</span>(</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> x, </span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> y, </span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> y) <span class="sc">|&gt;</span> </span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_sum_bar</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_title</span>(<span class="at">title =</span> <span class="st">"p1"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">remove_legend</span>()</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> p1 <span class="sc">|&gt;</span> </span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p2: default value position"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_sum_value</span>(<span class="at">color =</span> <span class="st">"#000000"</span>)</span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> p1 <span class="sc">|&gt;</span> </span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p3: vertical adjust = 0"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_sum_value</span>(<span class="at">color =</span> <span class="st">"#000000"</span>, <span class="at">vjust =</span> <span class="dv">0</span>)</span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> p1 <span class="sc">|&gt;</span> </span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p4: custom vertical adjust"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_y_axis</span>(</span>
+<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">limits =</span> <span class="fu">c</span>(<span class="fu">min</span>(df<span class="sc">$</span>y) <span class="sc">-</span> <span class="dv">2</span>, <span class="fu">max</span>(df<span class="sc">$</span>y) <span class="sc">+</span> <span class="dv">2</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_sum_value</span>(</span>
+<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"#000000"</span>, </span>
+<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">vjust =</span> vjust_custom, </span>
+<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">extra_padding =</span> <span class="dv">0</span>) <span class="co"># no extra spacing above panel</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1265,61 +1269,62 @@ Note
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidyplot</span>(<span class="at">y =</span> y, <span class="at">color =</span> x_start) <span class="sc">|&gt;</span> </span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add</span>(gggenes<span class="sc">::</span><span class="fu">geom_gene_arrow</span>(</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">xmin =</span> x_start, <span class="at">xmax =</span> x_end),</span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> <span class="fu">filter_rows</span>(y <span class="sc">==</span> <span class="dv">3</span>), </span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">arrowhead_height =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="dv">6</span>, <span class="st">"mm"</span>),</span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"#000000"</span>, <span class="at">fill =</span> <span class="st">"#ffffff"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_title</span>(<span class="at">title =</span> <span class="st">"p1"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_size</span>(<span class="at">width =</span> <span class="dv">70</span>, <span class="at">height =</span> <span class="dv">30</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_y_axis</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">3.5</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">remove_legend</span>()</span>
-<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> p1 <span class="sc">|&gt;</span> </span>
-<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p2"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add</span>(gggenes<span class="sc">::</span><span class="fu">geom_gene_label</span>(</span>
-<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">xmin =</span> x_start, <span class="at">xmax =</span> x_end, <span class="at">label =</span> phase),</span>
-<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(df, y <span class="sc">==</span> <span class="dv">3</span>),</span>
-<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"#000000"</span>))</span>
-<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> p2 <span class="sc">|&gt;</span> </span>
-<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p3"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add</span>(gggenes<span class="sc">::</span><span class="fu">geom_gene_arrow</span>(</span>
-<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">xmin =</span> x_start, <span class="at">xmax =</span> x_end),</span>
-<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> <span class="fu">filter_rows</span>(y <span class="sc">==</span> <span class="dv">2</span>), </span>
-<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">arrowhead_width =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="dv">0</span>, <span class="st">"mm"</span>),</span>
-<span id="cb33-26"><a href="#cb33-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">arrowhead_height =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="dv">8</span>, <span class="st">"mm"</span>), </span>
-<span id="cb33-27"><a href="#cb33-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">arrow_body_height =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="dv">8</span>, <span class="st">"mm"</span>), </span>
-<span id="cb33-28"><a href="#cb33-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"#000000"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb33-29"><a href="#cb33-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_colors</span>(<span class="at">new_colors =</span> <span class="fu">c</span>(<span class="st">"#eecc66"</span>, <span class="st">"#ee99aa"</span>, <span class="st">"#6699cc"</span>))</span>
-<span id="cb33-30"><a href="#cb33-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-31"><a href="#cb33-31" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> p3 <span class="sc">|&gt;</span> </span>
-<span id="cb33-32"><a href="#cb33-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p4"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb33-33"><a href="#cb33-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_annotation_text</span>(</span>
-<span id="cb33-34"><a href="#cb33-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">text =</span> df<span class="sc">$</span>phase[<span class="dv">4</span><span class="sc">:</span><span class="dv">6</span>], </span>
-<span id="cb33-35"><a href="#cb33-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> (df<span class="sc">$</span>x_start[<span class="dv">4</span><span class="sc">:</span><span class="dv">6</span>] <span class="sc">+</span> df<span class="sc">$</span>x_end[<span class="dv">4</span><span class="sc">:</span><span class="dv">6</span>])<span class="sc">/</span><span class="dv">2</span>, </span>
-<span id="cb33-36"><a href="#cb33-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> df<span class="sc">$</span>y[<span class="dv">4</span><span class="sc">:</span><span class="dv">6</span>]) <span class="sc">|&gt;</span> </span>
-<span id="cb33-37"><a href="#cb33-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_y_axis</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">3.5</span>))</span>
-<span id="cb33-38"><a href="#cb33-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-39"><a href="#cb33-39" aria-hidden="true" tabindex="-1"></a>p5 <span class="ot">&lt;-</span> p4 <span class="sc">|&gt;</span> </span>
-<span id="cb33-40"><a href="#cb33-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p5"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb33-41"><a href="#cb33-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add</span>(gggenes<span class="sc">::</span><span class="fu">geom_gene_arrow</span>(</span>
-<span id="cb33-42"><a href="#cb33-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">xmin =</span> x_start, <span class="at">xmax =</span> x_end, <span class="at">y =</span> y),</span>
-<span id="cb33-43"><a href="#cb33-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> <span class="fu">filter_rows</span>(y <span class="sc">==</span> <span class="dv">1</span>), </span>
-<span id="cb33-44"><a href="#cb33-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">arrowhead_width =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="dv">6</span>, <span class="st">"mm"</span>),</span>
-<span id="cb33-45"><a href="#cb33-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">arrowhead_height =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="dv">5</span>, <span class="st">"mm"</span>),</span>
-<span id="cb33-46"><a href="#cb33-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">arrow_body_height =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="dv">8</span>, <span class="st">"mm"</span>), </span>
-<span id="cb33-47"><a href="#cb33-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"#000000"</span>))</span>
-<span id="cb33-48"><a href="#cb33-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-49"><a href="#cb33-49" aria-hidden="true" tabindex="-1"></a>p6 <span class="ot">&lt;-</span> p5 <span class="sc">|&gt;</span> </span>
-<span id="cb33-50"><a href="#cb33-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p6"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb33-51"><a href="#cb33-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_annotation_text</span>(</span>
-<span id="cb33-52"><a href="#cb33-52" aria-hidden="true" tabindex="-1"></a>    <span class="at">text =</span> df<span class="sc">$</span>phase[<span class="dv">7</span><span class="sc">:</span><span class="dv">9</span>], </span>
-<span id="cb33-53"><a href="#cb33-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> (df<span class="sc">$</span>x_start[<span class="dv">7</span><span class="sc">:</span><span class="dv">9</span>] <span class="sc">+</span> df<span class="sc">$</span>x_end[<span class="dv">7</span><span class="sc">:</span><span class="dv">9</span>])<span class="sc">/</span><span class="dv">2</span>, </span>
-<span id="cb33-54"><a href="#cb33-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> df<span class="sc">$</span>y[<span class="dv">7</span><span class="sc">:</span><span class="dv">9</span>]) <span class="sc">|&gt;</span> </span>
-<span id="cb33-55"><a href="#cb33-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">remove_x_axis</span>() <span class="sc">|&gt;</span> <span class="fu">remove_y_axis</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidyplot</span>(<span class="at">y =</span> y, <span class="at">color =</span> x_start) <span class="sc">|&gt;</span> </span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add</span>(gggenes<span class="sc">::</span><span class="fu">geom_gene_arrow</span>(</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">xmin =</span> x_start, <span class="at">xmax =</span> x_end),</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> <span class="fu">filter_rows</span>(y <span class="sc">==</span> <span class="dv">3</span>), </span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">arrowhead_height =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="dv">6</span>, <span class="st">"mm"</span>),</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"#000000"</span>, <span class="at">fill =</span> <span class="st">"#ffffff"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_title</span>(<span class="at">title =</span> <span class="st">"p1"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_size</span>(<span class="at">width =</span> <span class="dv">70</span>, <span class="at">height =</span> <span class="dv">30</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_y_axis</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">3.5</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">remove_legend</span>()</span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> p1 <span class="sc">|&gt;</span> </span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p2"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add</span>(gggenes<span class="sc">::</span><span class="fu">geom_gene_label</span>(</span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">xmin =</span> x_start, <span class="at">xmax =</span> x_end, <span class="at">label =</span> phase),</span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(df, y <span class="sc">==</span> <span class="dv">3</span>),</span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"#000000"</span>))</span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> p2 <span class="sc">|&gt;</span> </span>
+<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p3"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add</span>(gggenes<span class="sc">::</span><span class="fu">geom_gene_arrow</span>(</span>
+<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">xmin =</span> x_start, <span class="at">xmax =</span> x_end),</span>
+<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> <span class="fu">filter_rows</span>(y <span class="sc">==</span> <span class="dv">2</span>), </span>
+<span id="cb33-26"><a href="#cb33-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">arrowhead_width =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="dv">0</span>, <span class="st">"mm"</span>),</span>
+<span id="cb33-27"><a href="#cb33-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">arrowhead_height =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="dv">8</span>, <span class="st">"mm"</span>), </span>
+<span id="cb33-28"><a href="#cb33-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">arrow_body_height =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="dv">8</span>, <span class="st">"mm"</span>), </span>
+<span id="cb33-29"><a href="#cb33-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"#000000"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb33-30"><a href="#cb33-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_colors</span>(<span class="at">new_colors =</span> <span class="fu">c</span>(<span class="st">"#eecc66"</span>, <span class="st">"#ee99aa"</span>, <span class="st">"#6699cc"</span>))</span>
+<span id="cb33-31"><a href="#cb33-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-32"><a href="#cb33-32" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> p3 <span class="sc">|&gt;</span> </span>
+<span id="cb33-33"><a href="#cb33-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p4"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb33-34"><a href="#cb33-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_annotation_text</span>(</span>
+<span id="cb33-35"><a href="#cb33-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">text =</span> df<span class="sc">$</span>phase[<span class="dv">4</span><span class="sc">:</span><span class="dv">6</span>], </span>
+<span id="cb33-36"><a href="#cb33-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> (df<span class="sc">$</span>x_start[<span class="dv">4</span><span class="sc">:</span><span class="dv">6</span>] <span class="sc">+</span> df<span class="sc">$</span>x_end[<span class="dv">4</span><span class="sc">:</span><span class="dv">6</span>])<span class="sc">/</span><span class="dv">2</span>, </span>
+<span id="cb33-37"><a href="#cb33-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> df<span class="sc">$</span>y[<span class="dv">4</span><span class="sc">:</span><span class="dv">6</span>]) <span class="sc">|&gt;</span> </span>
+<span id="cb33-38"><a href="#cb33-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_y_axis</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">3.5</span>))</span>
+<span id="cb33-39"><a href="#cb33-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-40"><a href="#cb33-40" aria-hidden="true" tabindex="-1"></a>p5 <span class="ot">&lt;-</span> p4 <span class="sc">|&gt;</span> </span>
+<span id="cb33-41"><a href="#cb33-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p5"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb33-42"><a href="#cb33-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add</span>(gggenes<span class="sc">::</span><span class="fu">geom_gene_arrow</span>(</span>
+<span id="cb33-43"><a href="#cb33-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">xmin =</span> x_start, <span class="at">xmax =</span> x_end, <span class="at">y =</span> y),</span>
+<span id="cb33-44"><a href="#cb33-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> <span class="fu">filter_rows</span>(y <span class="sc">==</span> <span class="dv">1</span>), </span>
+<span id="cb33-45"><a href="#cb33-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">arrowhead_width =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="dv">6</span>, <span class="st">"mm"</span>),</span>
+<span id="cb33-46"><a href="#cb33-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">arrowhead_height =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="dv">5</span>, <span class="st">"mm"</span>),</span>
+<span id="cb33-47"><a href="#cb33-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">arrow_body_height =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="dv">8</span>, <span class="st">"mm"</span>), </span>
+<span id="cb33-48"><a href="#cb33-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"#000000"</span>))</span>
+<span id="cb33-49"><a href="#cb33-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-50"><a href="#cb33-50" aria-hidden="true" tabindex="-1"></a>p6 <span class="ot">&lt;-</span> p5 <span class="sc">|&gt;</span> </span>
+<span id="cb33-51"><a href="#cb33-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p6"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb33-52"><a href="#cb33-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_annotation_text</span>(</span>
+<span id="cb33-53"><a href="#cb33-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">text =</span> df<span class="sc">$</span>phase[<span class="dv">7</span><span class="sc">:</span><span class="dv">9</span>], </span>
+<span id="cb33-54"><a href="#cb33-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> (df<span class="sc">$</span>x_start[<span class="dv">7</span><span class="sc">:</span><span class="dv">9</span>] <span class="sc">+</span> df<span class="sc">$</span>x_end[<span class="dv">7</span><span class="sc">:</span><span class="dv">9</span>])<span class="sc">/</span><span class="dv">2</span>, </span>
+<span id="cb33-55"><a href="#cb33-55" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> df<span class="sc">$</span>y[<span class="dv">7</span><span class="sc">:</span><span class="dv">9</span>]) <span class="sc">|&gt;</span> </span>
+<span id="cb33-56"><a href="#cb33-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">remove_x_axis</span>() <span class="sc">|&gt;</span> <span class="fu">remove_y_axis</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1446,44 +1451,46 @@ Note
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> study_modi <span class="sc">|&gt;</span> <span class="fu">tidyplot</span>(<span class="at">x =</span> treatment, <span class="at">y =</span> score_modi, <span class="at">color =</span> treatment) <span class="sc">|&gt;</span> </span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_mean_bar</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_data_points_beeswarm</span>(<span class="at">white_border =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_sem_errorbar</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_test_asterisks</span>(<span class="at">hide_info =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_title</span>(<span class="at">title =</span> <span class="st">"p1: treatments 'A' and 'B' are invisible"</span>)</span>
-<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> p1 <span class="sc">|&gt;</span> </span>
-<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p2: transform y axis via log10"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_y_axis</span>(<span class="at">transform =</span> <span class="st">"log10"</span>)</span>
-<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>study_AB <span class="ot">&lt;-</span> study_modi <span class="sc">|&gt;</span> </span>
-<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(treatment <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>))</span>
-<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>p3_lower_segment <span class="ot">&lt;-</span> p1 <span class="sc">|&gt;</span> </span>
-<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_y_axis</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(study_AB<span class="sc">$</span>score_modi) <span class="sc">+</span> <span class="dv">5</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_size</span>(<span class="at">height =</span> <span class="dv">15</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">remove_y_axis_title</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb43-19"><a href="#cb43-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">remove_title</span>()</span>
-<span id="cb43-20"><a href="#cb43-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-21"><a href="#cb43-21" aria-hidden="true" tabindex="-1"></a>study_CD <span class="ot">&lt;-</span> study_modi <span class="sc">|&gt;</span> </span>
-<span id="cb43-22"><a href="#cb43-22" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(treatment <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"C"</span>, <span class="st">"D"</span>))</span>
-<span id="cb43-23"><a href="#cb43-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-24"><a href="#cb43-24" aria-hidden="true" tabindex="-1"></a>p3_upper_segment <span class="ot">&lt;-</span> p1 <span class="sc">|&gt;</span> </span>
-<span id="cb43-25"><a href="#cb43-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p3: broken-axis plot"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb43-26"><a href="#cb43-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_y_axis</span>(</span>
-<span id="cb43-27"><a href="#cb43-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">limits =</span> <span class="fu">c</span>(<span class="fu">min</span>(study_CD<span class="sc">$</span>score_modi) <span class="sc">-</span> <span class="dv">100</span>, <span class="cn">NA</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb43-28"><a href="#cb43-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_y_axis_title</span>(<span class="at">hjust =</span> <span class="sc">-</span><span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb43-29"><a href="#cb43-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_size</span>(<span class="at">height =</span> <span class="dv">30</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb43-30"><a href="#cb43-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_padding</span>(<span class="at">top =</span> <span class="fl">0.1</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb43-31"><a href="#cb43-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">remove_x_axis</span>()</span>
-<span id="cb43-32"><a href="#cb43-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-33"><a href="#cb43-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine plots into the same graphic</span></span>
-<span id="cb43-34"><a href="#cb43-34" aria-hidden="true" tabindex="-1"></a>design <span class="ot">&lt;-</span> <span class="st">"AB</span></span>
-<span id="cb43-35"><a href="#cb43-35" aria-hidden="true" tabindex="-1"></a><span class="st">           C#</span></span>
-<span id="cb43-36"><a href="#cb43-36" aria-hidden="true" tabindex="-1"></a><span class="st">           D#"</span></span>
-<span id="cb43-37"><a href="#cb43-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-38"><a href="#cb43-38" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">+</span> p2 <span class="sc">+</span> p3_upper_segment <span class="sc">+</span> p3_lower_segment <span class="sc">+</span> <span class="fu">plot_layout</span>(<span class="at">design =</span> design)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> study_modi <span class="sc">|&gt;</span> </span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidyplot</span>(<span class="at">x =</span> treatment, <span class="at">y =</span> score_modi, <span class="at">color =</span> treatment) <span class="sc">|&gt;</span> </span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_mean_bar</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_data_points_beeswarm</span>(<span class="at">white_border =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_sem_errorbar</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_test_asterisks</span>(<span class="at">hide_info =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_title</span>(<span class="at">title =</span> <span class="st">"p1: treatments 'A' and 'B' are invisible"</span>)</span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> p1 <span class="sc">|&gt;</span> </span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p2: transform y axis via log10"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_y_axis</span>(<span class="at">transform =</span> <span class="st">"log10"</span>)</span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>study_AB <span class="ot">&lt;-</span> study_modi <span class="sc">|&gt;</span> </span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(treatment <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>))</span>
+<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a>p3_lower_segment <span class="ot">&lt;-</span> p1 <span class="sc">|&gt;</span> </span>
+<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_y_axis</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(study_AB<span class="sc">$</span>score_modi) <span class="sc">+</span> <span class="dv">5</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb43-19"><a href="#cb43-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_size</span>(<span class="at">height =</span> <span class="dv">15</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb43-20"><a href="#cb43-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">remove_y_axis_title</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb43-21"><a href="#cb43-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">remove_title</span>()</span>
+<span id="cb43-22"><a href="#cb43-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-23"><a href="#cb43-23" aria-hidden="true" tabindex="-1"></a>study_CD <span class="ot">&lt;-</span> study_modi <span class="sc">|&gt;</span> </span>
+<span id="cb43-24"><a href="#cb43-24" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(treatment <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"C"</span>, <span class="st">"D"</span>))</span>
+<span id="cb43-25"><a href="#cb43-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-26"><a href="#cb43-26" aria-hidden="true" tabindex="-1"></a>p3_upper_segment <span class="ot">&lt;-</span> p1 <span class="sc">|&gt;</span> </span>
+<span id="cb43-27"><a href="#cb43-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p3: broken-axis plot"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb43-28"><a href="#cb43-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_y_axis</span>(</span>
+<span id="cb43-29"><a href="#cb43-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">limits =</span> <span class="fu">c</span>(<span class="fu">min</span>(study_CD<span class="sc">$</span>score_modi) <span class="sc">-</span> <span class="dv">100</span>, <span class="cn">NA</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb43-30"><a href="#cb43-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_y_axis_title</span>(<span class="at">hjust =</span> <span class="sc">-</span><span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb43-31"><a href="#cb43-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_size</span>(<span class="at">height =</span> <span class="dv">30</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb43-32"><a href="#cb43-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_padding</span>(<span class="at">top =</span> <span class="fl">0.1</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb43-33"><a href="#cb43-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">remove_x_axis</span>()</span>
+<span id="cb43-34"><a href="#cb43-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-35"><a href="#cb43-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine plots into the same graphic</span></span>
+<span id="cb43-36"><a href="#cb43-36" aria-hidden="true" tabindex="-1"></a>design <span class="ot">&lt;-</span> <span class="st">"AB</span></span>
+<span id="cb43-37"><a href="#cb43-37" aria-hidden="true" tabindex="-1"></a><span class="st">           C#</span></span>
+<span id="cb43-38"><a href="#cb43-38" aria-hidden="true" tabindex="-1"></a><span class="st">           D#"</span></span>
+<span id="cb43-39"><a href="#cb43-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-40"><a href="#cb43-40" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">+</span> p2 <span class="sc">+</span> p3_upper_segment <span class="sc">+</span> p3_lower_segment <span class="sc">+</span> <span class="fu">plot_layout</span>(<span class="at">design =</span> design)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1537,46 +1544,47 @@ Note
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidyplot</span>(<span class="at">x =</span> group, <span class="at">y =</span> y, <span class="at">color =</span> group) <span class="sc">|&gt;</span> </span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_boxplot</span>() <span class="sc">|&gt;</span> <span class="fu">add_data_points</span>(<span class="at">white_border =</span> <span class="cn">TRUE</span>, <span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_title</span>(<span class="at">title =</span> <span class="st">"p1"</span>) <span class="sc">|&gt;</span> <span class="fu">add_test_pvalue</span>(<span class="at">paired_by =</span> batch, <span class="at">hide_info =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
-<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidyplot</span>(<span class="at">x =</span> group, <span class="at">y =</span> y, <span class="at">color =</span> group) <span class="sc">|&gt;</span> </span>
-<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_boxplot</span>(<span class="at">fill =</span> <span class="st">"#000000"</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">|&gt;</span> <span class="fu">add_title</span>(<span class="at">title =</span> <span class="st">"p2: no points"</span>)</span>
-<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> p2 <span class="sc">|&gt;</span> </span>
-<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p3: points with labels"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_data_points</span>(<span class="at">white_border =</span> <span class="cn">TRUE</span>, <span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_data_labels_repel</span>(<span class="at">label =</span> batch) <span class="sc">|&gt;</span> </span>
-<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_line</span>(<span class="at">group =</span> batch, <span class="at">color =</span> <span class="st">"#000000"</span>, <span class="at">linetype =</span> <span class="st">"dotted"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_test_pvalue</span>(<span class="at">paired_by =</span> batch, <span class="at">hide_info =</span> <span class="cn">TRUE</span>, <span class="at">bracket.nudge.y =</span> <span class="fl">0.2</span>)</span>
-<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> p2 <span class="sc">|&gt;</span> </span>
-<span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p4: different point colors (method 1)"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb46-19"><a href="#cb46-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_data_points</span>(<span class="at">white_border =</span> <span class="cn">TRUE</span>, <span class="at">size =</span> <span class="fl">1.5</span>, <span class="at">color =</span> df<span class="sc">$</span>batch_color_2) <span class="sc">|&gt;</span> </span>
-<span id="cb46-20"><a href="#cb46-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_line</span>(<span class="at">group =</span> batch, <span class="at">color =</span> <span class="st">"#000000"</span>, <span class="at">linetype =</span> <span class="st">"dotted"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb46-21"><a href="#cb46-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_test_pvalue</span>(<span class="at">paired_by =</span> batch, <span class="at">hide_info =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb46-22"><a href="#cb46-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-23"><a href="#cb46-23" aria-hidden="true" tabindex="-1"></a>p5 <span class="ot">&lt;-</span> p2 <span class="sc">|&gt;</span> </span>
-<span id="cb46-24"><a href="#cb46-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p5: different point colors (method 2)"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb46-25"><a href="#cb46-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_data_points</span>(<span class="at">data =</span> <span class="fu">filter_rows</span>(group <span class="sc">==</span> <span class="st">"g1"</span>), <span class="at">white_border =</span> <span class="cn">TRUE</span>, <span class="at">size =</span> <span class="fl">1.5</span>, <span class="at">color =</span> df<span class="sc">$</span>batch_color_1[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]) <span class="sc">|&gt;</span> </span>
-<span id="cb46-26"><a href="#cb46-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_data_points</span>(<span class="at">data =</span> <span class="fu">filter_rows</span>(group <span class="sc">==</span> <span class="st">"g2"</span>), <span class="at">white_border =</span> <span class="cn">TRUE</span>, <span class="at">size =</span> <span class="fl">1.5</span>, <span class="at">color =</span> df<span class="sc">$</span>batch_color_1[<span class="dv">6</span><span class="sc">:</span><span class="dv">10</span>]) <span class="sc">|&gt;</span> </span>
-<span id="cb46-27"><a href="#cb46-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_line</span>(<span class="at">group =</span> batch, <span class="at">color =</span> <span class="st">"#000000"</span>, <span class="at">linetype =</span> <span class="st">"dotted"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb46-28"><a href="#cb46-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_test_pvalue</span>(<span class="at">paired_by =</span> batch, <span class="at">hide_info =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb46-29"><a href="#cb46-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-30"><a href="#cb46-30" aria-hidden="true" tabindex="-1"></a>p6 <span class="ot">&lt;-</span> p2 <span class="sc">|&gt;</span> </span>
-<span id="cb46-31"><a href="#cb46-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p6: different point colors (method 3)"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb46-32"><a href="#cb46-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add</span>(ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(</span>
-<span id="cb46-33"><a href="#cb46-33" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">fill =</span> <span class="fu">I</span>(batch_color_1)), <span class="at">shape =</span> <span class="dv">21</span>, </span>
-<span id="cb46-34"><a href="#cb46-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">2.25</span>, <span class="at">color =</span> <span class="st">"#ffffff"</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb46-35"><a href="#cb46-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_line</span>(<span class="at">group =</span> batch, <span class="at">color =</span> <span class="st">"#000000"</span>, <span class="at">linetype =</span> <span class="st">"dotted"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb46-36"><a href="#cb46-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_test_pvalue</span>(<span class="at">paired_by =</span> batch, <span class="at">hide_info =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidyplot</span>(<span class="at">x =</span> group, <span class="at">y =</span> y, <span class="at">color =</span> group) <span class="sc">|&gt;</span> </span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_boxplot</span>() <span class="sc">|&gt;</span> <span class="fu">add_data_points</span>(<span class="at">white_border =</span> <span class="cn">TRUE</span>, <span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_title</span>(<span class="at">title =</span> <span class="st">"p1"</span>) <span class="sc">|&gt;</span> <span class="fu">add_test_pvalue</span>(<span class="at">paired_by =</span> batch, <span class="at">hide_info =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidyplot</span>(<span class="at">x =</span> group, <span class="at">y =</span> y, <span class="at">color =</span> group) <span class="sc">|&gt;</span> </span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_boxplot</span>(<span class="at">fill =</span> <span class="st">"#000000"</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">|&gt;</span> <span class="fu">add_title</span>(<span class="at">title =</span> <span class="st">"p2: no points"</span>)</span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> p2 <span class="sc">|&gt;</span> </span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p3: points with labels"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_data_points</span>(<span class="at">white_border =</span> <span class="cn">TRUE</span>, <span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_data_labels_repel</span>(<span class="at">label =</span> batch) <span class="sc">|&gt;</span> </span>
+<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_line</span>(<span class="at">group =</span> batch, <span class="at">color =</span> <span class="st">"#000000"</span>, <span class="at">linetype =</span> <span class="st">"dotted"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_test_pvalue</span>(<span class="at">paired_by =</span> batch, <span class="at">hide_info =</span> <span class="cn">TRUE</span>, <span class="at">bracket.nudge.y =</span> <span class="fl">0.2</span>)</span>
+<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> p2 <span class="sc">|&gt;</span> </span>
+<span id="cb46-19"><a href="#cb46-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p4: different point colors (method 1)"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb46-20"><a href="#cb46-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_data_points</span>(<span class="at">white_border =</span> <span class="cn">TRUE</span>, <span class="at">size =</span> <span class="fl">1.5</span>, <span class="at">color =</span> df<span class="sc">$</span>batch_color_2) <span class="sc">|&gt;</span> </span>
+<span id="cb46-21"><a href="#cb46-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_line</span>(<span class="at">group =</span> batch, <span class="at">color =</span> <span class="st">"#000000"</span>, <span class="at">linetype =</span> <span class="st">"dotted"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb46-22"><a href="#cb46-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_test_pvalue</span>(<span class="at">paired_by =</span> batch, <span class="at">hide_info =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb46-23"><a href="#cb46-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-24"><a href="#cb46-24" aria-hidden="true" tabindex="-1"></a>p5 <span class="ot">&lt;-</span> p2 <span class="sc">|&gt;</span> </span>
+<span id="cb46-25"><a href="#cb46-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p5: different point colors (method 2)"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb46-26"><a href="#cb46-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_data_points</span>(<span class="at">data =</span> <span class="fu">filter_rows</span>(group <span class="sc">==</span> <span class="st">"g1"</span>), <span class="at">white_border =</span> <span class="cn">TRUE</span>, <span class="at">size =</span> <span class="fl">1.5</span>, <span class="at">color =</span> df<span class="sc">$</span>batch_color_1[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]) <span class="sc">|&gt;</span> </span>
+<span id="cb46-27"><a href="#cb46-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_data_points</span>(<span class="at">data =</span> <span class="fu">filter_rows</span>(group <span class="sc">==</span> <span class="st">"g2"</span>), <span class="at">white_border =</span> <span class="cn">TRUE</span>, <span class="at">size =</span> <span class="fl">1.5</span>, <span class="at">color =</span> df<span class="sc">$</span>batch_color_1[<span class="dv">6</span><span class="sc">:</span><span class="dv">10</span>]) <span class="sc">|&gt;</span> </span>
+<span id="cb46-28"><a href="#cb46-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_line</span>(<span class="at">group =</span> batch, <span class="at">color =</span> <span class="st">"#000000"</span>, <span class="at">linetype =</span> <span class="st">"dotted"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb46-29"><a href="#cb46-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_test_pvalue</span>(<span class="at">paired_by =</span> batch, <span class="at">hide_info =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb46-30"><a href="#cb46-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-31"><a href="#cb46-31" aria-hidden="true" tabindex="-1"></a>p6 <span class="ot">&lt;-</span> p2 <span class="sc">|&gt;</span> </span>
+<span id="cb46-32"><a href="#cb46-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p6: different point colors (method 3)"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb46-33"><a href="#cb46-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add</span>(ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(</span>
+<span id="cb46-34"><a href="#cb46-34" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">fill =</span> <span class="fu">I</span>(batch_color_1)), <span class="at">shape =</span> <span class="dv">21</span>, </span>
+<span id="cb46-35"><a href="#cb46-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">2.25</span>, <span class="at">color =</span> <span class="st">"#ffffff"</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb46-36"><a href="#cb46-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_line</span>(<span class="at">group =</span> batch, <span class="at">color =</span> <span class="st">"#000000"</span>, <span class="at">linetype =</span> <span class="st">"dotted"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb46-37"><a href="#cb46-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_test_pvalue</span>(<span class="at">paired_by =</span> batch, <span class="at">hide_info =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/different_point_colors.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="images/different_point_colors.png" class="img-fluid figure-img" style="width:95.0%"></p>
 <figcaption>Color each points within each group.</figcaption>
 </figure>
 </div>
@@ -1609,37 +1617,38 @@ Note
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidyplot</span>(</span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> rr, </span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> studies) <span class="sc">|&gt;</span> </span>
-<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add</span>(ggplot2<span class="sc">::</span><span class="fu">geom_linerange</span>(</span>
-<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">xmin =</span> ci95_lower, <span class="at">xmax =</span> ci95_upper), </span>
-<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"#000000"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_data_points</span>(</span>
-<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">8</span> <span class="sc">*</span> df<span class="sc">$</span>weight, </span>
-<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">shape =</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">15</span>, <span class="dv">15</span>, <span class="dv">18</span>), </span>
-<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"#000000"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_title</span>(<span class="at">title =</span> <span class="st">"p1: involving `add()`"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">reverse_y_axis_levels</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_reference_lines</span>(<span class="at">x =</span> <span class="dv">1</span>) <span class="co"># line of no effect</span></span>
-<span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-16"><a href="#cb49-16" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
-<span id="cb49-17"><a href="#cb49-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidyplot</span>(</span>
-<span id="cb49-18"><a href="#cb49-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> rr, </span>
-<span id="cb49-19"><a href="#cb49-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> studies) <span class="sc">|&gt;</span> </span>
-<span id="cb49-20"><a href="#cb49-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_annotation_line</span>(</span>
-<span id="cb49-21"><a href="#cb49-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> df<span class="sc">$</span>ci95_lower, </span>
-<span id="cb49-22"><a href="#cb49-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">xend =</span> df<span class="sc">$</span>ci95_upper, </span>
-<span id="cb49-23"><a href="#cb49-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> df<span class="sc">$</span>studies, </span>
-<span id="cb49-24"><a href="#cb49-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">yend =</span> df<span class="sc">$</span>studies) <span class="sc">|&gt;</span> </span>
-<span id="cb49-25"><a href="#cb49-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_data_points</span>(</span>
-<span id="cb49-26"><a href="#cb49-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">8</span> <span class="sc">*</span> df<span class="sc">$</span>weight, </span>
-<span id="cb49-27"><a href="#cb49-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">shape =</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">15</span>, <span class="dv">15</span>, <span class="dv">18</span>), </span>
-<span id="cb49-28"><a href="#cb49-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"#000000"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb49-29"><a href="#cb49-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_title</span>(<span class="at">title =</span> <span class="st">"p2: without involving `add()`"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb49-30"><a href="#cb49-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">reverse_y_axis_levels</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb49-31"><a href="#cb49-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_reference_lines</span>(<span class="at">x =</span> <span class="dv">1</span>) <span class="co"># line of no effect</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidyplot</span>(</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> rr, </span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> studies) <span class="sc">|&gt;</span> </span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add</span>(ggplot2<span class="sc">::</span><span class="fu">geom_linerange</span>(</span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">xmin =</span> ci95_lower, <span class="at">xmax =</span> ci95_upper), </span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"#000000"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_data_points</span>(</span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">8</span> <span class="sc">*</span> df<span class="sc">$</span>weight, </span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">shape =</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">15</span>, <span class="dv">15</span>, <span class="dv">18</span>), </span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"#000000"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_title</span>(<span class="at">title =</span> <span class="st">"p1: involving `add()`"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">reverse_y_axis_levels</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_reference_lines</span>(<span class="at">x =</span> <span class="dv">1</span>) <span class="co"># line of no effect</span></span>
+<span id="cb49-16"><a href="#cb49-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-17"><a href="#cb49-17" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
+<span id="cb49-18"><a href="#cb49-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidyplot</span>(</span>
+<span id="cb49-19"><a href="#cb49-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> rr, </span>
+<span id="cb49-20"><a href="#cb49-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> studies) <span class="sc">|&gt;</span> </span>
+<span id="cb49-21"><a href="#cb49-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_annotation_line</span>(</span>
+<span id="cb49-22"><a href="#cb49-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> df<span class="sc">$</span>ci95_lower, </span>
+<span id="cb49-23"><a href="#cb49-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">xend =</span> df<span class="sc">$</span>ci95_upper, </span>
+<span id="cb49-24"><a href="#cb49-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> df<span class="sc">$</span>studies, </span>
+<span id="cb49-25"><a href="#cb49-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">yend =</span> df<span class="sc">$</span>studies) <span class="sc">|&gt;</span> </span>
+<span id="cb49-26"><a href="#cb49-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_data_points</span>(</span>
+<span id="cb49-27"><a href="#cb49-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">8</span> <span class="sc">*</span> df<span class="sc">$</span>weight, </span>
+<span id="cb49-28"><a href="#cb49-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">shape =</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">15</span>, <span class="dv">15</span>, <span class="dv">18</span>), </span>
+<span id="cb49-29"><a href="#cb49-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"#000000"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb49-30"><a href="#cb49-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_title</span>(<span class="at">title =</span> <span class="st">"p2: without involving `add()`"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb49-31"><a href="#cb49-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">reverse_y_axis_levels</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb49-32"><a href="#cb49-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_reference_lines</span>(<span class="at">x =</span> <span class="dv">1</span>) <span class="co"># line of no effect</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">

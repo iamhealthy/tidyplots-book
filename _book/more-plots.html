@@ -449,34 +449,35 @@ gtag('config', 'G-73R3962S0Z', { 'anonymize_ip': true});
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> study <span class="sc">|&gt;</span> </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidyplot</span>(<span class="at">x =</span> treatment, <span class="at">y =</span> score, <span class="at">color =</span> treatment) <span class="sc">|&gt;</span> </span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_data_points_beeswarm</span>(<span class="at">white_border =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_title</span>(<span class="at">title =</span> <span class="st">"p1"</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> p1 <span class="sc">|&gt;</span> </span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p2: violin without tail"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_violin</span>()</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> p1 <span class="sc">|&gt;</span> </span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p3: violin with tail"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_violin</span>(<span class="at">trim =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> p1 <span class="sc">|&gt;</span> </span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p4: violin with tail and quantiles"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_violin</span>(</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">trim =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">quantile.linetype =</span> <span class="st">"solid"</span>, </span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth =</span> <span class="dv">1</span>)</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>p5 <span class="ot">&lt;-</span> p2 <span class="sc">|&gt;</span> </span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p5: compare to 'A'"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_test_asterisks</span>(<span class="at">ref.group =</span> <span class="st">"A"</span>, <span class="at">hide_info =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>p6 <span class="ot">&lt;-</span> p3 <span class="sc">|&gt;</span> </span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p6: compare to 'A'"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_test_pvalue</span>(<span class="at">ref.group =</span> <span class="st">"A"</span>, <span class="at">padding_top =</span> <span class="fl">0.2</span>, </span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">bracket.nudge.y =</span> <span class="fl">0.3</span>, <span class="at">step.increase =</span> <span class="fl">0.2</span>, <span class="at">hide_info =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> study <span class="sc">|&gt;</span> </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidyplot</span>(<span class="at">x =</span> treatment, <span class="at">y =</span> score, <span class="at">color =</span> treatment) <span class="sc">|&gt;</span> </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_data_points_beeswarm</span>(<span class="at">white_border =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_title</span>(<span class="at">title =</span> <span class="st">"p1"</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> p1 <span class="sc">|&gt;</span> </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p2: violin without tail"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_violin</span>()</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> p1 <span class="sc">|&gt;</span> </span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p3: violin with tail"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_violin</span>(<span class="at">trim =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> p1 <span class="sc">|&gt;</span> </span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p4: violin with tail and quantiles"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_violin</span>(</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">trim =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">quantile.linetype =</span> <span class="st">"solid"</span>, </span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth =</span> <span class="dv">1</span>)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>p5 <span class="ot">&lt;-</span> p2 <span class="sc">|&gt;</span> </span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p5: compare to 'A'"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_test_asterisks</span>(<span class="at">ref.group =</span> <span class="st">"A"</span>, <span class="at">hide_info =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>p6 <span class="ot">&lt;-</span> p3 <span class="sc">|&gt;</span> </span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p6: compare to 'A'"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_test_pvalue</span>(<span class="at">ref.group =</span> <span class="st">"A"</span>, <span class="at">padding_top =</span> <span class="fl">0.2</span>, </span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">bracket.nudge.y =</span> <span class="fl">0.3</span>, <span class="at">step.increase =</span> <span class="fl">0.2</span>, <span class="at">hide_info =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -521,29 +522,30 @@ gtag('config', 'G-73R3962S0Z', { 'anonymize_ip': true});
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a new color scheme</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>new_colors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#000000"</span>, <span class="st">"#994455"</span>, <span class="st">"#ee99aa"</span>, <span class="st">"#eecc66"</span>)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>p0 <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidyplot</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">color =</span> correlation) <span class="sc">|&gt;</span>    </span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">remove_legend_title</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_colors</span>(<span class="at">new_colors =</span> new_colors) <span class="sc">|&gt;</span> </span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_theme_details</span>(<span class="at">legend.key.height =</span> ggplot2<span class="sc">::</span><span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">"null"</span>),</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.margin =</span> ggplot2<span class="sc">::</span><span class="fu">margin_part</span>(<span class="at">t =</span> <span class="dv">0</span>, <span class="at">b =</span> <span class="dv">0</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_caption</span>(<span class="st">"Data source: Mol Biol Cell. 1998. PMID: 9843569"</span>)</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Save vector images without rasterization</span></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>p0 <span class="sc">|&gt;</span> </span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_heatmap</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sort_x_axis_levels</span>(order_x) <span class="sc">|&gt;</span> <span class="fu">sort_y_axis_levels</span>(order_y) <span class="sc">|&gt;</span> </span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">remove_x_axis</span>() <span class="sc">|&gt;</span> <span class="fu">remove_y_axis</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">save_plot</span>(<span class="st">"images/rasterize_correlation_no.pdf"</span>, <span class="at">view_plot =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">save_plot</span>(<span class="st">"images/rasterize_correlation_no.svg"</span>, <span class="at">view_plot =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Save vector images with rasterization (dpi = 100)</span></span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>p0 <span class="sc">|&gt;</span> </span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_heatmap</span>(<span class="at">rasterize =</span> <span class="cn">TRUE</span>, <span class="at">rasterize_dpi =</span> <span class="dv">100</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sort_x_axis_levels</span>(order_x) <span class="sc">|&gt;</span> <span class="fu">sort_y_axis_levels</span>(order_y) <span class="sc">|&gt;</span> </span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">remove_x_axis</span>() <span class="sc">|&gt;</span> <span class="fu">remove_y_axis</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">save_plot</span>(<span class="st">"images/rasterize_correlation_yes_dpi100.pdf"</span>, <span class="at">view_plot =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">save_plot</span>(<span class="st">"images/rasterize_correlation_yes_dpi100.svg"</span>, <span class="at">view_plot =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>p0 <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidyplot</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">color =</span> correlation) <span class="sc">|&gt;</span>    </span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">remove_legend_title</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_colors</span>(<span class="at">new_colors =</span> new_colors) <span class="sc">|&gt;</span> </span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_theme_details</span>(<span class="at">legend.key.height =</span> ggplot2<span class="sc">::</span><span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">"null"</span>),</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.margin =</span> ggplot2<span class="sc">::</span><span class="fu">margin_part</span>(<span class="at">t =</span> <span class="dv">0</span>, <span class="at">b =</span> <span class="dv">0</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_caption</span>(<span class="st">"Data source: Mol Biol Cell. 1998. PMID: 9843569"</span>)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Save vector images without rasterization</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>p0 <span class="sc">|&gt;</span> </span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_heatmap</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sort_x_axis_levels</span>(order_x) <span class="sc">|&gt;</span> <span class="fu">sort_y_axis_levels</span>(order_y) <span class="sc">|&gt;</span> </span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">remove_x_axis</span>() <span class="sc">|&gt;</span> <span class="fu">remove_y_axis</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">save_plot</span>(<span class="st">"images/rasterize_correlation_no.pdf"</span>, <span class="at">view_plot =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">save_plot</span>(<span class="st">"images/rasterize_correlation_no.svg"</span>, <span class="at">view_plot =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Save vector images with rasterization (dpi = 100)</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>p0 <span class="sc">|&gt;</span> </span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_heatmap</span>(<span class="at">rasterize =</span> <span class="cn">TRUE</span>, <span class="at">rasterize_dpi =</span> <span class="dv">100</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sort_x_axis_levels</span>(order_x) <span class="sc">|&gt;</span> <span class="fu">sort_y_axis_levels</span>(order_y) <span class="sc">|&gt;</span> </span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">remove_x_axis</span>() <span class="sc">|&gt;</span> <span class="fu">remove_y_axis</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">save_plot</span>(<span class="st">"images/rasterize_correlation_yes_dpi100.pdf"</span>, <span class="at">view_plot =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">save_plot</span>(<span class="st">"images/rasterize_correlation_yes_dpi100.svg"</span>, <span class="at">view_plot =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>List the figures saved:</p>
 <div class="cell">

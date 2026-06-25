@@ -387,6 +387,7 @@ gtag('config', 'G-73R3962S0Z', { 'anonymize_ip': true});
   <li><a href="#sec-xy-coordinates-imagej" id="toc-sec-xy-coordinates-imagej" class="nav-link" data-scroll-target="#sec-xy-coordinates-imagej"><span class="header-section-number">7.3</span> xy coordinates in ImageJ/Fiji</a></li>
   <li><a href="#patchwork-package-for-combining-multiple-plots" id="toc-patchwork-package-for-combining-multiple-plots" class="nav-link" data-scroll-target="#patchwork-package-for-combining-multiple-plots"><span class="header-section-number">7.4</span> <code>Patchwork</code> package for combining multiple plots</a></li>
   <li><a href="#packages-used-throughout-this-cookbook" id="toc-packages-used-throughout-this-cookbook" class="nav-link" data-scroll-target="#packages-used-throughout-this-cookbook"><span class="header-section-number">7.5</span> Packages used throughout this cookbook</a></li>
+  <li><a href="#cite-this-cookbook" id="toc-cite-this-cookbook" class="nav-link" data-scroll-target="#cite-this-cookbook"><span class="header-section-number">7.6</span> Cite this cookbook</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/iamhealthy/tidyplots-book/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -665,7 +666,7 @@ Note
 <p>Patchwork <a href="https://patchwork.data-imaginist.com/" class="uri">https://patchwork.data-imaginist.com/</a> was not initially designed to handle plots with <strong>absolute dimensions</strong>.</p>
 </div>
 </div>
-<p>All multi-panel figures throughout this book (except the figure in <a href="plots-and-skills_part1.html#sec-plot-size" class="quarto-xref"><span>Section 3.4</span></a> and <a href="plots-and-skills_part2.html#sec-plot-panel-padding" class="quarto-xref"><span>Section 4.15</span></a>), due to differences in <strong>absolute dimensions</strong>, are combined using the <code>patchwork</code> package.</p>
+<p>All multi-panel figures throughout this book (except the figure in <a href="plots-and-skills_part1.html#sec-plot-size" class="quarto-xref"><span>Section 3.4</span></a> and <a href="plots-and-skills_part2.html#sec-plot-panel-padding" class="quarto-xref"><span>Section 4.16</span></a>), due to differences in <strong>absolute dimensions</strong>, are combined using the <code>patchwork</code> package.</p>
 <p>In general, <code>patchwork</code> can be used to <strong>combine seperate plots into a multi-panel figure and tag each panel, which is a common practice in scientific papers</strong>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyplots)</span>
@@ -753,7 +754,7 @@ Note
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste0</span>(<span class="st">"positron: "</span>, positron_version[<span class="dv">1</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "positron: Positron: 2026.06.0 build 211"</code></pre>
+<pre><code>[1] "positron: Positron: 2026.06.1 build 6"</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>r_version</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -783,8 +784,28 @@ Note
 17 magick    2.9.1     </code></pre>
 </div>
 </div>
+</section>
+<section id="cite-this-cookbook" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="cite-this-cookbook"><span class="header-section-number">7.6</span> Cite this cookbook</h2>
+<section id="to-cite-this-cookbook-in-publications-use" class="level3 unlisted unnumbered">
+<h3 class="unlisted unnumbered anchored" data-anchor-id="to-cite-this-cookbook-in-publications-use">To cite this cookbook in publications use:</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>Wu K. Tidyplots<span class="sc">:</span> publication<span class="sc">-</span>ready plots <span class="cf">for</span> scientific <span class="fu">papers</span> (<span class="dv">1</span>e)<span class="sc">:</span> A cookbook. <span class="fl">2026.</span> Available at<span class="sc">:</span> https<span class="sc">:</span><span class="er">//</span>tidyplots<span class="sc">-</span>book.pages.dev<span class="sc">/</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="a-bibtex-entry-for-latex-users-is" class="level3 unlisted unnumbered">
+<h3 class="unlisted unnumbered anchored" data-anchor-id="a-bibtex-entry-for-latex-users-is">A BibTeX entry for LaTeX users is</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="sc">@</span>Book{wk2026tidyplots,</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  author <span class="ot">=</span> {Wu, Kang},</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  title <span class="ot">=</span> {Tidyplots<span class="sc">:</span> publication<span class="sc">-</span>ready plots <span class="cf">for</span> scientific <span class="fu">papers</span> (<span class="dv">1</span>e)<span class="sc">:</span> A cookbook},</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  year <span class="ot">=</span> {<span class="dv">2026</span>},</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  url <span class="ot">=</span> {https<span class="sc">:</span><span class="er">//</span>tidyplots<span class="sc">-</span>book.pages.dev<span class="sc">/</span>}</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

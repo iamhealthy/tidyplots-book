@@ -332,3 +332,26 @@ paste0("positron: ", positron_version[1])
 r_version
 r_packages_versions
 ```
+
+## Cite this cookbook
+
+### To cite this cookbook in publications use: {.unlisted .unnumbered}
+
+```{r}
+#| eval: false
+#| code-overflow: wrap
+Wu K. Tidyplots: publication-ready plots for scientific papers (1e): A cookbook. 2026. Available at: https://tidyplots-book.pages.dev/
+```
+
+### A BibTeX entry for LaTeX users is {.unlisted .unnumbered}
+
+```{r}
+#| eval: false
+#| code-overflow: wrap
+@Book{wk2026tidyplots,
+  author = {Wu, Kang},
+  title = {Tidyplots: publication-ready plots for scientific papers (1e): A cookbook},
+  year = {2026},
+  url = {https://tidyplots-book.pages.dev/}
+}
+```
