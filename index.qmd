@@ -1,9 +1,5 @@
 # Welcome {.unnumbered}
 
-:::{.callout-warning icon="true"}
-The PDF and Amazon KDP editions have not yet been updated.
-:::
-
 This is largely a curated compilation of code & the corresponding plots, with some additional exploration by Kang Wu (<https://iamhealthy.github.io/>), based on the official resources by Jan Broder Engler (<https://jbengler.de/>).
 
 The official resources used for this compilation include:
