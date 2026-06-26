@@ -16,7 +16,7 @@ The official resources used for this compilation include:
 
 - 🔗The paper: iMeta 2025 (<https://doi.org/10.1002/imt2.70018>)
 
-You may read it online here for free, purchase a PDF version from [Leanpub](https://leanpub.com/tidyplots-cookbook), or get a physical copy from Amazon KDP ([blank & white version](https://www.amazon.com/Tidyplots-publication-ready-scientific-papers-cookbook/dp/B0H61PQ66K/ref=sr_1_1?crid=3CZ1MV56Z56I5&dib=eyJ2IjoiMSJ9.cjMXYPxpIIKVaRAUWK37ARLNcjjKMNs56F3qb0lG6gE.tP1hp0A9asp9ih7TBvBQQDZlbiDbfBqkqIa8aTWSiS8&dib_tag=se&keywords=tidyplots%3A+publication-ready+plots+for+scientific+papers&qid=1782009072&sprefix=%2Caps%2C410&sr=8-1) or [premium color version](https://www.amazon.com/Tidyplots-publication-ready-scientific-cookbook-premium/dp/B0H62FHDR2/ref=sr_1_2?crid=3CZ1MV56Z56I5&dib=eyJ2IjoiMSJ9.cjMXYPxpIIKVaRAUWK37ARLNcjjKMNs56F3qb0lG6gE.tP1hp0A9asp9ih7TBvBQQDZlbiDbfBqkqIa8aTWSiS8&dib_tag=se&keywords=tidyplots%3A+publication-ready+plots+for+scientific+papers&qid=1782009142&sprefix=%2Caps%2C410&sr=8-2)).
+You may read it online here for free, purchase a PDF version from [Leanpub](https://leanpub.com/tidyplots-cookbook), or get a physical copy from Amazon KDP ([blank & white version](https://www.amazon.com/dp/B0H61PQ66K) or [premium color version](https://www.amazon.com/dp/B0H62FHDR2)).
 
 For the physical copy, code is primarily shown on the left-hand pages, with the corresponding plots displayed on the following right-hand pages to facilitate **reference, comparison, or interpretation**.
 
