@@ -680,7 +680,7 @@ patchwork::wrap_plots(p1, p2, p3, p4, ncol = 2) |>
 
 ![Add sum values for negative bars.](images/sum-values-for-neg-bars.png){width="100%" fig-align="center"}
 
-## Sequencial issues
+## Sequential issues
 
 ```{r}
 library(tidyplots)
@@ -749,13 +749,13 @@ design <- "AB
            CD
            EE"
 patchwork::wrap_plots(p1, p2, p3, p4, p5, design = design) |> 
-  save_plot("images/sequencial-issues.png",
+  save_plot("images/sequential-issues.png",
     view_plot = FALSE, width = 130, height = 200)
 ```
 
-![Sequencial issues.](images/sequencial-issues.png){width="84%" fig-align="center"}
+![Sequential issues.](images/sequential-issues.png){width="84%" fig-align="center"}
 
-## Sequencial issues (using `add()`)
+## Sequential issues (using `add()`)
 
 ```{r}
 library(tidyplots)
@@ -841,7 +841,7 @@ patchwork::wrap_plots(p1, p2, p3, p4, p5, p6, ncol = 2) |>
     view_plot = FALSE, width = 165, height = 130)
 ```
 
-![Sequencial issues (using `add()`).](images/sequence_issues_2.png){width="100%" fig-align="center"}
+![Sequential issues (using `add()`).](images/sequence_issues_2.png){width="100%" fig-align="center"}
 
 ## Change Chinese date axis labels into English ones
 
@@ -983,7 +983,7 @@ P3 is actually composed of two plots: `p3_upper_segment` and `p3_lower_segment`.
 By the way, it seems that the `ggbreak` package is incompatible with ggplot or tidyplot that use absolute dimentions [@zepeng_mu].
 :::
 
-## Color each points within each group
+## Color each point within each group
 
 ```{r}
 #| warning: false
@@ -1048,7 +1048,7 @@ patchwork::wrap_plots(p1, p2, p3, p4, p5, p6, ncol = 2) |>
     view_plot = FALSE, width = 155, height = 210)
 ```
 
-![Color each points within each group.](images/different_point_colors.png){width="95%" fig-align="center"}
+![Color each point within each group.](images/different_point_colors.png){width="95%" fig-align="center"}
 
 ## Forest plot
 

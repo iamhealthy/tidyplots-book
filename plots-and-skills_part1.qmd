@@ -1154,8 +1154,7 @@ p1 <- study |>
     y = score, 
     color = dose) |> 
   add_mean_bar() |> 
-  adjust_size() |> 
-  add_title("p1: default style")
+  add_title(title = "p1: default style")
 
 # Set global options
 tidyplots_options(my_style = my_style)
@@ -1166,7 +1165,7 @@ p2 <- study |>
     y = score, 
     color = dose) |> 
   add_mean_bar() |> 
-  add_title("p2: defined global style")
+  add_title(title = "p2: defined global style")
 ```
 
 ```{r}
@@ -1213,9 +1212,8 @@ p1 <- study |>
     x = group, 
     y = score, 
     color = dose) |> 
-  add_mean_bar() |> 
-  adjust_size() |> 
-  add_title("p1: default style")
+  add_mean_bar() |>  
+  add_title(title = "p1: default style")
 
 p2 <- study |> 
   tidyplot(
@@ -1223,7 +1221,7 @@ p2 <- study |>
     y = score, 
     color = dose) |> 
   add_mean_bar() |> 
-  add_title("p2: defined custom style") |> 
+  add_title(title = "p2: defined custom style") |> 
   my_style()
 ```
 

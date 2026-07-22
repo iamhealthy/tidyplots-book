@@ -115,7 +115,7 @@ patchwork::wrap_plots(p1, p2, p3, p4, p5, p6, ncol = 2) |>
 ## Plotmath expressions in title (e.g. bar plot)
 
 ```{r}
-#| echo: false
+#| echo: true
 library(tidyplots)
 
 # View top 10 rows of the columns used
@@ -168,7 +168,7 @@ patchwork::wrap_plots(p1, p2, p3, p4, ncol = 2) |>
 ```
 
 :::{.callout-tip icon="true"}
-Just surrond your string by "$" characters.
+Just surround your string by "$" characters.
 
 Plotmath expressions work with plot titles, legend titles, axis titles, axis labels, caption, and more.
 :::
@@ -229,7 +229,7 @@ patchwork::wrap_plots(p1, p2, ncol = 1) |>
 ```
 
 :::{.callout-tip icon="true"}
-Just surrond your string by "$" characters.
+Just surround your string by "$" characters.
 
 Plotmath expressions work with plot titles, legend titles, axis titles, axis labels, caption, and more.
 :::

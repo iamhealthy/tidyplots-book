@@ -411,11 +411,11 @@ gtag('config', 'G-73R3962S0Z', { 'anonymize_ip': true});
   <li><a href="#change-point-shapecolor-and-annotate-axis" id="toc-change-point-shapecolor-and-annotate-axis" class="nav-link" data-scroll-target="#change-point-shapecolor-and-annotate-axis"><span class="header-section-number">6.7</span> Change point shape/color and annotate axis</a></li>
   <li><a href="#point-annotation" id="toc-point-annotation" class="nav-link" data-scroll-target="#point-annotation"><span class="header-section-number">6.8</span> Point annotation</a></li>
   <li><a href="#add-sum-values-for-negative-bars" id="toc-add-sum-values-for-negative-bars" class="nav-link" data-scroll-target="#add-sum-values-for-negative-bars"><span class="header-section-number">6.9</span> Add sum values for negative bars</a></li>
-  <li><a href="#sequencial-issues" id="toc-sequencial-issues" class="nav-link" data-scroll-target="#sequencial-issues"><span class="header-section-number">6.10</span> Sequencial issues</a></li>
-  <li><a href="#sequencial-issues-using-add" id="toc-sequencial-issues-using-add" class="nav-link" data-scroll-target="#sequencial-issues-using-add"><span class="header-section-number">6.11</span> Sequencial issues (using <code>add()</code>)</a></li>
+  <li><a href="#sequential-issues" id="toc-sequential-issues" class="nav-link" data-scroll-target="#sequential-issues"><span class="header-section-number">6.10</span> Sequential issues</a></li>
+  <li><a href="#sequential-issues-using-add" id="toc-sequential-issues-using-add" class="nav-link" data-scroll-target="#sequential-issues-using-add"><span class="header-section-number">6.11</span> Sequential issues (using <code>add()</code>)</a></li>
   <li><a href="#change-chinese-date-axis-labels-into-english-ones" id="toc-change-chinese-date-axis-labels-into-english-ones" class="nav-link" data-scroll-target="#change-chinese-date-axis-labels-into-english-ones"><span class="header-section-number">6.12</span> Change Chinese date axis labels into English ones</a></li>
   <li><a href="#plot-with-a-broken-axis" id="toc-plot-with-a-broken-axis" class="nav-link" data-scroll-target="#plot-with-a-broken-axis"><span class="header-section-number">6.13</span> Plot with a broken axis</a></li>
-  <li><a href="#color-each-points-within-each-group" id="toc-color-each-points-within-each-group" class="nav-link" data-scroll-target="#color-each-points-within-each-group"><span class="header-section-number">6.14</span> Color each points within each group</a></li>
+  <li><a href="#color-each-point-within-each-group" id="toc-color-each-point-within-each-group" class="nav-link" data-scroll-target="#color-each-point-within-each-group"><span class="header-section-number">6.14</span> Color each point within each group</a></li>
   <li><a href="#forest-plot" id="toc-forest-plot" class="nav-link" data-scroll-target="#forest-plot"><span class="header-section-number">6.15</span> Forest plot</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/iamhealthy/tidyplots-book/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
@@ -1160,8 +1160,8 @@ Note
 </figure>
 </div>
 </section>
-<section id="sequencial-issues" class="level2" data-number="6.10">
-<h2 data-number="6.10" class="anchored" data-anchor-id="sequencial-issues"><span class="header-section-number">6.10</span> Sequencial issues</h2>
+<section id="sequential-issues" class="level2" data-number="6.10">
+<h2 data-number="6.10" class="anchored" data-anchor-id="sequential-issues"><span class="header-section-number">6.10</span> Sequential issues</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyplots)</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1232,13 +1232,13 @@ Note
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/sequencial-issues.png" class="img-fluid figure-img" style="width:84.0%"></p>
-<figcaption>Sequencial issues.</figcaption>
+<p><img src="images/sequential-issues.png" class="img-fluid figure-img" style="width:84.0%"></p>
+<figcaption>Sequential issues.</figcaption>
 </figure>
 </div>
 </section>
-<section id="sequencial-issues-using-add" class="level2" data-number="6.11">
-<h2 data-number="6.11" class="anchored" data-anchor-id="sequencial-issues-using-add"><span class="header-section-number">6.11</span> Sequencial issues (using <code>add()</code>)</h2>
+<section id="sequential-issues-using-add" class="level2" data-number="6.11">
+<h2 data-number="6.11" class="anchored" data-anchor-id="sequential-issues-using-add"><span class="header-section-number">6.11</span> Sequential issues (using <code>add()</code>)</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyplots)</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1329,7 +1329,7 @@ Note
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/sequence_issues_2.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption>Sequencial issues (using <code>add()</code>).</figcaption>
+<figcaption>Sequential issues (using <code>add()</code>).</figcaption>
 </figure>
 </div>
 </section>
@@ -1514,8 +1514,8 @@ Note
 </div>
 </div>
 </section>
-<section id="color-each-points-within-each-group" class="level2" data-number="6.14">
-<h2 data-number="6.14" class="anchored" data-anchor-id="color-each-points-within-each-group"><span class="header-section-number">6.14</span> Color each points within each group</h2>
+<section id="color-each-point-within-each-group" class="level2" data-number="6.14">
+<h2 data-number="6.14" class="anchored" data-anchor-id="color-each-point-within-each-group"><span class="header-section-number">6.14</span> Color each point within each group</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyplots)</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1585,7 +1585,7 @@ Note
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/different_point_colors.png" class="img-fluid figure-img" style="width:95.0%"></p>
-<figcaption>Color each points within each group.</figcaption>
+<figcaption>Color each point within each group.</figcaption>
 </figure>
 </div>
 </section>
