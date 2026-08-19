@@ -1235,14 +1235,14 @@ patchwork::wrap_plots(p1, p2, ncol = 1) |>
 
 ![Set a custom style to reuse.](images/set-custom-style.png){width=100% fig-align="center"}
 
-## Set a custom style to reuse (e.g. areastack plot) {#sec-custom-reuse}
+## Set a custom style to reuse (e.g. areastack plot)
 
 ```{r}
 library(tidyplots)
 
 # View top 10 rows of the columns used
-energy_week |> 
-  dplyr::select(date, power, energy_source) |> 
+energy |> 
+  dplyr::select(year, energy, energy_type) |> 
   dplyr::slice_head(n = 10)
 ```
 
@@ -1253,31 +1253,29 @@ my_style <- function(x) {
   x |> 
     adjust_font(family = "mono", face = "bold") |> 
     adjust_title(fontsize = 10) |> 
-    reverse_color_levels() |> 
-    adjust_x_axis(labels = scales::label_date( # display dates as "Sep 05" etc.
-      format = "%b %d", locale = "en"))}
+    reverse_color_levels()}
 
 # Plot
-p1 <- energy_week |> 
+p1 <- energy |> 
   tidyplot(
-    x = date, 
-    y = power, 
-    color = energy_source) |> 
+    x = year, 
+    y = energy, 
+    color = energy_type) |> 
   add_areastack_relative() |> 
   add_title(title = "p1: areastack relative")
 
 p2 <- p1 |> 
   adjust_title(
     title = paste("p2: areastack relative", "defined custom style", sep = "\n")) |> 
-  adjust_legend_title(title = "ENERGY_SOURCE", color = "#bb5566") |>   
+  adjust_legend_title(title = "ENERGY_TYPE", color = "#bb5566") |>   
   adjust_legend_position(position = "left") |> 
   my_style()
 
-p3 <- energy_week |> 
+p3 <- energy |> 
   tidyplot(
-    x = date, 
-    y = power, 
-    color = energy_source) |> 
+    x = year, 
+    y = energy, 
+    color = energy_type) |> 
   adjust_title(
     title = paste("p3: areastack absolute", "defined custom style", sep = "\n")) |> 
   add_areastack_absolute() |> 
@@ -1289,14 +1287,10 @@ p3 <- energy_week |>
 #| echo: false
 patchwork::wrap_plots(p1, p2, p3, ncol = 1) |> 
   save_plot("images/set-custom-style_areastack.png",
-    view_plot = FALSE, width = 170, height = 210)
+    view_plot = FALSE, width = 120, height = 210)
 ```
 
-![Set a custom style to reuse.](images/set-custom-style_areastack.png){width=100% fig-align="center"}
-
-:::{.callout-note}
-Please note the Chinese character "月" on the x-axis of p1, as the code was run on an `x86_64-w64-mingw32/x64` platform with the locale set to `Chinese (Simplified)_China.utf8`.
-:::
+![Set a custom style to reuse.](images/set-custom-style_areastack.png){width=90% fig-align="center"}
 
 ## Plot paper and ink colors (e.g. bar plot)
 

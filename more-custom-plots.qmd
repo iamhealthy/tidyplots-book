@@ -845,41 +845,53 @@ patchwork::wrap_plots(p1, p2, p3, p4, p5, p6, ncol = 2) |>
 
 ## Change Chinese date axis labels into English ones
 
-:::{.callout-note}
-This is a (tedious) alternative way to @sec-custom-reuse. 
-:::
-
 ```{r}
 library(tidyplots)
 
-# Change date column with <dttm> type to a new column with <chr> type
-energy_week_chr <- energy_week |> 
-  dplyr::mutate(date_chr = as.character(date))
-
-# View top 10 rows of the columns used
-energy_week_chr |> 
-  dplyr::select(date, date_chr, power, energy_source) |> 
-  dplyr::slice_head(n = 10)
-
-# Also viewsome info about my computer
-sessionInfo()$platform
-Sys.getlocale("LC_TIME")
+# View top 1 rows of the columns used
+energy_week |> 
+  dplyr::select(date, power, energy_source) |> 
+  dplyr::slice_head(n = 1)
 ```
 
 ```{r}
 #| eval: false
 # Plot
-p1 <- energy_week_chr |> 
+p1 <- energy_week |> 
   tidyplot(x = date, y = power, color = energy_source) |> 
   add_title(title = "p1: x axis labels in Chinese") |>  
   add_areastack_relative()
-# you can see the Chinese character "月" in the x axis labels.
+# Notice the Chinese character "月" in the x axis labels.
 
-p2 <- energy_week_chr |> 
-  tidyplot(x = date_chr, y = power, color = energy_source) |> 
-  add_title(title = "p2: x axis labels in English") |> 
-  add_areastack_relative() |> 
+p2 <- p1 |> 
+  adjust_title(title = "p2: x axis labels in English") |> 
   adjust_legend_position(position = "left") |> 
+  adjust_x_axis(
+    labels = scales::label_date(
+      format = "%b %d",
+      locale = "en"))
+```
+
+```{r}
+# Change date column with <dttm> type to a new column with <chr> type
+energy_week_chr <- energy_week |> 
+  dplyr::mutate(date_chr = as.character(date))
+
+# View top 1 row of the columns used
+energy_week_chr |> 
+  dplyr::select(date, date_chr, power, energy_source) |> 
+  dplyr::slice_head(n = 1)
+
+# Also view the locale setting of my computer
+Sys.getlocale("LC_TIME")
+```
+
+```{r}
+#| eval: false
+p3 <- energy_week_chr |> 
+  tidyplot(x = date_chr, y = power, color = energy_source) |> 
+  add_title(title = "p3: x axis labels in English\n2nd (tedious) way") |> 
+  add_areastack_relative() |> 
   adjust_x_axis(
     breaks = c("2023-09-05", "2023-09-07", "2023-09-09"),
     labels = c("Sep 05", "Sep 07", "Sep 09"))
@@ -891,12 +903,12 @@ p2 <- energy_week_chr |>
 
 energy_week_chr |> rm()
 
-patchwork::wrap_plots(p1, p2, ncol = 1) |> 
+patchwork::wrap_plots(p1, p2, p3, ncol = 1) |> 
   save_plot("images/axis-chinese-english.png",
-    view_plot = FALSE, width = 160, height = 140)
+    view_plot = FALSE, width = 145, height = 205)
 ```
 
-![Change Chinese date axis labels into English ones.](images/axis-chinese-english.png){width="100%" fig-align="center"}
+![Change Chinese date axis labels into English ones.](images/axis-chinese-english.png){width="95%" fig-align="center"}
 
 :::{.callout-note icon="true"}
 What about the same issue in non-English operating systems other than Chinese?
@@ -1114,3 +1126,316 @@ patchwork::wrap_plots(p1, p2, ncol = 1) |>
 ```
 
 ![Forest plot. The data involved are from [@Dettori2021].](images/forest-plot.png){width="100%" fig-align="center"}
+
+## Relative to control
+
+```{r}
+library(tidyplots)
+
+# A putative df
+relative <- study |> 
+  dplyr::mutate(
+    `rel. CFU (D3/D0)` = score/20)
+
+# View top 10 rows of the columns used
+relative |> 
+  dplyr::select(group, `rel. CFU (D3/D0)`, dose) |> 
+  dplyr::slice_head(n = 10)
+```
+
+```{r}
+#| eval: false
+p1 <- relative |> 
+  tidyplot(x = group, y = `rel. CFU (D3/D0)`, color = dose) |> 
+  add_mean_bar(alpha = 0.4) |> 
+  add_data_points_beeswarm(white_border = TRUE) |> 
+  add_sem_errorbar() |> 
+  add_title(title = "p1")
+
+p2 <- p1 |> 
+  add_test_asterisks(hide_info = TRUE) |> 
+  adjust_title(title = "p2: comparisons")
+
+p3 <- p2 |> 
+  adjust_padding(bottom = 0.1) |> 
+  adjust_title(title = "p3: log2-transformed y") |> 
+  adjust_y_axis(
+    transform = "log2", 
+    breaks = 2^(-3:2))
+
+p4 <- p3 |> 
+  add_reference_lines(y = 1, linetype = "solid") |> 
+  add_caption(caption = "mimic fig 3b of\nPLoS Pathog. 2026. PMID: 42461973") |> 
+  adjust_title(title = "p4: reference line at y = 1")
+```
+
+```{r}
+#| eval: false
+#| echo: false
+patchwork::wrap_plots(p1, p2, p3, p4, ncol = 2) |> 
+  save_plot("images/relative-to-control.png",
+    view_plot = FALSE, width = 170, height = 140)
+```
+
+![Relative to control.](images/relative-to-control.png){fig-align="center" width="100%"}
+
+## Tick for subgroup
+
+```{r}
+library(tidyplots)
+
+# A putative df
+studyx <- study |> 
+  dplyr::mutate(treatmentx = rep(c(1, 2, 4, 5), each = 5))
+
+# View top 10 rows of the columns used
+studyx |> 
+  dplyr::select(treatmentx, score, treatment) |> 
+  dplyr::slice_head(n = 10)
+```
+
+```{r}
+#| eval: false
+p1 <- studyx |> 
+  tidyplot(x = treatmentx, y = score, color = treatment) |> 
+  add_boxplot() |> 
+  add_data_points_beeswarm(white_border = TRUE) |> 
+  add_title(title = "p1") |> 
+  adjust_x_axis(breaks = c(1, 2, 4, 5), labels = c("A", "B", "A", "B"))
+
+stat_df <- tibble::tibble(
+  group1 = c(1), group2 = c(2, 4, 5),
+  p = c(0.005, 0.003, 0.0001),
+  y.position = c(25, 55, 55))
+
+p2 <- p1 |> 
+  adjust_title(title = "p2: add comparisons manually") |> 
+  add_test_pvalue_manual(data = stat_df, label = "p")
+
+p3 <- p2 |> 
+  adjust_title(title = "p3: adjust colors") |> 
+  adjust_colors(new_colors = c("#ddaa33", "#004488", "#ddaa33", "#004488"))
+
+score_max <- max(studyx$score)
+y_axis_lower_limit <- 0 - score_max * 0.03 #tailored
+
+p4 <- p3 |> 
+  adjust_title(title = "p4: fix y axis limits") |> 
+  adjust_y_axis(limits = c(y_axis_lower_limit, score_max * 1.45)) #tailored
+
+p5 <- p4 |> 
+  adjust_title(title = "p5: annotate group info") |>
+  remove_x_axis_title() |> 
+  remove_clipping() |> 
+  add_annotation_text(
+    text = c("group 1", "group 2"),
+    x = c(1.5, 4.5), y = -10) # tailored
+
+p6 <- p5 |> 
+  adjust_title(title = "p6: remove legend") |> 
+  remove_legend() |> 
+  adjust_caption(
+    caption = "\nmimic fig 6 of\nMicrobiol Spectr. 2026. PMID: 42474179")
+```
+
+```{r}
+#| eval: false
+#| echo: false
+patchwork::wrap_plots(p1, p2, p3, p4, p5, p6, ncol = 2) |> 
+  save_plot("images/tick-for-subgroup.png",
+    view_plot = FALSE, width = 160, height = 210)
+```
+
+![Tick for subgroup.](images/tick-for-subgroup.png){fig-align="center" width="100%"}
+
+## Segmented x axis line
+
+```{r}
+library(tidyplots)
+
+# View top 10 rows of the columns used
+study |> 
+  dplyr::select(treatment, score) |> 
+  dplyr::slice_head(n = 10)
+```
+
+```{r}
+#| eval: false
+p1 <- study |> 
+  tidyplot(x = treatment, y = score) |> 
+  add_mean_bar(alpha = 0.4) |>   
+  add_data_points_beeswarm(white_border = TRUE) |> 
+  add_sem_errorbar() |> 
+  add_test_asterisks(hide_info = TRUE, ref.group = "A", y.position = c(22, 60, 65)) |> 
+  add_title(title = "p1")
+
+p2 <- p1 |> 
+  adjust_title(title = "p2: remove x axis line") |> 
+  remove_x_axis_line()
+
+score_max <- max(study$score)
+y_axis_lower_limit <- 0 - score_max * 0.03
+
+p3 <- p2 |> 
+  adjust_title(title = "p3: two segments of x axis line") |> 
+  add_annotation_line(
+    x = 1, xend = 2, 
+    y = y_axis_lower_limit, yend = y_axis_lower_limit, 
+    linewidth = 0.25) |> 
+  add_annotation_line(
+    x = 3, xend = 4, 
+    y = y_axis_lower_limit, yend = y_axis_lower_limit, 
+    linewidth = 0.25) |> 
+  adjust_y_axis(limits = c(y_axis_lower_limit, NA)) |> 
+  adjust_padding(top = 0.1)
+
+p4 <- p3 |> 
+  adjust_title(title = "p4: rename x axis labels and titles") |> 
+  adjust_x_axis(labels = c("A", "B", "A", "B")) |> 
+  remove_x_axis_title() |> 
+  remove_clipping() |> 
+  add_annotation_text(
+    text = c("Uninfected", "Infected"), 
+    x = c(1.5, 3.5), y = -10) |> # -10 is a tailored number
+  add_caption(caption = "mimic fig 2a of\nMicrobiol Spectr. 2026. PMID: 42474179")
+```
+
+```{r}
+#| eval: false
+#| echo: false
+patchwork::wrap_plots(p1, p2, p3, p4, ncol = 2) |> 
+  save_plot("images/segmented-x-axis-line.png",
+    view_plot = FALSE, width = 130, height = 140)
+```
+
+![Segmented x axis line.](images/segmented-x-axis-line.png){fig-align="center" width="100%"}
+
+## Nested bar plot
+
+```{r}
+library(tidyplots)
+
+# View top 10 rows of the columns used
+study |>
+  dplyr::select(group, score, dose) |>
+  dplyr::slice_head(n = 10)
+```
+
+```{r}
+#| eval: false
+#| warning: false
+# Plot
+p1 <- study |> 
+  tidyplot(x = group, y = score, color = dose) |> 
+  add_mean_bar(alpha = 0.5) |> 
+  add_data_points_beeswarm(white_border = TRUE) |> 
+  add_sem_errorbar(color = "#000000") |> 
+  add_title(title = "p1")
+
+p2 <- study |> 
+  tidyplot(x = group, y = score, color = dose, dodge_width = 0) |> 
+  add_mean_bar(alpha = 0.5) |> 
+  add_data_points_beeswarm(white_border = TRUE) |> 
+  add_sem_errorbar(color = "#000000") |> 
+  add_title(title = "p2: overlapped group bars")
+
+p3 <- study |> 
+  tidyplot(x = group, y = score, color = dose, dodge_width = 0) |> 
+  add_mean_bar(alpha = 0.5, width = c(0.6, 0.4, 0.6, 0.4)) |> 
+  add_data_points_beeswarm(white_border = TRUE) |> 
+  add_sem_errorbar(color = "#000000") |> 
+  add_title(title = "p3: narrower top bars")
+
+p4 <- study |> 
+  tidyplot(x = group, y = score, color = dose, dodge_width = 0) |> 
+  add_mean_bar(alpha = 0.5, width = c(0.6, 0.4, 0.6, 0.4)) |> 
+  add_data_points_beeswarm(white_border = TRUE, dodge_width = 0.6) |> 
+  add_sem_errorbar(color = "#000000") |> 
+  add_title(title = "p4: group points with dodging")
+
+p5 <- p4 |> 
+  adjust_title(title = "p5: test asterisks") |> 
+  add_test_asterisks(hide_info = TRUE)
+
+p6 <- p4 |> 
+  adjust_title(title = "p6: brackets removed") |> 
+  add_test_asterisks(hide_info = TRUE, remove.bracket = TRUE)
+```
+
+```{r}
+#| eval: false
+#| echo: false
+#| warning: false
+patchwork::wrap_plots(p1, p2, p3, p4, p5, p6, ncol = 2) |> 
+  save_plot("images/nested-bar-plot.png",
+    view_plot = FALSE, width = 160, height = 200)
+```
+
+![Nested bar plot.](images/nested-bar-plot.png){fig-align="center" width="100%"}
+
+## Stacked bar plot with error bar
+
+```{r}
+#| message: false
+library(tidyplots)
+
+# Calculation
+study_c <- study |> 
+  dplyr::group_by(group, dose) |>
+  dplyr::summarise(
+    mean = mean(score), sem = sd(score) / sqrt(length(score))) |> 
+  dplyr::mutate(
+    cmean = cumsum(mean),
+    lower = cmean - sem, upper = cmean + sem,
+    gpos = ifelse(group == "placebo", 1, 2))
+
+# View
+study_c
+```
+
+```{r}
+#| eval: false
+p1 <- study_c |> 
+  tidyplot(x = group, y = mean, color = dose) |> 
+  add_barstack_absolute(alpha = 0.5) |> 
+  add_title(title = "p1: absolute barstack")
+
+p2 <- study_c |> 
+  tidyplot(x = group, y = mean, color = dose) |> 
+  add_barstack_absolute(reverse = TRUE, alpha = 0.5) |> 
+  add_title(title = "p2: absolute barstack\nreverse")
+
+p3 <- p2 |> 
+  adjust_title(title = "p3: vertical lines") |> 
+  add_annotation_line(
+    x = study_c$gpos, xend = study_c$gpos,
+    y = study_c$lower, yend = study_c$upper)
+
+p4 <- p3 |> 
+  adjust_title(title = "p4: upper lines") |> 
+  add_annotation_line(
+    x = study_c$gpos - 0.2, xend = study_c$gpos + 0.2,
+    y = study_c$upper, yend = study_c$upper)
+
+p5 <- p4 |> 
+  adjust_title(title = "p5: lower lines") |> 
+  add_annotation_line(
+    x = study_c$gpos - 0.2, xend = study_c$gpos + 0.2,
+    y = study_c$lower, yend = study_c$lower)
+
+p6 <- p2 |> 
+  adjust_title(title = "p6: via ggplot2") |> 
+  add(ggplot2::geom_errorbar(
+    ggplot2::aes(ymin = lower, ymax = upper), 
+    width = 0.4, show.legend = FALSE, color = "#000000"))
+```
+
+```{r}
+#| eval: false
+#| echo: false
+patchwork::wrap_plots(p1, p2, p3, p4, p5, p6, ncol = 2) |> 
+  save_plot("images/stacked-bar-errorbar.png",
+    view_plot = FALSE, width = 160, height = 205)
+```
+
+![Stacked bar plot with error bar.](images/stacked-bar-errorbar.png){fig-align="center"  width="100%"}

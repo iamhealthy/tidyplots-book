@@ -1336,3 +1336,202 @@ patchwork::wrap_plots(p1, p2, ncol = 1) |>
 ```
 
 ![Rasterize data points selectively.](images/rasterize-data-points_size.png){width=90% fig-align="center"}
+
+## Bracket position and its tip length (e.g. bar plot)
+
+```{r}
+library(tidyplots)
+
+# View top 10 rows of the columns used
+study |> 
+  dplyr::select(group, score, dose) |> 
+  dplyr::slice_head(n = 10)
+```
+
+```{r}
+#| eval: false
+# Plot
+p1 <- study |> 
+  tidyplot(x = group, y = score, color = dose) |> 
+  add_mean_bar(alpha = 0.4) |> 
+  add_data_points_beeswarm(white_border = TRUE) |> 
+  add_sd_errorbar(color = "#000000") |> 
+  add_title(title = "p1")
+
+p2 <- p1 |> 
+  adjust_title(title = "p2: comparison") |> 
+  add_test_asterisks(hide_info = TRUE)
+
+study_placebo <- study |> dplyr::filter(group == "placebo")
+study_treatment <- study |> dplyr::filter(group == "treatment")
+
+p3 <- p1 |> 
+  adjust_title(title = "p3: tailored bracket positon") |> 
+  add_test_asterisks(
+    hide_info = TRUE,
+    y.position = c(
+      max(study_placebo$score) + 7, # 7 is a tailored number
+      max(study_treatment$score) + 7))
+
+p4 <- p1 |> 
+  adjust_title(title = "p4: tailored tip length") |> 
+  add_test_asterisks(
+    hide_info = TRUE,
+    y.position = c(
+      max(study_placebo$score) + 7, 
+      max(study_treatment$score) + 7),
+    tip.length = c(0.2, 0.03, 0.03, 0.6)) # tailored fraction of tip length
+```
+
+```{r}
+#| eval: false
+#| echo: false
+patchwork::wrap_plots(p1, p2, p3, p4, ncol = 2) |> 
+  save_plot("images/adjust-bracket-position-tip-length.png",
+    view_plot = FALSE, width = 160, height = 140)
+```
+
+![Bracket position and its tip length.](images/adjust-bracket-position-tip-length.png){fig-align="center" width="100%"}
+
+## The position of annotated text
+
+```{r}
+library(tidyplots)
+
+# A putative df from https://ggplot2-book.org/annotations.html
+df <- tibble::tibble(
+  x = c(1, 1, 2, 2, 1.5),
+  y = c(1, 2, 1, 2, 1.5),
+  text = c("bottom-left", "top-left", "bottom-right", "top-right", "center"))
+
+# View df
+df
+```
+
+```{r}
+#| eval: false
+# Plot
+p0 <- df |> 
+  tidyplot(x = x, y = y) |> 
+  add_data_points(size = 2, color = "#bb5566", alpha = 0.5) |> 
+  remove_clipping() |> remove_x_axis_labels() |> remove_y_axis_labels()
+
+p1 <- p0 |> 
+  add_title(title = "p1: hjust = 0.5 (default)") |>
+  add_annotation_text(
+    text = df$text, x = df$x, y = df$y, fontsize = 10,
+    hjust = 0.5) # default
+
+p2 <- p0 |> 
+  add_title(title = "p2: hjust = 0") |> 
+  add_annotation_text(
+    text = df$text, x = df$x, y = df$y, fontsize = 10,
+    color = "#ddaa33", hjust = 0)
+
+p3 <- p0 |> 
+  add_title(title = "p3: hjust = 1") |> 
+  add_annotation_text(
+    text = df$text, x = df$x, y = df$y, fontsize = 10,
+    hjust = 1)
+
+p4 <- p0 |> 
+  add_title(title = "p4: hjust = 2") |> 
+  add_annotation_text(
+    text = df$text, x = df$x, y = df$y, fontsize = 10,
+    color = "#ddaa33", hjust = -0.5)
+
+p5 <- p0 |> 
+  add_title(title = "p5: hjust = 'outward'") |>
+  add_annotation_text(
+    text = df$text, x = df$x, y = df$y, fontsize = 10,
+    hjust = "outward")
+
+p6 <- p0 |> 
+  add_title(title = "p6: hjust = 'inward'") |>
+  add_annotation_text(
+    text = df$text, x = df$x, y = df$y, fontsize = 10,
+    color = "#ddaa33", hjust = "inward")
+```
+
+```{r}
+#| eval: false
+#| echo: false
+patchwork::wrap_plots(
+  p1 + ggplot2::theme(plot.margin = ggplot2::unit(c(0, 1.8, 0, 0), "cm")), 
+  p2 + ggplot2::theme(plot.margin = ggplot2::unit(c(0, 1.6, 0, 0), "cm")), 
+  p3 + ggplot2::theme(plot.margin = ggplot2::unit(c(0, 1.8, 0, 0), "cm")), 
+  p4 + ggplot2::theme(plot.margin = ggplot2::unit(c(0, 1.6, 0, 0), "cm")), 
+  p5 + ggplot2::theme(plot.margin = ggplot2::unit(c(0, 1.8, 0, 0), "cm")), 
+  p6 + ggplot2::theme(plot.margin = ggplot2::unit(c(0, 1.6, 0, 0), "cm")), 
+  ncol = 2) |> 
+  save_plot("images/position_annotated-text.png",
+    view_plot = FALSE, width = 165, height = 190)
+```
+
+![The position of annotated text.](images/position_annotated-text.png){fig-align="center" width="100%"}
+
+:::{.callout-note icon="true"}
+How about testing `vjust`?
+:::
+
+## Show minor ticks (e.g. bar plot)
+
+```{r}
+library(tidyplots)
+
+events <- c("Patients treated", "Spontaneous menstrual bleeding", 
+        "Egg retrieval after rituximab", "Oocyte cryopreservation", 
+        "Embryo cryopreservation", "Pregnancy", "Normal delivery")
+df <- tibble::tibble( # from NEJM Evid. 2026. PMID: 42334299
+  `Patients (no)` = c(10, 8, 6, 5, 3, 3, 3),
+  y = factor(
+    events, 
+    levels = rev(events), 
+    ordered = TRUE))
+
+# View
+df
+```
+
+```{r}
+#| eval: false
+p1 <- df |> 
+  tidyplot(
+    x = `Patients (no)`, 
+    y = y, 
+    color = y) |> 
+  add_sum_bar() |> 
+  add_sum_value(
+    accuracy = 1, 
+    color = "#000000", 
+    hjust = -0.5) |> 
+  add_title(title = "p1") |> 
+  remove_y_axis_title() |> 
+  remove_legend() |> 
+  remove_clipping()
+
+p2 <- p1 |>
+  adjust_title(title = "p2: set x axis limits & breaks") |> 
+  adjust_x_axis(
+    limits = c(0, 10),
+    breaks = c(0, 5, 10))
+
+p3 <- p2 |> 
+  adjust_title(title = "p3: with minor ticks") |> 
+  add_caption(caption = "mimic fig 5 of\nNEJM Evid. 2026. PMID: 42334299") |> 
+  adjust_x_axis(
+    limits = c(0, 10),
+    breaks = c(0, 5, 10),
+    minor_breaks = c(seq(1, 4), seq(6, 9)),
+    guide = ggplot2::guide_axis(minor.ticks = TRUE))
+```
+
+```{r}
+#| eval: false
+#| echo: false
+patchwork::wrap_plots(p1, p2, p3, ncol = 1) |> 
+  save_plot("images/show-minor-breaks.png",
+    view_plot = FALSE, width = 110, height = 210)
+```
+
+![Show minor ticks.](images/show-minor-breaks.png){fig-align="center" width="80%"}

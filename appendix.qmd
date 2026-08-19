@@ -256,7 +256,7 @@ patchwork::wrap_plots(p1, p2, ncol = 1) |>
 ## `Patchwork` package for combining multiple plots
 
 :::{.callout-note icon="true"}
-Patchwork <https://patchwork.data-imaginist.com/> was not initially designed to handle plots with **absolute dimensions**.
+`Patchwork` <https://patchwork.data-imaginist.com/> was not initially designed to handle plots with **absolute dimensions**.
 :::
 
 All multi-panel figures throughout this book (except the figure in @sec-plot-size and @sec-plot-panel-padding), due to differences in **absolute dimensions**, are combined using the `patchwork` package.
@@ -309,6 +309,60 @@ multipanel_2 |>
 
 ![Add panel tags via the `patchwork` package.](images/patchwork_multipanel_2.png)
 
+## `Patchwork` for combining `tidyplots` and `tidyheatmaps` plots
+
+:::{.callout-note icon="true"}
+> The goal of `tidyheatmaps` <https://github.com/jbengler/tidyheatmaps/> is to simplify the generation of publication-ready heatmaps from tidy data.
+:::
+
+```{r}
+library(tidyplots)
+library(tidyheatmaps)
+
+# View top 5 rows of the columns used
+study |> 
+  dplyr::select(treatment, score) |> 
+  dplyr::slice_head(n = 5)
+
+gene_expression |> 
+  dplyr::select(external_gene_name, sample, expression) |> 
+  dplyr::slice_head(n = 5)
+```
+
+```{r}
+#| eval: false
+p1 <- study |> 
+  tidyplot(x = treatment, y = score, color = treatment) |> 
+  add_violin() |> 
+  add_test_asterisks(ref.group = "A", hide_info = TRUE)
+
+p2 <- p1 |> 
+  add_data_points_beeswarm(white_border = TRUE)
+
+p3 <- gene_expression |>  
+  tidyheatmap(
+    rows = external_gene_name,
+    columns = sample,
+    values = expression,
+    colors = c("#f7f8f9", "#004488"),
+    cluster_rows = TRUE,
+    silent = TRUE) |> 
+  ggplotify::as.ggplot() + # to 'ggplot' object for 'ggplot2' ecosystem
+  ggplot2::theme(
+    panel.widths = ggplot2::unit(120, "mm"))
+
+design <- "AC
+           BC"
+
+(patchwork::wrap_plots(p1, p2, p3, design = design) +
+  patchwork::plot_annotation(tag_levels = "A") &
+  ggplot2::theme(plot.tag = ggplot2::element_text(size = 12, face = "bold"))) |> 
+  save_plot("images/patchwork_combine_tidyheatmap.png",
+    view_plot = FALSE, width = 205, height = 160) #width and height should be tailored
+```
+
+![`Patchwork` for combining `tidyplots` and `tidyheatmaps` plots.](images/patchwork_combine_tidyheatmap.png){fig-align="center" width="100%"}
+
 ## Packages used throughout this cookbook
 
 ```{r}
@@ -322,7 +376,7 @@ r_packages_versions <- tibble::tibble(
     "tidyplots", "scales", "ggplot2", "patchwork", "ggtext", 
     "ggridges", "see", "legendry", "gggenes", "purrr", 
     "readr", "readxl", "tibble", "dplyr", "rphylopic", 
-    "fs", "magick")) |> 
+    "fs", "magick", "ggplotify")) |> 
   dplyr::mutate(
     version = purrr::map_chr(r_package, \(x) as.character(packageVersion(x))))
 
@@ -340,7 +394,7 @@ r_packages_versions
 ```{r}
 #| eval: false
 #| code-overflow: wrap
-Wu K. Tidyplots: publication-ready plots for scientific papers (1e): A cookbook. 2026. Available at: https://tidyplots-book.pages.dev/
+Wu K. Tidyplots: publication-ready plots for scientific papers: A cookbook. 2026. Available at: https://tidyplots-book.pages.dev/
 ```
 
 ### A BibTeX entry for LaTeX users is {.unlisted .unnumbered}
@@ -350,7 +404,7 @@ Wu K. Tidyplots: publication-ready plots for scientific papers (1e): A cookbook.
 #| code-overflow: wrap
 @Book{wk2026tidyplots,
   author = {Wu, Kang},
-  title = {Tidyplots: publication-ready plots for scientific papers (1e): A cookbook},
+  title = {Tidyplots: publication-ready plots for scientific papers: A cookbook},
   year = {2026},
   url = {https://tidyplots-book.pages.dev/}
 }

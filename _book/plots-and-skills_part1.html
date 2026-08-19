@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; Plot types and techniques (part 1) – `Tidyplots`: publication-ready plots for scientific papers (1e)</title>
+<title>3&nbsp; Plot types and techniques (part 1) – `Tidyplots`: publication-ready plots for scientific papers (e1.1)</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -70,7 +70,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="./">
 <link href="./plots-and-skills_part2.html" rel="next">
 <link href="./plots.html" rel="prev">
-<link href="./tidyplots_cover_v1.0.png" rel="icon" type="image/png">
+<link href="./tidyplots_cover_v1.1.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -311,7 +311,7 @@ gtag('config', 'G-73R3962S0Z', { 'anonymize_ip': true});
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./"><code>Tidyplots</code>: publication-ready plots for scientific papers (1e)</a> 
+      <a href="./"><code>Tidyplots</code>: publication-ready plots for scientific papers (e1.1)</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/iamhealthy/tidyplots-book/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
@@ -402,7 +402,7 @@ gtag('config', 'G-73R3962S0Z', { 'anonymize_ip': true});
   <li><a href="#preview-a-subset-of-dataset-e.g.-violin-plot" id="toc-preview-a-subset-of-dataset-e.g.-violin-plot" class="nav-link" data-scroll-target="#preview-a-subset-of-dataset-e.g.-violin-plot"><span class="header-section-number">3.17</span> Preview a subset of dataset (e.g.&nbsp;violin plot)</a></li>
   <li><a href="#set-a-global-default-style-e.g.-bar-plot" id="toc-set-a-global-default-style-e.g.-bar-plot" class="nav-link" data-scroll-target="#set-a-global-default-style-e.g.-bar-plot"><span class="header-section-number">3.18</span> Set a global default style (e.g.&nbsp;bar plot)</a></li>
   <li><a href="#set-a-custom-style-to-reuse-e.g.-bar-plot" id="toc-set-a-custom-style-to-reuse-e.g.-bar-plot" class="nav-link" data-scroll-target="#set-a-custom-style-to-reuse-e.g.-bar-plot"><span class="header-section-number">3.19</span> Set a custom style to reuse (e.g.&nbsp;bar plot)</a></li>
-  <li><a href="#sec-custom-reuse" id="toc-sec-custom-reuse" class="nav-link" data-scroll-target="#sec-custom-reuse"><span class="header-section-number">3.20</span> Set a custom style to reuse (e.g.&nbsp;areastack plot)</a></li>
+  <li><a href="#set-a-custom-style-to-reuse-e.g.-areastack-plot" id="toc-set-a-custom-style-to-reuse-e.g.-areastack-plot" class="nav-link" data-scroll-target="#set-a-custom-style-to-reuse-e.g.-areastack-plot"><span class="header-section-number">3.20</span> Set a custom style to reuse (e.g.&nbsp;areastack plot)</a></li>
   <li><a href="#plot-paper-and-ink-colors-e.g.-bar-plot" id="toc-plot-paper-and-ink-colors-e.g.-bar-plot" class="nav-link" data-scroll-target="#plot-paper-and-ink-colors-e.g.-bar-plot"><span class="header-section-number">3.21</span> Plot paper and ink colors (e.g.&nbsp;bar plot)</a></li>
   <li><a href="#change-color-scheme-e.g.-bar-plot" id="toc-change-color-scheme-e.g.-bar-plot" class="nav-link" data-scroll-target="#change-color-scheme-e.g.-bar-plot"><span class="header-section-number">3.22</span> Change color scheme (e.g.&nbsp;bar plot)</a></li>
   <li><a href="#add-data-ellipses-e.g.-dot-plot" id="toc-add-data-ellipses-e.g.-dot-plot" class="nav-link" data-scroll-target="#add-data-ellipses-e.g.-dot-plot"><span class="header-section-number">3.23</span> Add data ellipses (e.g.&nbsp;dot plot)</a></li>
@@ -1709,29 +1709,29 @@ Note
 </figure>
 </div>
 </section>
-<section id="sec-custom-reuse" class="level2" data-number="3.20">
-<h2 data-number="3.20" class="anchored" data-anchor-id="sec-custom-reuse"><span class="header-section-number">3.20</span> Set a custom style to reuse (e.g.&nbsp;areastack plot)</h2>
+<section id="set-a-custom-style-to-reuse-e.g.-areastack-plot" class="level2" data-number="3.20">
+<h2 data-number="3.20" class="anchored" data-anchor-id="set-a-custom-style-to-reuse-e.g.-areastack-plot"><span class="header-section-number">3.20</span> Set a custom style to reuse (e.g.&nbsp;areastack plot)</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyplots)</span>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="co"># View top 10 rows of the columns used</span></span>
-<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>energy_week <span class="sc">|&gt;</span> </span>
-<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(date, power, energy_source) <span class="sc">|&gt;</span> </span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>energy <span class="sc">|&gt;</span> </span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(year, energy, energy_type) <span class="sc">|&gt;</span> </span>
 <span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 3
-   date                 power energy_source              
-   &lt;dttm&gt;               &lt;dbl&gt; &lt;fct&gt;                      
- 1 2023-09-03 22:00:00    0   Nuclear                    
- 2 2023-09-03 22:00:00 2634.  Hydro Run-of-River         
- 3 2023-09-03 22:00:00 4711.  Biomass                    
- 4 2023-09-03 22:00:00 8399.  Fossil brown coal / lignite
- 5 2023-09-03 22:00:00 1726.  Fossil hard coal           
- 6 2023-09-03 22:00:00  401.  Fossil oil                 
- 7 2023-09-03 22:00:00 4900.  Fossil gas                 
- 8 2023-09-03 22:00:00   17.9 Geothermal                 
- 9 2023-09-03 22:00:00  232.  Hydro water reservoir      
-10 2023-09-03 22:00:00  586   Hydro pumped storage       </code></pre>
+    year  energy energy_type
+   &lt;dbl&gt;   &lt;dbl&gt; &lt;fct&gt;      
+ 1  2002   3.72  Renewable  
+ 2  2002 141.    Fossil     
+ 3  2002  40.0   Fossil     
+ 4  2002 111.    Fossil     
+ 5  2002   1.76  Fossil     
+ 6  2002   0     Renewable  
+ 7  2002  23.4   Renewable  
+ 8  2002 156.    Nuclear    
+ 9  2002   6.31  Other      
+10  2002   0.196 Renewable  </code></pre>
 </div>
 </div>
 <div class="cell">
@@ -1740,54 +1740,39 @@ Note
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">|&gt;</span> </span>
 <span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">adjust_font</span>(<span class="at">family =</span> <span class="st">"mono"</span>, <span class="at">face =</span> <span class="st">"bold"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">adjust_title</span>(<span class="at">fontsize =</span> <span class="dv">10</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">reverse_color_levels</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">adjust_x_axis</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_date</span>( <span class="co"># display dates as "Sep 05" etc.</span></span>
-<span id="cb60-8"><a href="#cb60-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">format =</span> <span class="st">"%b %d"</span>, <span class="at">locale =</span> <span class="st">"en"</span>))}</span>
-<span id="cb60-9"><a href="#cb60-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-10"><a href="#cb60-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
-<span id="cb60-11"><a href="#cb60-11" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> energy_week <span class="sc">|&gt;</span> </span>
-<span id="cb60-12"><a href="#cb60-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidyplot</span>(</span>
-<span id="cb60-13"><a href="#cb60-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> date, </span>
-<span id="cb60-14"><a href="#cb60-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> power, </span>
-<span id="cb60-15"><a href="#cb60-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> energy_source) <span class="sc">|&gt;</span> </span>
-<span id="cb60-16"><a href="#cb60-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_areastack_relative</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb60-17"><a href="#cb60-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_title</span>(<span class="at">title =</span> <span class="st">"p1: areastack relative"</span>)</span>
-<span id="cb60-18"><a href="#cb60-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-19"><a href="#cb60-19" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> p1 <span class="sc">|&gt;</span> </span>
-<span id="cb60-20"><a href="#cb60-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(</span>
-<span id="cb60-21"><a href="#cb60-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">paste</span>(<span class="st">"p2: areastack relative"</span>, <span class="st">"defined custom style"</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb60-22"><a href="#cb60-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_legend_title</span>(<span class="at">title =</span> <span class="st">"ENERGY_SOURCE"</span>, <span class="at">color =</span> <span class="st">"#bb5566"</span>) <span class="sc">|&gt;</span>   </span>
-<span id="cb60-23"><a href="#cb60-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_legend_position</span>(<span class="at">position =</span> <span class="st">"left"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb60-24"><a href="#cb60-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">my_style</span>()</span>
-<span id="cb60-25"><a href="#cb60-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-26"><a href="#cb60-26" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> energy_week <span class="sc">|&gt;</span> </span>
-<span id="cb60-27"><a href="#cb60-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidyplot</span>(</span>
-<span id="cb60-28"><a href="#cb60-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> date, </span>
-<span id="cb60-29"><a href="#cb60-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> power, </span>
-<span id="cb60-30"><a href="#cb60-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> energy_source) <span class="sc">|&gt;</span> </span>
-<span id="cb60-31"><a href="#cb60-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(</span>
-<span id="cb60-32"><a href="#cb60-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">paste</span>(<span class="st">"p3: areastack absolute"</span>, <span class="st">"defined custom style"</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb60-33"><a href="#cb60-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_areastack_absolute</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb60-34"><a href="#cb60-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">my_style</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">reverse_color_levels</span>()}</span>
+<span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-8"><a href="#cb60-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb60-9"><a href="#cb60-9" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> energy <span class="sc">|&gt;</span> </span>
+<span id="cb60-10"><a href="#cb60-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidyplot</span>(</span>
+<span id="cb60-11"><a href="#cb60-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> year, </span>
+<span id="cb60-12"><a href="#cb60-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> energy, </span>
+<span id="cb60-13"><a href="#cb60-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> energy_type) <span class="sc">|&gt;</span> </span>
+<span id="cb60-14"><a href="#cb60-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_areastack_relative</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb60-15"><a href="#cb60-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_title</span>(<span class="at">title =</span> <span class="st">"p1: areastack relative"</span>)</span>
+<span id="cb60-16"><a href="#cb60-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-17"><a href="#cb60-17" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> p1 <span class="sc">|&gt;</span> </span>
+<span id="cb60-18"><a href="#cb60-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(</span>
+<span id="cb60-19"><a href="#cb60-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">paste</span>(<span class="st">"p2: areastack relative"</span>, <span class="st">"defined custom style"</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb60-20"><a href="#cb60-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_legend_title</span>(<span class="at">title =</span> <span class="st">"ENERGY_TYPE"</span>, <span class="at">color =</span> <span class="st">"#bb5566"</span>) <span class="sc">|&gt;</span>   </span>
+<span id="cb60-21"><a href="#cb60-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_legend_position</span>(<span class="at">position =</span> <span class="st">"left"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb60-22"><a href="#cb60-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">my_style</span>()</span>
+<span id="cb60-23"><a href="#cb60-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-24"><a href="#cb60-24" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> energy <span class="sc">|&gt;</span> </span>
+<span id="cb60-25"><a href="#cb60-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidyplot</span>(</span>
+<span id="cb60-26"><a href="#cb60-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> year, </span>
+<span id="cb60-27"><a href="#cb60-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> energy, </span>
+<span id="cb60-28"><a href="#cb60-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> energy_type) <span class="sc">|&gt;</span> </span>
+<span id="cb60-29"><a href="#cb60-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(</span>
+<span id="cb60-30"><a href="#cb60-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">paste</span>(<span class="st">"p3: areastack absolute"</span>, <span class="st">"defined custom style"</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb60-31"><a href="#cb60-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_areastack_absolute</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb60-32"><a href="#cb60-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">my_style</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/set-custom-style_areastack.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="images/set-custom-style_areastack.png" class="img-fluid figure-img" style="width:90.0%"></p>
 <figcaption>Set a custom style to reuse.</figcaption>
 </figure>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Please note the Chinese character “月” on the x-axis of p1, as the code was run on an <code>x86_64-w64-mingw32/x64</code> platform with the locale set to <code>Chinese (Simplified)_China.utf8</code>.</p>
-</div>
 </div>
 </section>
 <section id="plot-paper-and-ink-colors-e.g.-bar-plot" class="level2" data-number="3.21">

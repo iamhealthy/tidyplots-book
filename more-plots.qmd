@@ -145,16 +145,15 @@ df |> dplyr::select(x, y, correlation) |>
 
 ```{r}
 #| eval: false
-# Define a new color scheme
-new_colors <- c("#000000", "#994455", "#ee99aa", "#eecc66")
-
 # Plot
 p0 <- df |> 
   tidyplot(x = x, y = y, color = correlation) |>    
   remove_legend_title() |> 
-  adjust_colors(new_colors = new_colors) |> 
   adjust_theme_details(legend.key.height = ggplot2::unit(1, "null"),
     legend.margin = ggplot2::margin_part(t = 0, b = 0)) |> 
+  add(ggplot2::scale_fill_gradient2(
+    low = "#994455", mid = "#ffffff", high = "#004488", 
+    midpoint = 0)) |> 
   add_caption("Data source: Mol Biol Cell. 1998. PMID: 9843569")
 
 # Save vector images without rasterization
@@ -201,9 +200,11 @@ p1 <- df |>
   remove_x_axis() |> 
   remove_y_axis() |> 
   remove_legend_title() |> 
-  adjust_colors(new_colors = new_colors) |> 
   adjust_theme_details(legend.key.height = ggplot2::unit(1, "null"),
     legend.margin = ggplot2::margin_part(t = 0, b = 0)) |> 
+  add(ggplot2::scale_fill_gradient2(
+    low = "#994455", mid = "#ffffff", high = "#004488", 
+    midpoint = 0)) |> 
   add_caption("Data source: Mol Biol Cell. 1998. PMID: 9843569") |> 
   add_title(title = "p1: correlation heatmap")
 
@@ -268,30 +269,31 @@ p1 <- climate |>
     x = month, 
     y = year, 
     color = max_temperature) |> 
-  adjust_colors(new_colors = c(
-    "#ddaa33", 
-    "#ffffff", 
-    "#bb5566")) |>
   add_title("p1")
 
 p2 <- p1 |> 
-  adjust_title("p2: max temperature") |> 
-  add_heatmap() 
+  add_heatmap() |>  
+  adjust_colors(
+    new_colors = c(
+      "#f7f8f9", 
+      "#004488")) |>
+  adjust_title("p2: max temperature")
 
 p3 <- p1 |> 
   add_heatmap(scale = "row") |> 
   adjust_colors(new_colors = c(
-    "#ddaa33", 
+    "#994455", 
     "#ffffff", 
-    "#bb5566")) |> 
+    "#004488")) |> 
   adjust_title("p3: row z-score")
 
 p4 <- p2 |> 
   sort_x_axis_levels(max_temperature) |>
-  adjust_title(paste(
-    "p4: max_temperature", 
-    "sort x axis levels", 
-    sep = "\n"))
+  adjust_title(
+    paste(
+      "p4: max_temperature", 
+      "sort x axis levels", 
+      sep = "\n"))
 ```
 
 ```{r}
@@ -541,15 +543,13 @@ p1 <- study |>
 
 p2 <- p1 |> 
   adjust_title(title = "p2: add 'group'-based lines") |>  
-  add_line(color = "#bbbbbb") |> 
-  remove_legend()
+  add_line(color = "#bbbbbb")
 
 p3 <- p1 |> 
   adjust_title(title = "p3: add 'participant'-based lines") |> 
   add_line(
     group = participant, 
-    color = "#bbbbbb") |>   
-  remove_legend()
+    color = "#bbbbbb")
 
 p4 <- study |> 
   tidyplot(
@@ -561,8 +561,7 @@ p4 <- study |>
   add_line(
     group = participant, 
     color = "#bbbbbb") |> 
-  add_data_points(size = 2.5) |> 
-  remove_legend()
+  add_data_points(size = 2.5)
 ```
 
 ```{r}
@@ -570,7 +569,7 @@ p4 <- study |>
 #| echo: false
 patchwork::wrap_plots(p1, p2, p3, p4, ncol = 2) |> 
   save_plot("images/dumbbell.png",
-    view_plot = FALSE, width = 150, height = 140)
+    view_plot = FALSE, width = 170, height = 140)
 ```
 
 ![Dumbbell plot.](images/dumbbell.png){width="100%" fig-align="center"}
@@ -684,6 +683,68 @@ patchwork::wrap_plots(p1, p2, p3, p4, p5, ncol = 2) |>
 
 ![Stacked bar plot.](images/stacked-bar.png){width="100%" fig-align="center"}
 
+## Consistent color order between the horizontal stacked bar and the legend
+
+```{r}
+library(tidyplots)
+
+# A putative df
+stages <- c("stage_1", "stage_2", "stage_3", "stage_4")
+years = c(5, 24, 9, 7)
+
+df <- tibble::tibble(
+  years = years,
+  stages = stages)
+
+# View
+df
+```
+
+```{r}
+#| eval: false
+p0 <- df |> 
+  tidyplot(
+    x = years, 
+    color = stages, 
+    width = 100, 
+    height = 10)
+
+p1 <- p0 |> 
+  add_barstack_absolute() |> 
+  add_title(title = "p1")
+
+p2 <- p0 |>
+  add_barstack_absolute() |> 
+  adjust_title(title = "p2: reversed color orders") |> 
+  adjust_legend_position(position = "top")
+
+p3 <- p0 |>   
+  add_barstack_absolute(reverse = TRUE) |> 
+  add_title(title = "p3: consistent color order") |> 
+  adjust_legend_position(position = "top")
+
+p4 <- p0 |> 
+  add_barstack_absolute() |> 
+  add_title(title = "p4: another way for the consistent color order") |> 
+  adjust_legend_position(position = "top") |> 
+  add(ggplot2::guides(fill = ggplot2::guide_legend(reverse = TRUE))) |> 
+  reverse_color_levels()
+```
+
+```{r}
+#| eval: false
+#| echo: false
+patchwork::wrap_plots(p1, p2, p3, p4, ncol = 1) |> 
+  save_plot("images/same-order_stack-bar-legend.png",
+    view_plot = FALSE, width = 135, height = 140)
+```
+
+![Consistent color order between the horizontal stacked bar and the legend.](images/same-order_stack-bar-legend.png){fig-align="center" width="100%"}
+
+:::{.callout-note icon="true"}
+The color mappings in p3 and p4 are reversed.
+:::
+
 ## Histogram
 
 ```{r}
@@ -742,3 +803,72 @@ patchwork::wrap_plots(p1, p2, p3, p4, p5, p6, ncol = 2) |>
 ```
 
 ![Histogram.](images/histogram.png){width="100%" fig-align="center"}
+
+## Line plot
+
+```{r}
+library(tidyplots)
+
+set.seed(2026) # for repeatability
+
+# Create a putative df
+df <- tibble::tibble(
+  values = c(
+    runif(n = 6, min = 2, max = 2.3),
+    runif(n = 3, min = 3.3, max = 3.9),
+    runif(n = 3, min = 4.5, max = 5.8),
+    runif(n = 3, min = 3, max = 8),
+    runif(n = 3, min = 14, max = 18)),
+  treatment = rep(c("a", "b"), each = 3, times = 3),
+  days = factor(rep(c(1, 2, 4), each = 6))) # factor
+
+# View top 10 rows of the columns used
+df |> dplyr::slice_head(n = 10)
+```
+
+```{r}
+#| eval: false
+p1 <- df |> 
+  tidyplot(x = days, y = values, color = treatment) |> 
+  add_data_points_beeswarm(alpha = 0.4) |> 
+  add_mean_line() |> add_sem_errorbar() |> add_title(title = "p1")
+
+p2 <- df |> 
+  tidyplot(x = days, y = values, color = treatment, dodge_width = 0) |> 
+  add_data_points_beeswarm(alpha = 0.4) |> 
+  add_mean_line() |> add_sem_errorbar() |> add_title(title = "p2: dodge_width = 0")
+
+p3 <- p2 |> 
+  adjust_title(title = "p3: add test asterisks") |> 
+  add_test_asterisks(hide_info = TRUE)
+
+p4 <- p2 |> 
+  adjust_title(title = "p4: remove brackets\nenlarge asterisks") |> 
+  add_test_asterisks(
+    hide_info = TRUE,
+    label.size = 15/ggplot2::.pt,
+    remove.bracket = TRUE)
+
+df_day2 <- df |> dplyr::filter(days == 2)
+df_day4 <- df |> dplyr::filter(days == 4)
+
+p5 <- p2 |> 
+  add_title(title = "p5: adjust asterisk position") |> 
+  add_test_asterisks(
+    hide_info = TRUE,
+    label.size = 15/ggplot2::.pt,
+    remove.bracket = TRUE,
+    y.position = c(
+      max(df_day2$values) + 2, # 2 is a tailored number
+      max(df_day4$values) + 2))
+```
+
+```{r}
+#| echo: false
+#| eval: false
+patchwork::wrap_plots(p1, p2, p3, p4, p5, ncol = 2) |> 
+  save_plot("images/line-plot.png",
+    view_plot = FALSE, width = 160, height = 205)
+```
+
+![Line plot.](images/line-plot.png){fig-align="center" width="100%"}

@@ -427,6 +427,7 @@ plot_scheme <- function(color_scheme, color_scheme_name) {
 ```{r}
 #| eval: false
 #| echo: false
+library(magick)
 # For discrete color schemes
 p1 <- colors_discrete_alger |> 
     plot_scheme("colors_discrete_alger")
@@ -466,14 +467,15 @@ c(discrete, discrete_gray) |>
 
 ![Discrete color schemes (left panel), and the cognate gray ones (right panel). The color sequence of each scheme is from left to right.](images/discrete-schemes_all_color-gray.png){width="90%" fig-align="center"}
 
-### Discrete color schemes and the cognate gray ones {.unlisted}
+### Diverging color schemes and the cognate gray ones {.unlisted}
 
 ```{r}
 #| eval: false
 #| echo: false
+library(magick)
 # For diverging color schemes
 p1 <- colors_diverging_blue2brown |> 
-    plot_scheme("colors_diverging_blue2grown")
+    plot_scheme("colors_diverging_blue2brown")
 p2 <- colors_diverging_blue2red |> 
     plot_scheme("colors_diverging_blue2red")
 p3 <- colors_diverging_BuRd |> 
@@ -507,6 +509,7 @@ c(diverging, diverging_gray) |>
 ```{r}
 #| eval: false
 #| echo: false
+library(magick)
 # For continuous color schemes
 p1 <- colors_continuous_bluepinkyellow |> 
     plot_scheme("colors_continuous_bluepinkyellow")
@@ -609,6 +612,34 @@ The figures throughout this book use the high-contrast qualitative color scheme 
 
 This choice ensures not only strong visual contrast and color-blind safe, but also that distinctions **remain clear when the book are printed in grayscale**.
 :::
+
+## What's new in this edition?
+
+### New sections about e1.1: {.unlisted}
+
+Bracket position and its tip length (e.g. bar plot) (chapter 4.20).
+
+The position of annotated text (chapter 4.21).
+
+Show minor ticks (e.g. bar plot) (chapter 4.22).
+
+Consistent color order between the horizontal stacked bar and the legend (chapter 5.9).
+
+Line plot (chapter 5.11).
+
+Relative to control (chapter 6.16).
+
+Tick for subgroup (chapter 6.17).
+
+Segmented x axis line (chapter 6.18).
+
+Nested bar plot (chapter 6.19).
+
+Stacked bar plot with error bar (chapter 6.20).
+
+`Patchwork` for combining `tidyplots` and `tidyheatmaps` plots (chapter 7.5).
+
+See <???> for additional corrections to typos and other issues.
 
 ## Acknowledgements
 
