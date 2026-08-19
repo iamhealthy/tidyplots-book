@@ -12,7 +12,7 @@ The official resources used for this compilation include:
 
 - 🔗The paper: iMeta 2025 (<https://doi.org/10.1002/imt2.70018>)
 
-You may read it online here for free, purchase a PDF version from [Leanpub](https://leanpub.com/tidyplots-cookbook), or get a physical copy from Amazon KDP ([blank & white version](https://www.amazon.com/dp/B0H61PQ66K) or [premium color version](https://www.amazon.com/dp/B0H62FHDR2)).
+You may read it online here for free, purchase a PDF version from [Leanpub](https://leanpub.com/tidyplots-cookbook), or get a physical copy from Amazon KDP ([blank & white version](https://www.amazon.com/dp/B0HFRRKM7K) or [premium color version](https://www.amazon.com/dp/B0HFRZT19V)).
 
 For the physical copy, code is primarily shown on the left-hand pages, with the corresponding plots displayed on the following right-hand pages to facilitate **reference, comparison, or interpretation**.
 
