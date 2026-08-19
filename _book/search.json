@@ -64,7 +64,7 @@
     "href": "getting-started.html#whats-new-in-this-edition",
     "title": "1  Getting started",
     "section": "1.5 What’s new in this edition?",
-    "text": "1.5 What’s new in this edition?\n\n1.5.1 New sections about e1.1:\nBracket position and its tip length (e.g. bar plot) (chapter 4.20).\nThe position of annotated text (chapter 4.21).\nShow minor ticks (e.g. bar plot) (chapter 4.22).\nConsistent color order between the horizontal stacked bar and the legend (chapter 5.9).\nLine plot (chapter 5.11).\nRelative to control (chapter 6.16).\nTick for subgroup (chapter 6.17).\nSegmented x axis line (chapter 6.18).\nNested bar plot (chapter 6.19).\nStacked bar plot with error bar (chapter 6.20).\nPatchwork for combining tidyplots and tidyheatmaps plots (chapter 7.5).\nSee &lt;???&gt; for additional corrections to typos and other issues.",
+    "text": "1.5 What’s new in this edition?\n\n1.5.1 New sections about e1.1:\nBracket position and its tip length (e.g. bar plot) (chapter 4.20).\nThe position of annotated text (chapter 4.21).\nShow minor ticks (e.g. bar plot) (chapter 4.22).\nConsistent color order between the horizontal stacked bar and the legend (chapter 5.9).\nLine plot (chapter 5.11).\nRelative to control (chapter 6.16).\nTick for subgroup (chapter 6.17).\nSegmented x axis line (chapter 6.18).\nNested bar plot (chapter 6.19).\nStacked bar plot with error bar (chapter 6.20).\nPatchwork for combining tidyplots and tidyheatmaps plots (chapter 7.5).\nSee https://github.com/iamhealthy/tidyplots-book/blob/main/NEWS.md for additional corrections to typos and other issues.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Getting started</span>"
     ]

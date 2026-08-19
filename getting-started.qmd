@@ -639,7 +639,7 @@ Stacked bar plot with error bar (chapter 6.20).
 
 `Patchwork` for combining `tidyplots` and `tidyheatmaps` plots (chapter 7.5).
 
-See <???> for additional corrections to typos and other issues.
+See <https://github.com/iamhealthy/tidyplots-book/blob/main/NEWS.md> for additional corrections to typos and other issues.
 
 ## Acknowledgements
 
