@@ -615,7 +615,7 @@ This choice ensures not only strong visual contrast and color-blind safe, but al
 
 ## What's new in this edition?
 
-### New sections about e1.1: {.unlisted}
+### New sections about e1.1: {.unlisted .unnumbered}
 
 Bracket position and its tip length (e.g. bar plot) (chapter 4.20).
 
