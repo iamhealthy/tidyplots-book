@@ -1435,7 +1435,7 @@ p3 <- p0 |>
     hjust = 1)
 
 p4 <- p0 |> 
-  add_title(title = "p4: hjust = 2") |> 
+  add_title(title = "p4: hjust = -0.5") |> 
   add_annotation_text(
     text = df$text, x = df$x, y = df$y, fontsize = 10,
     color = "#ddaa33", hjust = -0.5)
