@@ -615,29 +615,17 @@ This choice ensures not only strong visual contrast and color-blind safe, but al
 
 ## What's new in this edition?
 
-### New sections about e1.1: {.unlisted .unnumbered}
+### New sections about e1.1.5: {.unlisted .unnumbered}
 
-Bracket position and its tip length (e.g. bar plot) (chapter 4.20).
+Legend position (e.g. areastack plot) (chapter 3.12)
 
-The position of annotated text (chapter 4.21).
+Downsample colors (e.g. dot plot) (chapter 4.23)
 
-Show minor ticks (e.g. bar plot) (chapter 4.22).
+Dumbbell plot with data labels (chapter 5.7)
 
-Consistent color order between the horizontal stacked bar and the legend (chapter 5.9).
+Stacked bar plot with data labels (chapter 6.21)
 
-Line plot (chapter 5.11).
-
-Relative to control (chapter 6.16).
-
-Tick for subgroup (chapter 6.17).
-
-Segmented x axis line (chapter 6.18).
-
-Nested bar plot (chapter 6.19).
-
-Stacked bar plot with error bar (chapter 6.20).
-
-`Patchwork` for combining `tidyplots` and `tidyheatmaps` plots (chapter 7.5).
+Pie and donut plots with data labels (chapter 6.22)
 
 See <https://github.com/iamhealthy/tidyplots-book/blob/main/NEWS.md> for additional corrections to typos and other issues.
 

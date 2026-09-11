@@ -983,7 +983,7 @@ p5 <- p1 |>
     plot.margin = ggplot2::margin(t = 0.5, r = 0.5, b = 1, l = 1, unit = "cm"))
 
 p6 <- p1 |> 
-  adjust_title(title = "p6: same plot padding via saving") |> 
+  adjust_title(title = "p6: same plot padding via 'save_plot()'") |> 
   save_plot(
     "images/plot_panel_padding_p6.png", 
     padding = 0.3) # defaults to 0.1 meaning 10%
@@ -1495,6 +1495,7 @@ df
 
 ```{r}
 #| eval: false
+# Plot
 p1 <- df |> 
   tidyplot(
     x = `Patients (no)`, 
@@ -1535,3 +1536,73 @@ patchwork::wrap_plots(p1, p2, p3, ncol = 1) |>
 ```
 
 ![Show minor ticks.](images/show-minor-breaks.png){fig-align="center" width="80%"}
+
+## Downsample colors (e.g. dot plot)
+
+:::{.callout-note icon="true"}
+For the condition where more colors are provided than requested.
+:::
+
+```{r}
+library(tidyplots)
+
+animals |> 
+  dplyr::select(weight, size) |> 
+  dplyr::slice_head(n = 10)
+```
+
+```{r}
+#| eval: false
+# Plot
+colors <- c("red", "blue", "black") # length 3
+
+p1 <- animals |> 
+  tidyplot(x = weight, y = size) |> 
+  add_title(title = "p1: 'evenly' (default)") |> 
+  add_data_points(white_border = TRUE, alpha = 0.5) |> 
+  adjust_colors(
+    new_colors = colors,
+    downsample = "evenly")
+
+p2 <- animals |> 
+  tidyplot(x = weight, y = size) |> 
+  add_title(title = "p2: 'first' color") |> 
+  add_data_points(white_border = TRUE, alpha = 0.5) |> 
+  adjust_colors(
+    new_colors = colors,
+    downsample = "first")
+
+p3 <- animals |> 
+  tidyplot(x = weight, y = size) |> 
+  add_title(title = "p3: 'middle' color") |> 
+  add_data_points(white_border = TRUE, alpha = 0.5) |> 
+  adjust_colors(
+    new_colors = colors,
+    downsample = "middle")
+
+p4 <- animals |> 
+  tidyplot(x = weight, y = size) |> 
+  add_title(title = "p4: 'last' color") |> 
+  add_data_points(white_border = TRUE, alpha = 0.5) |> 
+  adjust_colors(new_colors = colors, downsample = "last")
+```
+
+```{r}
+#| eval: false
+#| echo: false
+patchwork::wrap_plots(p1, p2, p3, p4, ncol = 2) |> 
+  save_plot("images/downsample-color.png",
+    view_plot = FALSE, width = 130, height = 140)
+```
+
+![Downsample colors.](images/downsample-color.png){fig-align="center" width="100%"}
+
+:::{.callout-note icon="true"}
+Please note that `evenly` and `first` both select the 1st color under this condition (i.e. when one color is requested).
+
+If two colors are requested, `evenly` selects the 1st and 3rd colors, whereas `first` selects the 1st and 2nd colors.
+
+For `middle`, when one color is requested, it selects the 2nd color; when two colors are requested, it selects the 2nd and 3rd colors.
+
+Or test more cases (i.e. provide more colors and request 1, 2, 3, ... colors)?
+:::

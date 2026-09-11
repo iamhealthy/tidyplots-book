@@ -440,7 +440,7 @@ patchwork::wrap_plots(p1, p2, p3, p4, ncol = 2) |>
 ![Displaying condition combinations in axis labels.](images/conditon-combinations.png){width="100%" fig-align="center"}
 
 :::{.callout-note icon="true"}
-So far so good, then perhaps minor adjustment might be needed via inkscape, adobe illustrator, or some other softwares for vector images.
+So far so good, then perhaps minor adjustment might be needed via `inkscape`, `adobe illustrator`, or some other softwares for vector images.
 :::
 
 ## Display condition combinations in axis labels (using `add()`)
@@ -941,7 +941,7 @@ p1 <- study_modi |>
   add_title(title = "p1: treatments 'A' and 'B' are invisible")
 
 p2 <- p1 |> 
-  adjust_title(title = "p2: transform y axis via log10") |> 
+  adjust_title(title = "p2: transform y axis via 'log10'") |> 
   adjust_y_axis(transform = "log10")
 
 study_AB <- study_modi |> 
@@ -1145,6 +1145,7 @@ relative |>
 
 ```{r}
 #| eval: false
+# Plot
 p1 <- relative |> 
   tidyplot(x = group, y = `rel. CFU (D3/D0)`, color = dose) |> 
   add_mean_bar(alpha = 0.4) |> 
@@ -1196,6 +1197,7 @@ studyx |>
 
 ```{r}
 #| eval: false
+# Plot
 p1 <- studyx |> 
   tidyplot(x = treatmentx, y = score, color = treatment) |> 
   add_boxplot() |> 
@@ -1261,6 +1263,7 @@ study |>
 
 ```{r}
 #| eval: false
+# Plot
 p1 <- study |> 
   tidyplot(x = treatment, y = score) |> 
   add_mean_bar(alpha = 0.4) |>   
@@ -1381,13 +1384,17 @@ library(tidyplots)
 
 # Calculation
 study_c <- study |> 
-  dplyr::group_by(group, dose) |>
   dplyr::summarise(
-    mean = mean(score), sem = sd(score) / sqrt(length(score))) |> 
+    mean = mean(score), sem = sd(score) / sqrt(length(score)),
+    .by = c(group, dose)) |> 
   dplyr::mutate(
     cmean = cumsum(mean),
     lower = cmean - sem, upper = cmean + sem,
-    gpos = ifelse(group == "placebo", 1, 2))
+    gpos = ifelse(group == "placebo", 1, 2),
+    .by = group) |> 
+  dplyr::mutate(
+    group = forcats::fct_inorder(group),
+    dose = forcats::fct_rev(dose))
 
 # View
 study_c
@@ -1395,47 +1402,172 @@ study_c
 
 ```{r}
 #| eval: false
+# Plot
 p1 <- study_c |> 
   tidyplot(x = group, y = mean, color = dose) |> 
   add_barstack_absolute(alpha = 0.5) |> 
   add_title(title = "p1: absolute barstack")
 
-p2 <- study_c |> 
-  tidyplot(x = group, y = mean, color = dose) |> 
-  add_barstack_absolute(reverse = TRUE, alpha = 0.5) |> 
-  add_title(title = "p2: absolute barstack\nreverse")
-
-p3 <- p2 |> 
-  adjust_title(title = "p3: vertical lines") |> 
+p2 <- p1 |> 
+  adjust_title(title = "p2: vertical lines") |> 
   add_annotation_line(
     x = study_c$gpos, xend = study_c$gpos,
     y = study_c$lower, yend = study_c$upper)
 
-p4 <- p3 |> 
-  adjust_title(title = "p4: upper lines") |> 
+p3 <- p2 |> 
+  adjust_title(title = "p3: upper lines") |> 
   add_annotation_line(
-    x = study_c$gpos - 0.2, xend = study_c$gpos + 0.2,
+    x = study_c$gpos - 0.1, xend = study_c$gpos + 0.1,
     y = study_c$upper, yend = study_c$upper)
 
-p5 <- p4 |> 
-  adjust_title(title = "p5: lower lines") |> 
+p4 <- p3 |> 
+  adjust_title(title = "p4: lower lines") |> 
   add_annotation_line(
-    x = study_c$gpos - 0.2, xend = study_c$gpos + 0.2,
+    x = study_c$gpos - 0.1, xend = study_c$gpos + 0.1,
     y = study_c$lower, yend = study_c$lower)
 
-p6 <- p2 |> 
-  adjust_title(title = "p6: via ggplot2") |> 
+p5 <- p2 |> 
+  adjust_title(title = "p5: via 'ggplot2'") |> 
   add(ggplot2::geom_errorbar(
     ggplot2::aes(ymin = lower, ymax = upper), 
-    width = 0.4, show.legend = FALSE, color = "#000000"))
+    width = 0.2, show.legend = FALSE, color = "#000000"))
 ```
 
 ```{r}
 #| eval: false
 #| echo: false
-patchwork::wrap_plots(p1, p2, p3, p4, p5, p6, ncol = 2) |> 
+patchwork::wrap_plots(p1, p2, p3, p4, p5, ncol = 2) |> 
   save_plot("images/stacked-bar-errorbar.png",
     view_plot = FALSE, width = 160, height = 205)
 ```
 
 ![Stacked bar plot with error bar.](images/stacked-bar-errorbar.png){fig-align="center"  width="100%"}
+
+## Stacked bar plot with data labels
+
+```{r}
+#| message: false
+library(tidyplots)
+
+# Calculation
+study_c1 <- study |> 
+  dplyr::summarise(
+    mean = mean(score), mean_half = mean / 2,
+    .by = c(group, dose)) |> 
+  dplyr::mutate(
+    cmean = cumsum(mean), sum = sum(mean),    
+    gpos = ifelse(group == "placebo", 1, 2),
+    .by = group) |> 
+  dplyr::mutate(
+    mean_rel = mean / sum,
+    mean_half_rel = mean_half / sum,
+    cmean_rel = cmean / sum) |> 
+  dplyr::mutate(
+    group = forcats::fct_inorder(group),
+    dose = forcats::fct_rev(dose))
+
+# View
+study_c1
+```
+
+```{r}
+#| eval: false
+# Plot
+p1 <- study_c1 |> 
+  tidyplot(x = group, y = mean, color = dose) |> 
+  add_barstack_absolute(alpha = 0.5) |> 
+  add_title(title = "p1: absolute stacked bar")
+
+p2 <- p1 |> 
+  adjust_title(title = "p2: data labels") |> 
+  add_annotation_text(
+    text = study_c1$mean, 
+    x = study_c1$gpos, 
+    y = study_c1$cmean - study_c1$mean_half)
+
+p3 <- study_c1 |> 
+  tidyplot(x = group, y = mean_rel, color = dose) |> 
+  add_barstack_absolute(alpha = 0.5) |> 
+  add_title(title = "p3: relative stacked bar")
+
+p4 <- p3 |> 
+  adjust_title(title = "p4: data labels") |> 
+  add_annotation_text(
+    text = paste0(
+      study_c1$mean, "\n", 
+      "(", round(study_c1$mean_rel, 2), ")"),
+    x = study_c1$gpos,
+    y = study_c1$cmean_rel - study_c1$mean_half_rel)
+```
+
+```{r}
+#| eval: false
+#| echo: false
+patchwork::wrap_plots(p1, p2, p3, p4, ncol = 2) |> 
+  save_plot("images/stacked-bar-data-label.png",
+    view_plot = FALSE, width = 165, height = 140)
+```
+
+![Stacked bar plot with data labels.](images/stacked-bar-data-label.png){fig-align="center" width="100%"}
+
+## Pie and donut plots with data labels
+
+```{r}
+library(tidyplots)
+
+# Calculation
+energy_c <- energy |> 
+  dplyr::summarise(
+    energy_sum = sum(energy),
+    .by = energy_type) |> 
+  dplyr::arrange(factor(energy_type)) |> # sort rows in consistent with factor levels
+  dplyr::mutate(
+    energy_ratio = energy_sum / sum(energy_sum),
+    energy_ratio_half = energy_ratio / 2,
+    energy_ratio_cum = cumsum(energy_ratio))
+
+# View
+energy_c
+```
+
+```{r}
+#| eval: false
+# Plot
+p1 <- energy_c |> 
+  tidyplot(y = energy_sum, color = energy_type) |> 
+  add_pie(reverse = TRUE) |> # in clockwise
+  add_title(title = "p1: pie")
+
+p2 <- p1 |> 
+  adjust_title(title = "p2: pie with labels") |> 
+  add_annotation_text(
+    text = paste0(round(energy_c$energy_ratio, digits = 2) * 100, "%"),
+    x = 1.1, # tailored (e.g., try 1 - 2)
+    y = energy_c$energy_ratio_cum - energy_c$energy_ratio_half,
+    fontface = "bold",
+    color = "#ffffff")
+
+p3 <- energy_c |> 
+  tidyplot(y = energy_sum, color = energy_type) |> 
+  add_donut(reverse = TRUE) |> # in clockwise
+  add_title(title = "p3: donut")
+
+p4 <- p3 |> 
+  adjust_title(title = "p4: donut with labels") |> 
+  add_annotation_text(
+    text = paste0(round(energy_c$energy_ratio, digits = 2) * 100, "%"),
+    x = 3, # tailored (e.g., try 2 - 4)
+    y = energy_c$energy_ratio_cum - energy_c$energy_ratio_half,
+    fontface = "bold",
+    color = "#ffffff")
+```
+
+```{r}
+#| eval: false
+#| echo: false
+patchwork::wrap_plots(p1, p2, p3, p4, ncol = 2) |> 
+  save_plot("images/donut-pie_labels.png",
+    view_plot = FALSE, width = 155, height = 120)
+```
+
+![Pie and donut plots with labels.](images/donut-pie_labels.png){fig-align="center" width="100%"}

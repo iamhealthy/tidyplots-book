@@ -574,6 +574,70 @@ patchwork::wrap_plots(p1, p2, p3, p4, ncol = 2) |>
 
 ![Dumbbell plot.](images/dumbbell.png){width="100%" fig-align="center"}
 
+## Dumbbell plot with data labels
+
+```{r}
+library(tidyplots)
+
+# Calculation
+study_fct <- study |> # ensure the same order for `participant` and its levels
+  dplyr::arrange(group, rev(participant)) |> 
+  dplyr::mutate(participant = forcats::fct_inorder(participant))
+
+# View top 5 rows of the columns used
+study_fct |> 
+  dplyr::select(participant, score, group) |> 
+  dplyr::slice_head(n = 5)
+```
+
+```{r}
+#| eval: false
+# Plot
+p4 <- study_fct |> # from last section but with reversed x levels
+  tidyplot(
+    x = participant, 
+    y = score, 
+    color = group, 
+    dodge_width = 0) |> 
+  add_title(title = "p4: dumbbell plot") |> 
+  add_line(
+    group = participant, 
+    color = "#bbbbbb") |> 
+  add_data_points(size = 2.5)
+
+p5 <- p4 |> 
+  add_title(title = "p5: via 'add_annotation_text()'\n'placebo' labels") |> 
+  add_annotation_text(
+    text = study_fct$score[study_fct$group == "placebo"], 
+    x = 1:10, # see the note of next page
+    y = study_fct$score[study_fct$group == "placebo"], 
+    vjust = 2) |> # tailored value
+  remove_clipping() |> 
+  adjust_padding(bottom = 0.1) # to accommodate the labels for the "placebo" group
+
+p6 <- p5 |> 
+  add_title(title = "p6: via 'add_annotation_text()'\n'treatment' labels") |> 
+  add_annotation_text(
+    text = study_fct$score[study_fct$group == "treatment"], 
+    x = 1:10, # see note
+    y = study_fct$score[study_fct$group == "treatment"],
+    vjust = -1) # tailored value
+```
+
+```{r}
+#| eval: false
+#| echo: false
+patchwork::wrap_plots(p4, p5, p6, ncol = 1) |> 
+  save_plot("images/dumbbell_data-labels.png",
+    view_plot = FALSE, width = 85, height = 210)
+```
+
+![Dumbbell plot with data labels.](images/dumbbell_data-labels.png){fig-align="center" width="50%"}
+
+:::{.callout-note icon="true"}
+> Internally, `ggplot2` (and of course `tidyplots`) handles discrete scales by mapping each category to an integer value and then drawing the geom at the corresponding coordinate location. <https://ggplot2-book.org/scales-position.html#sec-discrete-position>
+:::
+
 ## Pie and donut plots
 
 ```{r}
@@ -627,7 +691,7 @@ patchwork::wrap_plots(p1, p2, p3, p4, p5, p6, ncol = 2) |>
     view_plot = FALSE, width = 160, height = 190)
 ```
 
-![Donut and pie plots.](images/donut-pie.png){width="100%" fig-align="center"}
+![Pie and donut plots.](images/donut-pie.png){width="100%" fig-align="center"}
 
 ## Stacked bar plot
 
@@ -702,6 +766,7 @@ df
 
 ```{r}
 #| eval: false
+# Plot
 p0 <- df |> 
   tidyplot(
     x = years, 
@@ -784,14 +849,15 @@ p5 <- climate |>
   dplyr::filter(month %in% c("01", "03", "06")) |> 
   tidyplot(x = max_temperature, color = month) |> 
   add_title(title = "p5: month-based") |> 
-  add_histogram(alpha = 0.5)
+  add_histogram(
+    alpha = 0.5, 
+    position = "identity") # "stack" in default
 
 p6 <- climate |> 
   dplyr::filter(month %in% c("01", "03", "06")) |> 
   tidyplot(x = max_temperature, color = month) |> 
   add_title(title = "p6: density_smooth") |> 
-  add(ggplot2::geom_density(ggplot2::aes(color = month), 
-    position = ggplot2::position_identity(), alpha = 0.2))
+  add(ggplot2::geom_density(alpha = 0.2))
 ```
 
 ```{r}
@@ -828,6 +894,7 @@ df |> dplyr::slice_head(n = 10)
 
 ```{r}
 #| eval: false
+# Plot
 p1 <- df |> 
   tidyplot(x = days, y = values, color = treatment) |> 
   add_data_points_beeswarm(alpha = 0.4) |> 

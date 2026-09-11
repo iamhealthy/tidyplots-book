@@ -58,7 +58,7 @@ df |>
 
 Type `?tidyplots::add_data_points` in R console, you can view the `help` information of the function.
 
-> *shape   An integer between 0 and 24, representing the shape of the plot symbol.*
+> *shape: An integer between 0 and 24, representing the shape of the plot symbol.*
 
 Let's see: **which point shapes in `tidyplots` allow simultaneous use of `color` and `fill` aesthetics?**
 
@@ -83,22 +83,17 @@ df |>
 #| warning: false
 # Plot
 df |> tidyplot(
-    x = x, 
-    y = y) |> 
+    x = x, y = y) |> 
   add_data_points(
-    shape = df$shape, 
-    size = 3, 
-    color = "#000000", 
-    fill = "#bb5566") |> 
+    shape = df$shape, size = 3, 
+    color = "#000000", fill = "#bb5566") |> 
   add_annotation_text(
     text = df$shape, 
-    x = df$x, 
-    y = df$y, 
+    x = df$x, y = df$y, 
     vjust = 2.5, 
     color = "#004488") |> 
   adjust_size(
-    width = 150, 
-    height = 100) |> 
+    width = 150, height = 100) |> 
   adjust_y_axis(
     limits = c(0.3, NA)) |>  
   remove_x_axis_labels() |> 
@@ -106,7 +101,7 @@ df |> tidyplot(
   remove_x_axis_title() |> 
   remove_y_axis_title() |> 
   add_title(
-    title = "Just shapes 21 - 25 in tidyplots use both 'color' and 'fill' aesthetics") |> 
+    title = "Just shapes 21 - 25 in tidyplots use both 'color' and 'fill' aesthetics.") |> 
   save_plot(
     filename = "images/point-shape-color-fill.png",
     view_plot = FALSE)
@@ -331,6 +326,7 @@ gene_expression |>
 
 ```{r}
 #| eval: false
+# Plot
 p1 <- study |> 
   tidyplot(x = treatment, y = score, color = treatment) |> 
   add_violin() |> 

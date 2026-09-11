@@ -1,3 +1,34 @@
+## e1.1.5
+
+- New sections
+
+    - Legend position (e.g. areastack plot) (chapter 3.12)
+
+    - Downsample colors (e.g. dot plot) (chapter 4.23)
+
+    - Dumbbell plot with data labels (chapter 5.7)
+
+    - Stacked bar plot with data labels (chapter 6.21)
+    - Pie and donut plots with data labels (chapter 6.22)    
+
+- Correcting some typos and other issues
+
+    - Typo: For p4 of `The position of annotated text`: "p4: hjust = 2" -> "p4: hjust = -0.5".
+
+    - For p6 of `Panel and plot padding`: "p6: same plot padding via saving" -> "p6: same plot padding via 'save_plot()'"; For `Display condition combinations in axis labels`, "via inkscape, adobe illustrator" -> "via `inkscape`, `adobe illustrator`"; For p2 of `Plot with a broken axis`, " transform y axis via log10" -> " transform y axis via 'log10'"; For p6 of `Stacked bar plot with error bar`, "p6: via ggplot2" -> "p6: via 'ggplot2'"; For p3 and p4 of section "Color `alpha` *vs.* `saturation` (e.g. bar plot)", "via `alpha`" -> "via 'alpha'", "via `saturation`" -> "via 'saturation'".
+
+    - Add "# Plot" for code chunk 2 of `Show minor ticks (e.g. bar plot)`, `Consistent color order between the horizontal stacked bar and the legend`, `Line plot`, `Relative to control`, `Tick for subgroup`, `Segmented x axis line`, `Stacked bar plot with error bar`, and `Patchwork for combining tidyplots and tidyheatmaps plots` sections.
+
+    - For the figure title of `Pie and donut plots`, "Donut and pie plots." -> "Pie and donut plots.".
+
+    - For `my_style` function of `Set a custom style to reuse (e.g. areastack plot)`, delete the indent below `x |>` row.
+
+    - For `Point shapes` section, "shape An" -> "shape: An"; organize code rows to let the code in one page; add "." to figure title.
+
+    - For p5 of `Histogram` section, `add_histogram(alpha = 0.5)` -> `add_histogram(alpha = 0.5, position = "identity")` ("stack" in default); for p6, `add(ggplot2::geom_density(ggplot2::aes(color = month), position = ggplot2::position_identity(), alpha = 0.2))` -> `add(ggplot2::geom_density(alpha = 0.2))` (for 'redundancy' reason).
+
+    - For `Stacked bar plot with error bar` section, adjust code for the calculation of `study_c`, and then adjust the plot codes accordingly.
+
 ## e1.1
 
 - New sections

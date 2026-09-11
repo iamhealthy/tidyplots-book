@@ -209,11 +209,11 @@ p2 <- p1 |>
   add_sum_bar()
 
 p3 <- p1 |> 
-  adjust_title(title = "p3: decreased intensity via `alpha`") |> 
+  adjust_title(title = "p3: decreased intensity via 'alpha'") |> 
   add_sum_bar(alpha = 0.5)
 
 p4 <- p1 |> 
-  adjust_title(title = "p4: decreased intensity via `saturation`") |>
+  adjust_title(title = "p4: decreased intensity via 'saturation'") |>
   add_sum_bar(saturation = 0.5)
 ```
 
@@ -767,6 +767,83 @@ patchwork::wrap_plots(p1, p2, ncol = 1) |>
 
 ![Define a custom color scheme.](images/custom-color-scheme.png){width=60% fig-align="center"}
 
+## Legend position (e.g. areastack plot)
+
+```{r}
+library(tidyplots)
+
+# View top 10 rows of the columns used
+energy_week |> 
+  dplyr::select(date, power, energy_source) |> 
+  dplyr::slice_head(n = 10)
+```
+
+```{r}
+#| eval: false
+# Plot
+p1 <- energy_week |> 
+  tidyplot(
+    x = date, 
+    y = power, 
+    color = energy_source) |> 
+  add_title(
+    title = "p1: 'right' (default)") |> 
+  add_areastack_relative()
+
+p2 <- p1 |> 
+  adjust_title(
+    title = "p2: 'bottom'\ntake up too much width") |> 
+  adjust_legend_position(
+    position = "bottom") # or "top", "left"
+
+p3 <- p2 |> 
+  add_title(
+    title = "p3: adjust legend dimension") |> 
+  adjust_colors(
+    guide = ggplot2::guide_legend(
+      ncol = 2))
+```
+
+```{r}
+#| eval: false
+#| echo: false
+# Plot
+p1 <- energy_week |> 
+  tidyplot(
+    x = date, 
+    y = power, 
+    color = energy_source) |> 
+  add_title(
+    title = "p1: 'right' (default)") |> 
+  add_areastack_relative() |> 
+  adjust_x_axis(
+    labels = scales::label_date(
+      format = "%b %d",
+      locale = "en"))
+
+p2 <- p1 |> 
+  adjust_title(
+    title = "p2: 'bottom'\ntake up too much width") |> 
+  adjust_legend_position(position = "bottom") # or "top", "left"
+
+p3 <- p2 |> 
+  add_title(
+    title = "p3: adjust legend dimension") |> 
+  adjust_colors(
+    guide = ggplot2::guide_legend(
+      ncol = 2))
+```
+
+```{r}
+#| eval: false
+#| echo: false
+patchwork::wrap_plots(p1, p2, p3, ncol = 1) |> 
+  save_plot("images/legend-position.png",
+    view_plot = FALSE, width = 185, height = 280)
+```
+
+![Adjust legend position.](images/legend-position.png){fig-align="center" width="100%"}
+
 ## Add sum values (e.g. bar plot)
 
 ```{r}
@@ -1251,9 +1328,9 @@ energy |>
 # Define a style
 my_style <- function(x) {
   x |> 
-    adjust_font(family = "mono", face = "bold") |> 
-    adjust_title(fontsize = 10) |> 
-    reverse_color_levels()}
+  adjust_font(family = "mono", face = "bold") |> 
+  adjust_title(fontsize = 10) |> 
+  reverse_color_levels()}
 
 # Plot
 p1 <- energy |> 
