@@ -1035,9 +1035,8 @@ p1 <- spendings |>
 p2 <- p1 |> 
   adjust_title(title = "p2: other bars in gray") |> 
   adjust_colors(
-    new_colors = c(
-      "Health" = "#994455", 
-      na.value = "#dddddd"))
+    new_colors = c("Health" = "#994455"), 
+    na.value = "#dddddd")
 
 p3 <- p1 |> 
   adjust_title(title = paste(
@@ -1046,9 +1045,8 @@ p3 <- p1 |>
     sep = "\n")) |> 
   add_sum_value(accuracy = 1) |> 
   adjust_colors(
-    new_colors = c(
-      "Health" = "#994455", 
-      na.value = "#dddddd"))
+    new_colors = c("Health" = "#994455"), 
+    na.value = "#dddddd")
 
 p4 <- p3 |> 
   adjust_title(title = paste(
