@@ -395,8 +395,8 @@ gtag('config', 'G-73R3962S0Z', { 'anonymize_ip': true});
   <li><a href="#add-ggplot2-extension-code-e.g.-dot-plot" id="toc-add-ggplot2-extension-code-e.g.-dot-plot" class="nav-link" data-scroll-target="#add-ggplot2-extension-code-e.g.-dot-plot"><span class="header-section-number">4.10</span> Add <code>ggplot2</code> (extension) code (e.g.&nbsp;dot plot)</a></li>
   <li><a href="#add-ggplot2-extention-code-three-more-plots" id="toc-add-ggplot2-extention-code-three-more-plots" class="nav-link" data-scroll-target="#add-ggplot2-extention-code-three-more-plots"><span class="header-section-number">4.11</span> Add <code>ggplot2</code> (extention) code (three more plots)</a></li>
   <li><a href="#save-multiple-formats-by-piping-through-e.g.-dot-plot" id="toc-save-multiple-formats-by-piping-through-e.g.-dot-plot" class="nav-link" data-scroll-target="#save-multiple-formats-by-piping-through-e.g.-dot-plot"><span class="header-section-number">4.12</span> Save multiple formats by piping through (e.g.&nbsp;dot plot)</a></li>
-  <li><a href="#save-multiple-pdfs-by-piping-through-e.g.-violin-plot" id="toc-save-multiple-pdfs-by-piping-through-e.g.-violin-plot" class="nav-link" data-scroll-target="#save-multiple-pdfs-by-piping-through-e.g.-violin-plot"><span class="header-section-number">4.13</span> Save multiple PDFs by piping through (e.g.&nbsp;violin plot)</a></li>
-  <li><a href="#save-multiple-pdfs-at-once-e.g.-violin-plot" id="toc-save-multiple-pdfs-at-once-e.g.-violin-plot" class="nav-link" data-scroll-target="#save-multiple-pdfs-at-once-e.g.-violin-plot"><span class="header-section-number">4.14</span> Save multiple PDFs at once (e.g.&nbsp;violin plot)</a></li>
+  <li><a href="#save-multiple-pdfs-by-piping-through-involving-split_plot-e.g.-violin-plot" id="toc-save-multiple-pdfs-by-piping-through-involving-split_plot-e.g.-violin-plot" class="nav-link" data-scroll-target="#save-multiple-pdfs-by-piping-through-involving-split_plot-e.g.-violin-plot"><span class="header-section-number">4.13</span> Save multiple PDFs by piping through involving <code>split_plot()</code> (e.g.&nbsp;violin plot)</a></li>
+  <li><a href="#save-multiple-pdfs-at-once-by-split_plot-e.g.-violin-plot" id="toc-save-multiple-pdfs-at-once-by-split_plot-e.g.-violin-plot" class="nav-link" data-scroll-target="#save-multiple-pdfs-at-once-by-split_plot-e.g.-violin-plot"><span class="header-section-number">4.14</span> Save multiple PDFs at once by <code>split_plot()</code> (e.g.&nbsp;violin plot)</a></li>
   <li><a href="#save-intermediate-stages-e.g.-bar-plot" id="toc-save-intermediate-stages-e.g.-bar-plot" class="nav-link" data-scroll-target="#save-intermediate-stages-e.g.-bar-plot"><span class="header-section-number">4.15</span> Save intermediate stages (e.g.&nbsp;bar plot)</a></li>
   <li><a href="#sec-plot-panel-padding" id="toc-sec-plot-panel-padding" class="nav-link" data-scroll-target="#sec-plot-panel-padding"><span class="header-section-number">4.16</span> Panel and plot padding</a></li>
   <li><a href="#use-a-log10-axis-for-data-containing-zero-and-negative-values-e.g.-dot-plot" id="toc-use-a-log10-axis-for-data-containing-zero-and-negative-values-e.g.-dot-plot" class="nav-link" data-scroll-target="#use-a-log10-axis-for-data-containing-zero-and-negative-values-e.g.-dot-plot"><span class="header-section-number">4.17</span> Use a log10 axis for data containing zero and negative values (e.g.&nbsp;dot plot)</a></li>
@@ -1300,8 +1300,8 @@ Note
 </figure>
 </div>
 </section>
-<section id="save-multiple-pdfs-by-piping-through-e.g.-violin-plot" class="level2" data-number="4.13">
-<h2 data-number="4.13" class="anchored" data-anchor-id="save-multiple-pdfs-by-piping-through-e.g.-violin-plot"><span class="header-section-number">4.13</span> Save multiple PDFs by piping through (e.g.&nbsp;violin plot)</h2>
+<section id="save-multiple-pdfs-by-piping-through-involving-split_plot-e.g.-violin-plot" class="level2" data-number="4.13">
+<h2 data-number="4.13" class="anchored" data-anchor-id="save-multiple-pdfs-by-piping-through-involving-split_plot-e.g.-violin-plot"><span class="header-section-number">4.13</span> Save multiple PDFs by piping through involving <code>split_plot()</code> (e.g.&nbsp;violin plot)</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyplots)</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1340,23 +1340,25 @@ Note
 <span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"images/multiple-pdf-by-piping-1.pdf"</span>, </span>
 <span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">view_plot =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">split_plot</span>(</span>
-<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">by =</span> condition, </span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">by =</span> condition, <span class="co"># one variable</span></span>
 <span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.titles =</span> <span class="st">"margins"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">save_plot</span>(</span>
 <span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"images/multiple-pdf-by-piping-2.pdf"</span>, </span>
 <span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">view_plot =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">split_plot</span>(</span>
-<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">by =</span> sample_type) <span class="sc">|&gt;</span> </span>
+<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">by =</span> sample_type) <span class="sc">|&gt;</span> <span class="co"># one variable</span></span>
 <span id="cb42-20"><a href="#cb42-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">save_plot</span>(</span>
 <span id="cb42-21"><a href="#cb42-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">"images/multiple-pdf-by-piping-3.pdf"</span>, </span>
 <span id="cb42-22"><a href="#cb42-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">view_plot =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb42-23"><a href="#cb42-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">split_plot</span>(</span>
-<span id="cb42-24"><a href="#cb42-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">rows =</span> condition, </span>
+<span id="cb42-24"><a href="#cb42-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">rows =</span> condition, <span class="co"># two variables ('rows' and 'cols')</span></span>
 <span id="cb42-25"><a href="#cb42-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> is_immune_gene,</span>
-<span id="cb42-26"><a href="#cb42-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.titles =</span> <span class="st">"margins"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb42-27"><a href="#cb42-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">save_plot</span>(</span>
-<span id="cb42-28"><a href="#cb42-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">"images/multiple-pdf-by-piping-4.pdf"</span>, </span>
-<span id="cb42-29"><a href="#cb42-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">view_plot =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb42-26"><a href="#cb42-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.titles =</span> <span class="st">"single"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb42-27"><a href="#cb42-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_theme_details</span>(</span>
+<span id="cb42-28"><a href="#cb42-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">strip.text =</span> ggplot2<span class="sc">::</span><span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#bb5566"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb42-29"><a href="#cb42-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">save_plot</span>(</span>
+<span id="cb42-30"><a href="#cb42-30" aria-hidden="true" tabindex="-1"></a>    <span class="st">"images/multiple-pdf-by-piping-4.pdf"</span>, </span>
+<span id="cb42-31"><a href="#cb42-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">view_plot =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>List the figures saved:</p>
 <div class="cell">
@@ -1374,9 +1376,22 @@ Note
 <figcaption>The 4th PDF figure.</figcaption>
 </figure>
 </div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The function <code>adjust_theme_details()</code> is a wrapper around <code>ggplot2::theme()</code>.</p>
+</div>
+</div>
 </section>
-<section id="save-multiple-pdfs-at-once-e.g.-violin-plot" class="level2" data-number="4.14">
-<h2 data-number="4.14" class="anchored" data-anchor-id="save-multiple-pdfs-at-once-e.g.-violin-plot"><span class="header-section-number">4.14</span> Save multiple PDFs at once (e.g.&nbsp;violin plot)</h2>
+<section id="save-multiple-pdfs-at-once-by-split_plot-e.g.-violin-plot" class="level2" data-number="4.14">
+<h2 data-number="4.14" class="anchored" data-anchor-id="save-multiple-pdfs-at-once-by-split_plot-e.g.-violin-plot"><span class="header-section-number">4.14</span> Save multiple PDFs at once by <code>split_plot()</code> (e.g.&nbsp;violin plot)</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyplots)</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1412,17 +1427,19 @@ Note
 <span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> group) <span class="sc">|&gt;</span> </span>
 <span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_violin</span>(<span class="at">trim =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_data_points_beeswarm</span>(<span class="at">white_border =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span>   </span>
-<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_size</span>(<span class="at">overall_width =</span> <span class="dv">100</span>) <span class="sc">|&gt;</span> <span class="co"># see the note of next page</span></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_size</span>(<span class="at">overall_width =</span> <span class="dv">100</span>, <span class="at">overall_height =</span> <span class="dv">150</span>) <span class="sc">|&gt;</span> <span class="co"># see the note of next page</span></span>
 <span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_theme_details</span>(</span>
-<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">strip.text.x.top =</span> ggplot2<span class="sc">::</span><span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"italic"</span>)) <span class="sc">|&gt;</span> <span class="co"># gene names in italic</span></span>
-<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">split_plot</span>(</span>
-<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">by =</span> external_gene_name, </span>
-<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">ncol =</span> <span class="dv">2</span>, </span>
-<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">nrow =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">save_plot</span>(</span>
-<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"images/multiple-pdf-at-once.pdf"</span>, </span>
-<span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">multiple_files =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb46-19"><a href="#cb46-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">view_plot =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">strip.text.x.top =</span> ggplot2<span class="sc">::</span><span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"italic"</span>), <span class="co"># gene names in italic</span></span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">strip.background =</span> ggplot2<span class="sc">::</span><span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#dddddd"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">split_plot</span>(</span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">by =</span> external_gene_name, </span>
+<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">ncol =</span> <span class="dv">2</span>, </span>
+<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">nrow =</span> <span class="dv">2</span>,</span>
+<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">scales =</span> <span class="st">"fixed"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">save_plot</span>(</span>
+<span id="cb46-19"><a href="#cb46-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">"images/multiple-pdf-at-once.pdf"</span>, </span>
+<span id="cb46-20"><a href="#cb46-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">multiple_files =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb46-21"><a href="#cb46-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">view_plot =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>List the figure names saved:</p>
 <div class="cell">
@@ -1457,7 +1474,6 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p>The <code>overall_width</code> and <code>overall_height</code> parameters of the <code>adjust_size()</code> function control the overall dimensions of a multiplot layout generated with <code>split_plot()</code>.</p>
-<p>The function <code>adjust_theme_details()</code> is a wrapper around <code>ggplot2::theme()</code>.</p>
 </div>
 </div>
 </section>

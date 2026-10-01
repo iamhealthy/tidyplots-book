@@ -58,7 +58,7 @@ df |>
 
 Type `?tidyplots::add_data_points` in R console, you can view the `help` information of the function.
 
-> *shape: An integer between 0 and 24, representing the shape of the plot symbol.*
+> *shape: An integer between 0 and 25, representing the shape of the plot symbol.*
 
 Let's see: **which point shapes in `tidyplots` allow simultaneous use of `color` and `fill` aesthetics?**
 

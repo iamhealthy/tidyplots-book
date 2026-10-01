@@ -744,7 +744,7 @@ List the figures saved:
 
 ![Save a plot in multiple formats by piping through.](images/multiple-formats-via-pipe.pdf){width=100% fig-align="center"}
 
-## Save multiple PDFs by piping through (e.g. violin plot)
+## Save multiple PDFs by piping through involving `split_plot()` (e.g. violin plot)
 
 ```{r}
 #| message: false
@@ -772,20 +772,22 @@ gene_expression |>
     "images/multiple-pdf-by-piping-1.pdf", 
     view_plot = FALSE) |> 
   split_plot(
-    by = condition, 
+    by = condition, # one variable
     axis.titles = "margins") |> 
   save_plot(
     "images/multiple-pdf-by-piping-2.pdf", 
     view_plot = FALSE) |> 
   split_plot(
-    by = sample_type) |> 
+    by = sample_type) |> # one variable
   save_plot(
     "images/multiple-pdf-by-piping-3.pdf", 
     view_plot = FALSE) |> 
   split_plot(
-    rows = condition, 
+    rows = condition, # two variables ('rows' and 'cols')
     cols = is_immune_gene,
-    axis.titles = "margins") |> 
+    axis.titles = "single") |>
+  adjust_theme_details(
+    strip.text = ggplot2::element_text(color = "#bb5566")) |> 
   save_plot(
     "images/multiple-pdf-by-piping-4.pdf", 
     view_plot = FALSE)
@@ -801,7 +803,11 @@ List the figures saved:
 
 ![The 4th PDF figure.](images/multiple-pdf-by-piping-4.pdf){width=100% fig-align="center"}
 
-## Save multiple PDFs at once (e.g. violin plot)
+:::{.callout-note icon="true"}
+The function `adjust_theme_details()` is a wrapper around `ggplot2::theme()`. 
+:::
+
+## Save multiple PDFs at once by `split_plot()` (e.g. violin plot)
 
 ```{r}
 library(tidyplots)
@@ -825,13 +831,15 @@ gene_expression |>
     color = group) |> 
   add_violin(trim = FALSE) |> 
   add_data_points_beeswarm(white_border = TRUE) |>   
-  adjust_size(overall_width = 100) |> # see the note of next page
+  adjust_size(overall_width = 100, overall_height = 150) |> # see the note of next page
   adjust_theme_details(
-    strip.text.x.top = ggplot2::element_text(face = "italic")) |> # gene names in italic
+    strip.text.x.top = ggplot2::element_text(face = "italic"), # gene names in italic
+    strip.background = ggplot2::element_rect(fill = "#dddddd")) |>
   split_plot(
     by = external_gene_name, 
     ncol = 2, 
-    nrow = 2) |> 
+    nrow = 2,
+    scales = "fixed") |> 
   save_plot(
     "images/multiple-pdf-at-once.pdf", 
     multiple_files = TRUE, 
@@ -853,8 +861,6 @@ List the figure names saved:
 
 :::{.callout-note icon="true"}
 The `overall_width` and `overall_height` parameters of the `adjust_size()` function control the overall dimensions of a multiplot layout generated with `split_plot()`.
-
-The function `adjust_theme_details()` is a wrapper around `ggplot2::theme()`. 
 :::
 
 ## Save intermediate stages (e.g. bar plot)

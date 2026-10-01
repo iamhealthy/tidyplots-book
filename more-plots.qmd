@@ -609,7 +609,7 @@ p5 <- p4 |>
   add_title(title = "p5: via 'add_annotation_text()'\n'placebo' labels") |> 
   add_annotation_text(
     text = study_fct$score[study_fct$group == "placebo"], 
-    x = 1:10, # see the note of next page
+    x = 1:10, # see the 'Note' below
     y = study_fct$score[study_fct$group == "placebo"], 
     vjust = 2) |> # tailored value
   remove_clipping() |> 
