@@ -727,7 +727,7 @@ Tip
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Read images</span></span>
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>imgs <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">set_names</span>(</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">map</span>(img_names, magick<span class="sc">::</span>image_read),</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">map</span>(<span class="at">.x =</span> img_names, <span class="at">.f =</span> \(x) magick<span class="sc">::</span><span class="fu">image_read</span>(x)),</span>
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste0</span>(<span class="st">"img"</span>, <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(img_names)))</span>
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Get width and height of the 1st image</span></span>
@@ -736,7 +736,7 @@ Tip
 <span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Change images to graphic objectives</span></span>
 <span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>imgs_grob <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">set_names</span>(</span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">map</span>(imgs, grid<span class="sc">::</span>rasterGrob),</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">map</span>(<span class="at">.x =</span> imgs, <span class="at">.f =</span> \(x) grid<span class="sc">::</span><span class="fu">rasterGrob</span>(x)),</span>
 <span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste0</span>(<span class="st">"img"</span>, <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(imgs)))</span>
 <span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="co"># The intended width of combined image</span></span>

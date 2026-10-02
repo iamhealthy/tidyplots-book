@@ -527,25 +527,29 @@ gtag('config', 'G-73R3962S0Z', { 'anonymize_ip': true});
 <span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">add_title</span>(<span class="at">title =</span> point_shape)}</span>
 <span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Plots with point shapes 0 - 25 (white_border width: 1)</span></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>plots_width1 <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">25</span>, generate_plot, <span class="at">white_border_width =</span> <span class="dv">1</span>)</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Plots with point shapes 0 - 25 (white_border width: 2)</span></span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>plots_width2 <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">25</span>, generate_plot, <span class="at">white_border_width =</span> <span class="dv">2</span>)</span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Wrap plots together and save</span></span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>(patchwork<span class="sc">::</span><span class="fu">wrap_plots</span>(plots_width1, <span class="at">ncol =</span> <span class="dv">10</span>) <span class="sc">+</span></span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>  patchwork<span class="sc">::</span><span class="fu">plot_annotation</span>(</span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"plots_width1"</span>,</span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"some shapes with white borders (width = 1)"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">save_plot</span>(<span class="st">"images/point-white-borders1.png"</span>,</span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">view_plot =</span> <span class="cn">FALSE</span>, <span class="at">width =</span> <span class="dv">140</span>, <span class="at">height =</span> <span class="dv">70</span>)</span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>(patchwork<span class="sc">::</span><span class="fu">wrap_plots</span>(plots_width2, <span class="at">ncol =</span> <span class="dv">10</span>) <span class="sc">+</span></span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>  patchwork<span class="sc">::</span><span class="fu">plot_annotation</span>(</span>
-<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"plots_width2"</span>,</span>
-<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"some shapes with white borders (width = 2)"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">save_plot</span>(<span class="st">"images/point-white-borders2.png"</span>,</span>
-<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">view_plot =</span> <span class="cn">FALSE</span>, <span class="at">width =</span> <span class="dv">140</span>, <span class="at">height =</span> <span class="dv">70</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>plots_width1 <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map</span>(</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">.x =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">25</span>,</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">.f =</span> \(x) <span class="fu">generate_plot</span>(x, <span class="at">white_border_width =</span> <span class="dv">1</span>))</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Plots with point shapes 0 - 25 (white_border width: 2)</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>plots_width2 <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map</span>(</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">.x =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">25</span>,</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">.f =</span> \(x) <span class="fu">generate_plot</span>(x, <span class="at">white_border_width =</span> <span class="dv">2</span>))</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Wrap plots together and save</span></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>(patchwork<span class="sc">::</span><span class="fu">wrap_plots</span>(plots_width1, <span class="at">ncol =</span> <span class="dv">10</span>) <span class="sc">+</span></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>  patchwork<span class="sc">::</span><span class="fu">plot_annotation</span>(</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"plots_width1"</span>,</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"some shapes with white borders (width = 1)"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">save_plot</span>(<span class="st">"images/point-white-borders1.png"</span>,</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">view_plot =</span> <span class="cn">FALSE</span>, <span class="at">width =</span> <span class="dv">140</span>, <span class="at">height =</span> <span class="dv">70</span>)</span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>(patchwork<span class="sc">::</span><span class="fu">wrap_plots</span>(plots_width2, <span class="at">ncol =</span> <span class="dv">10</span>) <span class="sc">+</span></span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>  patchwork<span class="sc">::</span><span class="fu">plot_annotation</span>(</span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"plots_width2"</span>,</span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"some shapes with white borders (width = 2)"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">save_plot</span>(<span class="st">"images/point-white-borders2.png"</span>,</span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">view_plot =</span> <span class="cn">FALSE</span>, <span class="at">width =</span> <span class="dv">140</span>, <span class="at">height =</span> <span class="dv">70</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -813,17 +817,16 @@ Note
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>quarto_version <span class="ot">&lt;-</span> <span class="fu">system2</span>(<span class="st">"quarto"</span>, <span class="st">"--version"</span>, <span class="at">stdout =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>positron_version <span class="ot">&lt;-</span> <span class="fu">system2</span>(<span class="st">"positron"</span>, <span class="st">"--version"</span>, <span class="at">stdout =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>r_version <span class="ot">&lt;-</span> R.version.string</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>r_packages_versions <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">r_package =</span> <span class="fu">c</span>(</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"tidyplots"</span>, <span class="st">"scales"</span>, <span class="st">"ggplot2"</span>, <span class="st">"patchwork"</span>, <span class="st">"ggtext"</span>, </span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ggridges"</span>, <span class="st">"see"</span>, <span class="st">"legendry"</span>, <span class="st">"gggenes"</span>, <span class="st">"purrr"</span>, </span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"readr"</span>, <span class="st">"readxl"</span>, <span class="st">"tibble"</span>, <span class="st">"dplyr"</span>, <span class="st">"rphylopic"</span>, </span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"fs"</span>, <span class="st">"magick"</span>, <span class="st">"ggplotify"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">version =</span> purrr<span class="sc">::</span><span class="fu">map_chr</span>(r_package, \(x) <span class="fu">as.character</span>(<span class="fu">packageVersion</span>(x))))</span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>os_version</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>r_packages_versions <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">r_package =</span> <span class="fu">c</span>(</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"tidyplots"</span>, <span class="st">"scales"</span>, <span class="st">"ggplot2"</span>, <span class="st">"patchwork"</span>, <span class="st">"ggtext"</span>, </span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ggridges"</span>, <span class="st">"see"</span>, <span class="st">"legendry"</span>, <span class="st">"gggenes"</span>, <span class="st">"purrr"</span>, </span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"readr"</span>, <span class="st">"readxl"</span>, <span class="st">"tibble"</span>, <span class="st">"dplyr"</span>, <span class="st">"rphylopic"</span>, </span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"fs"</span>, <span class="st">"magick"</span>, <span class="st">"ggplotify"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">version =</span> purrr<span class="sc">::</span><span class="fu">map_chr</span>(</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">.x =</span> r_package, <span class="at">.f =</span> \(x) <span class="fu">as.character</span>(<span class="fu">packageVersion</span>(x))))</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>os_version</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Windows 10 x64"</code></pre>
 </div>

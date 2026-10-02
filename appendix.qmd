@@ -144,10 +144,14 @@ generate_plot <- function(point_shape, white_border_width) {
     add_title(title = point_shape)}
 
 # Plots with point shapes 0 - 25 (white_border width: 1)
-plots_width1 <- purrr::map(0:25, generate_plot, white_border_width = 1)
+plots_width1 <- purrr::map(
+  .x = 0:25,
+  .f = \(x) generate_plot(x, white_border_width = 1))
 
 # Plots with point shapes 0 - 25 (white_border width: 2)
-plots_width2 <- purrr::map(0:25, generate_plot, white_border_width = 2)
+plots_width2 <- purrr::map(
+  .x = 0:25,
+  .f = \(x) generate_plot(x, white_border_width = 2))
 
 # Wrap plots together and save
 (patchwork::wrap_plots(plots_width1, ncol = 10) +
@@ -362,7 +366,6 @@ os_version <- paste(Sys.info()[c("sysname", "release")], collapse = " ")
 quarto_version <- system2("quarto", "--version", stdout = TRUE)
 positron_version <- system2("positron", "--version", stdout = TRUE)
 r_version <- R.version.string
-
 r_packages_versions <- tibble::tibble(
   r_package = c(
     "tidyplots", "scales", "ggplot2", "patchwork", "ggtext", 
@@ -370,8 +373,8 @@ r_packages_versions <- tibble::tibble(
     "readr", "readxl", "tibble", "dplyr", "rphylopic", 
     "fs", "magick", "ggplotify")) |> 
   dplyr::mutate(
-    version = purrr::map_chr(r_package, \(x) as.character(packageVersion(x))))
-
+    version = purrr::map_chr(
+      .x = r_package, .f = \(x) as.character(packageVersion(x))))
 os_version
 paste0("quarto: ", quarto_version)
 paste0("positron: ", positron_version[1])
