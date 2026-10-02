@@ -141,17 +141,13 @@ generate_plot <- function(point_shape, white_border_width) {
       stroke = white_border_width, # border width
       color = "#000000", 
       shape = point_shape) |> # point shape
-  add_title(title = as.character(point_shape))}
+    add_title(title = point_shape)}
 
 # Plots with point shapes 0 - 25 (white_border width: 1)
-plots_width1 <- purrr::set_names(
-  purrr::map(0:25, generate_plot, white_border_width = 1),
-  paste0("p", 0:25))
+plots_width1 <- purrr::map(0:25, generate_plot, white_border_width = 1)
 
 # Plots with point shapes 0 - 25 (white_border width: 2)
-plots_width2 <- purrr::set_names(
-  purrr::map(0:25, generate_plot, white_border_width = 2),
-  paste0("p", 0:25))
+plots_width2 <- purrr::map(0:25, generate_plot, white_border_width = 2)
 
 # Wrap plots together and save
 (patchwork::wrap_plots(plots_width1, ncol = 10) +
