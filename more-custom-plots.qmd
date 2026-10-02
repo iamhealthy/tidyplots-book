@@ -299,8 +299,8 @@ img_names <- fs::dir_ls(path = "images", regexp = "^images/OS-2_.*")
 
 # Read images
 imgs <- purrr::set_names(
-  purrr::map(.x = img_names, .f = \(x) magick::image_read(x)),
-  paste0("img", 1:length(img_names)))
+  x = purrr::map(.x = img_names, .f = \(x) magick::image_read(x)),
+  nm = paste0("img", 1:length(img_names)))
 
 # Get width and height of the 1st image
 img_width <- magick::image_info(imgs[[1]])$width
@@ -308,8 +308,8 @@ img_height <- magick::image_info(imgs[[1]])$height
 
 # Change images to graphic objectives
 imgs_grob <- purrr::set_names(
-  purrr::map(.x = imgs, .f = \(x) grid::rasterGrob(x)),
-  paste0("img", 1:length(imgs)))
+  x = purrr::map(.x = imgs, .f = \(x) grid::rasterGrob(x)),
+  nm = paste0("img", 1:length(imgs)))
 
 # The intended width of combined image
 img_intend_width = 50 # unit: mm
