@@ -1,6 +1,6 @@
-![](tidyplots_cover_v1.0.png)
+![](tidyplots_cover_v1.1.5.png)
 
-This is largely a curated compilation of codes & the corresponding plots, perhaps with some additional exploration, based on the official resources.
+This is largely a curated compilation of code & the corresponding plots, with some additional exploration by Kang Wu (<https://iamhealthy.github.io/>), based on the official resources by Jan Broder Engler (<https://jbengler.de/>).
 
 The official resources used for this compilation include:
 
@@ -10,10 +10,10 @@ The official resources used for this compilation include:
 
 - 🔗<https://bsky.app/profile/jbengler.de>
 
-- 🔗[the paper: iMeta 2025](https://onlinelibrary.wiley.com/doi/10.1002/imt2.70018)
+- 🔗The paper: iMeta 2025 (<https://doi.org/10.1002/imt2.70018>)
 
-You may read it online here for free, or purchase a physical copy from ?? (independently published ??).
+You may read it online here for free, or purchase a PDF version from [Leanpub](https://leanpub.com/tidyplots-cookbook).
 
-For the physical copy, code is primarily shown on the left-hand pages, with the corresponding plots displayed on the following right-hand pages to facilitate **reference, comparison, or interpretation**.
+For the PDF (or perhaps the physical) copy, code is primarily shown on the left-hand pages, with the corresponding plots displayed on the following right-hand pages to facilitate **reference, comparison, or interpretation**.
 
-![A color scheme [@paul_tol_colors] is used throughout the codebook to ensure strong color contrast, including in **grayscale physical copies**, while also remaining color-blind friendly (see @sec-high-contrast).](left_right_pattern_v1.0.png)
+![A color scheme [@paul_tol_colors] is used throughout the codebook to ensure strong color contrast, including in **grayscale physical copies**, while also remaining color-blind friendly (see @sec-high-contrast).](left_right_pattern_v1.1.5.png){width="100%" fig-align="center"}
