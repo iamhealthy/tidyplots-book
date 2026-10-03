@@ -1,4 +1,4 @@
-![](tidyplots_cover_v1.1.5.png){width="100%" fig-align="center"}
+![](tidyplots_cover_v1.1.5.png)
 
 This is largely a curated compilation of code & the corresponding plots, with some additional exploration by Kang Wu (<https://iamhealthy.github.io/>), based on the official resources by Jan Broder Engler (<https://jbengler.de/>).
 
@@ -16,4 +16,4 @@ You may read it online here for free, or purchase a PDF version from [Leanpub](h
 
 For the PDF (or perhaps the physical) copy, code is primarily shown on the left-hand pages, with the corresponding plots displayed on the following right-hand pages to facilitate **reference, comparison, or interpretation**.
 
-![A color scheme [@paul_tol_colors] is used throughout the codebook to ensure strong color contrast, including in **grayscale physical copies**, while also remaining color-blind friendly (see @sec-high-contrast).](left_right_pattern_v1.1.5.png){width="100%" fig-align="center"}
+![A color scheme [@paul_tol_colors] is used throughout the codebook to ensure strong color contrast, including in **grayscale physical copies**, while also remaining color-blind friendly (see @sec-high-contrast).](left_right_pattern_v1.1.5.png)
