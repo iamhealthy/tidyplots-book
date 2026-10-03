@@ -216,7 +216,7 @@ plot_height = img_intend_width * (img_height/img_width) * (1 + top_extra + botto
 p1 <- df |> tidyplot(x = x, y = y) |> 
   add_data_points(alpha = 0) |> 
   add(ggplot2::annotation_custom(img_grob, xmin = 0, xmax = img_width, 
-    ymin = img_height, ymax = 0)) |> 
+    ymin = 0, ymax = img_height)) |> 
   add_title(title = "p1: Fiji") |> 
   add_annotation_text(text = "+", x = 626, y = c(img_height - 804), fontsize = 14) |> 
   adjust_size(width = plot_width, height = plot_height) |> 
