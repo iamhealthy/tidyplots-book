@@ -1612,3 +1612,189 @@ For `middle`, when one color is requested, it selects the 2nd color; when two co
 
 Or test more cases (i.e. provide more colors and request 1, 2, 3, ... colors)?
 :::
+
+## Labels in short (e.g. bar plot)
+
+```{r}
+library(tidyplots)
+
+# A putative df
+df <- tibble::tibble(
+  x = letters[1:3],
+  y = c(1e9, 1e11, 1e13))
+
+# View
+df
+```
+
+```{r}
+#| eval: false
+# Plot
+p1 <- df |> 
+  tidyplot(
+    x = x, 
+    y = y, 
+    color = x) |> 
+  add_sum_bar() |> 
+  add_title(title = "p1") |> 
+  adjust_y_axis(transform = "log10")
+
+p2 <- p1 |> 
+  adjust_title(title = "p2: y axis labels in short") |> 
+  adjust_y_axis(
+    transform = "log10",
+    cut_short_scale = TRUE)
+# see the note below for what do "K", "M", and "T" stands for
+
+p3 <- p1 |> 
+  adjust_title(title = "p3: add sum value") |>
+  add_sum_value() |> 
+  adjust_y_axis(
+    transform = "log10",
+    cut_short_scale = TRUE)
+
+p4 <- p1 |> 
+  adjust_title(title = "p4: sum value in short") |>
+  add_sum_value(scale_cut = scales::cut_short_scale()) |> 
+  adjust_y_axis(
+    transform = "log10",
+    cut_short_scale = TRUE)
+```
+
+```{r}
+#| eval: false
+#| echo: false
+patchwork::wrap_plots(p1, p2, p3, p4, ncol = 2) |> 
+  save_plot("images/labels_in_short.png",
+    view_plot = FALSE, width = 160, height = 135)
+```
+
+![Labels in short.](images/labels_in_short.png){fig-align="center" width="100%"}
+
+:::{.callout-note icon="true"}
+`scales::cut_short_scale()`: [10^3, 10^6) = K, [10^6, 10^9) = M, [10^9, 10^12) = B, [10^12, Inf) = T.
+
+The interval [10^3, 10^6) means values equal to or larger than 10^3 but less than 10^6.
+:::
+
+## Set a function to create a complete plot (e.g. bar plot)
+
+```{r}
+library(tidyplots)
+
+# View top 10 rows of the columns used
+study |>
+  dplyr::select(treatment, score) |>
+  dplyr::slice_head(n = 10)
+```
+
+```{r}
+#| eval: false
+# Plot
+p1 <- study |>
+  tidyplot(
+    x = treatment, 
+    y = score, 
+    color = treatment) |>
+  add_mean_bar(alpha = 0.4) |>
+  add_sem_errorbar() |>
+  add_data_points_beeswarm(white_border = TRUE) |>
+  add_title(title = "p1")
+
+# Set a function
+bar_sem_points <- function(df, x, y, color, title) {
+  df |>
+    tidyplot(
+      x = {{ x }}, # see the note below below
+      y = {{ y }}, 
+      color = {{ color }}) |> 
+    add_mean_bar(alpha = 0.4) |>
+    add_sem_errorbar() |>
+    add_data_points_beeswarm(white_border = TRUE) |>
+    add_title(title = title)
+}
+
+p2 <- study |> bar_sem_points(
+  x = treatment,
+  y = score,
+  color = treatment,
+  title = "p2: created via a function"
+)
+```
+
+:::{.callout-note icon="true"}
+> `{{}}` tells gglot2 (and of course tidyplots) to look “inside” the argument use its value, not its literal name. <https://ggplot2-book.org/programming.html#sec-functions>
+:::
+
+```{r}
+#| echo: false
+#| eval: false
+patchwork::wrap_plots(p1, p2, ncol = 1) |> 
+  save_plot("images/set-a-function-to-create-complete-plot.png",
+    view_plot = FALSE, height = 135)
+```
+
+![Set a function to create a complete plot.](images/set-a-function-to-create-complete-plot.png){width="100%" fig-align="center"}
+
+## Functional programming (e.g. bar plot)
+
+```{r}
+library(tidyplots)
+
+# View top 10 rows of the columns used
+study |>
+  dplyr::select(treatment, score) |>
+  dplyr::slice_head(n = 10)
+```
+
+```{r}
+#| eval: false
+# Plot
+bar_sem_points <- list(
+  function(df, x, y, color) {
+    df |>
+      tidyplot(x = {{ x }}, y = {{ y }}, color = {{ color }}) |>
+      add_mean_bar(alpha = 0.4) |>
+      add_title(title = "p1: bar")
+  },
+  function(df, x, y, color) {
+    df |>
+      tidyplot(x = {{ x }}, y = {{ y }}, color = {{ color }}) |>
+      add_mean_bar(alpha = 0.4) |>
+      add_sem_errorbar() |>
+      add_title(title = "p2: bar, errorbar")
+  },
+  function(df, x, y, color) {
+    df |>
+      tidyplot(x = {{ x }}, y = {{ y }}, color = {{ color }}) |>
+      add_mean_bar(alpha = 0.4) |>
+      add_sem_errorbar() |>
+      add_data_points_beeswarm(white_border = TRUE) |>
+      add_title(title = "p3: bar, errorbar, points")
+  }
+)
+
+purrr::map(
+  .x = bar_sem_points,
+  .f = \(TIDYPLOT) {
+    TIDYPLOT(df = study, x = treatment, y = score, color = treatment)
+  }
+) |>
+  patchwork::wrap_plots(ncol = 1)
+```
+
+```{r}
+#| eval: false
+#| echo: false
+purrr::map(
+  .x = bar_sem_points,
+  .f = \(TIDYPLOT) {
+    TIDYPLOT(df = study, x = treatment, y = score, color = treatment)
+  }
+) |>
+  patchwork::wrap_plots(ncol = 1) |> 
+  save_plot("images/functional-programming.png",
+    view_plot = FALSE, height = 200)
+```
+
+![Functional programming.](images/functional-programming.png){fig-align="center" width="70%"}

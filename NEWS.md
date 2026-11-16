@@ -1,13 +1,47 @@
+## e1.2.0
+
+- New sections
+    
+    - Labels in short (e.g. bar plot) (chapter 4.24)
+    - Set a function to create a complete plot (chapter 4.25)
+    - Functional programming (chapter 4.26)
+    - Stacked bar plot with data labels via layer data (chapter 6.22)
+    - Pie and donut plots with data labels via layer data (chapter 6.24)
+    - Confusion matrix (chapter 6.25)
+
+- Correcting some typos and other issues
+
+    - For the plot section of `Dumbbell plot with data labels`, "see note" -> "see the note of next page" for pdf version; "see note" -> "see the note below" for web version.
+
+    - For p2 and p3 of `Guide attention (e.g. bar plot)`, "adjust_colors(new_colors = c("Health" = "#994455", na.value = "#dddddd"))" -> "adjust_colors(new_colors = c("Health" = "#994455"), na.value = "#dddddd")".
+
+    - Add new p5 and p6 for `Guide attention (e.g. bar plot)`; p5: complete legend, and p6: complete legend and sort x axis levels.
+
+    - For p5 of `Dumbbell plot with data labels`, "# see the note of next page" -> "# see the 'Note' below".
+
+    - For the section `Save multiple PDFs at once (e.g. violin plot)`, change the section name to `Save multiple PDFs at once by `split_plot()` (e.g. violin plot)`; and for the code content, add two new rows: "strip.background = ggplot2::element_rect(fill = "#dddddd")" and "scales = "fixed"", and adjust the `overall_height = 150`; delete "The function `adjust_theme_details()` is a wrapper around `ggplot2::theme()`." in the 'Note'.
+
+    - For the section `Save multiple PDFs by piping through (e.g. violin plot)`, change the section name to `Save multiple PDFs by piping through involving `split_plot()` (e.g. violin plot)`. And for the code content, update the 4th pdf/plot: "axis.titles = "margins"" -> "axis.titles = "single""; and add a new row: "adjust_theme_details(strip.text = ggplot2::element_text(color = "#bb5566"))". Add a `Note` below the figure, addressing the function `adjust_theme_details()`.
+
+    - For the section `Point shapes`, "between 0 and 24" -> "between 0 and 25".
+
+    - For the section `Point white borders and width`, "add_title(title = as.character(point_shape))" -> "add_title(title = point_shape)"; "plots_width1 <- purrr::set_names(purrr::map(0:25, generate_plot, white_border_width = 1), paste0("p", 0:25))" -> "plots_width1 <- purrr::map(.x = 0:25, .f = \(x) generate_plot(x, white_border_width = 1))"; "plots_width2 <- purrr::set_names(purrr::map(0:25, generate_plot, white_border_width = 2), paste0("p", 0:25))" -> "plots_width2 <- purrr::map(.x = 0:25, .f = \(x) generate_plot(x, white_border_width = 2))".
+
+    - For the section `Combining multiple images together`, "purrr::map(img_names, magick::image_read), paste0("img", 1:length(img_names))" -> "x = purrr::map(.x = img_names, .f = \(x) magick::image_read(x)), nm = paste0("img", 1:length(img_names))"; "purrr::map(imgs, grid::rasterGrob), paste0("img", 1:length(img_names))" -> "x = purrr::map(.x = imgs, .f = \(x) grid::rasterGrob(x)), nm = paste0("img", 1:length(img_names))".
+
+    - For the section `Packages used throughout this cookbook`, "version = purrr::map_chr(r_package, \(x) as.character(packageVersion(x)))" -> "version = purrr::map_chr(.x = r_package, .f = \(x) as.character(packageVersion(x)))".
+
+    - For the section `xy coordinates in ImageJ/Fiji`, "ymin = img_height, ymax = 0" -> "ymin = 0, ymax = img_height".
+
+    - For the section `Histogram`, for p4, changing back to histogram on x axis (from y axis), and addressing binwdth and bin doundary; for p5, adressing bin breaks; for p6, being old p5 (deleting old p6).
+
 ## e1.1.5
 
 - New sections
 
     - Legend position (e.g. areastack plot) (chapter 3.12)
-
     - Downsample colors (e.g. dot plot) (chapter 4.23)
-
     - Dumbbell plot with data labels (chapter 5.7)
-
     - Stacked bar plot with data labels (chapter 6.21)
     - Pie and donut plots with data labels (chapter 6.22)    
 

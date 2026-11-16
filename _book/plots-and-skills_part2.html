@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4&nbsp; Plot types and techniques (part 2) – `Tidyplots`: publication-ready plots for scientific papers (e1.1.5)</title>
+<title>4&nbsp; Plot types and techniques (part 2) – `Tidyplots`: publication-ready plots for scientific papers (e1.2.0)</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -70,7 +70,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="./">
 <link href="./more-plots.html" rel="next">
 <link href="./plots-and-skills_part1.html" rel="prev">
-<link href="./tidyplots_cover_v1.1.5.png" rel="icon" type="image/png">
+<link href="./tidyplots_cover_v1.2.0.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -311,7 +311,7 @@ gtag('config', 'G-73R3962S0Z', { 'anonymize_ip': true});
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./"><code>Tidyplots</code>: publication-ready plots for scientific papers (e1.1.5)</a> 
+      <a href="./"><code>Tidyplots</code>: publication-ready plots for scientific papers (e1.2.0)</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/iamhealthy/tidyplots-book/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
@@ -406,6 +406,9 @@ gtag('config', 'G-73R3962S0Z', { 'anonymize_ip': true});
   <li><a href="#the-position-of-annotated-text" id="toc-the-position-of-annotated-text" class="nav-link" data-scroll-target="#the-position-of-annotated-text"><span class="header-section-number">4.21</span> The position of annotated text</a></li>
   <li><a href="#show-minor-ticks-e.g.-bar-plot" id="toc-show-minor-ticks-e.g.-bar-plot" class="nav-link" data-scroll-target="#show-minor-ticks-e.g.-bar-plot"><span class="header-section-number">4.22</span> Show minor ticks (e.g.&nbsp;bar plot)</a></li>
   <li><a href="#downsample-colors-e.g.-dot-plot" id="toc-downsample-colors-e.g.-dot-plot" class="nav-link" data-scroll-target="#downsample-colors-e.g.-dot-plot"><span class="header-section-number">4.23</span> Downsample colors (e.g.&nbsp;dot plot)</a></li>
+  <li><a href="#labels-in-short-e.g.-bar-plot" id="toc-labels-in-short-e.g.-bar-plot" class="nav-link" data-scroll-target="#labels-in-short-e.g.-bar-plot"><span class="header-section-number">4.24</span> Labels in short (e.g.&nbsp;bar plot)</a></li>
+  <li><a href="#set-a-function-to-create-a-complete-plot-e.g.-bar-plot" id="toc-set-a-function-to-create-a-complete-plot-e.g.-bar-plot" class="nav-link" data-scroll-target="#set-a-function-to-create-a-complete-plot-e.g.-bar-plot"><span class="header-section-number">4.25</span> Set a function to create a complete plot (e.g.&nbsp;bar plot)</a></li>
+  <li><a href="#functional-programming-e.g.-bar-plot" id="toc-functional-programming-e.g.-bar-plot" class="nav-link" data-scroll-target="#functional-programming-e.g.-bar-plot"><span class="header-section-number">4.26</span> Functional programming (e.g.&nbsp;bar plot)</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/iamhealthy/tidyplots-book/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -2150,6 +2153,225 @@ Note
 <p>For <code>middle</code>, when one color is requested, it selects the 2nd color; when two colors are requested, it selects the 2nd and 3rd colors.</p>
 <p>Or test more cases (i.e.&nbsp;provide more colors and request 1, 2, 3, … colors)?</p>
 </div>
+</div>
+</section>
+<section id="labels-in-short-e.g.-bar-plot" class="level2" data-number="4.24">
+<h2 data-number="4.24" class="anchored" data-anchor-id="labels-in-short-e.g.-bar-plot"><span class="header-section-number">4.24</span> Labels in short (e.g.&nbsp;bar plot)</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyplots)</span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a><span class="co"># A putative df</span></span>
+<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(</span>
+<span id="cb77-5"><a href="#cb77-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>],</span>
+<span id="cb77-6"><a href="#cb77-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(<span class="fl">1e9</span>, <span class="fl">1e11</span>, <span class="fl">1e13</span>))</span>
+<span id="cb77-7"><a href="#cb77-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-8"><a href="#cb77-8" aria-hidden="true" tabindex="-1"></a><span class="co"># View</span></span>
+<span id="cb77-9"><a href="#cb77-9" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  x         y
+  &lt;chr&gt; &lt;dbl&gt;
+1 a      1e 9
+2 b      1e11
+3 c      1e13</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
+<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidyplot</span>(</span>
+<span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> x, </span>
+<span id="cb79-5"><a href="#cb79-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> y, </span>
+<span id="cb79-6"><a href="#cb79-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> x) <span class="sc">|&gt;</span> </span>
+<span id="cb79-7"><a href="#cb79-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_sum_bar</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb79-8"><a href="#cb79-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_title</span>(<span class="at">title =</span> <span class="st">"p1"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb79-9"><a href="#cb79-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_y_axis</span>(<span class="at">transform =</span> <span class="st">"log10"</span>)</span>
+<span id="cb79-10"><a href="#cb79-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-11"><a href="#cb79-11" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> p1 <span class="sc">|&gt;</span> </span>
+<span id="cb79-12"><a href="#cb79-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p2: y axis labels in short"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb79-13"><a href="#cb79-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_y_axis</span>(</span>
+<span id="cb79-14"><a href="#cb79-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">transform =</span> <span class="st">"log10"</span>,</span>
+<span id="cb79-15"><a href="#cb79-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">cut_short_scale =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb79-16"><a href="#cb79-16" aria-hidden="true" tabindex="-1"></a><span class="co"># see the note below for what do "K", "M", and "T" stands for</span></span>
+<span id="cb79-17"><a href="#cb79-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-18"><a href="#cb79-18" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> p1 <span class="sc">|&gt;</span> </span>
+<span id="cb79-19"><a href="#cb79-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p3: add sum value"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb79-20"><a href="#cb79-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_sum_value</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb79-21"><a href="#cb79-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_y_axis</span>(</span>
+<span id="cb79-22"><a href="#cb79-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">transform =</span> <span class="st">"log10"</span>,</span>
+<span id="cb79-23"><a href="#cb79-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">cut_short_scale =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb79-24"><a href="#cb79-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-25"><a href="#cb79-25" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> p1 <span class="sc">|&gt;</span> </span>
+<span id="cb79-26"><a href="#cb79-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p4: sum value in short"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb79-27"><a href="#cb79-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_sum_value</span>(<span class="at">scale_cut =</span> scales<span class="sc">::</span><span class="fu">cut_short_scale</span>()) <span class="sc">|&gt;</span> </span>
+<span id="cb79-28"><a href="#cb79-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_y_axis</span>(</span>
+<span id="cb79-29"><a href="#cb79-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">transform =</span> <span class="st">"log10"</span>,</span>
+<span id="cb79-30"><a href="#cb79-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">cut_short_scale =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/labels_in_short.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>Labels in short.</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>scales::cut_short_scale()</code>: [10^3, 10^6) = K, [10^6, 10^9) = M, [10^9, 10^12) = B, [10^12, Inf) = T.</p>
+<p>The interval [10^3, 10^6) means values equal to or larger than 10^3 but less than 10^6.</p>
+</div>
+</div>
+</section>
+<section id="set-a-function-to-create-a-complete-plot-e.g.-bar-plot" class="level2" data-number="4.25">
+<h2 data-number="4.25" class="anchored" data-anchor-id="set-a-function-to-create-a-complete-plot-e.g.-bar-plot"><span class="header-section-number">4.25</span> Set a function to create a complete plot (e.g.&nbsp;bar plot)</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyplots)</span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a><span class="co"># View top 10 rows of the columns used</span></span>
+<span id="cb80-4"><a href="#cb80-4" aria-hidden="true" tabindex="-1"></a>study <span class="sc">|&gt;</span></span>
+<span id="cb80-5"><a href="#cb80-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(treatment, score) <span class="sc">|&gt;</span></span>
+<span id="cb80-6"><a href="#cb80-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 2
+   treatment score
+   &lt;chr&gt;     &lt;dbl&gt;
+ 1 A             2
+ 2 A             4
+ 3 A             5
+ 4 A             4
+ 5 A             6
+ 6 B             9
+ 7 B             8
+ 8 B            12
+ 9 B            15
+10 B            16</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> study <span class="sc">|&gt;</span></span>
+<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidyplot</span>(</span>
+<span id="cb82-4"><a href="#cb82-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> treatment, </span>
+<span id="cb82-5"><a href="#cb82-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> score, </span>
+<span id="cb82-6"><a href="#cb82-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> treatment) <span class="sc">|&gt;</span></span>
+<span id="cb82-7"><a href="#cb82-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_mean_bar</span>(<span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">|&gt;</span></span>
+<span id="cb82-8"><a href="#cb82-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_sem_errorbar</span>() <span class="sc">|&gt;</span></span>
+<span id="cb82-9"><a href="#cb82-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_data_points_beeswarm</span>(<span class="at">white_border =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb82-10"><a href="#cb82-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_title</span>(<span class="at">title =</span> <span class="st">"p1"</span>)</span>
+<span id="cb82-11"><a href="#cb82-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-12"><a href="#cb82-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Set a function</span></span>
+<span id="cb82-13"><a href="#cb82-13" aria-hidden="true" tabindex="-1"></a>bar_sem_points <span class="ot">&lt;-</span> <span class="cf">function</span>(df, x, y, color, title) {</span>
+<span id="cb82-14"><a href="#cb82-14" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">|&gt;</span></span>
+<span id="cb82-15"><a href="#cb82-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tidyplot</span>(</span>
+<span id="cb82-16"><a href="#cb82-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> {{ x }}, <span class="co"># see the note below below</span></span>
+<span id="cb82-17"><a href="#cb82-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> {{ y }}, </span>
+<span id="cb82-18"><a href="#cb82-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">color =</span> {{ color }}) <span class="sc">|&gt;</span> </span>
+<span id="cb82-19"><a href="#cb82-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">add_mean_bar</span>(<span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">|&gt;</span></span>
+<span id="cb82-20"><a href="#cb82-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">add_sem_errorbar</span>() <span class="sc">|&gt;</span></span>
+<span id="cb82-21"><a href="#cb82-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">add_data_points_beeswarm</span>(<span class="at">white_border =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb82-22"><a href="#cb82-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">add_title</span>(<span class="at">title =</span> title)</span>
+<span id="cb82-23"><a href="#cb82-23" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb82-24"><a href="#cb82-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-25"><a href="#cb82-25" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> study <span class="sc">|&gt;</span> <span class="fu">bar_sem_points</span>(</span>
+<span id="cb82-26"><a href="#cb82-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> treatment,</span>
+<span id="cb82-27"><a href="#cb82-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> score,</span>
+<span id="cb82-28"><a href="#cb82-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">color =</span> treatment,</span>
+<span id="cb82-29"><a href="#cb82-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"p2: created via a function"</span></span>
+<span id="cb82-30"><a href="#cb82-30" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<blockquote class="blockquote">
+<p><code>{{}}</code> tells gglot2 (and of course tidyplots) to look “inside” the argument use its value, not its literal name. <a href="https://ggplot2-book.org/programming.html#sec-functions" class="uri">https://ggplot2-book.org/programming.html#sec-functions</a></p>
+</blockquote>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/set-a-function-to-create-complete-plot.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>Set a function to create a complete plot.</figcaption>
+</figure>
+</div>
+</section>
+<section id="functional-programming-e.g.-bar-plot" class="level2" data-number="4.26">
+<h2 data-number="4.26" class="anchored" data-anchor-id="functional-programming-e.g.-bar-plot"><span class="header-section-number">4.26</span> Functional programming (e.g.&nbsp;bar plot)</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyplots)</span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a><span class="co"># View top 10 rows of the columns used</span></span>
+<span id="cb83-4"><a href="#cb83-4" aria-hidden="true" tabindex="-1"></a>study <span class="sc">|&gt;</span></span>
+<span id="cb83-5"><a href="#cb83-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(treatment, score) <span class="sc">|&gt;</span></span>
+<span id="cb83-6"><a href="#cb83-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 2
+   treatment score
+   &lt;chr&gt;     &lt;dbl&gt;
+ 1 A             2
+ 2 A             4
+ 3 A             5
+ 4 A             4
+ 5 A             6
+ 6 B             9
+ 7 B             8
+ 8 B            12
+ 9 B            15
+10 B            16</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>bar_sem_points <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">function</span>(df, x, y, color) {</span>
+<span id="cb85-4"><a href="#cb85-4" aria-hidden="true" tabindex="-1"></a>    df <span class="sc">|&gt;</span></span>
+<span id="cb85-5"><a href="#cb85-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">tidyplot</span>(<span class="at">x =</span> {{ x }}, <span class="at">y =</span> {{ y }}, <span class="at">color =</span> {{ color }}) <span class="sc">|&gt;</span></span>
+<span id="cb85-6"><a href="#cb85-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">add_mean_bar</span>(<span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">|&gt;</span></span>
+<span id="cb85-7"><a href="#cb85-7" aria-hidden="true" tabindex="-1"></a>      <span class="fu">add_title</span>(<span class="at">title =</span> <span class="st">"p1: bar"</span>)</span>
+<span id="cb85-8"><a href="#cb85-8" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb85-9"><a href="#cb85-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">function</span>(df, x, y, color) {</span>
+<span id="cb85-10"><a href="#cb85-10" aria-hidden="true" tabindex="-1"></a>    df <span class="sc">|&gt;</span></span>
+<span id="cb85-11"><a href="#cb85-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">tidyplot</span>(<span class="at">x =</span> {{ x }}, <span class="at">y =</span> {{ y }}, <span class="at">color =</span> {{ color }}) <span class="sc">|&gt;</span></span>
+<span id="cb85-12"><a href="#cb85-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">add_mean_bar</span>(<span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">|&gt;</span></span>
+<span id="cb85-13"><a href="#cb85-13" aria-hidden="true" tabindex="-1"></a>      <span class="fu">add_sem_errorbar</span>() <span class="sc">|&gt;</span></span>
+<span id="cb85-14"><a href="#cb85-14" aria-hidden="true" tabindex="-1"></a>      <span class="fu">add_title</span>(<span class="at">title =</span> <span class="st">"p2: bar, errorbar"</span>)</span>
+<span id="cb85-15"><a href="#cb85-15" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb85-16"><a href="#cb85-16" aria-hidden="true" tabindex="-1"></a>  <span class="cf">function</span>(df, x, y, color) {</span>
+<span id="cb85-17"><a href="#cb85-17" aria-hidden="true" tabindex="-1"></a>    df <span class="sc">|&gt;</span></span>
+<span id="cb85-18"><a href="#cb85-18" aria-hidden="true" tabindex="-1"></a>      <span class="fu">tidyplot</span>(<span class="at">x =</span> {{ x }}, <span class="at">y =</span> {{ y }}, <span class="at">color =</span> {{ color }}) <span class="sc">|&gt;</span></span>
+<span id="cb85-19"><a href="#cb85-19" aria-hidden="true" tabindex="-1"></a>      <span class="fu">add_mean_bar</span>(<span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">|&gt;</span></span>
+<span id="cb85-20"><a href="#cb85-20" aria-hidden="true" tabindex="-1"></a>      <span class="fu">add_sem_errorbar</span>() <span class="sc">|&gt;</span></span>
+<span id="cb85-21"><a href="#cb85-21" aria-hidden="true" tabindex="-1"></a>      <span class="fu">add_data_points_beeswarm</span>(<span class="at">white_border =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb85-22"><a href="#cb85-22" aria-hidden="true" tabindex="-1"></a>      <span class="fu">add_title</span>(<span class="at">title =</span> <span class="st">"p3: bar, errorbar, points"</span>)</span>
+<span id="cb85-23"><a href="#cb85-23" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb85-24"><a href="#cb85-24" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb85-25"><a href="#cb85-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-26"><a href="#cb85-26" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map</span>(</span>
+<span id="cb85-27"><a href="#cb85-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">.x =</span> bar_sem_points,</span>
+<span id="cb85-28"><a href="#cb85-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">.f =</span> \(TIDYPLOT) {</span>
+<span id="cb85-29"><a href="#cb85-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">TIDYPLOT</span>(<span class="at">df =</span> study, <span class="at">x =</span> treatment, <span class="at">y =</span> score, <span class="at">color =</span> treatment)</span>
+<span id="cb85-30"><a href="#cb85-30" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb85-31"><a href="#cb85-31" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb85-32"><a href="#cb85-32" aria-hidden="true" tabindex="-1"></a>  patchwork<span class="sc">::</span><span class="fu">wrap_plots</span>(<span class="at">ncol =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/functional-programming.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption>Functional programming.</figcaption>
+</figure>
 </div>
 
 

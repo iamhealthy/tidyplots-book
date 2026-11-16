@@ -615,17 +615,19 @@ This choice ensures not only strong visual contrast and color-blind safe, but al
 
 ## What's new in this edition?
 
-### New sections about e1.1.5: {.unlisted .unnumbered}
+### New sections about e1.2.0: {.unlisted .unnumbered}
 
-Legend position (e.g. areastack plot) (chapter 3.12)
+Labels in short (e.g. bar plot) (chapter 4.24)
 
-Downsample colors (e.g. dot plot) (chapter 4.23)
+Set a function to create a complete plot (chapter 4.25)
 
-Dumbbell plot with data labels (chapter 5.7)
+Functional programming (chapter 4.26)
 
-Stacked bar plot with data labels (chapter 6.21)
+Stacked bar plot with data labels via layer data (chapter 6.22)
 
-Pie and donut plots with data labels (chapter 6.22)
+Pie and donut plots with data labels via layer data (chapter 6.24)
+
+Confusion matrix (chapter 6.25)
 
 See <https://github.com/iamhealthy/tidyplots-book/blob/main/NEWS.md> for additional corrections to typos and other issues.
 

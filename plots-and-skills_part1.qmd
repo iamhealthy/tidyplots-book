@@ -1024,10 +1024,7 @@ spendings |>
 #| eval: false
 # Plot
 p1 <- spendings |> 
-  tidyplot(
-    x = category, 
-    y = amount, 
-    color = category) |> 
+  tidyplot(x = category, y = amount, color = category) |> 
   add_sum_bar() |> 
   add_title(title = "p1") |> 
   adjust_x_axis(rotate_labels = TRUE)  
@@ -1035,34 +1032,41 @@ p1 <- spendings |>
 p2 <- p1 |> 
   adjust_title(title = "p2: other bars in gray") |> 
   adjust_colors(
-    new_colors = c("Health" = "#994455"), 
-    na.value = "#dddddd")
+    new_colors = c("Health" = "#994455"), na.value = "#dddddd")
 
 p3 <- p1 |> 
   adjust_title(title = paste(
-    "p3: other bars in gray",
-    "sum value",
-    sep = "\n")) |> 
+    "p3: other bars in gray", "sum value", sep = "\n")) |> 
   add_sum_value(accuracy = 1) |> 
   adjust_colors(
-    new_colors = c("Health" = "#994455"), 
-    na.value = "#dddddd")
+    new_colors = c("Health" = "#994455"), na.value = "#dddddd")
 
 p4 <- p3 |> 
   adjust_title(title = paste(
-    "p4: other bars in gray",
-    "sum value",
-    "sort x axis",
-    sep = "\n")) |> 
+    "p4: other bars in gray", "sum value", "sort x axis", sep = "\n")) |> 
+  sort_x_axis_levels()
+
+p5 <- p1 |> 
+  adjust_title(title = paste(
+    "p5: other bars in gray", "sum value", "complete legend", sep = "\n")) |> 
+  add_sum_value(accuracy = 1) |> 
+  adjust_colors(new_colors = c(rep("#dddddd", 3), "#994455", rep("#dddddd", 4)))
+
+p6 <- p1 |> 
+  adjust_title(title = paste(
+    "p5: other bars in gray", "sum value", "complete legend", sep = "\n")) |> 
+  add_sum_value(accuracy = 1) |> 
+  adjust_colors(new_colors = c(rep("#dddddd", 4), "#994455", rep("#dddddd", 3))) |> 
   sort_x_axis_levels()
 ```
 
 ```{r}
 #| eval: false
 #| echo: false
-patchwork::wrap_plots(p1, p2, p3, p4, ncol = 2) |> 
+#| warning: false
+patchwork::wrap_plots(p1, p2, p3, p4, p5, p6, ncol = 2) |> 
   save_plot("images/guide-attention.png",
-    view_plot = FALSE, width = 180, height = 160)
+    view_plot = FALSE, width = 190, height = 250)
 ```
 
 ![Guide attention.](images/guide-attention.png){width=100% fig-align="center"}

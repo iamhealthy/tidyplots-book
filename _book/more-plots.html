@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>5&nbsp; Additional plot types and techniques – `Tidyplots`: publication-ready plots for scientific papers (e1.1.5)</title>
+<title>5&nbsp; Additional plot types and techniques – `Tidyplots`: publication-ready plots for scientific papers (e1.2.0)</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -70,7 +70,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="./">
 <link href="./more-custom-plots.html" rel="next">
 <link href="./plots-and-skills_part2.html" rel="prev">
-<link href="./tidyplots_cover_v1.1.5.png" rel="icon" type="image/png">
+<link href="./tidyplots_cover_v1.2.0.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -311,7 +311,7 @@ gtag('config', 'G-73R3962S0Z', { 'anonymize_ip': true});
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./"><code>Tidyplots</code>: publication-ready plots for scientific papers (e1.1.5)</a> 
+      <a href="./"><code>Tidyplots</code>: publication-ready plots for scientific papers (e1.2.0)</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/iamhealthy/tidyplots-book/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
@@ -929,7 +929,7 @@ Tip
 <span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_title</span>(<span class="at">title =</span> <span class="st">"p6: via 'add_annotation_text()'</span><span class="sc">\n</span><span class="st">'treatment' labels"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb29-26"><a href="#cb29-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_annotation_text</span>(</span>
 <span id="cb29-27"><a href="#cb29-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">text =</span> study_fct<span class="sc">$</span>score[study_fct<span class="sc">$</span>group <span class="sc">==</span> <span class="st">"treatment"</span>], </span>
-<span id="cb29-28"><a href="#cb29-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="co"># see note</span></span>
+<span id="cb29-28"><a href="#cb29-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="co"># see the note below</span></span>
 <span id="cb29-29"><a href="#cb29-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> study_fct<span class="sc">$</span>score[study_fct<span class="sc">$</span>group <span class="sc">==</span> <span class="st">"treatment"</span>],</span>
 <span id="cb29-30"><a href="#cb29-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">vjust =</span> <span class="sc">-</span><span class="dv">1</span>) <span class="co"># tailored value</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -1191,32 +1191,40 @@ Note
 <span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_histogram</span>(<span class="at">color =</span> <span class="st">"#bb5566"</span>)</span>
 <span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> p0 <span class="sc">|&gt;</span> </span>
-<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_title</span>(<span class="at">title =</span> <span class="fu">paste</span>(<span class="st">"p2: bins = 60"</span>, <span class="st">"density"</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_title</span>(<span class="at">title =</span> <span class="st">"p2: bins (60), density"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_histogram</span>(<span class="at">bins =</span> <span class="dv">60</span>, <span class="at">mapping =</span> ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">y =</span> ggplot2<span class="sc">::</span><span class="fu">after_stat</span>(density)))</span>
 <span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> p0 <span class="sc">|&gt;</span></span>
 <span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_histogram</span>(<span class="at">color =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"#ddaa33"</span>, <span class="st">"#004488"</span>), <span class="at">length.out =</span> <span class="dv">30</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p3: bars and lines"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p3: bars and line"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add</span>(ggplot2<span class="sc">::</span><span class="fu">geom_freqpoly</span>(<span class="at">bins =</span> <span class="dv">30</span>, <span class="at">color =</span> <span class="st">"#000000"</span>))</span>
 <span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-18"><a href="#cb41-18" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> climate <span class="sc">|&gt;</span> </span>
-<span id="cb41-19"><a href="#cb41-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidyplot</span>(<span class="at">y =</span> max_temperature) <span class="sc">|&gt;</span>   </span>
-<span id="cb41-20"><a href="#cb41-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_title</span>(<span class="at">title =</span> <span class="st">"p4: bars in y axis"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb41-21"><a href="#cb41-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_histogram</span>(<span class="at">color =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"#ee99aa"</span>, <span class="st">"#994455"</span>), <span class="at">each  =</span> <span class="dv">15</span>))</span>
-<span id="cb41-22"><a href="#cb41-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-23"><a href="#cb41-23" aria-hidden="true" tabindex="-1"></a>p5 <span class="ot">&lt;-</span> climate <span class="sc">|&gt;</span> </span>
-<span id="cb41-24"><a href="#cb41-24" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"01"</span>, <span class="st">"03"</span>, <span class="st">"06"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb41-25"><a href="#cb41-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidyplot</span>(<span class="at">x =</span> max_temperature, <span class="at">color =</span> month) <span class="sc">|&gt;</span> </span>
-<span id="cb41-26"><a href="#cb41-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_title</span>(<span class="at">title =</span> <span class="st">"p5: month-based"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb41-27"><a href="#cb41-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_histogram</span>(</span>
-<span id="cb41-28"><a href="#cb41-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.5</span>, </span>
-<span id="cb41-29"><a href="#cb41-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">position =</span> <span class="st">"identity"</span>) <span class="co"># "stack" in default</span></span>
+<span id="cb41-18"><a href="#cb41-18" aria-hidden="true" tabindex="-1"></a>min_temp <span class="ot">&lt;-</span> climate <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">pull</span>(max_temperature) <span class="sc">|&gt;</span> <span class="fu">min</span>()</span>
+<span id="cb41-19"><a href="#cb41-19" aria-hidden="true" tabindex="-1"></a>max_temp <span class="ot">&lt;-</span> climate <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">pull</span>(max_temperature) <span class="sc">|&gt;</span> <span class="fu">max</span>()</span>
+<span id="cb41-20"><a href="#cb41-20" aria-hidden="true" tabindex="-1"></a>bin_width <span class="ot">&lt;-</span> (max_temp <span class="sc">-</span> min_temp) <span class="sc">/</span> <span class="dv">30</span></span>
+<span id="cb41-21"><a href="#cb41-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-22"><a href="#cb41-22" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> p0 <span class="sc">|&gt;</span>   </span>
+<span id="cb41-23"><a href="#cb41-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p4: colors, binwidth, and bin boundary"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb41-24"><a href="#cb41-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_histogram</span>(</span>
+<span id="cb41-25"><a href="#cb41-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"#ee99aa"</span>, <span class="dv">5</span>), <span class="fu">rep</span>(<span class="st">"#994455"</span>, <span class="dv">26</span>)), <span class="co"># tailored numbers</span></span>
+<span id="cb41-26"><a href="#cb41-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">binwidth =</span> bin_width,</span>
+<span id="cb41-27"><a href="#cb41-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">boundary =</span> <span class="dv">0</span>) <span class="sc">|&gt;</span> <span class="co"># boundary between two bins</span></span>
+<span id="cb41-28"><a href="#cb41-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_reference_lines</span>(<span class="at">x =</span> <span class="dv">0</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb41-29"><a href="#cb41-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_x_axis</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="dv">5</span>)) <span class="co"># for zooming in</span></span>
 <span id="cb41-30"><a href="#cb41-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-31"><a href="#cb41-31" aria-hidden="true" tabindex="-1"></a>p6 <span class="ot">&lt;-</span> climate <span class="sc">|&gt;</span> </span>
-<span id="cb41-32"><a href="#cb41-32" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"01"</span>, <span class="st">"03"</span>, <span class="st">"06"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb41-33"><a href="#cb41-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidyplot</span>(<span class="at">x =</span> max_temperature, <span class="at">color =</span> month) <span class="sc">|&gt;</span> </span>
-<span id="cb41-34"><a href="#cb41-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_title</span>(<span class="at">title =</span> <span class="st">"p6: density_smooth"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb41-35"><a href="#cb41-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add</span>(ggplot2<span class="sc">::</span><span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb41-31"><a href="#cb41-31" aria-hidden="true" tabindex="-1"></a>bin_breaks <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> min_temp, <span class="at">to =</span> max_temp, <span class="at">length.out =</span> <span class="dv">16</span>)</span>
+<span id="cb41-32"><a href="#cb41-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-33"><a href="#cb41-33" aria-hidden="true" tabindex="-1"></a>p5 <span class="ot">&lt;-</span> p0 <span class="sc">|&gt;</span> </span>
+<span id="cb41-34"><a href="#cb41-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adjust_title</span>(<span class="at">title =</span> <span class="st">"p5: 15 bin breaks"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb41-35"><a href="#cb41-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_histogram</span>(<span class="at">breaks =</span> bin_breaks) <span class="co"># 15 (16 - 1) breaks</span></span>
+<span id="cb41-36"><a href="#cb41-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-37"><a href="#cb41-37" aria-hidden="true" tabindex="-1"></a>p6 <span class="ot">&lt;-</span> climate <span class="sc">|&gt;</span> </span>
+<span id="cb41-38"><a href="#cb41-38" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"01"</span>, <span class="st">"03"</span>, <span class="st">"06"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb41-39"><a href="#cb41-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidyplot</span>(<span class="at">x =</span> max_temperature, <span class="at">color =</span> month) <span class="sc">|&gt;</span> </span>
+<span id="cb41-40"><a href="#cb41-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_title</span>(<span class="at">title =</span> <span class="st">"p6: month-based"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb41-41"><a href="#cb41-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_histogram</span>(</span>
+<span id="cb41-42"><a href="#cb41-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.5</span>, </span>
+<span id="cb41-43"><a href="#cb41-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">position =</span> <span class="st">"identity"</span>) <span class="co"># "stack" in default</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
