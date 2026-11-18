@@ -304,7 +304,7 @@ multipanel_2 |>
 
 ![Add panel tags via the `patchwork` package.](images/patchwork_multipanel_2.png)
 
-## `Patchwork` for combining `tidyplots` and `tidyheatmaps` plots
+## `Patchwork` package for combining `tidyplots` and `tidyheatmaps` plots
 
 :::{.callout-note icon="true"}
 > The goal of `tidyheatmaps` <https://github.com/jbengler/tidyheatmaps/> is to simplify the generation of publication-ready heatmaps from tidy data.
