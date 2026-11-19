@@ -885,7 +885,7 @@ library(tidyplots)
 
 set.seed(2026) # for repeatability
 
-# Create a putative df
+# A putative df
 df <- tibble::tibble(
   values = c(
     runif(n = 6, min = 2, max = 2.3),
