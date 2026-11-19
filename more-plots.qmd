@@ -760,7 +760,7 @@ df <- tibble::tibble(
   years = years,
   stages = stages)
 
-# View
+# View df
 df
 ```
 

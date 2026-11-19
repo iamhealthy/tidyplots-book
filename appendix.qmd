@@ -116,7 +116,7 @@ library(tidyplots)
 
 df <- tibble::tibble(x = 1, y = 1)
 
-# View
+# View df
 df
 ```
 

@@ -769,7 +769,7 @@ df <- tibble::tibble(
   x_end = c(x_start[1:6] + 0.9, x_start[7:9] + 1.2),
   y = rep(3:1, each = 3))
 
-# View
+# View df
 df
 ```
 
@@ -1077,7 +1077,7 @@ df <- tibble::tibble(
   ci95_lower = c(1.13, 0.97, 1.04, 1.07),
   ci95_upper = c(1.68, 1.35, 1.25, 1.32))
 
-# View
+# View df
 df
 ```
 
