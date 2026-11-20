@@ -1723,7 +1723,7 @@ p2 <- study |> bar_sem_points(
 ```
 
 :::{.callout-note icon="true"}
-> `{{}}` tells gglot2 (and of course tidyplots) to look “inside” the argument use its value, not its literal name. <https://ggplot2-book.org/programming.html#sec-functions>
+> `{{}}` tells ggplot2 (and of course tidyplots) to look “inside” the argument use its value, not its literal name. <https://ggplot2-book.org/programming.html#sec-functions>
 :::
 
 ```{r}

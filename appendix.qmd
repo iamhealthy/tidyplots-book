@@ -371,7 +371,7 @@ r_packages_versions <- tibble::tibble(
     "tidyplots", "scales", "ggplot2", "patchwork", "ggtext", 
     "ggridges", "see", "legendry", "gggenes", "purrr", 
     "readr", "readxl", "tibble", "dplyr", "rphylopic", 
-    "fs", "magick", "ggplotify")) |> 
+    "fs", "magick", "ggplotify", "gt")) |> 
   dplyr::mutate(
     version = purrr::map_chr(
       .x = r_package, .f = \(x) as.character(packageVersion(x))))
