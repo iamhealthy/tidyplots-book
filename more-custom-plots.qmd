@@ -666,8 +666,8 @@ p4 <- p1 |>
     limits = c(min(df$y) - 2, max(df$y) + 2)) |> 
   add_sum_value(
     color = "#000000", 
-    vjust = vjust_custom, 
-    extra_padding = 0) # no extra spacing above panel
+    vjust = df$vjust_custom, 
+    extra_padding = 0) # no extra spacing above value label
 ```
 
 ```{r}
