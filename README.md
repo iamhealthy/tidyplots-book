@@ -1,4 +1,4 @@
-![](tidyplots_cover_v1.1.5.png)
+![](tidyplots_cover_v1.2.0.png)
 
 This is largely a curated compilation of code & the corresponding plots, with some additional exploration by Kang Wu (<https://iamhealthy.github.io/>), based on the official resources by Jan Broder Engler (<https://jbengler.de/>).
 
