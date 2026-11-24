@@ -667,7 +667,7 @@ p4 <- p1 |>
   add_sum_value(
     color = "#000000", 
     vjust = df$vjust_custom, 
-    extra_padding = 0) # no extra spacing above value label
+    extra_padding = 0) # no extra spacing above value labels
 ```
 
 ```{r}
